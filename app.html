@@ -144,6 +144,21 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
+            margin-bottom: 10px;
+        }
+        
+        .google-btn {
+            background: white;
+            color: #757575;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .google-btn img {
+            width: 20px;
+            margin-right: 10px;
         }
         
         .job-cards {
@@ -338,8 +353,165 @@
             cursor: pointer;
         }
         
+        .application-form {
+            padding: 15px;
+        }
+        
+        .form-section {
+            margin-bottom: 20px;
+        }
+        
+        .form-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .file-upload {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .file-upload i {
+            font-size: 24px;
+            color: #225dff;
+            margin-bottom: 10px;
+        }
+        
         .hidden {
             display: none;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .modal-btn.cancel {
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .modal-btn.confirm {
+            background: #225dff;
+            color: white;
+        }
+        
+        .profile-section {
+            padding: 15px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #666;
+            margin-right: 15px;
+        }
+        
+        .profile-info h2 {
+            margin-bottom: 5px;
+        }
+        
+        .profile-info p {
+            color: #666;
+        }
+        
+        .profile-menu {
+            list-style: none;
+        }
+        
+        .profile-menu li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .profile-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .profile-menu a {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .profile-menu i {
+            color: #666;
         }
     </style>
 </head>
@@ -351,8 +523,8 @@
                 <span>EMPLOYMENT CORNER</span>
             </div>
             <div class="header-icons">
-                <i class="fas fa-search"></i>
-                <i class="fas fa-bell"></i>
+                <i class="fas fa-search" id="search-icon"></i>
+                <i class="fas fa-bell" id="notification-icon"></i>
             </div>
         </div>
         
@@ -364,17 +536,25 @@
                 </div>
                 
                 <div class="auth-form" id="login-form">
-                    <input type="text" placeholder="Email or Username">
-                    <input type="password" placeholder="Password">
+                    <input type="text" placeholder="Email or Username" id="login-email">
+                    <input type="password" placeholder="Password" id="login-password">
                     <button onclick="login()">Login</button>
+                    <button class="google-btn" onclick="loginWithGoogle()">
+                        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                        Sign in with Google
+                    </button>
                 </div>
                 
                 <div class="auth-form hidden" id="signup-form">
-                    <input type="text" placeholder="Full Name">
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Password">
-                    <input type="password" placeholder="Confirm Password">
+                    <input type="text" placeholder="Full Name" id="signup-name">
+                    <input type="email" placeholder="Email" id="signup-email">
+                    <input type="password" placeholder="Password" id="signup-password">
+                    <input type="password" placeholder="Confirm Password" id="signup-confirm">
                     <button onclick="signup()">Sign Up</button>
+                    <button class="google-btn" onclick="signupWithGoogle()">
+                        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                        Sign up with Google
+                    </button>
                 </div>
             </div>
         </div>
@@ -549,7 +729,6 @@
                     <li>Atleast 18 years old</li>
                     <li>Excellent Communication Skills</li>
                     <li>Senior High School Graduate</li>
-            
                 </ul>
                 
                 <div class="section-title">Please Read: (Certification/Authorization)</div>
@@ -561,57 +740,397 @@
                 <div class="section-title">Contact Information</div>
                 <p>HR Manager: Jennifer Lopez<br>Email: j.lopez@techcorp.com<br>Phone: +63 912 345 6789</p>
                 
-                <button class="view-btn" style="margin-top: 20px;" onclick="applyForJob()">Apply Now</button>
+                <button class="view-btn" style="margin-top: 20px;" onclick="showApplicationForm()">Apply Now</button>
+            </div>
+        </div>
+        
+        <div id="application-form-view" class="hidden">
+            <div class="header">
+                <div class="back-btn" onclick="goBackToJobDetails()">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div class="logo">
+                    <span>Application Form</span>
+                </div>
+                <div class="header-icons">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+            
+            <div class="application-form">
+                <div class="form-section">
+                    <div class="form-section-title">Documents</div>
+                    
+                    <div class="form-group">
+                        <label>Upload Resume</label>
+                        <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload your resume</p>
+                            <input type="file" id="resume-upload" hidden accept=".pdf,.doc,.docx">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Upload Cover Letter (Optional)</label>
+                        <div class="file-upload" onclick="document.getElementById('coverletter-upload').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload your cover letter</p>
+                            <input type="file" id="coverletter-upload" hidden accept=".pdf,.doc,.docx">
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="view-btn" onclick="showEmployerQuestions()">Next</button>
+            </div>
+        </div>
+        
+        <div id="employer-questions-view" class="hidden">
+            <div class="header">
+                <div class="back-btn" onclick="goBackToApplicationForm()">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div class="logo">
+                    <span>Employer Questions</span>
+                </div>
+                <div class="header-icons">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+            
+            <div class="application-form">
+                <div class="form-section">
+                    <div class="form-group">
+                        <label>What's your expected monthly basic salary?</label>
+                        <input type="text" placeholder="Enter expected salary">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Which of the following types of qualifications do you have?</label>
+                        <select>
+                            <option value="">Select qualification</option>
+                            <option value="highschool">High School Diploma</option>
+                            <option value="nc1">National Certificate 1</option>
+                            <option value="nc2">National Certificate 2</option>
+                            <option value="nc3">National Certificate 3</option>
+                            <option value="nc4">National Certificate 4</option>
+                            <option value="diploma">Diploma</option>
+                            <option value="bachelor">Bachelor Degree</option>
+                            <option value="postgrad">Post Graduate Diploma</option>
+                            <option value="master">Master Degree</option>
+                            <option value="other">I have a qualification that is not listed</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>How many years' experience do you have as an Office Staff?</label>
+                        <input type="number" placeholder="Enter years of experience">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Which of the following Microsoft Office products are you experienced with?</label>
+                        <div>
+                            <input type="checkbox" id="word"> <label for="word">Word</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="excel"> <label for="excel">Excel</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="powerpoint"> <label for="powerpoint">PowerPoint</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="outlook"> <label for="outlook">Outlook</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="access"> <label for="access">Access</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="onenote"> <label for="onenote">OneNote</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="publisher"> <label for="publisher">Publisher</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="none"> <label for="none">None of these</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="view-btn" onclick="showProfileForm()">Next</button>
+            </div>
+        </div>
+        
+        <div id="profile-form-view" class="hidden">
+            <div class="header">
+                <div class="back-btn" onclick="goBackToEmployerQuestions()">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div class="logo">
+                    <span>Profile Information</span>
+                </div>
+                <div class="header-icons">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+            
+            <div class="application-form">
+                <div class="form-section">
+                    <div class="form-section-title">Work Experience</div>
+                    
+                    <div class="form-group">
+                        <label>Position</label>
+                        <input type="text" placeholder="Enter position">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" placeholder="Enter company name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Date Started</label>
+                        <input type="date">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Date Ended</label>
+                        <input type="date">
+                    </div>
+                    
+                    <button class="view-btn" style="background: #28a745;">Add Another Experience</button>
+                </div>
+                
+                <div class="form-section">
+                    <div class="form-section-title">Education</div>
+                    
+                    <div class="form-group">
+                        <label>School</label>
+                        <input type="text" placeholder="Enter school name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Degree/Course</label>
+                        <input type="text" placeholder="Enter degree or course">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Year Graduated</label>
+                        <input type="number" placeholder="Enter year">
+                    </div>
+                    
+                    <button class="view-btn" style="background: #28a745;">Add Another Education</button>
+                </div>
+                
+                <div class="form-section">
+                    <div class="form-section-title">Skills</div>
+                    
+                    <div class="form-group">
+                        <input type="text" placeholder="Add skill">
+                    <button class="view-btn" style="background: #28a745; margin-top: 10px;">Add Skill</button>
+                    <div id="skills-list"></div>
+                </div>
+                
+                <button class="view-btn" onclick="reviewApplication()">Review and Submit</button>
+            </div>
+        </div>
+        
+        <div id="review-application-view" class="hidden">
+            <div class="header">
+                <div class="back-btn" onclick="goBackToProfileForm()">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div class="logo">
+                    <span>Review Application</span>
+                </div>
+                <div class="header-icons">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="section-title">Please review your application</div>
+                
+                <div class="applicant-info">
+                    <div class="applicant-name">Documents</div>
+                    <p>Resume: uploaded_file.pdf</p>
+                    <p>Cover Letter: Not provided</p>
+                </div>
+                
+                <div class="applicant-info">
+                    <div class="applicant-name">Employer Questions</div>
+                    <p>Expected Salary: ₱20,000</p>
+                    <p>Qualification: Bachelor Degree</p>
+                    <p>Years of Experience: 3 years</p>
+                    <p>MS Office Skills: Word, Excel, PowerPoint</p>
+                </div>
+                
+                <div class="applicant-info">
+                    <div class="applicant-name">Work Experience</div>
+                    <p>Office Staff at ABC Company (2020 - Present)</p>
+                </div>
+                
+                <div class="applicant-info">
+                    <div class="applicant-name">Education</div>
+                    <p>BS Business Administration at University of Pampanga (2016-2020)</p>
+                </div>
+                
+                <div class="applicant-info">
+                    <div class="applicant-name">Skills</div>
+                    <p>Communication, Microsoft Office, Customer Service</p>
+                </div>
+                
+                <button class="view-btn" onclick="submitApplication()">Submit Application</button>
+            </div>
+        </div>
+        
+        <div id="profile-view" class="hidden">
+            <div class="header">
+                <div class="logo">
+                    <i class="fas fa-user"></i>
+                    <span>My Profile</span>
+                </div>
+                <div class="header-icons">
+                    <i class="fas fa-sign-out-alt" onclick="logout()"></i>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h2>John Doe</h2>
+                        <p>Applicant</p>
+                    </div>
+                </div>
+                
+                <ul class="profile-menu">
+                    <li>
+                        <a href="#">
+                            <span>My Applications</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Saved Jobs</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Notifications</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Settings</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="logout()">
+                            <span>Logout</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
         
         <div class="bottom-nav">
-            <div class="nav-btn active">
+            <div class="nav-btn active" onclick="showHome()">
                 <i class="fas fa-home"></i>
                 <div>Home</div>
             </div>
-            <div class="nav-btn">
+            <div class="nav-btn" onclick="showSearch()">
                 <i class="fas fa-search"></i>
                 <div>Search</div>
             </div>
-            <div class="nav-btn">
+            <div class="nav-btn" onclick="showNotifications()">
                 <i class="fas fa-bell"></i>
                 <div>Notifications</div>
             </div>
-            <div class="nav-btn">
+            <div class="nav-btn" onclick="showBookmarks()">
+                <i class="fas fa-bookmark"></i>
+                <div>Bookmarks</div>
+            </div>
+            <div class="nav-btn" onclick="showProfile()">
                 <i class="fas fa-user"></i>
                 <div>Profile</div>
             </div>
         </div>
     </div>
-
+    
     <script>
-        document.getElementById('login-tab').addEventListener('click', function() {
-            document.getElementById('login-form').classList.remove('hidden');
-            document.getElementById('signup-form').classList.add('hidden');
-            document.getElementById('login-tab').classList.add('active');
-            document.getElementById('signup-tab').classList.remove('active');
-        });
-        
-        document.getElementById('signup-tab').addEventListener('click', function() {
-            document.getElementById('signup-form').classList.remove('hidden');
-            document.getElementById('login-form').classList.add('hidden');
-            document.getElementById('signup-tab').classList.add('active');
-            document.getElementById('login-tab').classList.remove('active');
-        });
-        
+        // Authentication functions
         function login() {
-            document.getElementById('auth-section').classList.add('hidden');
-            document.getElementById('user-type-section').classList.remove('hidden');
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            if (email && password) {
+                // In a real app, this would call an API
+                hideAllSections();
+                document.getElementById('user-type-section').classList.remove('hidden');
+            } else {
+                alert('Please enter email and password');
+            }
         }
         
         function signup() {
-            document.getElementById('auth-section').classList.add('hidden');
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            if (name && email && password) {
+                // In a real app, this would call an API
+                alert('Account created successfully! Please login.');
+                switchToLogin();
+            } else {
+                alert('Please fill all fields');
+            }
+        }
+        
+        function loginWithGoogle() {
+            // In a real app, this would integrate with Google OAuth
+            alert('Redirecting to Google login...');
+            // After successful login
+            hideAllSections();
             document.getElementById('user-type-section').classList.remove('hidden');
         }
         
+        function signupWithGoogle() {
+            // In a real app, this would integrate with Google OAuth
+            alert('Redirecting to Google signup...');
+            // After successful signup
+            hideAllSections();
+            document.getElementById('user-type-section').classList.remove('hidden');
+        }
+        
+        function switchToLogin() {
+            document.getElementById('signup-tab').classList.remove('active');
+            document.getElementById('login-tab').classList.add('active');
+            document.getElementById('signup-form').classList.add('hidden');
+            document.getElementById('login-form').classList.remove('hidden');
+        }
+        
+        function switchToSignup() {
+            document.getElementById('login-tab').classList.remove('active');
+            document.getElementById('signup-tab').classList.add('active');
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('signup-form').classList.remove('hidden');
+        }
+        
+        // User type selection
         function selectUserType(type) {
-            document.getElementById('user-type-section').classList.add('hidden');
+            hideAllSections();
             if (type === 'applicant') {
                 document.getElementById('applicant-view').classList.remove('hidden');
             } else {
@@ -619,24 +1138,127 @@
             }
         }
         
-        function showJobDetails() {
-            document.getElementById('applicant-view').classList.add('hidden');
-            document.getElementById('employee-view').classList.add('hidden');
-            document.getElementById('job-details-view').classList.remove('hidden');
-        }
-        
-        function goBack() {
-            document.getElementById('job-details-view').classList.add('hidden');
-            if (document.getElementById('user-type-section').classList.contains('hidden')) {
+        // Navigation functions
+        function showHome() {
+            hideAllSections();
+            const userType = localStorage.getItem('userType') || 'applicant';
+            if (userType === 'applicant') {
                 document.getElementById('applicant-view').classList.remove('hidden');
+            } else {
+                document.getElementById('employee-view').classList.remove('hidden');
             }
         }
         
-        function applyForJob() {
+        function showSearch() {
+            alert('Search functionality would be implemented here');
+        }
+        
+        function showNotifications() {
+            alert('Notifications would be shown here');
+        }
+        
+        function showBookmarks() {
+            alert('Bookmarked jobs would be shown here');
+        }
+        
+        function showProfile() {
+            hideAllSections();
+            document.getElementById('profile-view').classList.remove('hidden');
+        }
+        
+        function logout() {
+            // In a real app, this would clear authentication tokens
+            hideAllSections();
+            document.getElementById('auth-section').classList.remove('hidden');
+        }
+        
+        // Job application flow functions
+        function showJobDetails() {
+            hideAllSections();
+            document.getElementById('job-details-view').classList.remove('hidden');
+        }
+        
+        function showApplicationForm() {
+            hideAllSections();
+            document.getElementById('application-form-view').classList.remove('hidden');
+        }
+        
+        function showEmployerQuestions() {
+            hideAllSections();
+            document.getElementById('employer-questions-view').classList.remove('hidden');
+        }
+        
+        function showProfileForm() {
+            hideAllSections();
+            document.getElementById('profile-form-view').classList.remove('hidden');
+        }
+        
+        function reviewApplication() {
+            hideAllSections();
+            document.getElementById('review-application-view').classList.remove('hidden');
+        }
+        
+        function submitApplication() {
             alert('Application submitted successfully!');
-            document.getElementById('job-details-view').classList.add('hidden');
+            hideAllSections();
             document.getElementById('applicant-view').classList.remove('hidden');
         }
+        
+        // Back navigation functions
+        function goBack() {
+            hideAllSections();
+            document.getElementById('applicant-view').classList.remove('hidden');
+        }
+        
+        function goBackToJobDetails() {
+            hideAllSections();
+            document.getElementById('job-details-view').classList.remove('hidden');
+        }
+        
+        function goBackToApplicationForm() {
+            hideAllSections();
+            document.getElementById('application-form-view').classList.remove('hidden');
+        }
+        
+        function goBackToEmployerQuestions() {
+            hideAllSections();
+            document.getElementById('employer-questions-view').classList.remove('hidden');
+        }
+        
+        function goBackToProfileForm() {
+            hideAllSections();
+            document.getElementById('profile-form-view').classList.remove('hidden');
+        }
+        
+        // Utility functions
+        function hideAllSections() {
+            const sections = document.querySelectorAll('.app-container > div');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
+        }
+        
+        // Event listeners
+        document.getElementById('login-tab').addEventListener('click', switchToLogin);
+        document.getElementById('signup-tab').addEventListener('click', switchToSignup);
+        
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in (in a real app, this would check authentication status)
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn) {
+                hideAllSections();
+                const userType = localStorage.getItem('userType') || 'applicant';
+                if (userType === 'applicant') {
+                    document.getElementById('applicant-view').classList.remove('hidden');
+                } else {
+                    document.getElementById('employee-view').classList.remove('hidden');
+                }
+            } else {
+                hideAllSections();
+                document.getElementById('auth-section').classList.remove('hidden');
+            }
+        });
     </script>
 </body>
 </html>
