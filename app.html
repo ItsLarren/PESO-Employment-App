@@ -56,6 +56,7 @@
         .header-icons i {
             margin-left: 15px;
             font-size: 20px;
+            cursor: pointer;
         }
         
         .nav-container {
@@ -64,7 +65,7 @@
             display: flex;
             overflow-x: auto;
             white-space: nowrap;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #eee
         }
         
         .nav-item {
@@ -73,6 +74,7 @@
             border-radius: 20px;
             background: #f5f5f5;
             font-size: 14px;
+            cursor: pointer;
         }
         
         .nav-item.active {
@@ -96,6 +98,7 @@
         .view-all {
             color: #2256ff;
             font-size: 14px;
+            cursor: pointer;
         }
         
         .auth-container {
@@ -289,6 +292,7 @@
             background: white;
             border-top: 1px solid #eee;
             padding: 10px 0;
+            z-index: 100;
         }
         
         .nav-btn {
@@ -296,6 +300,7 @@
             text-align: center;
             color: #666;
             font-size: 12px;
+            cursor: pointer;
         }
         
         .nav-btn.active {
@@ -513,10 +518,175 @@
         .profile-menu i {
             color: #666;
         }
+
+        .notification-panel {
+            position: fixed;
+            top: 60px;
+            right: 10px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 15px;
+            display: none;
+        }
+
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-panel {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: white;
+            z-index: 1000;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            min-height: calc(100vh - 130px);
+            overflow-y: auto;
+        }
+        
+        .logout-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Enhanced Profile Styles */
+    .profile-info-section {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .info-group {
+        margin-bottom: 15px;
+    }
+    
+    .info-label {
+        font-weight: 600;
+        color: #555;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    
+    .info-value {
+        color: #333;
+        font-size: 16px;
+    }
+    
+    .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+        margin-right: 10px;
+    }
+    
+    .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 24px;
+    }
+    
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+        background-color: #225dff;
+    }
+    
+    input:checked + .slider:before {
+        transform: translateX(26px);
+    }
+    
+    .toggle-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .toggle-item:last-child {
+        border-bottom: none;
+    }
+    
+    .toggle-label {
+        flex-grow: 1;
+    }
+    
+    .edit-btn {
+        background: #f5f5f5;
+        color: #333;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+    .section-divider {
+        height: 10px;
+        background: #f5f5f5;
+        margin: 15px -15px;
+    }
     </style>
 </head>
 <body>
     <div class="app-container">
+
         <div class="header">
             <div class="logo">
                 <i class="fas fa-briefcase"></i>
@@ -527,516 +697,587 @@
                 <i class="fas fa-bell" id="notification-icon"></i>
             </div>
         </div>
-        
-        <div id="auth-section">
-            <div class="auth-container">
-                <div class="auth-tabs">
-                    <div class="auth-tab active" id="login-tab">Login</div>
-                    <div class="auth-tab" id="signup-tab">Sign Up</div>
-                </div>
-                
-                <div class="auth-form" id="login-form">
-                    <input type="text" placeholder="Email or Username" id="login-email">
-                    <input type="password" placeholder="Password" id="login-password">
-                    <button onclick="login()">Login</button>
-                    <button class="google-btn" onclick="loginWithGoogle()">
-                        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
-                        Sign in with Google
-                    </button>
-                </div>
-                
-                <div class="auth-form hidden" id="signup-form">
-                    <input type="text" placeholder="Full Name" id="signup-name">
-                    <input type="email" placeholder="Email" id="signup-email">
-                    <input type="password" placeholder="Password" id="signup-password">
-                    <input type="password" placeholder="Confirm Password" id="signup-confirm">
-                    <button onclick="signup()">Sign Up</button>
-                    <button class="google-btn" onclick="signupWithGoogle()">
-                        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
-                        Sign up with Google
-                    </button>
-                </div>
+
+        <div class="notification-panel" id="notification-panel">
+            <h3>Notifications</h3>
+            <div class="notification-item">
+                <p>Your application for Customer Service Representative has been reviewed.</p>
+                <small>2 hours ago</small>
+            </div>
+            <div class="notification-item">
+                <p>New job posting: Marketing Specialist at FAVERTON GROUP INC.</p>
+                <small>5 hours ago</small>
+            </div>
+            <div class="notification-item">
+                <p>Welcome to Employment Corner! Complete your profile to get better job matches.</p>
+                <small>1 day ago</small>
             </div>
         </div>
-        
-        <div id="user-type-section" class="hidden">
-            <div class="user-type-container">
-                <h2 class="user-type-title">Select</h2>
-                <div class="user-type-cards">
-                    <div class="user-type-card" onclick="selectUserType('applicant')">
-                        <i class="fas fa-user-graduate"></i>
-                        <h3>Applicant</h3>
-                        <p>Looking for jobs</p>
-                    </div>
-                    <div class="user-type-card" onclick="selectUserType('employee')">
-                        <i class="fas fa-user-tie"></i>
-                        <h3>Employee</h3>
-                        <p>Hiring talent</p>
-                    </div>
-                </div>
-            </div>
+
+
+        <div class="search-panel" id="search-panel">
+            <input type="text" class="search-input" placeholder="Search for jobs, companies, or keywords">
+            <div class="view-btn">Search</div>
         </div>
         
-        <div id="applicant-view" class="hidden">
-            <div class="nav-container">
-                <div class="nav-item active">All Jobs</div>
-                <div class="nav-item">Tech</div>
-                <div class="nav-item">Marketing</div>
-                <div class="nav-item">Sales</div>
-                <div class="nav-item">Finance</div>
+        <div class="main-content">
+            <div id="auth-section">
+                <div class="auth-container">
+                    <div class="auth-tabs">
+                        <div class="auth-tab active" id="login-tab">Login</div>
+                        <div class="auth-tab" id="signup-tab">Sign Up</div>
+                    </div>
+                    
+                    <div class="auth-form" id="login-form">
+                        <input type="text" placeholder="Email or Username" id="login-email">
+                        <input type="password" placeholder="Password" id="login-password">
+                        <button onclick="login()">Login</button>
+                        <button class="google-btn" onclick="loginWithGoogle()">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                            Sign in with Google
+                        </button>
+                    </div>
+                    
+                    <div class="auth-form hidden" id="signup-form">
+                        <input type="text" placeholder="Full Name" id="signup-name">
+                        <input type="email" placeholder="Email" id="signup-email">
+                        <input type="password" placeholder="Password" id="signup-password">
+                        <input type="password" placeholder="Confirm Password" id="signup-confirm">
+                        <button onclick="signup()">Sign Up</button>
+                        <button class="google-btn" onclick="signupWithGoogle()">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                            Sign up with Google
+                        </button>
+                    </div>
+                </div>
             </div>
             
-            <div class="content">
-                <div class="section-title">
-                    <span>Recommended for you</span>
-                    <span class="view-all">View all</span>
+            <div id="user-type-section" class="hidden">
+                <div class="user-type-container">
+                    <h2 class="user-type-title">Select</h2>
+                    <div class="user-type-cards">
+                        <div class="user-type-card" onclick="selectUserType('applicant')">
+                            <i class="fas fa-user-graduate"></i>
+                            <h3>Applicant</h3>
+                            <p>Looking for jobs</p>
+                        </div>
+                        <div class="user-type-card" onclick="selectUserType('employee')">
+                            <i class="fas fa-user-tie"></i>
+                            <h3>Employee</h3>
+                            <p>Hiring talent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="applicant-view" class="hidden">
+                <div class="nav-container">
+                    <div class="nav-item active" onclick="changeCategory('all')">All Jobs</div>
+                    <div class="nav-item" onclick="changeCategory('tech')">Tech</div>
+                    <div class="nav-item" onclick="changeCategory('marketing')">Marketing</div>
+                    <div class="nav-item" onclick="changeCategory('sales')">Sales</div>
+                    <div class="nav-item" onclick="changeCategory('finance')">Finance</div>
                 </div>
                 
-                <div class="job-cards">
+                <div class="content">
+                    <div class="section-title">
+                        <span>Recommended for you</span>
+                        <span class="view-all">View all</span>
+                    </div>
+                    
+                    <div class="job-cards">
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
+                                <div class="job-type">Full Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
+                                <div class="company">ALORICA</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Clark</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱18,000 - ₱22,000</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/10b981/white?text=FAVERTON');">
+                                <div class="job-type">Full Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">9 Open Positions</div>
+                                <div class="company">FAVERTON GROUP INC.</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> San Fernando</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱16,000 - ₱25,000</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/ef4444/white?text=ASIA+BREWERY');">
+                                <div class="job-type">Full Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">3 Open Position</div>
+                                <div class="company">Asia Brewery Inc.</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Pampanga</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱17,000 - ₱23,000</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/f59e0b/white?text=RC+COLA');">
+                                <div class="job-type">Part Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">4 Open Position</div>
+                                <div class="company">RC COLA</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Pampanga</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱12,000 - ₱15,000</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="employee-view" class="hidden">
+                <div class="nav-container">
+                    <div class="nav-item active" onclick="changeApplicationTab('all')">All Applications</div>
+                    <div class="nav-item" onclick="changeApplicationTab('reviewed')">Reviewed</div>
+                    <div class="nav-item" onclick="changeApplicationTab('shortlisted')">Shortlisted</div>
+                    <div class="nav-item" onclick="changeApplicationTab('rejected')">Rejected</div>
+                </div>
+                
+                <div class="content">
+                    <div class="section-title">
+                        <span>Recent Applications</span>
+                        <span class="view-all">View all</span>
+                    </div>
+                    
                     <div class="job-card">
-                        <div class="job-image" style="background-image: url('img/alorica.jpg');">
-                            <div class="job-type">Full Time</div>
+                        <div class="job-image" style="background-image: url('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
+                            <div class="job-type">5 Applications</div>
                         </div>
                         <div class="job-content">
                             <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
-                            <div class="company">ALORICA</div>
-                            <div class="job-details">
-                                <span><i class="fas fa-map-marker-alt"></i> Clark</span>
-                                <span><i class="fas fa-money-bill-wave"></i> ₱ - ₱</span>
+                            
+                            <div class="applicant-info">
+                                <div class="applicant-name">Maria Santos</div>
+                                <div class="applicant-details">3 years experience in customer service</div>
+                                <button class="view-btn" onclick="viewApplicantProfile()">View Profile</button>
                             </div>
-                            <button class="view-btn" onclick="showJobDetails()">View Job</button>
+                            
+                            <div class="applicant-info">
+                                <div class="applicant-name">John Doe</div>
+                                <div class="applicant-details">5 years experience in call center</div>
+                                <button class="view-btn" onclick="viewApplicantProfile()">View Profile</button>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="job-card">
-                        <div class="job-image" style="background-image: url('img/faverton.jpg');">
-                            <div class="job-type">Full Time</div>
+                        <div class="job-image" style="background-image: url('https://placehold.co/600x400/10b981/white?text=FAVERTON');">
+                            <div class="job-type">3 Applications</div>
                         </div>
                         <div class="job-content">
                             <div class="job-title">9 Open Positions</div>
-                            <div class="company">FAVERTON GROUP INC.</div>
-                            <div class="job-details">
-                                <span><i class="fas fa-map-marker-alt"></i> San Fernando</span>
-                                <span><i class="fas fa-money-bill-wave"></i> ₱ - ₱</span>
+                            
+                            <div class="applicant-info">
+                                <div class="applicant-name">Anna Reyes</div>
+                                <div class="applicant-details">4 years experience in marketing</div>
+                                <button class="view-btn" onclick="viewApplicantProfile()">View Profile</button>
                             </div>
-                            <button class="view-btn" onclick="showJobDetails()">View Job</button>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <div id="job-details-view" class="hidden">
+                <div class="job-detail-header" style="background-image: url('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
+                    <div class="back-btn" onclick="goBackToApplicantView()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div>
+                        <h2>CUSTOMER SERVICE REPRESENTATIVE</h2>
+                        <p>ALORICA • Clark • ₱18,000 - ₱22,000</p>
+                    </div>
+                </div>
+                
+                <div class="content">
+                    <div class="section-title">Job Description</div>
+                    <p>Answers and initiates a variety of real-time inbound and outbound voice and non-voice based services.</p>
+                    <p>Verifies and updates customer information, responds to queries and resolves issues.</p>
                     
-                    <div class="job-card">
-                        <div class="job-image" style="background-image: url('img/asia.jpg');">
-                            <div class="job-type">Full Time</div>
-                        </div>
-                        <div class="job-content">
-                            <div class="job-title">3 Open Position</div>
-                            <div class="company">Asia Brewery Inc.</div>
-                            <div class="job-details">
-                                <span><i class="fas fa-map-marker-alt"></i> Purok 1,Brgy. Baliti, City of San Fernando Pampanga</span>
-                                <span><i class="fas fa-money-bill-wave"></i> ₱ - ₱</span>
+                    <div class="section-title">Requirements/Qualifications</div>
+                    <ul>
+                        <li>Atleast 18 years old</li>
+                        <li>Excellent Communication Skills</li>
+                        <li>Senior High School Graduate</li>
+                    </ul>
+                    
+                    <div class="section-title">Please Read: (Certification/Authorization)</div>
+                    <ul>
+                        <li>By sending resume, this certifies that the applicant agrees to share his/her personal information to the Public Employment Service Office.</li>
+                        <li>This is also to authorize the PESO office to include his/her profile in the PESO Employment Information System, which is a subsystem of Philjobnet. It is understood that his/her personal information be made available to employers registered with PESO for the purpose of possible employment. This also should not obliged PESO to seek employment on the applicant's behalf.</li>
+                    </ul>
+                    
+                    <div class="section-title">Contact Information</div>
+                    <p>HR Manager: Jennifer Lopez<br>Email: j.lopez@techcorp.com<br>Phone: +63 912 345 6789</p>
+                    
+                    <button class="view-btn" style="margin-top: 20px;" onclick="showApplicationForm()">Apply Now</button>
+                </div>
+            </div>
+            
+            <div id="application-form-view" class="hidden">
+                <div class="header">
+                    <div class="back-btn" onclick="goBackToJobDetails()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Application Form</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                </div>
+                
+                <div class="application-form">
+                    <div class="form-section">
+                        <div class="form-section-title">Documents</div>
+                        
+                        <div class="form-group">
+                            <label>Upload Resume</label>
+                            <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload your resume</p>
+                                <input type="file" id="resume-upload" hidden accept=".pdf,.doc,.docx">
                             </div>
-                            <button class="view-btn" onclick="showJobDetails()">View Job</button>
                         </div>
-                    </div>
-                    
-                    <div class="job-card">
-                        <div class="job-image" style="background-image: url('img/RC.jpg');">
-                            <div class="job-type">Part Time</div>
-                        </div>
-                        <div class="job-content">
-                            <div class="job-title">4 Open Position</div>
-                            <div class="company">RC COLA</div>
-                            <div class="job-details">
-                                <span><i class="fas fa-map-marker-alt"></i> Pampanga</span>
-                                <span><i class="fas fa-money-bill-wave"></i> ₱ - ₱</span>
+                        
+                        <div class="form-group">
+                            <label>Upload Cover Letter (Optional)</label>
+                            <div class="file-upload" onclick="document.getElementById('coverletter-upload').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload your cover letter</p>
+                                <input type="file" id="coverletter-upload" hidden accept=".pdf,.doc,.docx">
                             </div>
-                            <button class="view-btn" onclick="showJobDetails()">View Job</button>
                         </div>
                     </div>
+                    
+                    <button class="view-btn" onclick="showEmployerQuestions()">Next</button>
                 </div>
-            </div>
-        </div>
-        
-        <div id="employee-view" class="hidden">
-            <div class="nav-container">
-                <div class="nav-item active">All Applications</div>
-                <div class="nav-item">Reviewed</div>
-                <div class="nav-item">Shortlisted</div>
-                <div class="nav-item">Rejected</div>
             </div>
             
-            <div class="content">
-                <div class="section-title">
-                    <span>Recent Applications</span>
-                    <span class="view-all">View all</span>
+            <div id="employer-questions-view" class="hidden">
+                <div class="header">
+                    <div class="back-btn" onclick="goBackToApplicationForm()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Employer Questions</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
                 </div>
                 
-                <div class="job-card">
-                    <div class="job-image" style="background-image: url('img/alorica.jpg');">
-                        <div class="job-type">5 Applications</div>
-                    </div>
-                    <div class="job-content">
-                        <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
-                        
-                        <div class="applicant-info">
-                            <div class="applicant-name">Maria Santos</div>
-                            <div class="applicant-details">3 years experience ...</div>
-                            <button class="view-btn">View Profile</button>
+                <div class="application-form">
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label>What's your expected monthly basic salary?</label>
+                            <input type="text" placeholder="Enter expected salary">
                         </div>
                         
-                        <div class="applicant-info">
-                            <div class="applicant-name">John Doe</div>
-                            <div class="applicant-details">5 years experience ...</div>
-                            <button class="view-btn">View Profile</button>
+                        <div class="form-group">
+                            <label>Which of the following types of qualifications do you have?</label>
+                            <select>
+                                <option value="">Select qualification</option>
+                                <option value="highschool">High School Diploma</option>
+                                <option value="nc1">National Certificate 1</option>
+                                <option value="nc2">National Certificate 2</option>
+                                <option value="nc3">National Certificate 3</option>
+                                <option value="nc4">National Certificate 4</option>
+                                <option value="diploma">Diploma</option>
+                                <option value="bachelor">Bachelor Degree</option>
+                                <option value="postgrad">Post Graduate Diploma</option>
+                                <option value="master">Master Degree</option>
+                                <option value="other">I have a qualification that is not listed</option>
+                            </select>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="job-card">
-                    <div class="job-image" style="background-image: url('img/faverton.jpg');">
-                        <div class="job-type">3 Applications</div>
-                    </div>
-                    <div class="job-content">
-                        <div class="job-title">9 Open Positions</div>
                         
-                        <div class="applicant-info">
-                            <div class="applicant-name">Anna Reyes</div>
-                            <div class="applicant-details">4 years experience ...</div>
-                            <button class="view-btn">View Profile</button>
+                        <div class="form-group">
+                            <label>How many years' experience do you have as an Office Staff?</label>
+                            <input type="number" placeholder="Enter years of experience">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Which of the following Microsoft Office products are you experienced with?</label>
+                            <div>
+                                <input type="checkbox" id="word"> <label for="word">Word</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="excel"> <label for="excel">Excel</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="powerpoint"> <label for="powerpoint">PowerPoint</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="outlook"> <label for="outlook">Outlook</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="access"> <label for="access">Access</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="onenote"> <label for="onenote">OneNote</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="publisher"> <label for="publisher">Publisher</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="none"> <label for="none">None of these</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="job-details-view" class="hidden">
-            <div class="job-detail-header" style="background-image: url('img/back.png');">
-                <div class="back-btn" onclick="goBack()">
-                    <i class="fas fa-arrow-left"></i>
-                </div>
-                <div>
-                    <h2>CUSTOMER SERVICE REPRESENTATIVE</h2>
-                    <p>ALORICA • Clark • ₱ - ₱</p>
+                    
+                    <button class="view-btn" onclick="showProfileForm()">Next</button>
                 </div>
             </div>
             
-            <div class="content">
-                <div class="section-title">Job Description</div>
-                <p>Answers and initiates a variety of real-time inbound and outbound voice and non-voice based services.</p>
-                <p>Verifies and updates customer information, responds to queries and resolves issues.</p>
-                
-                <div class="section-title">Requirements/Qualifications</div>
-                <ul>
-                    <li>Atleast 18 years old</li>
-                    <li>Excellent Communication Skills</li>
-                    <li>Senior High School Graduate</li>
-                </ul>
-                
-                <div class="section-title">Please Read: (Certification/Authorization)</div>
-                <ul>
-                    <li>By sending resume, this certifies that the applicant agrees to share his/her personal information to the Public Employment Service Office.</li>
-                    <li>This is also to authorize the PESO office to include his/her profile in the PESO Employment Information System, which is a subsystem of Philjobnet. It is understood that his/her personal information be made available to employers registered with PESO for the purpose of possible employment. This also should not obliged PESO to seek employment on the applicant's behalf.</li>
-                </ul>
-                
-                <div class="section-title">Contact Information</div>
-                <p>HR Manager: Jennifer Lopez<br>Email: j.lopez@techcorp.com<br>Phone: +63 912 345 6789</p>
-                
-                <button class="view-btn" style="margin-top: 20px;" onclick="showApplicationForm()">Apply Now</button>
-            </div>
-        </div>
-        
-        <div id="application-form-view" class="hidden">
-            <div class="header">
-                <div class="back-btn" onclick="goBackToJobDetails()">
-                    <i class="fas fa-arrow-left"></i>
+            <div id="profile-form-view" class="hidden">
+                <div class="header">
+                    <div class="back-btn" onclick="goBackToEmployerQuestions()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Profile Information</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
                 </div>
-                <div class="logo">
-                    <span>Application Form</span>
-                </div>
-                <div class="header-icons">
-                    <i class="fas fa-question-circle"></i>
+                
+                <div class="application-form">
+                    <div class="form-section">
+                        <div class="form-section-title">Work Experience</div>
+                        
+                        <div class="form-group">
+                            <label>Position</label>
+                            <input type="text" placeholder="Enter position">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" placeholder="Enter company name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Date Started</label>
+                            <input type="date">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Date Ended</label>
+                            <input type="date">
+                        </div>
+                        
+                        <button class="view-btn" style="background: #28a745;">Add Another Experience</button>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="form-section-title">Education</div>
+                        
+                        <div class="form-group">
+                            <label>School</label>
+                            <input type="text" placeholder="Enter school name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Degree/Course</label>
+                            <input type="text" placeholder="Enter degree or course">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Year Graduated</label>
+                            <input type="number" placeholder="Enter year">
+                        </div>
+                        
+                        <button class="view-btn" style="background: #28a745;">Add Another Education</button>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="form-section-title">Skills</div>
+                        
+                        <div class="form-group">
+                            <input type="text" placeholder="Add skill">
+                            <button class="view-btn" style="background: #28a745; margin-top: 10px;">Add Skill</button>
+                            <div id="skills-list"></div>
+                    </div>
+                    
+                    <button class="view-btn" onclick="reviewApplication()">Review and Submit</button>
                 </div>
             </div>
             
-            <div class="application-form">
-                <div class="form-section">
-                    <div class="form-section-title">Documents</div>
-                    
-                    <div class="form-group">
-                        <label>Upload Resume</label>
-                        <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Click to upload your resume</p>
-                            <input type="file" id="resume-upload" hidden accept=".pdf,.doc,.docx">
-                        </div>
+            <div id="review-application-view" class="hidden">
+                <div class="header">
+                    <div class="back-btn" onclick="goBackToProfileForm()">
+                        <i class="fas fa-arrow-left"></i>
                     </div>
-                    
-                    <div class="form-group">
-                        <label>Upload Cover Letter (Optional)</label>
-                        <div class="file-upload" onclick="document.getElementById('coverletter-upload').click()">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Click to upload your cover letter</p>
-                            <input type="file" id="coverletter-upload" hidden accept=".pdf,.doc,.docx">
-                        </div>
+                    <div class="logo">
+                        <span>Review Application</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-question-circle"></i>
                     </div>
                 </div>
                 
-                <button class="view-btn" onclick="showEmployerQuestions()">Next</button>
-            </div>
-        </div>
-        
-        <div id="employer-questions-view" class="hidden">
-            <div class="header">
-                <div class="back-btn" onclick="goBackToApplicationForm()">
-                    <i class="fas fa-arrow-left"></i>
-                </div>
-                <div class="logo">
-                    <span>Employer Questions</span>
-                </div>
-                <div class="header-icons">
-                    <i class="fas fa-question-circle"></i>
-                </div>
-            </div>
-            
-            <div class="application-form">
-                <div class="form-section">
-                    <div class="form-group">
-                        <label>What's your expected monthly basic salary?</label>
-                        <input type="text" placeholder="Enter expected salary">
+                <div class="content">
+                    <div class="section-title">Please review your application</div>
+                    
+                    <div class="applicant-info">
+                        <div class="applicant-name">Documents</div>
+                        <p>Resume: uploaded_file.pdf</p>
+                        <p>Cover Letter: Not provided</p>
                     </div>
                     
-                    <div class="form-group">
-                        <label>Which of the following types of qualifications do you have?</label>
-                        <select>
-                            <option value="">Select qualification</option>
-                            <option value="highschool">High School Diploma</option>
-                            <option value="nc1">National Certificate 1</option>
-                            <option value="nc2">National Certificate 2</option>
-                            <option value="nc3">National Certificate 3</option>
-                            <option value="nc4">National Certificate 4</option>
-                            <option value="diploma">Diploma</option>
-                            <option value="bachelor">Bachelor Degree</option>
-                            <option value="postgrad">Post Graduate Diploma</option>
-                            <option value="master">Master Degree</option>
-                            <option value="other">I have a qualification that is not listed</option>
-                        </select>
+                    <div class="applicant-info">
+                        <div class="applicant-name">Employer Questions</div>
+                        <p>Expected Salary: ₱20,000</p>
+                        <p>Qualification: Bachelor Degree</p>
+                        <p>Years of Experience: 3 years</p>
+                        <p>MS Office Skills: Word, Excel, PowerPoint</p>
                     </div>
                     
-                    <div class="form-group">
-                        <label>How many years' experience do you have as an Office Staff?</label>
-                        <input type="number" placeholder="Enter years of experience">
+                    <div class="applicant-info">
+                        <div class="applicant-name">Work Experience</div>
+                        <p>Office Staff at ABC Company (2020 - Present)</p>
                     </div>
                     
-                    <div class="form-group">
-                        <label>Which of the following Microsoft Office products are you experienced with?</label>
-                        <div>
-                            <input type="checkbox" id="word"> <label for="word">Word</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="excel"> <label for="excel">Excel</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="powerpoint"> <label for="powerpoint">PowerPoint</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="outlook"> <label for="outlook">Outlook</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="access"> <label for="access">Access</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="onenote"> <label for="onenote">OneNote</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="publisher"> <label for="publisher">Publisher</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="none"> <label for="none">None of these</label>
-                        </div>
+                    <div class="applicant-info">
+                        <div class="applicant-name">Education</div>
+                        <p>BS Business Administration at University of Pampanga (2016-2020)</p>
                     </div>
-                </div>
-                
-                <button class="view-btn" onclick="showProfileForm()">Next</button>
-            </div>
-        </div>
-        
-        <div id="profile-form-view" class="hidden">
-            <div class="header">
-                <div class="back-btn" onclick="goBackToEmployerQuestions()">
-                    <i class="fas fa-arrow-left"></i>
-                </div>
-                <div class="logo">
-                    <span>Profile Information</span>
-                </div>
-                <div class="header-icons">
-                    <i class="fas fa-question-circle"></i>
+                    
+                    <div class="applicant-info">
+                        <div class="applicant-name">Skills</div>
+                        <p>Communication, Microsoft Office, Customer Service</p>
+                    </div>
+                    
+                    <button class="view-btn" onclick="submitApplication()">Submit Application</button>
                 </div>
             </div>
             
-            <div class="application-form">
-                <div class="form-section">
-                    <div class="form-section-title">Work Experience</div>
-                    
-                    <div class="form-group">
-                        <label>Position</label>
-                        <input type="text" placeholder="Enter position">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Company</label>
-                        <input type="text" placeholder="Enter company name">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Date Started</label>
-                        <input type="date">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Date Ended</label>
-                        <input type="date">
-                    </div>
-                    
-                    <button class="view-btn" style="background: #28a745;">Add Another Experience</button>
-                </div>
-                
-                <div class="form-section">
-                    <div class="form-section-title">Education</div>
-                    
-                    <div class="form-group">
-                        <label>School</label>
-                        <input type="text" placeholder="Enter school name">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Degree/Course</label>
-                        <input type="text" placeholder="Enter degree or course">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Year Graduated</label>
-                        <input type="number" placeholder="Enter year">
-                    </div>
-                    
-                    <button class="view-btn" style="background: #28a745;">Add Another Education</button>
-                </div>
-                
-                <div class="form-section">
-                    <div class="form-section-title">Skills</div>
-                    
-                    <div class="form-group">
-                        <input type="text" placeholder="Add skill">
-                    <button class="view-btn" style="background: #28a745; margin-top: 10px;">Add Skill</button>
-                    <div id="skills-list"></div>
-                </div>
-                
-                <button class="view-btn" onclick="reviewApplication()">Review and Submit</button>
+            <div id="profile-view" class="hidden">
+    <div class="profile-section">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-info">
+                <h2 id="profile-user-name">User Name</h2>
+                <p id="profile-user-type">Applicant</p>
             </div>
         </div>
         
-        <div id="review-application-view" class="hidden">
-            <div class="header">
-                <div class="back-btn" onclick="goBackToProfileForm()">
-                    <i class="fas fa-arrow-left"></i>
-                </div>
-                <div class="logo">
-                    <span>Review Application</span>
-                </div>
-                <div class="header-icons">
-                    <i class="fas fa-question-circle"></i>
-                </div>
+        <div class="profile-info-section">
+            <div class="section-title">Personal Information</div>
+            
+            <div class="info-group">
+                <div class="info-label">Full Name</div>
+                <div class="info-value" id="profile-full-name">John Doe</div>
             </div>
             
-            <div class="content">
-                <div class="section-title">Please review your application</div>
-                
-                <div class="applicant-info">
-                    <div class="applicant-name">Documents</div>
-                    <p>Resume: uploaded_file.pdf</p>
-                    <p>Cover Letter: Not provided</p>
-                </div>
-                
-                <div class="applicant-info">
-                    <div class="applicant-name">Employer Questions</div>
-                    <p>Expected Salary: ₱20,000</p>
-                    <p>Qualification: Bachelor Degree</p>
-                    <p>Years of Experience: 3 years</p>
-                    <p>MS Office Skills: Word, Excel, PowerPoint</p>
-                </div>
-                
-                <div class="applicant-info">
-                    <div class="applicant-name">Work Experience</div>
-                    <p>Office Staff at ABC Company (2020 - Present)</p>
-                </div>
-                
-                <div class="applicant-info">
-                    <div class="applicant-name">Education</div>
-                    <p>BS Business Administration at University of Pampanga (2016-2020)</p>
-                </div>
-                
-                <div class="applicant-info">
-                    <div class="applicant-name">Skills</div>
-                    <p>Communication, Microsoft Office, Customer Service</p>
-                </div>
-                
-                <button class="view-btn" onclick="submitApplication()">Submit Application</button>
+            <div class="info-group">
+                <div class="info-label">Email</div>
+                <div class="info-value" id="profile-email">johndoe@example.com</div>
+            </div>
+            
+            <div class="info-group">
+                <div class="info-label">Phone</div>
+                <div class="info-value" id="profile-phone">+63 912 345 6789</div>
+            </div>
+            
+            <div class="info-group">
+                <div class="info-label">Address</div>
+                <div class="info-value" id="profile-address">San Fernando, Pampanga</div>
+            </div>
+            
+            <div class="info-group">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value" id="profile-dob">January 1, 1990</div>
+            </div>
+            
+            <button class="edit-btn" onclick="editProfile()">Edit Information</button>
+        </div>
+        
+        <div class="profile-info-section">
+            <div class="section-title">Settings</div>
+            
+            <div class="toggle-item">
+                <div class="toggle-label">Notifications</div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="notifications-toggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="toggle-item">
+                <div class="toggle-label">Email Updates</div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="email-toggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="toggle-item">
+                <div class="toggle-label">Privacy Mode</div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="privacy-toggle">
+                    <span class="slider"></span>
+                </label>
             </div>
         </div>
         
-        <div id="profile-view" class="hidden">
-            <div class="header">
-                <div class="logo">
-                    <i class="fas fa-user"></i>
-                    <span>My Profile</span>
-                </div>
-                <div class="header-icons">
-                    <i class="fas fa-sign-out-alt" onclick="logout()"></i>
-                </div>
-            </div>
-            
-            <div class="profile-section">
-                <div class="profile-header">
-                    <div class="profile-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="profile-info">
-                        <h2>John Doe</h2>
-                        <p>Applicant</p>
-                    </div>
-                </div>
-                
-                <ul class="profile-menu">
-                    <li>
-                        <a href="#">
-                            <span>My Applications</span>
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>Saved Jobs</span>
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>Notifications</span>
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>Settings</span>
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" onclick="logout()">
-                            <span>Logout</span>
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <ul class="profile-menu">
+            <li>
+                <a href="#" onclick="showMyApplications()">
+                    <span>My Applications</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showSavedJobs()">
+                    <span>Saved Jobs</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="editProfile()">
+                    <span>Edit Profile</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showAccountSettings()">
+                    <span>Account Settings</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="logout-btn" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </div>
+    </div>
+</div>
         </div>
         
         <div class="bottom-nav">
@@ -1044,11 +1285,11 @@
                 <i class="fas fa-home"></i>
                 <div>Home</div>
             </div>
-            <div class="nav-btn" onclick="showSearch()">
+            <div class="nav-btn" onclick="showSearchPanel()">
                 <i class="fas fa-search"></i>
                 <div>Search</div>
             </div>
-            <div class="nav-btn" onclick="showNotifications()">
+            <div class="nav-btn" onclick="showNotificationsPanel()">
                 <i class="fas fa-bell"></i>
                 <div>Notifications</div>
             </div>
@@ -1063,202 +1304,404 @@
         </div>
     </div>
     
-    <script>
-        // Authentication functions
-        function login() {
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
+            <script>
+            let currentView = 'auth';
+            let currentUserType = null;
+            let currentCategory = 'all';
+            let currentApplicationTab = 'all';
+
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('login-tab').addEventListener('click', switchToLogin);
+                document.getElementById('signup-tab').addEventListener('click', switchToSignup);
+                document.getElementById('search-icon').addEventListener('click', showSearchPanel);
+                document.getElementById('notification-icon').addEventListener('click', showNotificationsPanel);
+                
+                const isLoggedIn = localStorage.getItem('isLoggedIn');
+                if (isLoggedIn) {
+                    hideAllSections();
+                    const userType = localStorage.getItem('userType') || 'applicant';
+                    if (userType === 'applicant') {
+                        document.getElementById('applicant-view').classList.remove('hidden');
+                        currentView = 'applicant';
+                        updateBottomNav('home');
+                    } else {
+                        document.getElementById('employee-view').classList.remove('hidden');
+                        currentView = 'employee';
+                        updateBottomNav('home');
+                    }
+                    document.querySelector('.bottom-nav').style.display = 'flex';
+                    
+                    loadProfileData();
+                } else {
+                    hideAllSections();
+                    document.getElementById('auth-section').classList.remove('hidden');
+                    currentView = 'auth';
+                    document.querySelector('.bottom-nav').style.display = 'none';
+                }
+                
+                const notificationsToggle = document.getElementById('notifications-toggle');
+                const emailToggle = document.getElementById('email-toggle');
+                const privacyToggle = document.getElementById('privacy-toggle');
+                
+                if (notificationsToggle) {
+                    notificationsToggle.addEventListener('change', function() {
+                        localStorage.setItem('notificationsEnabled', this.checked);
+                    });
+                }
+                
+                if (emailToggle) {
+                    emailToggle.addEventListener('change', function() {
+                        localStorage.setItem('emailUpdatesEnabled', this.checked);
+                    });
+                }
+                
+                if (privacyToggle) {
+                    privacyToggle.addEventListener('change', function() {
+                        localStorage.setItem('privacyModeEnabled', this.checked);
+                    });
+                }
+            });
+
+            function login() {
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                if (email && password) {
+                    if (!localStorage.getItem('userName')) {
+                        localStorage.setItem('userName', email.split('@')[0]);
+                        localStorage.setItem('userEmail', email);
+                    }
+                    
+                    localStorage.setItem('isLoggedIn', 'true');
+                    hideAllSections();
+                    document.getElementById('user-type-section').classList.remove('hidden');
+                    currentView = 'user-type';
+                    document.querySelector('.bottom-nav').style.display = 'flex';
+                    
+                    loadProfileData();
+                } else {
+                    alert('Please enter email and password');
+                }
+            }
             
-            if (email && password) {
-                // In a real app, this would call an API
+            function signup() {
+                const name = document.getElementById('signup-name').value;
+                const email = document.getElementById('signup-email').value;
+                const password = document.getElementById('signup-password').value;
+                const confirmPassword = document.getElementById('signup-confirm').value;
+                
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                if (name && email && password) {
+                    localStorage.setItem('userName', name);
+                    localStorage.setItem('userEmail', email);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    
+                    alert('Account created successfully!');
+                    hideAllSections();
+                    document.getElementById('user-type-section').classList.remove('hidden');
+                    currentView = 'user-type';
+                    document.querySelector('.bottom-nav').style.display = 'flex';
+                    
+                    loadProfileData();
+                } else {
+                    alert('Please fill all fields');
+                }
+            }
+            
+            function loginWithGoogle() {
+                alert('Redirecting to Google login...');
+                localStorage.setItem('isLoggedIn', 'true');
                 hideAllSections();
                 document.getElementById('user-type-section').classList.remove('hidden');
-            } else {
-                alert('Please enter email and password');
-            }
-        }
-        
-        function signup() {
-            const name = document.getElementById('signup-name').value;
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
-            const confirmPassword = document.getElementById('signup-confirm').value;
-            
-            if (password !== confirmPassword) {
-                alert('Passwords do not match');
-                return;
+                currentView = 'user-type';
+                document.querySelector('.bottom-nav').style.display = 'flex';
+                
+                loadProfileData();
             }
             
-            if (name && email && password) {
-                // In a real app, this would call an API
-                alert('Account created successfully! Please login.');
-                switchToLogin();
-            } else {
-                alert('Please fill all fields');
-            }
-        }
-        
-        function loginWithGoogle() {
-            // In a real app, this would integrate with Google OAuth
-            alert('Redirecting to Google login...');
-            // After successful login
-            hideAllSections();
-            document.getElementById('user-type-section').classList.remove('hidden');
-        }
-        
-        function signupWithGoogle() {
-            // In a real app, this would integrate with Google OAuth
-            alert('Redirecting to Google signup...');
-            // After successful signup
-            hideAllSections();
-            document.getElementById('user-type-section').classList.remove('hidden');
-        }
-        
-        function switchToLogin() {
-            document.getElementById('signup-tab').classList.remove('active');
-            document.getElementById('login-tab').classList.add('active');
-            document.getElementById('signup-form').classList.add('hidden');
-            document.getElementById('login-form').classList.remove('hidden');
-        }
-        
-        function switchToSignup() {
-            document.getElementById('login-tab').classList.remove('active');
-            document.getElementById('signup-tab').classList.add('active');
-            document.getElementById('login-form').classList.add('hidden');
-            document.getElementById('signup-form').classList.remove('hidden');
-        }
-        
-        // User type selection
-        function selectUserType(type) {
-            hideAllSections();
-            if (type === 'applicant') {
-                document.getElementById('applicant-view').classList.remove('hidden');
-            } else {
-                document.getElementById('employee-view').classList.remove('hidden');
-            }
-        }
-        
-        // Navigation functions
-        function showHome() {
-            hideAllSections();
-            const userType = localStorage.getItem('userType') || 'applicant';
-            if (userType === 'applicant') {
-                document.getElementById('applicant-view').classList.remove('hidden');
-            } else {
-                document.getElementById('employee-view').classList.remove('hidden');
-            }
-        }
-        
-        function showSearch() {
-            alert('Search functionality would be implemented here');
-        }
-        
-        function showNotifications() {
-            alert('Notifications would be shown here');
-        }
-        
-        function showBookmarks() {
-            alert('Bookmarked jobs would be shown here');
-        }
-        
-        function showProfile() {
-            hideAllSections();
-            document.getElementById('profile-view').classList.remove('hidden');
-        }
-        
-        function logout() {
-            // In a real app, this would clear authentication tokens
-            hideAllSections();
-            document.getElementById('auth-section').classList.remove('hidden');
-        }
-        
-        // Job application flow functions
-        function showJobDetails() {
-            hideAllSections();
-            document.getElementById('job-details-view').classList.remove('hidden');
-        }
-        
-        function showApplicationForm() {
-            hideAllSections();
-            document.getElementById('application-form-view').classList.remove('hidden');
-        }
-        
-        function showEmployerQuestions() {
-            hideAllSections();
-            document.getElementById('employer-questions-view').classList.remove('hidden');
-        }
-        
-        function showProfileForm() {
-            hideAllSections();
-            document.getElementById('profile-form-view').classList.remove('hidden');
-        }
-        
-        function reviewApplication() {
-            hideAllSections();
-            document.getElementById('review-application-view').classList.remove('hidden');
-        }
-        
-        function submitApplication() {
-            alert('Application submitted successfully!');
-            hideAllSections();
-            document.getElementById('applicant-view').classList.remove('hidden');
-        }
-        
-        // Back navigation functions
-        function goBack() {
-            hideAllSections();
-            document.getElementById('applicant-view').classList.remove('hidden');
-        }
-        
-        function goBackToJobDetails() {
-            hideAllSections();
-            document.getElementById('job-details-view').classList.remove('hidden');
-        }
-        
-        function goBackToApplicationForm() {
-            hideAllSections();
-            document.getElementById('application-form-view').classList.remove('hidden');
-        }
-        
-        function goBackToEmployerQuestions() {
-            hideAllSections();
-            document.getElementById('employer-questions-view').classList.remove('hidden');
-        }
-        
-        function goBackToProfileForm() {
-            hideAllSections();
-            document.getElementById('profile-form-view').classList.remove('hidden');
-        }
-        
-        // Utility functions
-        function hideAllSections() {
-            const sections = document.querySelectorAll('.app-container > div');
-            sections.forEach(section => {
-                section.classList.add('hidden');
-            });
-        }
-        
-        // Event listeners
-        document.getElementById('login-tab').addEventListener('click', switchToLogin);
-        document.getElementById('signup-tab').addEventListener('click', switchToSignup);
-        
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is logged in (in a real app, this would check authentication status)
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-            if (isLoggedIn) {
+            function signupWithGoogle() {
+                alert('Redirecting to Google signup...');
+                localStorage.setItem('isLoggedIn', 'true');
                 hideAllSections();
+                document.getElementById('user-type-section').classList.remove('hidden');
+                currentView = 'user-type';
+                document.querySelector('.bottom-nav').style.display = 'flex';
+                
+                loadProfileData();
+            }
+            
+            function switchToLogin() {
+                document.getElementById('signup-tab').classList.remove('active');
+                document.getElementById('login-tab').classList.add('active');
+                document.getElementById('signup-form').classList.add('hidden');
+                document.getElementById('login-form').classList.remove('hidden');
+            }
+            
+            function switchToSignup() {
+                document.getElementById('login-tab').classList.remove('active');
+                document.getElementById('signup-tab').classList.add('active');
+                document.getElementById('login-form').classList.add('hidden');
+                document.getElementById('signup-form').classList.remove('hidden');
+            }
+            
+            function selectUserType(type) {
+                currentUserType = type;
+                localStorage.setItem('userType', type);
+                hideAllSections();
+                if (type === 'applicant') {
+                    document.getElementById('applicant-view').classList.remove('hidden');
+                    currentView = 'applicant';
+                    updateBottomNav('home');
+                } else {
+                    document.getElementById('employee-view').classList.remove('hidden');
+                    currentView = 'employee';
+                    updateBottomNav('home');
+                }
+            }
+            
+            function showHome() {
+                hideAllSections();
+                updateBottomNav('home');
                 const userType = localStorage.getItem('userType') || 'applicant';
                 if (userType === 'applicant') {
                     document.getElementById('applicant-view').classList.remove('hidden');
+                    currentView = 'applicant';
                 } else {
                     document.getElementById('employee-view').classList.remove('hidden');
+                    currentView = 'employee';
                 }
-            } else {
+            }
+            
+            function showSearchPanel() {
+                const searchPanel = document.getElementById('search-panel');
+                if (searchPanel.style.display === 'block') {
+                    searchPanel.style.display = 'none';
+                } else {
+                    searchPanel.style.display = 'block';
+                    document.getElementById('notification-panel').style.display = 'none';
+                }
+            }
+            
+            function showNotificationsPanel() {
+                const notificationPanel = document.getElementById('notification-panel');
+                if (notificationPanel.style.display === 'block') {
+                    notificationPanel.style.display = 'none';
+                } else {
+                    notificationPanel.style.display = 'block';
+                    document.getElementById('search-panel').style.display = 'none';
+                }
+            }
+            
+            function showBookmarks() {
+                updateBottomNav('bookmarks');
+                alert('Bookmarked jobs would be shown here');
+            }
+            
+            function showProfile() {
+                hideAllSections();
+                updateBottomNav('profile');
+                document.getElementById('profile-view').classList.remove('hidden');
+                currentView = 'profile';
+                loadProfileData();
+            }
+            
+            function logout() {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userType');
+                localStorage.removeItem('userName');
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('userPhone');
+                localStorage.removeItem('userAddress');
+                localStorage.removeItem('userDob');
+                
                 hideAllSections();
                 document.getElementById('auth-section').classList.remove('hidden');
+                currentView = 'auth';
+                document.querySelector('.bottom-nav').style.display = 'none';
             }
-        });
-    </script>
+            
+            function loadProfileData() {
+                const userName = localStorage.getItem('userName') || 'User Name';
+                const userEmail = localStorage.getItem('userEmail') || 'johndoe@example.com';
+                const userPhone = localStorage.getItem('userPhone') || '+63 912 345 6789';
+                const userAddress = localStorage.getItem('userAddress') || 'San Fernando, Pampanga';
+                const userDob = localStorage.getItem('userDob') || 'January 1, 1990';
+                const userType = localStorage.getItem('userType') || 'Applicant';
+                
+                const profileUserName = document.getElementById('profile-user-name');
+                const profileFullName = document.getElementById('profile-full-name');
+                const profileEmail = document.getElementById('profile-email');
+                const profilePhone = document.getElementById('profile-phone');
+                const profileAddress = document.getElementById('profile-address');
+                const profileDob = document.getElementById('profile-dob');
+                const profileUserType = document.getElementById('profile-user-type');
+                
+                if (profileUserName) profileUserName.textContent = userName;
+                if (profileFullName) profileFullName.textContent = userName;
+                if (profileEmail) profileEmail.textContent = userEmail;
+                if (profilePhone) profilePhone.textContent = userPhone;
+                if (profileAddress) profileAddress.textContent = userAddress;
+                if (profileDob) profileDob.textContent = userDob;
+                if (profileUserType) profileUserType.textContent = userType;
+                
+                const notificationsToggle = document.getElementById('notifications-toggle');
+                const emailToggle = document.getElementById('email-toggle');
+                const privacyToggle = document.getElementById('privacy-toggle');
+                
+                if (notificationsToggle) {
+                    notificationsToggle.checked = localStorage.getItem('notificationsEnabled') !== 'false';
+                }
+                
+                if (emailToggle) {
+                    emailToggle.checked = localStorage.getItem('emailUpdatesEnabled') !== 'false';
+                }
+                
+                if (privacyToggle) {
+                    privacyToggle.checked = localStorage.getItem('privacyModeEnabled') === 'true';
+                }
+            }
+            
+            function editProfile() {
+                alert('Edit profile functionality would open here');
+            }
+            
+            function showAccountSettings() {
+                alert('Account settings would be shown here');
+            }
+            
+            function showJobDetails() {
+                hideAllSections();
+                document.getElementById('job-details-view').classList.remove('hidden');
+                currentView = 'job-details';
+            }
+            
+            function showApplicationForm() {
+                hideAllSections();
+                document.getElementById('application-form-view').classList.remove('hidden');
+                currentView = 'application-form';
+            }
+            
+            function showEmployerQuestions() {
+                hideAllSections();
+                document.getElementById('employer-questions-view').classList.remove('hidden');
+                currentView = 'employer-questions';
+            }
+            
+            function showProfileForm() {
+                hideAllSections();
+                document.getElementById('profile-form-view').classList.remove('hidden');
+                currentView = 'profile-form';
+            }
+            
+            function reviewApplication() {
+                hideAllSections();
+                document.getElementById('review-application-view').classList.remove('hidden');
+                currentView = 'review-application';
+            }
+            
+            function submitApplication() {
+                alert('Application submitted successfully!');
+                hideAllSections();
+                document.getElementById('applicant-view').classList.remove('hidden');
+                currentView = 'applicant';
+                updateBottomNav('home');
+            }
+            
+            function goBackToApplicantView() {
+                hideAllSections();
+                document.getElementById('applicant-view').classList.remove('hidden');
+                currentView = 'applicant';
+                updateBottomNav('home');
+            }
+            
+            function goBackToJobDetails() {
+                hideAllSections();
+                document.getElementById('job-details-view').classList.remove('hidden');
+                currentView = 'job-details';
+            }
+            
+            function goBackToApplicationForm() {
+                hideAllSections();
+                document.getElementById('application-form-view').classList.remove('hidden');
+                currentView = 'application-form';
+            }
+            
+            function goBackToEmployerQuestions() {
+                hideAllSections();
+                document.getElementById('employer-questions-view').classList.remove('hidden');
+                currentView = 'employer-questions';
+            }
+            
+            function goBackToProfileForm() {
+                hideAllSections();
+                document.getElementById('profile-form-view').classList.remove('hidden');
+                currentView = 'profile-form';
+            }
+            
+            function changeCategory(category) {
+                currentCategory = category;
+                const navItems = document.querySelectorAll('.nav-item');
+                navItems.forEach(item => item.classList.remove('active'));
+                event.target.classList.add('active');
+                
+                alert(`Showing ${category} jobs`);
+            }
+            
+            function changeApplicationTab(tab) {
+                currentApplicationTab = tab;
+                const navItems = document.querySelectorAll('.nav-item');
+                navItems.forEach(item => item.classList.remove('active'));
+                event.target.classList.add('active');
+                
+                alert(`Showing ${tab} applications`);
+            }
+            
+            function viewApplicantProfile() {
+                alert('Applicant profile would be shown here');
+            }
+            
+            function showMyApplications() {
+                alert('My applications would be shown here');
+            }
+            
+            function showSavedJobs() {
+                alert('Saved jobs would be shown here');
+            }
+            
+            function showSettings() {
+                alert('Settings would be shown here');
+            }
+            
+            function hideAllSections() {
+                const sections = document.querySelectorAll('.main-content > div');
+                sections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+                
+                document.getElementById('search-panel').style.display = 'none';
+                document.getElementById('notification-panel').style.display = 'none';
+            }
+            
+            function updateBottomNav(active) {
+                const navItems = document.querySelectorAll('.nav-btn');
+                navItems.forEach(item => item.classList.remove('active'));
+                
+                if (active === 'home') {
+                    navItems[0].classList.add('active');
+                } else if (active === 'search') {
+                    navItems[1].classList.add('active');
+                } else if (active === 'notifications') {
+                    navItems[2].classList.add('active');
+                } else if (active === 'bookmarks') {
+                    navItems[3].classList.add('active');
+                } else if (active === 'profile') {
+                    navItems[4].classList.add('active');
+                }
+            }
+        </script>
 </body>
 </html>

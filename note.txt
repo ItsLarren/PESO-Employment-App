@@ -1,3 +1,40 @@
 link for the reference - https://cityofsanfernando.gov.ph/cpeso/#EmploymentCorner
 
 task
+html to a deployable application, where in the function can sign up using their personal google account and if they already have an account they can log in also their used google account when they signed up 
+
+the flow
+- user is applicant and has no account
+	- the user will sign up, where in the user will fill up the form (Full Name, Email, Password, Confirm Password).
+	- After the user have been successfully signed up, the page will then go to the log in page so that the user will log in it created account.
+	- After the user has logged in, the user will now proceed to the page where in the user need to select if they are applicant or employee. 
+	- After that the user will proceed on the applicant page where it can vide the recommended job and other job vacancies.
+	- On the applicant page you can see the applicant view where in it is the categories (All jobs, Tech, Marketing, Sales and Finance, it also have the header icons the magnifying(to search for the job), the bell (for notification of the user if have an update new jobs vacansies, if the applied job of the applicant have been rejected or approved by the employee and if the job vacancies available are already full)
+	- Also at the applicant page you can also see the bottom nav (Home, Search, Notification, Bookmark, and Profile) 
+	- Now at the applicant page when the user have a choice of its prefreed job the  user can click the view job button to se the full information of the job open position and the on that page there will be a button name apply now, when the user click the apply now button another page will show where in the user will proceed to the choose documents where in the user need to upload its resume and a cover letter and there will be a next button for the answer employer question, like What's your expected monthly basic salary? Which of the following types of qualifications do you have? [a dropdown menu: *High School Diploma, *National CErtificate 1, National CErtificate 2, National CErtificate 3, National CErtificate 4, Diploma, Bachelor Degree, Post Graduate Diploma, Master Degree, Bachelor Degree, or I have a qualification that is not listed. How many years' experience do you have as an Office Staff? Which of the following Microsoft Office products are you experienced with? [radio button: Word, Excel, Powerpoint, Outlook, Access, OneNote, Publisher and None or These. The user profile where in it will fill the user such as The training/job experience, where, what position was its position there, date started and date lasted. The user eductation, School from primary to tertiary and the year graduated and what courses and strands and major. The Licenses and CErtification. The Skills it will have an Add skills. after the user filled everything, the user can now click the next button for revuew and submit, after the user review and submit it tehre will be an submit application to submit the application to the admin/employee. 
+	- after the submission the user not will automatically directed at the main page again. and when the use click the profile button the user can also see the jobs its applied.
+	- regarding to the employer question it must be depend on waht job tey are appliying.
+
+	- if the user is done at the prfile button the user can see the log out button to log out.
+
+- user is employee and has no account
+	- the user will sign up, where in the user will fill up the form (Full Name, Email, Password, Confirm Password).
+	- After the user have been successfully signed up, the page will then go to the log in page so that the user will log in it created account.
+	- After the user has logged in, the user will now proceed to the page where in the user need to select if they are applicant or employee. 
+	- After that the user will proceed on the employee page, where the user can view the recent ap[plication.
+	- at the employee page you can see the nav item (All Application, Reviewd, Shortlisted, and rejhected)
+	- Also at the employee page you can also see the bottom nav (Home, Search, Notification, Bookmark, and Profile). it also have the header icons the magnifying(to search), the bell (to notify if there is a new application submitted, etc.)
+	- Now the user can see the all the applications every applications there will be a view profile button, when the user click that the user will prcedd to the infos fill up by the applicants, and tehre will be a button there where the user can either mark it as [for review], [rejected], [approved].
+	- important reminder when logging in or signing up as an employee you need to have code to know if you are really an admin/employee so that not anyone vcan log in as an employee for the privacy of the applicants.
+ 	- when the user approved an applicant, the user can now send a message to the applicant regarding o the interviews, meeting, and other approved applicants infos. 
+	- at the profile of the employee the ser can also see on who did they rejected, fr review, approved and also this is important when an employee approved an aplicnt the message that will notify to the applicant was contaiing the job infos and the name fo who approved the applicant so that the applicant aware on who it is.
+	- the employee can create the employer questionair tha will be answered by the applicants and it mst be depend on the job vacanicies
+
+
+
+
+purple
+yayadub
+karekare
+Sheldon1980
+
