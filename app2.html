@@ -1144,7 +1144,6 @@
     </div>
 
     <script>
-        // DOM Elements
         const authSection = document.getElementById('auth-section');
         const userTypeSection = document.getElementById('user-type-section');
         const applicantView = document.getElementById('applicant-view');
@@ -1160,7 +1159,6 @@
         const navItems = document.querySelectorAll('.nav-item');
         const navBtns = document.querySelectorAll('.nav-btn');
         
-        // Current user state
         let currentUser = null;
         let userType = null;
         let userProfile = {
@@ -1172,7 +1170,6 @@
             resume: null
         };
         
-        // Event Listeners
         document.getElementById('search-icon').addEventListener('click', toggleSearchPanel);
         document.getElementById('notification-icon').addEventListener('click', toggleNotificationPanel);
         
@@ -1190,7 +1187,6 @@
             loginForm.classList.add('hidden');
         });
         
-        // Functions
         function login() {
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
@@ -1200,7 +1196,6 @@
                 return;
             }
             
-            // Simulate successful login
             currentUser = { email, name: email.split('@')[0] };
             showUserTypeSelection();
         }
@@ -1221,19 +1216,16 @@
                 return;
             }
             
-            // Simulate successful signup
             currentUser = { email, name };
             showUserTypeSelection();
         }
         
         function loginWithGoogle() {
-            // Simulate Google login
             currentUser = { email: 'user@gmail.com', name: 'Google User' };
             showUserTypeSelection();
         }
         
         function signupWithGoogle() {
-            // Simulate Google signup
             currentUser = { email: 'user@gmail.com', name: 'Google User' };
             showUserTypeSelection();
         }
@@ -1255,7 +1247,6 @@
                 updateNavActive('home');
             }
             
-            // Update profile view with user info
             document.getElementById('profile-user-name').textContent = currentUser.name;
             document.getElementById('profile-user-type').textContent = type === 'applicant' ? 'Applicant' : 'Employee';
         }
@@ -1263,13 +1254,11 @@
         function changeCategory(category) {
             navItems.forEach(item => item.classList.remove('active'));
             event.target.classList.add('active');
-            // In a real app, you would filter jobs by category
         }
         
         function changeApplicationTab(tab) {
             navItems.forEach(item => item.classList.remove('active'));
             event.target.classList.add('active');
-            // In a real app, you would filter applications by tab
         }
         
         function showJobDetails() {
@@ -1336,7 +1325,6 @@
             profileView.classList.remove('hidden');
             editProfileView.classList.add('hidden');
             
-            // Update profile with current data
             document.getElementById('profile-full-name').textContent = userProfile.name;
             document.getElementById('profile-email').textContent = userProfile.email;
             document.getElementById('profile-phone').textContent = userProfile.phone;
@@ -1356,7 +1344,6 @@
             profileView.classList.add('hidden');
             editProfileView.classList.remove('hidden');
             
-            // Pre-fill form with current data
             document.getElementById('edit-full-name').value = userProfile.name;
             document.getElementById('edit-email').value = userProfile.email;
             document.getElementById('edit-phone').value = userProfile.phone;
@@ -1377,14 +1364,12 @@
         }
         
         function saveProfile() {
-            // Get values from form
             userProfile.name = document.getElementById('edit-full-name').value;
             userProfile.email = document.getElementById('edit-email').value;
             userProfile.phone = document.getElementById('edit-phone').value;
             userProfile.address = document.getElementById('edit-address').value;
             userProfile.dob = document.getElementById('edit-dob').value;
             
-            // Update profile view
             document.getElementById('profile-full-name').textContent = userProfile.name;
             document.getElementById('profile-email').textContent = userProfile.email;
             document.getElementById('profile-phone').textContent = userProfile.phone;
@@ -1409,17 +1394,14 @@
             currentUser = null;
             userType = null;
             
-            // Hide all views
             applicantView.classList.add('hidden');
             employeeView.classList.add('hidden');
             profileView.classList.add('hidden');
             editProfileView.classList.add('hidden');
             userTypeSection.classList.add('hidden');
             
-            // Show auth section
             authSection.classList.remove('hidden');
             
-            // Reset forms
             document.getElementById('login-email').value = '';
             document.getElementById('login-password').value = '';
             document.getElementById('signup-name').value = '';
@@ -1427,7 +1409,6 @@
             document.getElementById('signup-password').value = '';
             document.getElementById('signup-confirm').value = '';
             
-            // Set login as active tab
             loginTab.classList.add('active');
             signupTab.classList.remove('active');
             loginForm.classList.remove('hidden');
@@ -1439,7 +1420,6 @@
                 btn.classList.remove('active');
             });
             
-            // In a real app, you would have a better way to identify which nav button to activate
             if (active === 'home') navBtns[0].classList.add('active');
             if (active === 'search') navBtns[1].classList.add('active');
             if (active === 'saved') navBtns[2].classList.add('active');
@@ -1452,7 +1432,6 @@
             return new Date(dateString).toLocaleDateString(undefined, options);
         }
         
-        // Handle resume upload
         document.getElementById('resume-upload').addEventListener('change', function(e) {
             if (this.files && this.files[0]) {
                 const fileName = this.files[0].name;
