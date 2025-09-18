@@ -1,0 +1,20 @@
+employment-corner-app/
+├── server.js
+├── package.json
+├── config/
+│   └── database.js
+├── models/
+│   ├── User.js
+│   ├── Job.js
+│   └── Application.js
+├── routes/
+│   ├── auth.js
+│   ├── jobs.js
+│   └── applications.js
+├── public/
+│   ├── index.html (enhanced version of provided HTML)
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
+└── .env

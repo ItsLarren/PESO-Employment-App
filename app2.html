@@ -522,7 +522,7 @@
         .notification-panel {
             position: fixed;
             top: 60px;
-            right: 720px;
+            right: 10px;
             width: 300px;
             background: white;
             border-radius: 10px;
@@ -579,7 +579,6 @@
             text-align: center;
         }
 
-        /* Enhanced Profile Styles */
         .profile-info-section {
             background: white;
             border-radius: 10px;
@@ -682,7 +681,8 @@
             background: #f5f5f5;
             margin: 15px -15px;
         }
-
+        
+        /* Edit Profile Styles */
         .edit-profile-header {
             display: flex;
             align-items: center;
@@ -690,11 +690,11 @@
             background: linear-gradient(to right, #51aee4, #4555e7);
             color: white;
         }
-
+        
         .edit-profile-form {
             padding: 15px;
         }
-
+        
         .save-profile-btn {
             background: #225dff;
             color: white;
@@ -707,19 +707,19 @@
             width: 100%;
             margin-top: 20px;
         }
-
+        
         .resume-preview {
             margin-top: 15px;
             padding: 15px;
             background: #f9f9f9;
             border-radius: 8px;
         }
-
+        
         .resume-preview i {
             margin-right: 10px;
             color: #225dff;
         }
-
+        
         .remove-resume {
             color: #ff4d4d;
             margin-left: 15px;
@@ -889,7 +889,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <div id="profile-view" class="hidden">
                 <div class="profile-section">
                     <div class="profile-header">
@@ -901,77 +901,77 @@
                             <p id="profile-user-type">Applicant</p>
                         </div>
                     </div>
-
+                    
                     <div class="profile-info-section">
                         <div class="section-title">Personal Information</div>
-
+                        
                         <div class="info-group">
                             <div class="info-label">Full Name</div>
                             <div class="info-value" id="profile-full-name">John Doe</div>
                         </div>
-
+                        
                         <div class="info-group">
                             <div class="info-label">Email</div>
-                            <div class="info-value" id="profile-email">johndoe@example</div>
+                            <div class="info-value" id="profile-email">johndoe@example.com</div>
                         </div>
-
+                        
                         <div class="info-group">
                             <div class="info-label">Phone</div>
                             <div class="info-value" id="profile-phone">+63 912 345 6789</div>
                         </div>
-
+                        
                         <div class="info-group">
                             <div class="info-label">Address</div>
                             <div class="info-value" id="profile-address">San Fernando, Pampanga</div>
                         </div>
-
+                        
                         <div class="info-group">
                             <div class="info-label">Date of Birth</div>
                             <div class="info-value" id="profile-dob">January 1, 1990</div>
                         </div>
-
+                        
                         <div class="info-group">
                             <div class="info-label">Resume</div>
                             <div class="info-value" id="profile-resume">
                                 <span id="resume-text">No resume uploaded</span>
                             </div>
                         </div>
-
+                        
                         <button class="edit-btn" onclick="showEditProfile()">Edit Information</button>
                     </div>
-
+                    
                     <div class="profile-info-section">
                         <div class="section-title">Settings</div>
-
+                        
                         <div class="toggle-item">
-                            <div class="toggle-label">Notification</div>
+                            <div class="toggle-label">Notifications</div>
                             <label class="toggle-switch">
                                 <input type="checkbox" id="notifications-toggle" checked>
                                 <span class="slider"></span>
                             </label>
                         </div>
-
+                        
                         <div class="toggle-item">
                             <div class="toggle-label">Email Updates</div>
-                            <label for="toggle-switch">
+                            <label class="toggle-switch">
                                 <input type="checkbox" id="email-toggle" checked>
                                 <span class="slider"></span>
                             </label>
                         </div>
-
+                        
                         <div class="toggle-item">
                             <div class="toggle-label">Privacy Mode</div>
                             <label class="toggle-switch">
-                                <input type="checkbox" id="provacy-toggle">
+                                <input type="checkbox" id="privacy-toggle">
                                 <span class="slider"></span>
                             </label>
                         </div>
                     </div>
-
+                    
                     <ul class="profile-menu">
                         <li>
                             <a href="#" onclick="showMyApplications()">
-                                <span>My Application</span>
+                                <span>My Applications</span>
                                 <i class="fas fa-chevron-right"></i>
                             </a>
                         </li>
@@ -994,14 +994,14 @@
                             </a>
                         </li>
                     </ul>
-
+                    
                     <div class="logout-btn" onclick="logout()">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </div>
                 </div>
             </div>
-
-            <div id="edit=profile-view" class="hidden">
+            
+            <div id="edit-profile-view" class="hidden">
                 <div class="edit-profile-header">
                     <div class="back-btn" onclick="goBackToProfile()">
                         <i class="fas fa-arrow-left"></i>
@@ -1013,37 +1013,37 @@
                         <i class="fas fa-question-circle"></i>
                     </div>
                 </div>
-
+                
                 <div class="edit-profile-form">
                     <div class="form-section">
                         <div class="form-section-title">Personal Information</div>
-
+                        
                         <div class="form-group">
                             <label for="edit-full-name">Full Name</label>
                             <input type="text" id="edit-full-name" placeholder="Enter your full name">
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="edit-email">Email</label>
                             <input type="email" id="edit-email" placeholder="Enter your email">
                         </div>
-
+                        
                         <div class="form-group">
-                                <label for="edit-phone">Phone</label>
-                                <input type="tel" id="edit-phone" placeholder="Enter your phone number">
+                            <label for="edit-phone">Phone</label>
+                            <input type="tel" id="edit-phone" placeholder="Enter your phone number">
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="edit-address">Address</label>
                             <input type="text" id="edit-address" placeholder="Enter your address">
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="edit-dob">Date of Birth</label>
                             <input type="date" id="edit-dob">
                         </div>
                     </div>
-
+                    
                     <div class="form-section">
                         <div class="form-section-title">Resume</div>
                         
@@ -1060,7 +1060,7 @@
                             <p><i class="fas fa-file-pdf"></i> <span id="resume-filename">resume.pdf</span> <span class="remove-resume" onclick="removeResume()">Remove</span></p>
                         </div>
                     </div>
-
+                    
                     <button class="save-profile-btn" onclick="saveProfile()">Save Profile</button>
                 </div>
             </div>
@@ -1122,322 +1122,355 @@
         <div class="bottom-nav">
             <div class="nav-btn active" onclick="showHome()">
                 <i class="fas fa-home"></i>
-                <div>Home</div>
+                <span>Home</span>
             </div>
-            <div class="nav-btn" onclick="showSearchPanel()">
+            <div class="nav-btn" onclick="showSearch()">
                 <i class="fas fa-search"></i>
-                <div>Search</div>
+                <span>Search</span>
             </div>
-            <div class="nav-btn" onclick="showNotificationsPanel()">
-                <i class="fas fa-bell"></i>
-                <div>Notifications</div>
+            <div class="nav-btn" onclick="showSavedJobs()">
+                <i class="fas fa-heart"></i>
+                <span>Saved</span>
             </div>
-            <div class="nav-btn" onclick="showBookmarks()">
-                <i class="fas fa-bookmark"></i>
-                <div>Bookmarks</div>
+            <div class="nav-btn" onclick="showApplications()">
+                <i class="fas fa-file-alt"></i>
+                <span>Applications</span>
             </div>
             <div class="nav-btn" onclick="showProfile()">
                 <i class="fas fa-user"></i>
-                <div>Profile</div>
+                <span>Profile</span>
             </div>
         </div>
     </div>
-    
+
     <script>
-        let currentView = 'auth';
-        let currentUserType = null;
-        let currentCategory = 'all';
-        let currentApplicationTab = 'all';
-
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('login-tab').addEventListener('click', switchToLogin);
-            document.getElementById('signup-tab').addEventListener('click', switchToSignup);
-            document.getElementById('search-icon').addEventListener('click', showSearchPanel);
-            document.getElementById('notification-icon').addEventListener('click', showNotificationsPanel);
-            
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-            if (isLoggedIn) {
-                hideAllSections();
-                const userType = localStorage.getItem('userType') || 'applicant';
-                if (userType === 'applicant') {
-                    document.getElementById('applicant-view').classList.remove('hidden');
-                    currentView = 'applicant';
-                    updateBottomNav('home');
-                } else {
-                    document.getElementById('employee-view').classList.remove('hidden');
-                    currentView = 'employee';
-                    updateBottomNav('home');
-                }
-                document.querySelector('.bottom-nav').style.display = 'flex';
-                
-                loadProfileData();
-            } else {
-                hideAllSections();
-                document.getElementById('auth-section').classList.remove('hidden');
-                currentView = 'auth';
-                document.querySelector('.bottom-nav').style.display = 'none';
-            }
-            
-            const notificationsToggle = document.getElementById('notifications-toggle');
-            const emailToggle = document.getElementById('email-toggle');
-            const privacyToggle = document.getElementById('privacy-toggle');
-            
-            if (notificationsToggle) {
-                notificationsToggle.addEventListener('change', function() {
-                    localStorage.setItem('notificationsEnabled', this.checked);
-                });
-            }
-            
-            if (emailToggle) {
-                emailToggle.addEventListener('change', function() {
-                    localStorage.setItem('emailUpdatesEnabled', this.checked);
-                });
-            }
-            
-            if (privacyToggle) {
-                privacyToggle.addEventListener('change', function() {
-                    localStorage.setItem('privacyModeEnabled', this.checked);
-                });
-            }
+        // DOM Elements
+        const authSection = document.getElementById('auth-section');
+        const userTypeSection = document.getElementById('user-type-section');
+        const applicantView = document.getElementById('applicant-view');
+        const employeeView = document.getElementById('employee-view');
+        const profileView = document.getElementById('profile-view');
+        const editProfileView = document.getElementById('edit-profile-view');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const loginTab = document.getElementById('login-tab');
+        const signupTab = document.getElementById('signup-tab');
+        const notificationPanel = document.getElementById('notification-panel');
+        const searchPanel = document.getElementById('search-panel');
+        const navItems = document.querySelectorAll('.nav-item');
+        const navBtns = document.querySelectorAll('.nav-btn');
+        
+        // Current user state
+        let currentUser = null;
+        let userType = null;
+        let userProfile = {
+            name: "John Doe",
+            email: "johndoe@example.com",
+            phone: "+63 912 345 6789",
+            address: "San Fernando, Pampanga",
+            dob: "1990-01-01",
+            resume: null
+        };
+        
+        // Event Listeners
+        document.getElementById('search-icon').addEventListener('click', toggleSearchPanel);
+        document.getElementById('notification-icon').addEventListener('click', toggleNotificationPanel);
+        
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('active');
+            signupTab.classList.remove('active');
+            loginForm.classList.remove('hidden');
+            signupForm.classList.add('hidden');
         });
-
+        
+        signupTab.addEventListener('click', () => {
+            signupTab.classList.add('active');
+            loginTab.classList.remove('active');
+            signupForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+        
+        // Functions
         function login() {
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
             
-            if (email && password) {
-                if (!localStorage.getItem('userName')) {
-                    localStorage.setItem('userName', email.split('@')[0]);
-                    localStorage.setItem('userEmail', email);
-                }
-                
-                localStorage.setItem('isLoggedIn', 'true');
-                hideAllSections();
-                document.getElementById('user-type-section').classList.remove('hidden');
-                currentView = 'user-type';
-                document.querySelector('.bottom-nav').style.display = 'flex';
-                
-                loadProfileData();
-            } else {
-                alert('Please enter email and password');
+            if (!email || !password) {
+                alert('Please enter both email and password');
+                return;
             }
+            
+            // Simulate successful login
+            currentUser = { email, name: email.split('@')[0] };
+            showUserTypeSelection();
         }
         
         function signup() {
             const name = document.getElementById('signup-name').value;
             const email = document.getElementById('signup-email').value;
             const password = document.getElementById('signup-password').value;
-            const confirmPassword = document.getElementById('signup-confirm').value;
+            const confirm = document.getElementById('signup-confirm').value;
             
-            if (password !== confirmPassword) {
+            if (!name || !email || !password || !confirm) {
+                alert('Please fill all fields');
+                return;
+            }
+            
+            if (password !== confirm) {
                 alert('Passwords do not match');
                 return;
             }
             
-            if (name && email && password) {
-                localStorage.setItem('userName', name);
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('isLoggedIn', 'true');
-                
-                alert('Account created successfully!');
-                hideAllSections();
-                document.getElementById('user-type-section').classList.remove('hidden');
-                currentView = 'user-type';
-                document.querySelector('.bottom-nav').style.display = 'flex';
-                
-                loadProfileData();
-            } else {
-                alert('Please fill all fields');
-            }
+            // Simulate successful signup
+            currentUser = { email, name };
+            showUserTypeSelection();
         }
         
         function loginWithGoogle() {
-            alert('Redirecting to Google login...');
-            localStorage.setItem('isLoggedIn', 'true');
-            hideAllSections();
-            document.getElementById('user-type-section').classList.remove('hidden');
-            currentView = 'user-type';
-            document.querySelector('.bottom-nav').style.display = 'flex';
-            
-            loadProfileData();
+            // Simulate Google login
+            currentUser = { email: 'user@gmail.com', name: 'Google User' };
+            showUserTypeSelection();
         }
         
         function signupWithGoogle() {
-            alert('Redirecting to Google signup...');
-            localStorage.setItem('isLoggedIn', 'true');
-            hideAllSections();
-            document.getElementById('user-type-section').classList.remove('hidden');
-            currentView = 'user-type';
-            document.querySelector('.bottom-nav').style.display = 'flex';
-            
-            loadProfileData();
+            // Simulate Google signup
+            currentUser = { email: 'user@gmail.com', name: 'Google User' };
+            showUserTypeSelection();
         }
         
-        function switchToLogin() {
-            document.getElementById('signup-tab').classList.remove('active');
-            document.getElementById('login-tab').classList.add('active');
-            document.getElementById('signup-form').classList.add('hidden');
-            document.getElementById('login-form').classList.remove('hidden');
-        }
-        
-        function switchToSignup() {
-            document.getElementById('login-tab').classList.remove('active');
-            document.getElementById('signup-tab').classList.add('active');
-            document.getElementById('login-form').classList.add('hidden');
-            document.getElementById('signup-form').classList.remove('hidden');
+        function showUserTypeSelection() {
+            authSection.classList.add('hidden');
+            userTypeSection.classList.remove('hidden');
         }
         
         function selectUserType(type) {
-            currentUserType = type;
-            localStorage.setItem('userType', type);
-            hideAllSections();
+            userType = type;
+            userTypeSection.classList.add('hidden');
+            
             if (type === 'applicant') {
-                document.getElementById('applicant-view').classList.remove('hidden');
-                currentView = 'applicant';
-                updateBottomNav('home');
+                applicantView.classList.remove('hidden');
+                updateNavActive('home');
             } else {
-                document.getElementById('employee-view').classList.remove('hidden');
-                currentView = 'employee';
-                updateBottomNav('home');
+                employeeView.classList.remove('hidden');
+                updateNavActive('home');
             }
+            
+            // Update profile view with user info
+            document.getElementById('profile-user-name').textContent = currentUser.name;
+            document.getElementById('profile-user-type').textContent = type === 'applicant' ? 'Applicant' : 'Employee';
         }
         
-        function showHome() {
-            hideAllSections();
-            updateBottomNav('home');
-            const userType = localStorage.getItem('userType') || 'applicant';
-            if (userType === 'applicant') {
-                document.getElementById('applicant-view').classList.remove('hidden');
-                currentView = 'applicant';
-            } else {
-                document.getElementById('employee-view').classList.remove('hidden');
-                currentView = 'employee';
-            }
+        function changeCategory(category) {
+            navItems.forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+            // In a real app, you would filter jobs by category
         }
         
-        function showSearchPanel() {
-            const searchPanel = document.getElementById('search-panel');
-            if (searchPanel.style.display === 'block') {
-                searchPanel.style.display = 'none';
-            } else {
-                searchPanel.style.display = 'block';
-                document.getElementById('notification-panel').style.display = 'none';
-            }
+        function changeApplicationTab(tab) {
+            navItems.forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+            // In a real app, you would filter applications by tab
         }
         
-        function showNotificationsPanel() {
-            const notificationPanel = document.getElementById('notification-panel');
+        function showJobDetails() {
+            alert('Job details would be shown here');
+        }
+        
+        function viewApplicantProfile() {
+            alert('Applicant profile would be shown here');
+        }
+        
+        function toggleNotificationPanel() {
             if (notificationPanel.style.display === 'block') {
                 notificationPanel.style.display = 'none';
             } else {
                 notificationPanel.style.display = 'block';
-                document.getElementById('search-panel').style.display = 'none';
+                searchPanel.style.display = 'none';
             }
         }
         
-        function showBookmarks() {
-            updateBottomNav('bookmarks');
-            alert('Bookmarked jobs would be shown here');
+        function toggleSearchPanel() {
+            if (searchPanel.style.display === 'block') {
+                searchPanel.style.display = 'none';
+            } else {
+                searchPanel.style.display = 'block';
+                notificationPanel.style.display = 'none';
+            }
+        }
+        
+        function showHome() {
+            applicantView.classList.remove('hidden');
+            employeeView.classList.remove('hidden');
+            profileView.classList.add('hidden');
+            editProfileView.classList.add('hidden');
+            
+            if (userType === 'applicant') {
+                applicantView.classList.remove('hidden');
+                employeeView.classList.add('hidden');
+            } else {
+                employeeView.classList.remove('hidden');
+                applicantView.classList.add('hidden');
+            }
+            
+            updateNavActive('home');
+        }
+        
+        function showSearch() {
+            alert('Search functionality would be shown here');
+            updateNavActive('search');
+        }
+        
+        function showSavedJobs() {
+            alert('Saved jobs would be shown here');
+            updateNavActive('saved');
+        }
+        
+        function showApplications() {
+            alert('Applications would be shown here');
+            updateNavActive('applications');
         }
         
         function showProfile() {
-            hideAllSections();
-            updateBottomNav('profile');
-            document.getElementById('profile-view').classList.remove('hidden');
-            currentView = 'profile';
-            loadProfileData();
+            applicantView.classList.add('hidden');
+            employeeView.classList.add('hidden');
+            profileView.classList.remove('hidden');
+            editProfileView.classList.add('hidden');
+            
+            // Update profile with current data
+            document.getElementById('profile-full-name').textContent = userProfile.name;
+            document.getElementById('profile-email').textContent = userProfile.email;
+            document.getElementById('profile-phone').textContent = userProfile.phone;
+            document.getElementById('profile-address').textContent = userProfile.address;
+            document.getElementById('profile-dob').textContent = formatDate(userProfile.dob);
+            
+            if (userProfile.resume) {
+                document.getElementById('resume-text').textContent = userProfile.resume;
+            } else {
+                document.getElementById('resume-text').textContent = 'No resume uploaded';
+            }
+            
+            updateNavActive('profile');
+        }
+        
+        function showEditProfile() {
+            profileView.classList.add('hidden');
+            editProfileView.classList.remove('hidden');
+            
+            // Pre-fill form with current data
+            document.getElementById('edit-full-name').value = userProfile.name;
+            document.getElementById('edit-email').value = userProfile.email;
+            document.getElementById('edit-phone').value = userProfile.phone;
+            document.getElementById('edit-address').value = userProfile.address;
+            document.getElementById('edit-dob').value = userProfile.dob;
+            
+            if (userProfile.resume) {
+                document.getElementById('resume-filename').textContent = userProfile.resume;
+                document.getElementById('resume-preview').classList.remove('hidden');
+            } else {
+                document.getElementById('resume-preview').classList.add('hidden');
+            }
+        }
+        
+        function goBackToProfile() {
+            editProfileView.classList.add('hidden');
+            profileView.classList.remove('hidden');
+        }
+        
+        function saveProfile() {
+            // Get values from form
+            userProfile.name = document.getElementById('edit-full-name').value;
+            userProfile.email = document.getElementById('edit-email').value;
+            userProfile.phone = document.getElementById('edit-phone').value;
+            userProfile.address = document.getElementById('edit-address').value;
+            userProfile.dob = document.getElementById('edit-dob').value;
+            
+            // Update profile view
+            document.getElementById('profile-full-name').textContent = userProfile.name;
+            document.getElementById('profile-email').textContent = userProfile.email;
+            document.getElementById('profile-phone').textContent = userProfile.phone;
+            document.getElementById('profile-address').textContent = userProfile.address;
+            document.getElementById('profile-dob').textContent = formatDate(userProfile.dob);
+            
+            if (userProfile.resume) {
+                document.getElementById('resume-text').textContent = userProfile.resume;
+            }
+            
+            alert('Profile saved successfully!');
+            goBackToProfile();
+        }
+        
+        function removeResume() {
+            userProfile.resume = null;
+            document.getElementById('resume-preview').classList.add('hidden');
+            document.getElementById('resume-upload').value = '';
         }
         
         function logout() {
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('userType');
-            localStorage.removeItem('userName');
-            localStorage.removeItem('userEmail');
-            localStorage.removeItem('userPhone');
-            localStorage.removeItem('userAddress');
-            localStorage.removeItem('userDob');
+            currentUser = null;
+            userType = null;
             
-            hideAllSections();
-            document.getElementById('auth-section').classList.remove('hidden');
-            currentView = 'auth';
-            document.querySelector('.bottom-nav').style.display = 'none';
+            // Hide all views
+            applicantView.classList.add('hidden');
+            employeeView.classList.add('hidden');
+            profileView.classList.add('hidden');
+            editProfileView.classList.add('hidden');
+            userTypeSection.classList.add('hidden');
+            
+            // Show auth section
+            authSection.classList.remove('hidden');
+            
+            // Reset forms
+            document.getElementById('login-email').value = '';
+            document.getElementById('login-password').value = '';
+            document.getElementById('signup-name').value = '';
+            document.getElementById('signup-email').value = '';
+            document.getElementById('signup-password').value = '';
+            document.getElementById('signup-confirm').value = '';
+            
+            // Set login as active tab
+            loginTab.classList.add('active');
+            signupTab.classList.remove('active');
+            loginForm.classList.remove('hidden');
+            signupForm.classList.add('hidden');
         }
         
-        function loadProfileData() {
-            const userName = localStorage.getItem('userName') || 'User Name';
-            const userEmail = localStorage.getItem('userEmail') || 'johndoe@example.com';
-            const userPhone = localStorage.getItem('userPhone') || '+63 912 345 6789';
-            const userAddress = localStorage.getItem('userAddress') || 'San Fernando, Pampanga';
-            const userDob = localStorage.getItem('userDob') || 'January 1, 1990';
-            const userType = localStorage.getItem('userType') || 'Applicant';
-            
-            const profileUserName = document.getElementById('profile-user-name');
-            const profileFullName = document.getElementById('profile-full-name');
-            const profileEmail = document.getElementById('profile-email');
-            const profilePhone = document.getElementById('profile-phone');
-            const profileAddress = document.getElementById('profile-address');
-            const profileDob = document.getElementById('profile-dob');
-            const profileUserType = document.getElementById('profile-user-type');
-            
-            if (profileUserName) profileUserName.textContent = userName;
-            if (profileFullName) profileFullName.textContent = userName;
-            if (profileEmail) profileEmail.textContent = userEmail;
-            if (profilePhone) profilePhone.textContent = userPhone;
-            if (profileAddress) profileAddress.textContent = userAddress;
-            if (profileDob) profileDob.textContent = userDob;
-            if (profileUserType) profileUserType.textContent = userType;
-            
-            const notificationsToggle = document.getElementById('notifications-toggle');
-            const emailToggle = document.getElementById('email-toggle');
-            const privacyToggle = document.getElementById('privacy-toggle');
-            
-            if (notificationsToggle) {
-                notificationsToggle.checked = localStorage.getItem('notificationsEnabled') !== 'false';
-            }
-            
-            if (emailToggle) {
-                emailToggle.checked = localStorage.getItem('emailUpdatesEnabled') !== 'false';
-            }
-            
-            if (privacyToggle) {
-                privacyToggle.checked = localStorage.getItem('privacyModeEnabled') === 'true';
-            }
-        }
-        
-        function editProfile() {
-            alert('Edit profile functionality would open here');
-        }
-        
-        function showAccountSettings() {
-            alert('Account settings would be shown here');
-        }
-        
-        function hideAllSections() {
-            const sections = document.querySelectorAll('.main-content > div');
-            sections.forEach(section => {
-                section.classList.add('hidden');
+        function updateNavActive(active) {
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
             });
             
-            document.getElementById('search-panel').style.display = 'none';
-            document.getElementById('notification-panel').style.display = 'none';
+            // In a real app, you would have a better way to identify which nav button to activate
+            if (active === 'home') navBtns[0].classList.add('active');
+            if (active === 'search') navBtns[1].classList.add('active');
+            if (active === 'saved') navBtns[2].classList.add('active');
+            if (active === 'applications') navBtns[3].classList.add('active');
+            if (active === 'profile') navBtns[4].classList.add('active');
         }
         
-        function updateBottomNav(active) {
-            const navItems = document.querySelectorAll('.nav-btn');
-            navItems.forEach(item => item.classList.remove('active'));
-            
-            if (active === 'home') {
-                navItems[0].classList.add('active');
-            } else if (active === 'search') {
-                navItems[1].classList.add('active');
-            } else if (active === 'notifications') {
-                navItems[2].classList.add('active');
-            } else if (active === 'bookmarks') {
-                navItems[3].classList.add('active');
-            } else if (active === 'profile') {
-                navItems[4].classList.add('active');
-            }
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
         }
+        
+        // Handle resume upload
+        document.getElementById('resume-upload').addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                const fileName = this.files[0].name;
+                userProfile.resume = fileName;
+                document.getElementById('resume-filename').textContent = fileName;
+                document.getElementById('resume-preview').classList.remove('hidden');
+            }
+        });
+        
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('#notification-panel') && !e.target.closest('#notification-icon')) {
+                notificationPanel.style.display = 'none';
+            }
+            
+            if (!e.target.closest('#search-panel') && !e.target.closest('#search-icon')) {
+                searchPanel.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>

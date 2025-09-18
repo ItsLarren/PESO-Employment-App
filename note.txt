@@ -21,7 +21,7 @@ the flow
 	- the user will sign up, where in the user will fill up the form (Full Name, Email, Password, Confirm Password).
 	- After the user have been successfully signed up, the page will then go to the log in page so that the user will log in it created account.
 	- After the user has logged in, the user will now proceed to the page where in the user need to select if they are applicant or employee. 
-	- After that the user will proceed on the employee page, where the user can view the recent ap[plication.
+	- After that the user will proceed on the employee page, where the user can view the recent application.
 	- at the employee page you can see the nav item (All Application, Reviewd, Shortlisted, and rejhected)
 	- Also at the employee page you can also see the bottom nav (Home, Search, Notification, Bookmark, and Profile). it also have the header icons the magnifying(to search), the bell (to notify if there is a new application submitted, etc.)
 	- Now the user can see the all the applications every applications there will be a view profile button, when the user click that the user will prcedd to the infos fill up by the applicants, and tehre will be a button there where the user can either mark it as [for review], [rejected], [approved].
@@ -38,3 +38,9 @@ yayadub
 karekare
 Sheldon1980
 
+done - when the user click the edit information button, it will open a new page where it will allow the user to edit its profile, and add its resume so that when the user is appliying a job he/she already have a saved resume on its profile. After editing the user profile there will be a save buttoin there when clcick iit will save the user profile and go back to the proflie page
+When the user click the "My application", it should open a new page where in the user can see the applications, when the user was applicant it will show the jobs the user applied, and when the user is employee it can see the applicant whom he/she approved, reject or for review applicants.
+Whne the user click the Saved Jobs, it hsould open a new page where in the user will see its saved jobs, when the user is applicant the user can see the job he/she marked as check later or saved for later. When the user was an employee the user will see a saved applicants that save and ready for interviews
+When the user click the edit profile, it should open a new page where in the user can upload/take a new profile picture, Personal summary Add a personal summary to your profile as a way to introduce who you are, Career history and for example on the rsumer of the applicant there is a career input tehre there will be a note like this "We found these roles in your resumé. Add them to your Profile so employers can see your complete information" and it will add to your profile and tehre will be a buttn add to profile and dont include button, and there will be another add role button for additional role., Education can be added from the resume automatically, Licences & certifications Showcase your professional credentials. Add your relevant licences, certificates, memberships and accreditations here and there is a add licences and certifications button., Skills Let employers know how valuable you can be to them and thehre is an add skills button., Languages Add languages to appeal to more companies and employers, add language button.  
+
+those html file are working but compare each other, the app.html fils was workimg but doesnt have a page at the profile page, unlike at the app2.html it has a profile page and can efit the edit information button but the problem it the other buttons at the main page are not working
