@@ -288,3 +288,69 @@ body {
     z-index: 100;
 }
 
+.nav-btn {
+    flex: 1;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.nav-btn.active {
+    color: #2231ff;
+}
+
+.nav-btn i {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.applicant-info {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.applicant-name {
+    font-size: 600;
+    margin-bottom: 5px;
+}
+
+.applicant-details {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.job-detail-header {
+    position: relative;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: darken;
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.application-form {
+    padding: 15px;
+}
