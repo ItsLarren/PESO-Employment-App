@@ -682,7 +682,6 @@
             margin: 15px -15px;
         }
         
-        /* Edit Profile Styles */
         .edit-profile-header {
             display: flex;
             align-items: center;
@@ -726,7 +725,6 @@
             cursor: pointer;
         }
         
-        /* My Applications and Saved Jobs Pages */
         .page-header {
             display: flex;
             align-items: center;
@@ -849,7 +847,6 @@
         </div>
         
         <div class="main-content">
-            <!-- Authentication Section -->
             <div id="auth-section">
                 <div class="auth-container">
                     <div class="auth-tabs">
@@ -881,7 +878,6 @@
                 </div>
             </div>
             
-            <!-- User Type Selection -->
             <div id="user-type-section" class="hidden">
                 <div class="user-type-container">
                     <h2 class="user-type-title">Select</h2>
@@ -900,7 +896,6 @@
                 </div>
             </div>
             
-            <!-- Applicant View (Home) -->
             <div id="applicant-view" class="hidden">
                 <div class="nav-container">
                     <div class="nav-item active" onclick="changeCategory('all')">All Jobs</div>
@@ -980,7 +975,6 @@
                 </div>
             </div>
             
-            <!-- My Applications Page -->
             <div id="my-applications-view" class="hidden">
                 <div class="page-header">
                     <div class="back-btn" onclick="goBack()">
@@ -1090,7 +1084,6 @@
                 </div>
             </div>
             
-            <!-- Saved Jobs Page -->
             <div id="saved-jobs-view" class="hidden">
                 <div class="page-header">
                     <div class="back-btn" onclick="goBack()">
@@ -1197,7 +1190,6 @@
                 </div>
             </div>
             
-            <!-- Profile Page -->
             <div id="profile-view" class="hidden">
                 <div class="page-header">
                     <div class="back-btn" onclick="goBack()">
@@ -1279,7 +1271,6 @@
                 </div>
             </div>
             
-            <!-- Edit Profile Page -->
             <div id="edit-profile-view" class="hidden">
                 <div class="edit-profile-header">
                     <div class="back-btn" onclick="goBack()">
@@ -1332,7 +1323,6 @@
                 </div>
             </div>
             
-            <!-- Job Details View -->
             <div id="job-details-view" class="hidden">
                 <div class="job-detail-header" style="background-image: url('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
                     <div class="back-btn" onclick="goBack()">
@@ -1376,7 +1366,6 @@
                 </div>
             </div>
             
-            <!-- Application Form View -->
             <div id="application-form-view" class="hidden">
                 <div class="page-header">
                     <div class="back-btn" onclick="goBack()">
@@ -1428,7 +1417,6 @@
             </div>
         </div>
         
-        <!-- Bottom Navigation -->
         <div class="bottom-nav">
             <div class="nav-btn active" onclick="showSection('applicant-view')">
                 <i class="fas fa-home"></i>
@@ -1450,13 +1438,11 @@
     </div>
     
     <script>
-        // Current user state
         let currentUser = null;
         let currentUserType = null;
         let currentSection = 'auth-section';
         let previousSection = null;
         
-        // DOM elements
         const authSection = document.getElementById('auth-section');
         const userTypeSection = document.getElementById('user-type-section');
         const applicantView = document.getElementById('applicant-view');
@@ -1475,9 +1461,7 @@
         const notificationPanel = document.getElementById('notification-panel');
         const searchPanel = document.getElementById('search-panel');
         
-        // Navigation functions
         function showSection(sectionId) {
-            // Hide all sections
             authSection.classList.add('hidden');
             userTypeSection.classList.add('hidden');
             applicantView.classList.add('hidden');
@@ -1488,19 +1472,15 @@
             jobDetailsView.classList.add('hidden');
             applicationFormView.classList.add('hidden');
             
-            // Hide panels
             notificationPanel.style.display = 'none';
             searchPanel.style.display = 'none';
             
-            // Update navigation buttons
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             
-            // Show the requested section
             document.getElementById(sectionId).classList.remove('hidden');
             
-            // Update the active nav button based on the section
             if (sectionId === 'applicant-view') {
                 document.querySelector('.nav-btn:nth-child(1)').classList.add('active');
             } else if (sectionId === 'my-applications-view') {
@@ -1511,7 +1491,6 @@
                 document.querySelector('.nav-btn:nth-child(4)').classList.add('active');
             }
             
-            // Set the correct view for My Applications and Saved Jobs based on user type
             if (sectionId === 'my-applications-view') {
                 if (currentUserType === 'applicant') {
                     applicantApplications.classList.remove('hidden');
@@ -1544,17 +1523,15 @@
             }
         }
         
-        // Authentication functions
         function login() {
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
             
             if (email && password) {
-                // Simulate successful login
                 currentUser = {
                     name: 'Juan Dela Cruz',
                     email: email,
-                    type: 'applicant' // Default type, will be changed in user type selection
+                    type: 'applicant' 
                 };
                 
                 showSection('user-type-section');
@@ -1575,11 +1552,10 @@
                     return;
                 }
                 
-                // Simulate successful signup
                 currentUser = {
                     name: name,
                     email: email,
-                    type: 'applicant' // Default type, will be changed in user type selection
+                    type: 'applicant' 
                 };
                 
                 showSection('user-type-section');
@@ -1589,7 +1565,6 @@
         }
         
         function loginWithGoogle() {
-            // Simulate Google login
             currentUser = {
                 name: 'Juan Dela Cruz',
                 email: 'juan.delacruz@example.com',
@@ -1600,7 +1575,6 @@
         }
         
         function signupWithGoogle() {
-            // Simulate Google signup
             currentUser = {
                 name: 'Juan Dela Cruz',
                 email: 'juan.delacruz@example.com',
@@ -1614,7 +1588,6 @@
             currentUserType = type;
             currentUser.type = type;
             
-            // Update profile information based on user type
             if (type === 'applicant') {
                 document.getElementById('profile-name').textContent = currentUser.name;
                 document.getElementById('profile-role').textContent = 'Applicant';
@@ -1632,16 +1605,12 @@
             showSection('auth-section');
         }
         
-        // Job-related functions
         function changeCategory(category) {
-            // Update active nav item
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
             event.target.classList.add('active');
             
-            // In a real app, this would filter job listings
-            // For this demo, we'll just show an alert
             alert(`Showing jobs in ${category} category`);
         }
         
@@ -1658,9 +1627,7 @@
             showSection('applicant-view');
         }
         
-        // Profile functions
         function editProfile() {
-            // Populate edit form with current profile data
             document.getElementById('edit-name').value = document.getElementById('profile-name').textContent;
             document.getElementById('edit-email').value = document.getElementById('profile-email').textContent;
             document.getElementById('edit-phone').value = document.getElementById('profile-phone').textContent;
@@ -1671,7 +1638,6 @@
         }
         
         function saveProfile() {
-            // Update profile with edited data
             document.getElementById('profile-name').textContent = document.getElementById('edit-name').value;
             document.getElementById('profile-email').textContent = document.getElementById('edit-email').value;
             document.getElementById('profile-phone').textContent = document.getElementById('edit-phone').value;
@@ -1692,7 +1658,6 @@
             document.getElementById('resume-upload').click();
         }
         
-        // Application management functions
         function approveApplication(button) {
             const statusElement = button.closest('.applicant-info').querySelector('.application-status');
             statusElement.textContent = 'Approved';
@@ -1733,7 +1698,6 @@
             alert('Interview scheduling feature would open here');
         }
         
-        // Event listeners for header icons
         document.getElementById('notification-icon').addEventListener('click', function() {
             notificationPanel.style.display = notificationPanel.style.display === 'block' ? 'none' : 'block';
             searchPanel.style.display = 'none';
@@ -1744,7 +1708,6 @@
             notificationPanel.style.display = 'none';
         });
         
-        // Auth tab switching
         document.getElementById('login-tab').addEventListener('click', function() {
             document.getElementById('login-tab').classList.add('active');
             document.getElementById('signup-tab').classList.remove('active');
@@ -1759,7 +1722,6 @@
             document.getElementById('login-form').classList.add('hidden');
         });
         
-        // Close panels when clicking outside
         document.addEventListener('click', function(event) {
             if (!event.target.closest('#notification-icon') && !event.target.closest('#notification-panel')) {
                 notificationPanel.style.display = 'none';
@@ -1770,7 +1732,6 @@
             }
         });
         
-        // Initialize the app
         showSection('auth-section');
     </script>
 </body>

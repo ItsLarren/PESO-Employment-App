@@ -3,7 +3,7 @@ employment-corner-app/
 ├── package.json
 ├── config/
 │   └── database.js
-├── models/
+├── modezls/
 │   ├── User.js
 │   ├── Job.js
 │   └── Application.js
