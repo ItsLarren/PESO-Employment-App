@@ -31,8 +31,6 @@ the flow
 	- the employee can create the employer questionair tha will be answered by the applicants and it mst be depend on the job vacanicies
 
 
-
-
 purple
 yayadub
 karekare
@@ -44,3 +42,15 @@ Whne the user click the Saved Jobs, it hsould open a new page where in the user 
 those html file are working but compare each other, the app.html fils was workimg but doesnt have a page at the profile page, unlike at the app2.html it has a profile page and can efit the edit information button but the problem it the other buttons at the main page are not working
 
 on the main page of the employee it will bee the application of the applied applicants at bottom noav of the employee main page instead of "saved jobs" it should be "saved applicant application" something like that. and at the applications when the user(employee) click the appwoved or reject r save button, it will be removed to the list and will go at the saved applicants, and when I click the schedule interview a new page will show and it has a form for a number of the applicant that is from the resume, a mesage on where, what, how, when will be the interview will take plce and who the employee is
+
+task for this week
+- after clicking the button sign up(when the user fill up correctly all the form there), it should go back to the log in page where the the user should log in the signed up account.
+- the user nav button at the top, for example when the user click only the [tech] button it will only show any open job taht is related to technical.
+- when the user is applicant and login its account, and when it click the employee page it should not be open since the user was an applicant. or when logging in, when the user created/ sign up an account, the page wehre the user need to choose if the user was a employer or an applicant should only show when signing up after signed up, the user will log in the created account and then when succesfuly log in it ill automatically log at the applicant side
+
+needed to fix
+- at the profile section, the resume should be changeable
+- at the profile section, there should be also a address of the user where, the user be able to edit it anytime.
+- also when the user (employee) approve, reject or save an application of the applicants it will be sent ot the applicant phone number that is at the resumer or at the application filled up on submitting the application form of the applicant
+- also when the employee click the schedule interview button a page will show where in the employee can input abouts the meeting opf the interview such as when, where, what etc. and send button so that when the employee was done on inputing the details about the meeting the message will be send to the applicant submitted mobiel number.
+- 

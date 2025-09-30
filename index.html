@@ -20,7 +20,7 @@
         </div>
 
         <div class="notification-panel" id="notification-panel">
-            <h3>Notification</h3>
+            <h3>Notifications</h3>
             <div class="notification-item">
                 <p>Your application for Customer Service Representative has been reviewed.</p>
                 <small>2 hours ago</small>
@@ -39,7 +39,7 @@
             <input type="text" class="search-input" placeholder="Search for jobs, companies, or keywords">
             <div class="view-btn">Search</div>
         </div>
-
+        
         <div class="main-content">
             <div id="auth-section">
                 <div class="auth-container">
@@ -47,391 +47,589 @@
                         <div class="auth-tab active" id="login-tab">Login</div>
                         <div class="auth-tab" id="signup-tab">Sign Up</div>
                     </div>
-
+                    
                     <div class="auth-form" id="login-form">
                         <input type="text" placeholder="Email or Username" id="login-email">
-                        <input type="text" placeholder="Password" id="login-password">
+                        <input type="password" placeholder="Password" id="login-password">
                         <button onclick="login()">Login</button>
                         <button class="google-btn" onclick="loginWithGoogle()">
-                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
                             Sign in with Google
+                        </button>
+                    </div>
+                    
+                    <div class="auth-form hidden" id="signup-form">
+                        <input type="text" placeholder="Full Name" id="signup-name">
+                        <input type="email" placeholder="Email" id="signup-email">
+                        <input type="password" placeholder="Password" id="signup-password">
+                        <input type="password" placeholder="Confirm Password" id="signup-confirm">
+                        <button onclick="signup()">Sign Up</button>
+                        <button class="google-btn" onclick="signupWithGoogle()">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                            Sign up with Google
                         </button>
                     </div>
                 </div>
             </div>
-
-            <div class="auth-form hidden" id="signup-form">
-                <input type="text" placeholder="Full Name" id="signup-name">
-                <input type="email" placeholder="Email" id="signup-email">
-                <input type="password" placeholder="Password" id="signup-password">
-                <input type="password" placeholder="Confirm Password" id="signup-confirm">
-                <button onclick="signup()">Sign Up</button>
-                <button class="google-btn" onclick="signupWithGoogle()">
-                    <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
-                    Sign up with Google
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div id="user-type-card" class="hidden">
-        <div class="user-type-container">
-            <h2 class="user-type-title">Select</h2>
-            <div class="user-type-cards">
-                <div class="user-type-card" onclick="selectUserType('applicant')">
-                    <i class="fas fa-user-graduate"></i>
-                    <h3>Applicant</h3>
-                    <p>Looking for jobs</p>
-                </div>
-                <div class="user-type-card"  onclick="selectUserType('applicant')">
-                    <i class="fas fa-user-tie"></i>
-                    <h3>Employee</h3>
-                    <p>Hiring Talent</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="applicant-view" class="hidden">
-        <div class="nav-container">
-            <div class="nav-item active" onclick="changeCategory('all')">All Jobs</div>
-            <div class="nav-item" onclick="changeCategory('tech')">Tech</div>
-            <div class="nav-item" onclick="changeCategory('marketing')">Marketing</div>
-            <div class="nav-item" onclick="changeCategory('sales')">Sales</div>
-            <div class="nav-item" onclick="changeCategory('finance')">Finance</div>
-        </div>
-
-        <div class="content">
-            <div class="section-title">
-                <span>Recommended for you</span>
-                <span class="view-all">View All</span>
-            </div>
-
-            <div class="job-cards">
-                <div class="job-card">
-                    <div class="job-image" style="background-image: url('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
-                        <div class="job-type">Full Time</div>
-                    </div>
-                    <div class="job-content">
-                        <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
-                        <div class="company">ALORICA</div>
-                        <div class="job-details">
-                            <span><i class="fas fa-map-marker-alt"></i> Clark</span>
-                            <span><i class="fas fa-money-bill-wave"></i> ₱18,000 - ₱22,000</span>
+            
+            <div id="user-type-section" class="hidden">
+                <div class="user-type-container">
+                    <h2 class="user-type-title">Select</h2>
+                    <div class="user-type-cards">
+                        <div class="user-type-card" onclick="selectUserType('applicant')">
+                            <i class="fas fa-user-graduate"></i>
+                            <h3>Applicant</h3>
+                            <p>Looking for jobs</p>
                         </div>
-                        <button class="view-btn" onclick="showJobDetails()">View Job</button>
-                    </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-image" style="background-image: url('https://placehold.co/600x400/10b981/white?text=FAVERTON');">
-                        <div class="job-type">Full Time</div>
-                    </div>
-                    <div class="job-content">
-                        <div class="job-title">9 Open Positions</div>
-                        <div class="company">FAVERTON GROUP INC.</div>
-                        <div class="job-details">
-                            <span><i class="fas fa-map-marker-alt"></i> San Fernando</span>
-                            <span><i class="fas fa-money-bill-wave"></i> ₱16,000 - ₱25,000</span>
+                        <div class="user-type-card" onclick="selectUserType('employee')">
+                            <i class="fas fa-user-tie"></i>
+                            <h3>Employee</h3>
+                            <p>Hiring talent</p>
                         </div>
-                        <button class="view-btn" onclick="showJobDetails()">View Job</button>
-                    </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-image" style="background-image: url('https://placehold.co/600x400/ef4444/white?text=ASIA+BREWERY');">
-                        <div class="job-type">Full Time</div>
-                    </div>
-                    <div class="job-content">
-                        <div class="job-title">3 Open Position</div>
-                        <div class="company">Asia Brewery Inc.</div>
-                        <div class="job-details">
-                            <span><i class="fas fa-map-marker-alt"></i> Pampanga</span>
-                            <span><i class="fas fa-map-marker-alt"></i> ₱17,000 - ₱23,000</span>
-                        </div>
-                        <button class="view-btn" onclick="showJobDetails()">View Job</button>
-                    </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-image" style="background-image: url('https://placehold.co/600x400/f59e0b/white?text=RC+COLA');">
-                        <div class="job-type"> Part Time</div>
-                    </div>
-                    <div class="job-content">
-                        <div class="job-title">4 Open Position</div>
-                        <div class="company">RC COLA</div>
-                        <div class="job-details">
-                            <span><i class="fas fa-map-marker-alt"></i> Pampanga</span>
-                            <span><i class="fas fa-money-bill-wave"></i> ₱12,000 - ₱15,000</span>
-                        </div>
-                        <button class="view-btn" onclick="showJobDetails()">View Job</button>
                     </div>
                 </div>
             </div>
-        </div> 
-    </div>
-
-    <div id="my-applications-view" class="hidden">
-        <div class="page-header">
-            <div class="back-btn" onclick="goBack()">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-            <div class="logo">
-                <span>My Applications</span>
-            </div>
-            <div class="header-icons">
-                <i class="fas fa-filter"></i>
-            </div>
-        </div>
-
-        <div class="page-content">
-            <div id="applicant-applications" class="hidden">
-                <div class="section-title">
-                    <span> Your Job Applications</span>
+            
+            <div id="applicant-view" class="hidden">
+                <div class="nav-container">
+                    <div class="nav-item active" onclick="changeCategory('all')">All Jobs</div>
+                    <div class="nav-item" onclick="changeCategory('tech')">Tech</div>
+                    <div class="nav-item" onclick="changeCategory('marketing')">Marketing</div>
+                    <div class="nav-item" onclick="changeCategory('sales')">Sales</div>
+                    <div class="nav-item" onclick="changeCategory('finance')">Finance</div>
                 </div>
-
-                <div class="job-card">
-                    <div class="job-content">
-                        <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
-                        <div class="company">ALORICA</div>
-                        <div class="application-status status-pending"> Pending Review</div>
-                        <div class="job-details">
-                            <span><i class="fas fa-calendar"></i> Applied on: March 15,2023</span>
-                        </div>
-                        <button class="view-btn" onclick="showJobDetails()">View Job</button>
+                
+                <div class="content">
+                    <div class="section-title">
+                        <span>Recommended for you</span>
+                        <span class="view-all">View all</span>
                     </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-content">
-                        <div class="job-title">MARKETING SPECIALIST</div>
-                        <div class="company">FAVERTON GROUP INC.</div>
-                        <div class="application-status status-approved">Approved</div>
-                        <div class="job-details">
-                            <span><i class="fas fa-calendar"></i>Applied on: March 10, 2023</span>
-                        </div>
-                        <button class="view-btn" onclick="showJobDetails()">View Job</button>
-                    </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-content">
-                        <div class="job-title">SALES ASSOCIATE</div>
-                        <div class="company">RC COLA</div>
-                        <div class="application-status status-rejected">Rejected</div>
-                        <div class="job-details"> 
-                            <span><i class="fas fa-calendar"> Applied on: March 10,2023</i></span>
-                        </div>
-                        <button class="view-btn" onclick="showJobDetails()">View Job</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="employee-applications" class="hidden">
-                <div class="section-title">
-                    <span>Job Applications</span>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-content">
-                        <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
-                        <div class="company">ALORICA</div>
-
-                        <div class="applicant-info">
-                            <div class="applicant-name">Maria Santos</div>
-                            <div class="applicant-details">3 years experience in customer service</div>
-                            <div class="application-status status-pending">Pending</div>
-                            <div class="action-buttons">
-                                <button class="action-btn approve-btn" onclick="approveApplication(this)">Approve</button>
-                                <button class="action-btn reject-btn" onclick="rejectApplication(this)">Reject</button>
-                                <button class="action-btn save-btn" onclick="saveApplicant(this)">Save</button>
+                    
+                    <div class="job-cards">
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
+                                <div class="job-type">Full Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
+                                <div class="company">ALORICA</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Clark</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱18,000 - ₱22,000</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
                             </div>
                         </div>
-
-                        <div class="applicant-info">
-                            <div class="applicant-name">John Doe</div>
-                            <div class="applicant-details">5 years in call center</div>
-                            <div class="applicant-status status-approved">Approved</div>
-                            <div class="action-buttons">
-                                <button class="action-btn save-btn" onclick="saveApplicant(this)">Save</button>
-                                <button class="action-btn remove-btn" onclick="removeApplicant(this)">Remove</button>
+                        
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/10b981/white?text=FAVERTON');">
+                                <div class="job-type">Full Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">9 Open Positions</div>
+                                <div class="company">FAVERTON GROUP INC.</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> San Fernando</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱16,000 - ₱25,000</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-content">
-                        <div class="job-title">MARKETING SPECIALIST</div>
-                        <div class="company">FAVERTON GROUP INC.</div>
-
-                        <div class="applicant-info">
-                            <div class="applicant-name">Anna Reyes</div>
-                            <div class="applicant-details">4 years experience in marketing</div>
-                            <div class="application-status status-rejected">Rejected</div>
-                            <div class="action-buttons">
-                                <button class="action-btn approve-btn" onclick="approveApplication(this)">Approve</button>
-                                <button class="action-btn save-btn" onclick="saveApplicant(this)">Save</button>
+                        
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/ef4444/white?text=ASIA+BREWERY');">
+                                <div class="job-type">Full Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">3 Open Position</div>
+                                <div class="company">Asia Brewery Inc.</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Pampanga</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱17,000 - ₱23,000</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/f59e0b/white?text=RC+COLA');">
+                                <div class="job-type">Part Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">4 Open Position</div>
+                                <div class="company">RC COLA</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Pampanga</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱12,000 - ₱15,000</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div id="saved-jobs-view" class="hidden">
-        <div class="page-header">
-            <div class="back-btn" onclick="goback()">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-            <div class="logo">
-                <span>Saved</span>
-            </div>
-            <div class="header-icons">
-                <i class="fas fa-ellipsis-v"></i>
-            </div>
-        </div>
-
-        <div class="page-content">
-            <div id="applicant-saved-jobs" class="hidden">
-                <div class="section-title">
-                    <span>Your Saved Jobs</span>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-image" style="background-image: url ('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
-                        <div class="job-type">Full Time</div>
+            
+            <div id="my-applications-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
                     </div>
-                    <div class="job-content">
-                        <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
-                        <div class="company">ALORICA</div>
-                        <div class="job-details">
-                            <span><i class="fas fa-map-marker-alt"></i> Clark</span>
-                            <span><i class="fas fa-money-bill-wave"></i>₱18,000 - ₱22,000</span>
-                        </div>
-                        <div class="action-buttons">
-                            <button class="view-btn" onclick="showJobDetails()">Apply Now</button>
-                            <button class="action-btn remove-btn" onclick="removeSavedJobs(this)">Remove</button>
-                        </div>
-                    </div> 
-                </div>
-
-                <div class="job-card">
-                    <div class="job-image" style="background-image: rl('https://placehold.co/600x400/10b981/white?text=FAVERTON');">
-                        <div class="job-type">Full Time</div>
+                    <div class="logo">
+                        <span>My Applications</span>
                     </div>
-                    <div class="job-content">
-                        <div class="job-title">MARKETING SPECIALIST</div>
-                        <div class="company">FAVERTON GROUP INC.</div>
-                        <div class="job-details">
-                            <span><i class="fas fa-map-marker-alt"></i> San Fernando</span>
-                            <span><i class="fas fa-money-bill-wave"></i> ₱20,000 - ₱25,000</span>
-                        </div>
-                        <div class="action-buttons">
-                            <button class="view-btn" onclick="showJobDetails()">Apply Now</button>
-                            <button class="action-btn remove-btn" onclick="removeSavedJobs(this)">Remove</button>
-                        </div>
+                    <div class="header-icons">
+                        <i class="fas fa-filter"></i>
                     </div>
                 </div>
-            </div>
-
-            <div id="employee-saved-applicants" class="hidden">
-                <div class="section-title">
-                    <span>Saved Applicants</span>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-content">
-                        <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
-
-                        <div class="applicant-info">
-                            <div class="applicant-name">Maria Santos</div>
-                            <div class="applicant-details"> 3 years experience in customer service</div>
-                            <div class="application-status status-approved">Approved</div>
-                            <div class="action-buttons">
-                                <button class="view-btn" onclick="scheduleInterview(this)">Schedule Interview</button>
-                                <button class="action-btn remove-btn" onclick="removeSavedApplicant(this)">Remove</button>
+                
+                <div class="page-content">
+                    <div id="applicant-applications" class="hidden">
+                        <div class="section-title">
+                            <span>Your Job Applications</span>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
+                                <div class="company">ALORICA</div>
+                                <div class="application-status status-pending">Pending Review</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-calendar"></i> Applied on: March 15, 2023</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
                             </div>
                         </div>
-
-                        <div class="applicant-info">
-                            <div class="applicant-name">John Doe</div>
-                            <div class="applicant-details">5 years experience in call center</div>
-                            <div class="application-status status-approved">Approved</div>
-                            <div class="action-buttons">
-                                <button class="view-btn" onclick="scheduleInterview(this)">Schedule Interview</button>
-                                <button class="action-btn remove-btn" onclick="removeSavedApplicant(this)">Remove</button>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">MARKETING SPECIALIST</div>
+                                <div class="company">FAVERTON GROUP INC.</div>
+                                <div class="application-status status-approved">Approved</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-calendar"></i> Applied on: March 10, 2023</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">SALES ASSOCIATE</div>
+                                <div class="company">RC COLA</div>
+                                <div class="application-status status-rejected">Rejected</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-calendar"></i> Applied on: March 5, 2023</span>
+                                </div>
+                                <button class="view-btn" onclick="showJobDetails()">View Job</button>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-content">
-                        <div class="job-title">MARKETING SPECIALIST</div>
-
-                        <div class="applicant-info">
-                            <div class="applicant-name">Anna Reyes</div>
-                            <div class="applicant-details">4 years experience in marketing</div>
-                            <div class="application-status status-pending">Pending</div>
-                            <div class="action-buttons">
-                                <button class="view-btn" onclick="scheduleInterview(this)">Schedule Interview</button>
-                                <button class="action-btn remove-btn" onclick="removeSavedApplicant(this)">Remove</button>
+                    
+                    <div id="employee-applications" class="hidden">
+                        <div class="section-title">
+                            <span>Job Applications</span>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
+                                <div class="company">ALORICA</div>
+                                
+                                <div class="applicant-info">
+                                    <div class="applicant-name">Maria Santos</div>
+                                    <div class="applicant-details">3 years experience in customer service</div>
+                                    <div class="application-status status-pending">Pending</div>
+                                    <div class="action-buttons">
+                                        <button class="action-btn approve-btn" onclick="approveApplication(this)">Approve</button>
+                                        <button class="action-btn reject-btn" onclick="rejectApplication(this)">Reject</button>
+                                        <button class="action-btn save-btn" onclick="saveApplicant(this)">Save</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="applicant-info">
+                                    <div class="applicant-name">John Doe</div>
+                                    <div class="applicant-details">5 years experience in call center</div>
+                                    <div class="application-status status-approved">Approved</div>
+                                    <div class="action-buttons">
+                                        <button class="action-btn save-btn" onclick="saveApplicant(this)">Save</button>
+                                        <button class="action-btn remove-btn" onclick="removeApplicant(this)">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">MARKETING SPECIALIST</div>
+                                <div class="company">FAVERTON GROUP INC.</div>
+                                
+                                <div class="applicant-info">
+                                    <div class="applicant-name">Anna Reyes</div>
+                                    <div class="applicant-details">4 years experience in marketing</div>
+                                    <div class="application-status status-rejected">Rejected</div>
+                                    <div class="action-buttons">
+                                        <button class="action-btn approve-btn" onclick="approveApplication(this)">Approve</button>
+                                        <button class="action-btn save-btn" onclick="saveApplicant(this)">Save</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <div id="saved-jobs-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Saved</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                
+                <div class="page-content">
+                    <div id="applicant-saved-jobs" class="hidden">
+                        <div class="section-title">
+                            <span>Your Saved Jobs</span>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
+                                <div class="job-type">Full Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
+                                <div class="company">ALORICA</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Clark</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱18,000 - ₱22,000</span>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="view-btn" onclick="showJobDetails()">Apply Now</button>
+                                    <button class="action-btn remove-btn" onclick="removeSavedJob(this)">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/10b981/white?text=FAVERTON');">
+                                <div class="job-type">Full Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">MARKETING SPECIALIST</div>
+                                <div class="company">FAVERTON GROUP INC.</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> San Fernando</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱20,000 - ₱25,000</span>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="view-btn" onclick="showJobDetails()">Apply Now</button>
+                                    <button class="action-btn remove-btn" onclick="removeSavedJob(this)">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="employee-saved-applicants" class="hidden">
+                        <div class="section-title">
+                            <span>Saved Applicants</span>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
+                                
+                                <div class="applicant-info">
+                                    <div class="applicant-name">Maria Santos</div>
+                                    <div class="applicant-details">3 years experience in customer service</div>
+                                    <div class="application-status status-approved">Approved</div>
+                                    <div class="action-buttons">
+                                        <button class="view-btn" onclick="scheduleInterview(this)">Schedule Interview</button>
+                                        <button class="action-btn remove-btn" onclick="removeSavedApplicant(this)">Remove</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="applicant-info">
+                                    <div class="applicant-name">John Doe</div>
+                                    <div class="applicant-details">5 years experience in call center</div>
+                                    <div class="application-status status-approved">Approved</div>
+                                    <div class="action-buttons">
+                                        <button class="view-btn" onclick="scheduleInterview(this)">Schedule Interview</button>
+                                        <button class="action-btn remove-btn" onclick="removeSavedApplicant(this)">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">MARKETING SPECIALIST</div>
+                                
+                                <div class="applicant-info">
+                                    <div class="applicant-name">Anna Reyes</div>
+                                    <div class="applicant-details">4 years experience in marketing</div>
+                                    <div class="application-status status-pending">Pending</div>
+                                    <div class="action-buttons">
+                                        <button class="view-btn" onclick="scheduleInterview(this)">Schedule Interview</button>
+                                        <button class="action-btn remove-btn" onclick="removeSavedApplicant(this)">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="profile-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Profile</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-edit" onclick="editProfile()"></i>
+                    </div>
+                </div>
+                
+                <div class="profile-section">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h2 id="profile-name">Juan Dela Cruz</h2>
+                            <p id="profile-role">Applicant</p>
+                            <p id="profile-location">San Fernando, Pampanga</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-info-section">
+                        <div class="info-group">
+                            <div class="info-label">Email</div>
+                            <div class="info-value" id="profile-email">juan.delacruz@example.com</div>
+                        </div>
+                        
+                        <div class="info-group">
+                            <div class="info-label">Phone</div>
+                            <div class="info-value" id="profile-phone">+63 912 345 6789</div>
+                        </div>
+                        
+                        <div class="info-group">
+                            <div class="info-label">About Me</div>
+                            <div class="info-value" id="profile-about">Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-info-section">
+                        <div class="info-group">
+                            <div class="info-label">Resume</div>
+                            <div class="resume-preview">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Juan_Dela_Cruz_Resume.pdf</span>
+                                <span class="remove-resume" onclick="removeResume()">Remove</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-info-section">
+                        <div class="toggle-item">
+                            <div class="toggle-label">
+                                <div class="info-label">Email Notifications</div>
+                                <div class="info-value">Receive updates about your applications</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="toggle-item">
+                            <div class="toggle-label">
+                                <div class="info-label">Job Alerts</div>
+                                <div class="info-value">Get notified about new job matches</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <div id="edit-profile-view" class="hidden">
+                <div class="edit-profile-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Edit Profile</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-check" onclick="saveProfile()"></i>
+                    </div>
+                </div>
+                
+                <div class="edit-profile-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="edit-name" value="Juan Dela Cruz">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="edit-email" value="juan.delacruz@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" id="edit-phone" value="+63 912 345 6789">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="edit-location" value="San Fernando, Pampanga">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>About Me</label>
+                        <textarea id="edit-about" rows="4">Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Resume</label>
+                        <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload your resume</p>
+                            <input type="file" id="resume-upload" accept=".pdf,.doc,.docx" style="display: none;">
+                        </div>
+                    </div>
+                    
+                    <button class="save-profile-btn" onclick="saveProfile()">Save Changes</button>
+                </div>
+            </div>
+            
+            <div id="job-details-view" class="hidden">
+                <div class="job-detail-header" style="background-image: url('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div>
+                        <h2>CUSTOMER SERVICE REPRESENTATIVE</h2>
+                        <p>ALORICA • Clark, Pampanga</p>
+                    </div>
+                </div>
+                
+                <div class="application-form">
+                    <div class="form-section">
+                        <div class="form-section-title">Job Description</div>
+                        <p>We are looking for a Customer Service Representative to join our team. You will be responsible for handling customer inquiries, providing information about our products and services, and resolving any issues that arise.</p>
+                        
+                        <h3>Responsibilities:</h3>
+                        <ul>
+                            <li>Respond to customer inquiries via phone, email, and chat</li>
+                            <li>Provide information about products and services</li>
+                            <li>Resolve customer complaints and issues</li>
+                            <li>Maintain customer records and update account information</li>
+                        </ul>
+                        
+                        <h3>Requirements:</h3>
+                        <ul>
+                            <li>High school diploma or equivalent</li>
+                            <li>Excellent communication skills</li>
+                            <li>Ability to work in a fast-paced environment</li>
+                            <li>Customer service experience preferred</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="form-section-title">Salary & Benefits</div>
+                        <p><strong>Salary:</strong> ₱18,000 - ₱22,000 per month</p>
+                        <p><strong>Benefits:</strong> Health insurance, Paid time off, Retirement plan</p>
+                    </div>
+                    
+                    <button class="view-btn" onclick="showApplicationForm()">Apply Now</button>
+                </div>
+            </div>
+            
+            <div id="application-form-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Application Form</span>
+                    </div>
+                </div>
+                
+                <div class="application-form">
+                    <div class="form-section">
+                        <div class="form-section-title">Personal Information</div>
+                        
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" value="Juan Dela Cruz" readonly>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="juan.delacruz@example.com" readonly>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" value="+63 912 345 6789" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="form-section-title">Resume</div>
+                        <div class="resume-preview">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Juan_Dela_Cruz_Resume.pdf</span>
+                            <span class="remove-resume" onclick="changeResume()">Change</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="form-section-title">Cover Letter</div>
+                        <div class="form-group">
+                            <textarea placeholder="Write a cover letter (optional)" rows="5"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button class="view-btn" onclick="submitApplication()">Submit Application</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom-nav">
+            <div class="nav-btn active" onclick="showSection('applicant-view')">
+                <i class="fas fa-home"></i>
+                <div>Home</div>
+            </div>
+            <div class="nav-btn" onclick="showSection('my-applications-view')">
+                <i class="fas fa-file-alt"></i>
+                <div>My Applications</div>
+            </div>
+            <div class="nav-btn" onclick="showSection('saved-jobs-view')">
+                <i class="fas fa-bookmark"></i>
+                <div>Saved</div>
+            </div>
+            <div class="nav-btn" onclick="showSection('profile-view')">
+                <i class="fas fa-user"></i>
+                <div>Profile</div>
+            </div>
         </div>
     </div>
-
-    <div id="profile-view" class="hidden">
-        <div class="page-header">
-            <div class="back-btn" onclick="goBack()">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-            <div class="logo">
-                <span>Profile</span>
-            </div>
-            <div class="header-icons">
-                <i class="fas fa-edit" onclick="editProfile()"></i>
-            </div>
-        </div>
-
-        <div class="profile-section">
-            <div class="profile-header">
-                <div class="profile-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="profile-info">
-                    <h2 id="profile-name">Juan Dela Cruz</h2>
-                    <p id="profile-role">Applicant</p>
-                    <p id="profile-location">San Fernando, Pampanga</p>
-                </div>
-            </div>
-
-            <div class="profile-info-section">
-                <div class="info-group">
-                    <div class="info-label">Email</div>
-                    <div class="info-value" id="profile-email">juan.delacruz@example.com</div>
-                </div>
-
-                <div class="info-group">
-                    <div class="info-label">Phone</div>
-                    <div class="info-value" id="profile-phone">+63 912 345 6789</div>
-                </div>
-
-                <div class="info-group">
-                    <div class="info-label">About Me</div>
-                    <div class="info-value" id="profile-about">Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.</div>
-                </div>
-            </div>
-
-                <div></div>                    
-        </div>
-    </div>
-
 
 </body>
 </html>
