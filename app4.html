@@ -1,0 +1,3973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMPLOYMENT CORNER - FERNANDINO! Tara Magobra</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .app-container {
+            background: white;
+            min-height: 100vh;
+            padding-bottom: 70px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(to right, #51aee4, #4555e7);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .header-icons i {
+            margin-left: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .nav-container {
+            background: white;
+            padding: 10px 15px;
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-item {
+            padding: 8px 15px;
+            margin-right: 10px;
+            border-radius: 20px;
+            background: #f5f5f5;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .nav-item.active {
+            background: #0603bd;
+            color: white;
+        }
+        
+        .content {
+            padding: 15px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .view-all {
+            color: #2256ff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .auth-container {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-bottom: 2px solid #eee;
+            cursor: pointer;
+        }
+        
+        .auth-tab.active {
+            border-bottom: 2px solid #1629d8e3;
+            color: #164ce2;
+            font-weight: 600;
+        }
+        
+        .auth-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .auth-form button {
+            width: 100%;
+            padding: 12px;
+            background: #225dff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        
+        .google-btn {
+            background: white;
+            color: #757575;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .google-btn img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        
+        .job-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .job-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .job-image {
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .job-type {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #0e37a8;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .job-content {
+            padding: 15px;
+        }
+        
+        .job-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .company {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .job-details {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        
+        .job-details span {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .view-btn {
+            background: #1744da;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+        
+        .user-type-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .user-type-title {
+            font-size: 22px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .user-type-cards {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .user-type-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 45%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .user-type-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .user-type-card i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #1a1de7;
+        }
+        
+        .user-type-card h3 {
+            margin-bottom: 10px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            background: white;
+            border-top: 1px solid #eee;
+            padding: 10px 0;
+            z-index: 100;
+        }
+        
+        .nav-btn {
+            flex: 1;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .nav-btn.active {
+            color: #2231ff;
+        }
+        
+        .nav-btn i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .applicant-info {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .applicant-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .applicant-details {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .job-detail-header {
+            position: relative;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            background-blend-mode: darken;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .application-form {
+            padding: 15px;
+        }
+        
+        .form-section {
+            margin-bottom: 20px;
+        }
+        
+        .form-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .file-upload {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .file-upload i {
+            font-size: 24px;
+            color: #225dff;
+            margin-bottom: 10px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .modal-btn.cancel {
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .modal-btn.confirm {
+            background: #225dff;
+            color: white;
+        }
+        
+        .profile-section {
+            padding: 15px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #666;
+            margin-right: 15px;
+        }
+        
+        .profile-info h2 {
+            margin-bottom: 5px;
+        }
+        
+        .profile-info p {
+            color: #666;
+        }
+        
+        .profile-menu {
+            list-style: none;
+        }
+        
+        .profile-menu li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .profile-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .profile-menu a {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .profile-menu i {
+            color: #666;
+        }
+
+        .notification-panel {
+            position: fixed;
+            top: 60px;
+            right: 10px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 15px;
+            display: none;
+        }
+
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-panel {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: white;
+            z-index: 1000;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            min-height: calc(100vh - 130px);
+            overflow-y: auto;
+        }
+        
+        .logout-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .profile-info-section {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .info-group {
+            margin-bottom: 15px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #225dff;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .toggle-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .toggle-item:last-child {
+            border-bottom: none;
+        }
+        
+        .toggle-label {
+            flex-grow: 1;
+        }
+        
+        .edit-btn {
+            background: #f5f5f5;
+            color: #333;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .section-divider {
+            height: 10px;
+            background: #f5f5f5;
+            margin: 15px -15px;
+        }
+        
+        .edit-profile-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(to right, #51aee4, #4555e7);
+            color: white;
+        }
+        
+        .edit-profile-form {
+            padding: 15px;
+        }
+        
+        .save-profile-btn {
+            background: #225dff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .resume-preview {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .resume-preview i {
+            margin-right: 10px;
+            color: #225dff;
+        }
+        
+        .remove-resume {
+            color: #ff4d4d;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .page-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(to right, #51aee4, #4555e7);
+            color: white;
+        }
+        
+        .page-content {
+            padding: 15px;
+        }
+        
+        .application-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-approved {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+        
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+        
+        .empty-state p {
+            margin-bottom: 20px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .action-btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .approve-btn {
+            background: #28a745;
+            color: white;
+        }
+        
+        .reject-btn {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .save-btn {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .remove-btn {
+            background: #6c757d;
+            color: white;
+        }
+        
+        /* New styles for interview scheduling */
+        .interview-form {
+            padding: 15px;
+        }
+        
+        .interview-details {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .sms-preview {
+            background: #e6f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #1890ff;
+        }
+        
+        /* Employee main page styles */
+        .applicant-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .applicant-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .applicant-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #666;
+            margin-right: 15px;
+        }
+        
+        .applicant-main-info h3 {
+            margin-bottom: 5px;
+        }
+        
+        .applicant-main-info p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .applicant-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .skill-tag {
+            background: #e9ecef;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #495057;
+        }
+        
+        .applicant-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-btn-small {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            border: none;
+            flex: 1;
+        }
+        
+        .view-applicant-btn {
+            background: #225dff;
+            color: white;
+        }
+        
+        .save-applicant-btn {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        /* Application Details View */
+        .application-details-view {
+            padding: 15px;
+        }
+        
+        .application-details-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .application-details-section {
+            margin-bottom: 20px;
+        }
+        
+        .application-details-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .application-details-section h3 {
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .application-detail-item {
+            margin-bottom: 10px;
+        }
+        
+        .application-detail-label {
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .application-detail-value {
+            color: #333;
+            font-size: 16px;
+        }
+        
+        /* SMS/Email Integration Styles */
+        .integration-status {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .integration-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .integration-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .integration-loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        /* NEW STYLES FOR ENHANCED FEATURES */
+        
+        /* Applicant Details Page */
+        .applicant-details-page {
+            padding: 15px;
+        }
+        
+        .applicant-details-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .applicant-details-section {
+            margin-bottom: 20px;
+        }
+        
+        .applicant-details-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .applicant-details-section h3 {
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .applicant-detail-item {
+            margin-bottom: 10px;
+        }
+        
+        .applicant-detail-label {
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .applicant-detail-value {
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 5px;
+        }
+        
+        /* Profile Picture Styles */
+        .profile-picture-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+        }
+        
+        .profile-picture {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #225dff;
+        }
+        
+        .profile-picture-actions {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            display: flex;
+            gap: 5px;
+        }
+        
+        .picture-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #225dff;
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        /* Resume Preview Styles */
+        .resume-preview-container {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px dashed #ddd;
+        }
+        
+        .resume-preview-file {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        
+        .resume-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .resume-action-btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .view-resume-btn {
+            background: #225dff;
+            color: white;
+        }
+        
+        .remove-resume-btn {
+            background: #ff4d4d;
+            color: white;
+        }
+        
+        /* Interview Scheduled Card */
+        .interview-scheduled-card {
+            background: #e6f7ff;
+            border-left: 4px solid #1890ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .interview-scheduled-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1890ff;
+        }
+        
+        /* Application Status on Job Cards */
+        .application-status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .status-applied {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        /* Search Results Styles */
+        .search-results-container {
+            padding: 15px;
+        }
+        
+        .search-result-item {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Enhanced Profile Form */
+        .profile-form-section {
+            margin-bottom: 20px;
+        }
+        
+        .profile-form-section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .education-item, .experience-item {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .add-item-btn {
+            background: #f5f5f5;
+            color: #333;
+            border: 1px dashed #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        /* Camera Modal */
+        .camera-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            display: none;
+        }
+        
+        .camera-container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .camera-preview {
+            width: 100%;
+            height: 400px;
+            background: #333;
+        }
+        
+        .camera-actions {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .camera-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .camera-capture {
+            background: #225dff;
+            color: white;
+            border: none;
+        }
+        
+        .camera-cancel {
+            background: #f5f5f5;
+            color: #333;
+            border: none;
+        }
+        
+        /* Chat System Styles */
+        .chat-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 350px;
+            height: 450px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .chat-header {
+            background: linear-gradient(to right, #51aee4, #4555e7);
+            color: white;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-title {
+            font-weight: 600;
+        }
+        
+        .chat-close {
+            cursor: pointer;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 8px 12px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .message.sent {
+            align-self: flex-end;
+            background: #225dff;
+            color: white;
+        }
+        
+        .message.received {
+            align-self: flex-start;
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .chat-input-container {
+            padding: 10px 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .chat-send {
+            background: #225dff;
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .chat-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #225dff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 999;
+        }
+        
+        .chat-toggle i {
+            font-size: 24px;
+        }
+        
+        .notification-item.unread {
+            background-color: #f0f8ff;
+            border-left: 3px solid #225dff;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+                <span>EMPLOYMENT CORNER</span>
+            </div>
+            <div class="header-icons">
+                <i class="fas fa-search" id="search-icon"></i>
+                <i class="fas fa-bell" id="notification-icon"></i>
+            </div>
+        </div>
+
+        <div class="notification-panel" id="notification-panel">
+            <h3>Notifications</h3>
+            <div id="notification-list">
+                <!-- Notifications will be dynamically populated -->
+            </div>
+        </div>
+
+        <div class="search-panel" id="search-panel">
+            <input type="text" class="search-input" placeholder="Search for jobs, companies, or keywords">
+            <div class="view-btn" onclick="performSearch()">Search</div>
+        </div>
+        
+        <div class="main-content">
+            <!-- Authentication Section -->
+            <div id="auth-section">
+                <div class="auth-container">
+                    <div class="auth-tabs">
+                        <div class="auth-tab active" id="login-tab">Login</div>
+                        <div class="auth-tab" id="signup-tab">Sign Up</div>
+                    </div>
+                    
+                    <div class="auth-form" id="login-form">
+                        <input type="text" placeholder="Email or Username" id="login-email">
+                        <input type="password" placeholder="Password" id="login-password">
+                        <button onclick="login()">Login</button>
+                        <button class="google-btn" onclick="loginWithGoogle()">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                            Sign in with Google
+                        </button>
+                    </div>
+                    
+                    <div class="auth-form hidden" id="signup-form">
+                        <input type="text" placeholder="Full Name" id="signup-name">
+                        <input type="email" placeholder="Email" id="signup-email">
+                        <input type="password" placeholder="Password" id="signup-password">
+                        <input type="password" placeholder="Confirm Password" id="signup-confirm">
+                        <button onclick="signup()">Sign Up</button>
+                        <button class="google-btn" onclick="signupWithGoogle()">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                            Sign up with Google
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- User Type Selection (Only shown after signup) -->
+            <div id="user-type-section" class="hidden">
+                <div class="user-type-container">
+                    <h2 class="user-type-title">Select Your Role</h2>
+                    <div class="user-type-cards">
+                        <div class="user-type-card" onclick="selectUserType('applicant')">
+                            <i class="fas fa-user-graduate"></i>
+                            <h3>Applicant</h3>
+                            <p>Looking for jobs</p>
+                        </div>
+                        <div class="user-type-card" onclick="selectUserType('employee')">
+                            <i class="fas fa-user-tie"></i>
+                            <h3>Employee</h3>
+                            <p>Hiring talent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Applicant Main View -->
+            <div id="applicant-view" class="hidden">
+                <div class="nav-container">
+                    <div class="nav-item active" onclick="changeCategory('all')">All Jobs</div>
+                    <div class="nav-item" onclick="changeCategory('tech')">Tech</div>
+                    <div class="nav-item" onclick="changeCategory('marketing')">Marketing</div>
+                    <div class="nav-item" onclick="changeCategory('sales')">Sales</div>
+                    <div class="nav-item" onclick="changeCategory('finance')">Finance</div>
+                </div>
+                
+                <div class="content">
+                    <div class="section-title">
+                        <span>Recommended for you</span>
+                        <span class="view-all">View all</span>
+                    </div>
+                    
+                    <div class="job-cards" id="job-cards-container">
+                        <!-- Job cards will be dynamically populated based on category -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Employee Main View -->
+            <div id="employee-view" class="hidden">
+                <div class="nav-container">
+                    <div class="nav-item active" onclick="changeApplicantFilter('all')">All Applicants</div>
+                    <div class="nav-item" onclick="changeApplicantFilter('pending')">Pending Review</div>
+                    <div class="nav-item" onclick="changeApplicantFilter('approved')">Approved</div>
+                    <div class="nav-item" onclick="changeApplicantFilter('rejected')">Rejected</div>
+                </div>
+                
+                <div class="content">
+                    <div class="section-title">
+                        <span>Applicants</span>
+                        <span class="view-all">View all</span>
+                    </div>
+                    
+                    <div id="applicants-container">
+                        <!-- Applicant cards will be dynamically populated -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- My Applications View -->
+            <div id="my-applications-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>My Applications</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                </div>
+                
+                <div class="page-content">
+                    <div id="applicant-applications">
+                        <div class="section-title">
+                            <span>Your Job Applications</span>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
+                                <div class="company">ALORICA</div>
+                                <div class="application-status status-pending">Pending Review</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-calendar"></i> Applied on: March 15, 2023</span>
+                                </div>
+                                <button class="view-btn" onclick="showApplicationDetails('customer-service')">View Application</button>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">MARKETING SPECIALIST</div>
+                                <div class="company">FAVERTON GROUP INC.</div>
+                                <div class="application-status status-approved">Approved</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-calendar"></i> Applied on: March 10, 2023</span>
+                                </div>
+                                <button class="view-btn" onclick="showApplicationDetails('marketing-specialist')">View Application</button>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">SALES ASSOCIATE</div>
+                                <div class="company">RC COLA</div>
+                                <div class="application-status status-rejected">Rejected</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-calendar"></i> Applied on: March 5, 2023</span>
+                                </div>
+                                <button class="view-btn" onclick="showApplicationDetails('sales-associate')">View Application</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Application Details View -->
+            <div id="application-details-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Application Details</span>
+                    </div>
+                </div>
+                
+                <div class="application-details-view">
+                    <div class="application-details-card">
+                        <div class="application-details-section">
+                            <h3>Job Information</h3>
+                            <div class="application-detail-item">
+                                <div class="application-detail-label">Position</div>
+                                <div class="application-detail-value" id="detail-position">CUSTOMER SERVICE REPRESENTATIVE</div>
+                            </div>
+                            <div class="application-detail-item">
+                                <div class="application-detail-label">Company</div>
+                                <div class="application-detail-value" id="detail-company">ALORICA</div>
+                            </div>
+                            <div class="application-detail-item">
+                                <div class="application-detail-label">Application Date</div>
+                                <div class="application-detail-value" id="detail-date">March 15, 2023</div>
+                            </div>
+                            <div class="application-detail-item">
+                                <div class="application-detail-label">Status</div>
+                                <div class="application-detail-value">
+                                    <span class="application-status status-pending" id="detail-status">Pending Review</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="application-details-section">
+                            <h3>Personal Information</h3>
+                            <div class="application-detail-item">
+                                <div class="application-detail-label">Full Name</div>
+                                <div class="application-detail-value" id="detail-name">Juan Dela Cruz</div>
+                            </div>
+                            <div class="application-detail-item">
+                                <div class="application-detail-label">Email</div>
+                                <div class="application-detail-value" id="detail-email">juan.delacruz@example.com</div>
+                            </div>
+                            <div class="application-detail-item">
+                                <div class="application-detail-label">Phone</div>
+                                <div class="application-detail-value" id="detail-phone">+63 912 345 6789</div>
+                            </div>
+                            <div class="application-detail-item">
+                                <div class="application-detail-label">Address</div>
+                                <div class="application-detail-value" id="detail-address">123 Main Street, San Fernando, Pampanga</div>
+                            </div>
+                        </div>
+                        
+                        <div class="application-details-section">
+                            <h3>Application Materials</h3>
+                            <div class="application-detail-item">
+                                <div class="application-detail-label">Resume</div>
+                                <div class="application-detail-value">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span id="detail-resume">Juan_Dela_Cruz_Resume.pdf</span>
+                                </div>
+                            </div>
+                            <div class="application-detail-item">
+                                <div class="application-detail-label">Cover Letter</div>
+                                <div class="application-detail-value" id="detail-cover-letter">
+                                    Dear Hiring Manager,<br><br>
+                                    I am excited to apply for the Customer Service Representative position at ALORICA. With 5 years of experience in customer service, I am confident in my ability to provide exceptional support to your customers.<br><br>
+                                    Thank you for considering my application.<br><br>
+                                    Sincerely,<br>
+                                    Juan Dela Cruz
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Saved Jobs/Applicants View -->
+            <div id="saved-jobs-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Saved</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                
+                <div class="page-content">
+                    <div id="applicant-saved-jobs" class="hidden">
+                        <div class="section-title">
+                            <span>Your Saved Jobs</span>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
+                                <div class="job-type">Full Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
+                                <div class="company">ALORICA</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Clark</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱18,000 - ₱22,000</span>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="view-btn" onclick="showJobDetails('customer-service')">Apply Now</button>
+                                    <button class="action-btn remove-btn" onclick="removeSavedJob(this)">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-image" style="background-image: url('https://placehold.co/600x400/10b981/white?text=FAVERTON');">
+                                <div class="job-type">Full Time</div>
+                            </div>
+                            <div class="job-content">
+                                <div class="job-title">MARKETING SPECIALIST</div>
+                                <div class="company">FAVERTON GROUP INC.</div>
+                                <div class="job-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> San Fernando</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> ₱20,000 - ₱25,000</span>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="view-btn" onclick="showJobDetails('marketing-specialist')">Apply Now</button>
+                                    <button class="action-btn remove-btn" onclick="removeSavedJob(this)">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="employee-saved-applicants" class="hidden">
+                        <div class="section-title">
+                            <span>Saved Applicants</span>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">CUSTOMER SERVICE REPRESENTATIVE</div>
+                                
+                                <div class="applicant-info">
+                                    <div class="applicant-name">Maria Santos</div>
+                                    <div class="applicant-details">3 years experience in customer service</div>
+                                    <div class="applicant-phone">Phone: +63 912 345 6789</div>
+                                    <div class="application-status status-approved">Approved</div>
+                                    <div class="action-buttons">
+                                        <button class="view-btn" onclick="showScheduleInterview('Maria Santos', '+63 912 345 6789')">Schedule Interview</button>
+                                        <button class="action-btn remove-btn" onclick="removeSavedApplicant(this)">Remove</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="applicant-info">
+                                    <div class="applicant-name">John Doe</div>
+                                    <div class="applicant-details">5 years experience in call center</div>
+                                    <div class="applicant-phone">Phone: +63 923 456 7890</div>
+                                    <div class="application-status status-approved">Approved</div>
+                                    <div class="action-buttons">
+                                        <button class="view-btn" onclick="showScheduleInterview('John Doe', '+63 923 456 7890')">Schedule Interview</button>
+                                        <button class="action-btn remove-btn" onclick="removeSavedApplicant(this)">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-content">
+                                <div class="job-title">MARKETING SPECIALIST</div>
+                                
+                                <div class="applicant-info">
+                                    <div class="applicant-name">Anna Reyes</div>
+                                    <div class="applicant-details">4 years experience in marketing</div>
+                                    <div class="applicant-phone">Phone: +63 934 567 8901</div>
+                                    <div class="application-status status-pending">Pending</div>
+                                    <div class="action-buttons">
+                                        <button class="view-btn" onclick="showScheduleInterview('Anna Reyes', '+63 934 567 8901')">Schedule Interview</button>
+                                        <button class="action-btn remove-btn" onclick="removeSavedApplicant(this)">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile View -->
+            <div id="profile-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Profile</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-edit" onclick="editProfile()"></i>
+                    </div>
+                </div>
+                
+                <div class="profile-section">
+                    <div class="profile-header">
+                        <div class="profile-avatar" id="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h2 id="profile-name">Juan Dela Cruz</h2>
+                            <p id="profile-role">Applicant</p>
+                            <p id="profile-location">San Fernando, Pampanga</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-info-section">
+                        <div class="info-group">
+                            <div class="info-label">Email</div>
+                            <div class="info-value" id="profile-email">juan.delacruz@example.com</div>
+                        </div>
+                        
+                        <div class="info-group">
+                            <div class="info-label">Phone</div>
+                            <div class="info-value" id="profile-phone">+63 912 345 6789</div>
+                        </div>
+                        
+                        <div class="info-group">
+                            <div class="info-label">Address</div>
+                            <div class="info-value" id="profile-address">123 Main Street, San Fernando, Pampanga</div>
+                        </div>
+                        
+                        <div class="info-group">
+                            <div class="info-label">About Me</div>
+                            <div class="info-value" id="profile-about">Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-info-section">
+                        <div class="info-group">
+                            <div class="info-label">Skills</div>
+                            <div class="skills-container" id="profile-skills">
+                                <!-- Skills will be dynamically populated -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-info-section">
+                        <div class="info-group">
+                            <div class="info-label">Resume</div>
+                            <div class="resume-preview-container" id="profile-resume-preview">
+                                <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload your resume</p>
+                                    <input type="file" id="resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleResumeUpload(this)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-info-section">
+                        <div class="toggle-item">
+                            <div class="toggle-label">
+                                <div class="info-label">Email Notifications</div>
+                                <div class="info-value">Receive updates about your applications</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="toggle-item">
+                            <div class="toggle-label">
+                                <div class="info-label">Job Alerts</div>
+                                <div class="info-value">Get notified about new job matches</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <!-- Edit Profile View -->
+            <div id="edit-profile-view" class="hidden">
+                <div class="edit-profile-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Edit Profile</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-check" onclick="saveProfile()"></i>
+                    </div>
+                </div>
+                
+                <div class="edit-profile-form">
+                    <div class="profile-picture-container">
+                        <div class="profile-avatar" id="edit-profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-picture-actions">
+                            <button class="picture-btn" onclick="document.getElementById('profile-picture-upload').click()">
+                                <i class="fas fa-upload"></i>
+                            </button>
+                            <button class="picture-btn" onclick="openCamera()">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                            <input type="file" id="profile-picture-upload" accept="image/*" style="display: none;" onchange="handleProfilePictureUpload(this)">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="edit-name" value="Juan Dela Cruz">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="edit-email" value="juan.delacruz@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" id="edit-phone" value="+63 912 345 6789">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" id="edit-address" value="123 Main Street, San Fernando, Pampanga">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="edit-location" value="San Fernando, Pampanga">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>About Me</label>
+                        <textarea id="edit-about" rows="4">Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.</textarea>
+                    </div>
+                    
+                    <div class="profile-form-section">
+                        <div class="profile-form-section-title">Skills</div>
+                        <div id="edit-skills">
+                            <!-- Skills inputs will be dynamically added -->
+                        </div>
+                        <button class="add-item-btn" onclick="addSkillInput()">Add Skill</button>
+                    </div>
+                    
+                    <div class="profile-form-section">
+                        <div class="profile-form-section-title">Education</div>
+                        <div id="edit-education">
+                            <!-- Education inputs will be dynamically added -->
+                        </div>
+                        <button class="add-item-btn" onclick="addEducationInput()">Add Education</button>
+                    </div>
+                    
+                    <div class="profile-form-section">
+                        <div class="profile-form-section-title">Experience</div>
+                        <div id="edit-experience">
+                            <!-- Experience inputs will be dynamically added -->
+                        </div>
+                        <button class="add-item-btn" onclick="addExperienceInput()">Add Experience</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Resume</label>
+                        <div class="resume-preview-container" id="edit-resume-preview">
+                            <div class="file-upload" onclick="document.getElementById('edit-resume-upload').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload your resume</p>
+                                <input type="file" id="edit-resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleEditResumeUpload(this)">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="save-profile-btn" onclick="saveProfile()">Save Changes</button>
+                </div>
+            </div>
+            
+            <!-- Job Details View -->
+            <div id="job-details-view" class="hidden">
+                <div class="job-detail-header" style="background-image: url('https://placehold.co/600x400/3b82f6/white?text=ALORICA');">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div>
+                        <h2>CUSTOMER SERVICE REPRESENTATIVE</h2>
+                        <p>ALORICA • Clark, Pampanga</p>
+                    </div>
+                </div>
+                
+                <div class="application-form">
+                    <div class="form-section">
+                        <div class="form-section-title">Job Description</div>
+                        <p>We are looking for a Customer Service Representative to join our team. You will be responsible for handling customer inquiries, providing information about our products and services, and resolving any issues that arise.</p>
+                        
+                        <h3>Responsibilities:</h3>
+                        <ul>
+                            <li>Respond to customer inquiries via phone, email, and chat</li>
+                            <li>Provide information about products and services</li>
+                            <li>Resolve customer complaints and issues</li>
+                            <li>Maintain customer records and update account information</li>
+                        </ul>
+                        
+                        <h3>Requirements:</h3>
+                        <ul>
+                            <li>High school diploma or equivalent</li>
+                            <li>Excellent communication skills</li>
+                            <li>Ability to work in a fast-paced environment</li>
+                            <li>Customer service experience preferred</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="form-section-title">Salary & Benefits</div>
+                        <p><strong>Salary:</strong> ₱18,000 - ₱22,000 per month</p>
+                        <p><strong>Benefits:</strong> Health insurance, Paid time off, Retirement plan</p>
+                    </div>
+                    
+                    <button class="view-btn" onclick="showApplicationForm()">Apply Now</button>
+                </div>
+            </div>
+            
+            <!-- Application Form View (Now Editable) -->
+            <div id="application-form-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Application Form</span>
+                    </div>
+                </div>
+                
+                <div class="application-form">
+                    <div class="form-section">
+                        <div class="form-section-title">Personal Information</div>
+                        
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="application-name" value="Juan Dela Cruz">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="application-email" value="juan.delacruz@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" id="application-phone" value="+63 912 345 6789">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" id="application-address" value="123 Main Street, San Fernando, Pampanga">
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="form-section-title">Resume</div>
+                        <div class="resume-preview-container" id="application-resume-preview">
+                            <div class="file-upload" onclick="document.getElementById('application-resume-upload').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload your resume</p>
+                                <input type="file" id="application-resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleApplicationResumeUpload(this)">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="form-section-title">Cover Letter</div>
+                        <div class="form-group">
+                            <textarea id="application-cover-letter" placeholder="Write a cover letter (optional)" rows="5">Dear Hiring Manager,
+
+I am excited to apply for the Customer Service Representative position at ALORICA. With 5 years of experience in customer service, I am confident in my ability to provide exceptional support to your customers.
+
+Thank you for considering my application.
+
+Sincerely,
+Juan Dela Cruz</textarea>
+                        </div>
+                    </div>
+                    
+                    <button class="view-btn" onclick="submitApplication()">Submit Application</button>
+                </div>
+            </div>
+            
+            <!-- Interview Scheduling View (Editable) -->
+            <div id="interview-scheduling-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Schedule Interview</span>
+                    </div>
+                </div>
+                
+                <div class="interview-form">
+                    <div class="form-section">
+                        <div class="form-section-title">Interview Details</div>
+                        
+                        <div class="form-group">
+                            <label>Applicant Name</label>
+                            <input type="text" id="interview-applicant" value="Maria Santos" readonly>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" id="interview-phone" value="+63 912 345 6789">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="interview-email" value="maria.santos@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Interview Date</label>
+                            <input type="date" id="interview-date">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Interview Time</label>
+                            <input type="time" id="interview-time" value="10:00">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Interview Location/Platform</label>
+                            <input type="text" id="interview-location" placeholder="e.g., Office, Zoom, Google Meet" value="ALORICA Main Office, Clark, Pampanga">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Interview Type</label>
+                            <select id="interview-type">
+                                <option value="phone">Phone Interview</option>
+                                <option value="video" selected>Video Interview</option>
+                                <option value="in-person">In-Person Interview</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Additional Details</label>
+                            <textarea id="interview-details" rows="4" placeholder="Any additional information for the applicant">Please bring a valid ID and your resume. The interview will be conducted by our HR Manager, Ms. Garcia. If you have any questions, feel free to contact us at +63 45 123 4567.</textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="sms-preview" id="sms-preview">
+                        <h4>SMS Preview:</h4>
+                        <p id="sms-content">Your interview details will appear here</p>
+                    </div>
+                    
+                    <div id="integration-status"></div>
+                    
+                    <button class="view-btn" onclick="sendInterviewInvitation()">Send Interview Invitation</button>
+                </div>
+            </div>
+            
+            <!-- Applicant Details View -->
+            <div id="applicant-details-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Applicant Details</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-comment" onclick="startChatWithApplicant()"></i>
+                    </div>
+                </div>
+                
+                <div class="applicant-details-page">
+                    <div class="applicant-details-card">
+                        <div class="applicant-details-section">
+                            <h3>Personal Information</h3>
+                            <div class="applicant-detail-item">
+                                <div class="applicant-detail-label">Full Name</div>
+                                <div class="applicant-detail-value" id="applicant-detail-name">Maria Santos</div>
+                            </div>
+                            <div class="applicant-detail-item">
+                                <div class="applicant-detail-label">Email</div>
+                                <div class="applicant-detail-value" id="applicant-detail-email">maria.santos@example.com</div>
+                            </div>
+                            <div class="applicant-detail-item">
+                                <div class="applicant-detail-label">Phone</div>
+                                <div class="applicant-detail-value" id="applicant-detail-phone">+63 912 345 6789</div>
+                            </div>
+                            <div class="applicant-detail-item">
+                                <div class="applicant-detail-label">Address</div>
+                                <div class="applicant-detail-value" id="applicant-detail-address">123 Main Street, San Fernando, Pampanga</div>
+                            </div>
+                        </div>
+                        
+                        <div class="applicant-details-section">
+                            <h3>Skills</h3>
+                            <div class="skills-container" id="applicant-detail-skills">
+                                <!-- Skills will be dynamically added -->
+                            </div>
+                        </div>
+                        
+                        <div class="applicant-details-section">
+                            <h3>Education</h3>
+                            <div id="applicant-detail-education">
+                                <!-- Education will be dynamically added -->
+                            </div>
+                        </div>
+                        
+                        <div class="applicant-details-section">
+                            <h3>Experience</h3>
+                            <div id="applicant-detail-experience">
+                                <!-- Experience will be dynamically added -->
+                            </div>
+                        </div>
+                        
+                        <div class="applicant-details-section">
+                            <h3>Resume</h3>
+                            <div class="resume-preview-container">
+                                <div class="resume-preview-file">
+                                    <div>
+                                        <i class="fas fa-file-pdf"></i>
+                                        <span id="applicant-detail-resume">Maria_Santos_Resume.pdf</span>
+                                    </div>
+                                    <div class="resume-actions">
+                                        <button class="resume-action-btn view-resume-btn" onclick="viewResume()">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="view-btn" onclick="saveApplicantForInterview()">Save for Interview</button>
+                        <button class="action-btn approve-btn" onclick="approveApplicant()">Approve</button>
+                        <button class="action-btn reject-btn" onclick="rejectApplicant()">Reject</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom-nav">
+            <div class="nav-btn active" id="home-nav-btn" onclick="showHomeSection()">
+                <i class="fas fa-home"></i>
+                <div>Home</div>
+            </div>
+            <div class="nav-btn" onclick="showSection('my-applications-view')">
+                <i class="fas fa-file-alt"></i>
+                <div>My Applications</div>
+            </div>
+            <div class="nav-btn" onclick="showSection('saved-jobs-view')">
+                <i class="fas fa-bookmark"></i>
+                <div>Saved</div>
+            </div>
+            <div class="nav-btn" onclick="showSection('profile-view')">
+                <i class="fas fa-user"></i>
+                <div>Profile</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Camera Modal for Profile Picture -->
+    <div class="camera-modal" id="camera-modal">
+        <div class="camera-container">
+            <video class="camera-preview" id="camera-preview" autoplay></video>
+            <div class="camera-actions">
+                <button class="camera-btn camera-cancel" onclick="closeCamera()">Cancel</button>
+                <button class="camera-btn camera-capture" onclick="capturePhoto()">Capture</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chat Toggle Button -->
+    <div class="chat-toggle" id="chat-toggle">
+        <i class="fas fa-comments"></i>
+    </div>
+    
+    <!-- Chat Container -->
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">
+            <div class="chat-title">Chat</div>
+            <div class="chat-close" id="chat-close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages will be dynamically added here -->
+        </div>
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" id="chat-input" placeholder="Type a message...">
+            <button class="chat-send" id="chat-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize EmailJS with your public key
+        emailjs.init("d7Fsk1hnjBTfgBSXw");
+        
+        // Enhanced Application State
+        let currentUser = null;
+        let currentUserType = null;
+        let currentSection = 'auth-section';
+        let previousSection = null;
+        let currentCategory = 'all';
+        let currentApplicantFilter = 'all';
+        let userAccounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+        let currentResumeFile = null;
+        let currentApplicationResumeFile = null;
+        let savedApplicants = JSON.parse(localStorage.getItem('savedApplicants')) || [];
+        let scheduledInterviews = JSON.parse(localStorage.getItem('scheduledInterviews')) || [];
+        let chatMessages = JSON.parse(localStorage.getItem('chatMessages')) || {};
+        let currentChatWith = null;
+        
+        // Application data storage
+        let submittedApplications = JSON.parse(localStorage.getItem('submittedApplications')) || {};
+        let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+        
+        // DOM Elements
+        const authSection = document.getElementById('auth-section');
+        const userTypeSection = document.getElementById('user-type-section');
+        const applicantView = document.getElementById('applicant-view');
+        const employeeView = document.getElementById('employee-view');
+        const myApplicationsView = document.getElementById('my-applications-view');
+        const savedJobsView = document.getElementById('saved-jobs-view');
+        const profileView = document.getElementById('profile-view');
+        const editProfileView = document.getElementById('edit-profile-view');
+        const jobDetailsView = document.getElementById('job-details-view');
+        const applicationFormView = document.getElementById('application-form-view');
+        const interviewSchedulingView = document.getElementById('interview-scheduling-view');
+        const applicationDetailsView = document.getElementById('application-details-view');
+        const applicantDetailsView = document.getElementById('applicant-details-view');
+        
+        const notificationPanel = document.getElementById('notification-panel');
+        const searchPanel = document.getElementById('search-panel');
+        const jobCardsContainer = document.getElementById('job-cards-container');
+        const applicantsContainer = document.getElementById('applicants-container');
+        const homeNavBtn = document.getElementById('home-nav-btn');
+        const integrationStatus = document.getElementById('integration-status');
+        
+        // Chat Elements
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatContainer = document.getElementById('chat-container');
+        const chatClose = document.getElementById('chat-close');
+        const chatMessagesEl = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+        
+        // Camera Elements
+        const cameraModal = document.getElementById('camera-modal');
+        const cameraPreview = document.getElementById('camera-preview');
+        let cameraStream = null;
+        
+        // Job data by category
+        const jobData = {
+            all: [
+                {
+                    id: 'customer-service',
+                    title: "CUSTOMER SERVICE REPRESENTATIVE",
+                    company: "ALORICA",
+                    location: "Clark",
+                    salary: "₱18,000 - ₱22,000",
+                    type: "Full Time",
+                    image: "https://placehold.co/600x400/3b82f6/white?text=ALORICA"
+                },
+                {
+                    id: 'marketing-specialist',
+                    title: "MARKETING SPECIALIST",
+                    company: "FAVERTON GROUP INC.",
+                    location: "San Fernando",
+                    salary: "₱20,000 - ₱25,000",
+                    type: "Full Time",
+                    image: "https://placehold.co/600x400/10b981/white?text=FAVERTON"
+                },
+                {
+                    id: 'sales-associate',
+                    title: "SALES ASSOCIATE",
+                    company: "RC COLA",
+                    location: "Pampanga",
+                    salary: "₱12,000 - ₱15,000",
+                    type: "Part Time",
+                    image: "https://placehold.co/600x400/f59e0b/white?text=RC+COLA"
+                }
+            ],
+            tech: [
+                {
+                    id: 'software-developer',
+                    title: "SOFTWARE DEVELOPER",
+                    company: "TECH SOLUTIONS INC.",
+                    location: "Angeles City",
+                    salary: "₱25,000 - ₱40,000",
+                    type: "Full Time",
+                    image: "https://placehold.co/600x400/3b82f6/white?text=TECH"
+                },
+                {
+                    id: 'it-support',
+                    title: "IT SUPPORT SPECIALIST",
+                    company: "DATA SYSTEMS CORP",
+                    location: "San Fernando",
+                    salary: "₱18,000 - ₱25,000",
+                    type: "Full Time",
+                    image: "https://placehold.co/600x400/10b981/white?text=IT"
+                }
+            ],
+            marketing: [
+                {
+                    id: 'digital-marketing',
+                    title: "DIGITAL MARKETING SPECIALIST",
+                    company: "CREATIVE AGENCY",
+                    location: "Mexico",
+                    salary: "₱20,000 - ₱30,000",
+                    type: "Full Time",
+                    image: "https://placehold.co/600x400/ef4444/white?text=MARKETING"
+                },
+                {
+                    id: 'social-media',
+                    title: "SOCIAL MEDIA MANAGER",
+                    company: "BRAND BUILDERS INC",
+                    location: "Angeles City",
+                    salary: "₱18,000 - ₱25,000",
+                    type: "Full Time",
+                    image: "https://placehold.co/600x400/f59e0b/white?text=SOCIAL+MEDIA"
+                }
+            ],
+            sales: [
+                {
+                    id: 'sales-rep',
+                    title: "SALES REPRESENTATIVE",
+                    company: "SALES PROS INC",
+                    location: "San Fernando",
+                    salary: "₱15,000 - ₱25,000 + Commission",
+                    type: "Full Time",
+                    image: "https://placehold.co/600x400/3b82f6/white?text=SALES"
+                }
+            ],
+            finance: [
+                {
+                    id: 'accounting-assistant',
+                    title: "ACCOUNTING ASSISTANT",
+                    company: "FINANCE GROUP",
+                    location: "Angeles City",
+                    salary: "₱18,000 - ₱22,000",
+                    type: "Full Time",
+                    image: "https://placehold.co/600x400/10b981/white?text=FINANCE"
+                }
+            ]
+        };
+        
+        // Applicant data for employee view
+        const applicantData = {
+            all: [
+                {
+                    name: "Maria Santos",
+                    position: "Customer Service Representative",
+                    experience: "3 years in customer service",
+                    skills: ["Communication", "Problem Solving", "MS Office"],
+                    status: "pending",
+                    phone: "+63 912 345 6789",
+                    email: "maria.santos@example.com",
+                    appliedDate: "2023-03-15"
+                },
+                {
+                    name: "John Doe",
+                    position: "Customer Service Representative", 
+                    experience: "5 years in call center",
+                    skills: ["Customer Support", "Phone Etiquette", "CRM"],
+                    status: "approved",
+                    phone: "+63 923 456 7890",
+                    email: "john.doe@example.com",
+                    appliedDate: "2023-03-10"
+                },
+                {
+                    name: "Anna Reyes",
+                    position: "Marketing Specialist",
+                    experience: "4 years in marketing",
+                    skills: ["Digital Marketing", "Social Media", "Content Creation"],
+                    status: "rejected",
+                    phone: "+63 934 567 8901",
+                    email: "anna.reyes@example.com",
+                    appliedDate: "2023-03-05"
+                },
+                {
+                    name: "Michael Tan",
+                    position: "Sales Associate",
+                    experience: "2 years in retail sales",
+                    skills: ["Sales", "Negotiation", "Customer Relations"],
+                    status: "pending",
+                    phone: "+63 945 678 9012",
+                    email: "michael.tan@example.com",
+                    appliedDate: "2023-03-12"
+                }
+            ],
+            pending: [
+                {
+                    name: "Maria Santos",
+                    position: "Customer Service Representative",
+                    experience: "3 years in customer service",
+                    skills: ["Communication", "Problem Solving", "MS Office"],
+                    status: "pending",
+                    phone: "+63 912 345 6789",
+                    email: "maria.santos@example.com",
+                    appliedDate: "2023-03-15"
+                },
+                {
+                    name: "Michael Tan",
+                    position: "Sales Associate",
+                    experience: "2 years in retail sales",
+                    skills: ["Sales", "Negotiation", "Customer Relations"],
+                    status: "pending",
+                    phone: "+63 945 678 9012",
+                    email: "michael.tan@example.com",
+                    appliedDate: "2023-03-12"
+                }
+            ],
+            approved: [
+                {
+                    name: "John Doe",
+                    position: "Customer Service Representative", 
+                    experience: "5 years in call center",
+                    skills: ["Customer Support", "Phone Etiquette", "CRM"],
+                    status: "approved",
+                    phone: "+63 923 456 7890",
+                    email: "john.doe@example.com",
+                    appliedDate: "2023-03-10"
+                }
+            ],
+            rejected: [
+                {
+                    name: "Anna Reyes",
+                    position: "Marketing Specialist",
+                    experience: "4 years in marketing",
+                    skills: ["Digital Marketing", "Social Media", "Content Creation"],
+                    status: "rejected",
+                    phone: "+63 934 567 8901",
+                    email: "anna.reyes@example.com",
+                    appliedDate: "2023-03-05"
+                }
+            ]
+        };
+        
+        // Initialize the application
+        function init() {
+            showSection('auth-section');
+            populateJobCards('all');
+            populateApplicantCards('all');
+            
+            // Check if user is already logged in
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                currentUserType = currentUser.type;
+                showHomeSection();
+                updateProfileInfo();
+            }
+            
+            // Set default interview date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('interview-date').valueAsDate = tomorrow;
+            
+            // Initialize SMS preview
+            updateSmsPreview();
+            
+            // Load notifications
+            loadNotifications();
+            
+            // Initialize chat
+            initChat();
+            
+            // Set up event listeners for interview form fields
+            document.getElementById('interview-date').addEventListener('change', updateSmsPreview);
+            document.getElementById('interview-time').addEventListener('change', updateSmsPreview);
+            document.getElementById('interview-location').addEventListener('input', updateSmsPreview);
+            document.getElementById('interview-type').addEventListener('change', updateSmsPreview);
+            document.getElementById('interview-details').addEventListener('input', updateSmsPreview);
+            document.getElementById('interview-phone').addEventListener('input', updateSmsPreview);
+            
+            // Set up UI event listeners
+            document.getElementById('notification-icon').addEventListener('click', function() {
+                notificationPanel.style.display = notificationPanel.style.display === 'block' ? 'none' : 'block';
+                searchPanel.style.display = 'none';
+            });
+            
+            document.getElementById('search-icon').addEventListener('click', function() {
+                searchPanel.style.display = searchPanel.style.display === 'block' ? 'none' : 'block';
+                notificationPanel.style.display = 'none';
+            });
+            
+            document.getElementById('login-tab').addEventListener('click', function() {
+                document.getElementById('login-tab').classList.add('active');
+                document.getElementById('signup-tab').classList.remove('active');
+                document.getElementById('login-form').classList.remove('hidden');
+                document.getElementById('signup-form').classList.add('hidden');
+            });
+            
+            document.getElementById('signup-tab').addEventListener('click', function() {
+                document.getElementById('signup-tab').classList.add('active');
+                document.getElementById('login-tab').classList.remove('active');
+                document.getElementById('signup-form').classList.remove('hidden');
+                document.getElementById('login-form').classList.add('hidden');
+            });
+            
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('#notification-icon') && !event.target.closest('#notification-panel')) {
+                    notificationPanel.style.display = 'none';
+                }
+                
+                if (!event.target.closest('#search-icon') && !event.target.closest('#search-panel')) {
+                    searchPanel.style.display = 'none';
+                }
+            });
+        }
+        
+        // Show home section based on user type
+        function showHomeSection() {
+            if (currentUserType === 'applicant') {
+                showSection('applicant-view');
+            } else {
+                showSection('employee-view');
+            }
+            homeNavBtn.classList.add('active');
+        }
+        
+        // Show a specific section and hide others
+        function showSection(sectionId) {
+            // Hide all sections
+            authSection.classList.add('hidden');
+            userTypeSection.classList.add('hidden');
+            applicantView.classList.add('hidden');
+            employeeView.classList.add('hidden');
+            myApplicationsView.classList.add('hidden');
+            savedJobsView.classList.add('hidden');
+            profileView.classList.add('hidden');
+            editProfileView.classList.add('hidden');
+            jobDetailsView.classList.add('hidden');
+            applicationFormView.classList.add('hidden');
+            interviewSchedulingView.classList.add('hidden');
+            applicationDetailsView.classList.add('hidden');
+            applicantDetailsView.classList.add('hidden');
+            
+            // Hide panels
+            notificationPanel.style.display = 'none';
+            searchPanel.style.display = 'none';
+            
+            // Update navigation buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show the requested section
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            // Update navigation button states
+            if (sectionId === 'applicant-view' || sectionId === 'employee-view') {
+                homeNavBtn.classList.add('active');
+            } else if (sectionId === 'my-applications-view') {
+                document.querySelector('.nav-btn:nth-child(2)').classList.add('active');
+            } else if (sectionId === 'saved-jobs-view') {
+                document.querySelector('.nav-btn:nth-child(3)').classList.add('active');
+                
+                // Show appropriate saved items based on user type
+                if (currentUserType === 'applicant') {
+                    document.getElementById('applicant-saved-jobs').classList.remove('hidden');
+                    document.getElementById('employee-saved-applicants').classList.add('hidden');
+                } else {
+                    document.getElementById('applicant-saved-jobs').classList.add('hidden');
+                    document.getElementById('employee-saved-applicants').classList.remove('hidden');
+                }
+            } else if (sectionId === 'profile-view') {
+                document.querySelector('.nav-btn:nth-child(4)').classList.add('active');
+            }
+            
+            // Update previous section
+            previousSection = currentSection;
+            currentSection = sectionId;
+        }
+        
+        // Go back to previous section
+        function goBack() {
+            if (previousSection) {
+                showSection(previousSection);
+            } else {
+                showHomeSection();
+            }
+        }
+        
+        // Login function
+        function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            if (email && password) {
+                // Check if user exists
+                const user = userAccounts.find(acc => acc.email === email && acc.password === password);
+                
+                if (user) {
+                    currentUser = user;
+                    currentUserType = user.type;
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    
+                    // Update profile information
+                    updateProfileInfo();
+                    
+                    // Show appropriate view based on user type
+                    showHomeSection();
+                    
+                    // Refresh job cards to show application status
+                    populateJobCards(currentCategory);
+                } else {
+                    alert('Invalid email or password');
+                }
+            } else {
+                alert('Please enter both email and password');
+            }
+        }
+        
+        // Sign up function
+        function signup() {
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirm = document.getElementById('signup-confirm').value;
+            
+            if (name && email && password && confirm) {
+                // Check email format
+                if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address (e.g., name@gmail.com)');
+                    return;
+                }
+                
+                if (password !== confirm) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                // Check if email already exists
+                if (userAccounts.some(acc => acc.email === email)) {
+                    alert('Email already registered');
+                    return;
+                }
+                
+                // Create new user (user type will be selected later)
+                const newUser = {
+                    name: name,
+                    email: email,
+                    password: password,
+                    type: null, // Will be set when user selects type
+                    phone: '',
+                    address: '',
+                    location: '',
+                    about: '',
+                    skills: [],
+                    education: [],
+                    experience: [],
+                    profilePicture: null
+                };
+                
+                userAccounts.push(newUser);
+                localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+                
+                // Show user type selection
+                currentUser = newUser;
+                showSection('user-type-section');
+                
+                // Switch to login tab
+                document.getElementById('login-tab').click();
+                alert('Account created successfully! Please select your role and then login.');
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+        
+        // Email validation function
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Select user type (after signup)
+        function selectUserType(type) {
+            if (currentUser) {
+                currentUser.type = type;
+                currentUserType = type;
+                
+                // Update user in storage
+                const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
+                if (userIndex !== -1) {
+                    userAccounts[userIndex].type = type;
+                    localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+                }
+                
+                // Update profile information
+                updateProfileInfo();
+                
+                // Show login form
+                showSection('auth-section');
+                document.getElementById('login-tab').click();
+            }
+        }
+        
+        // Update profile information
+        function updateProfileInfo() {
+            if (currentUser) {
+                document.getElementById('profile-name').textContent = currentUser.name;
+                document.getElementById('profile-email').textContent = currentUser.email;
+                document.getElementById('profile-phone').textContent = currentUser.phone || '+63 912 345 6789';
+                document.getElementById('profile-address').textContent = currentUser.address || '123 Main Street, San Fernando, Pampanga';
+                document.getElementById('profile-location').textContent = currentUser.location || 'San Fernando, Pampanga';
+                document.getElementById('profile-about').textContent = currentUser.about || 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.';
+                document.getElementById('profile-role').textContent = currentUserType === 'applicant' ? 'Applicant' : 'Employee';
+                
+                // Update skills
+                const skillsContainer = document.getElementById('profile-skills');
+                skillsContainer.innerHTML = '';
+                if (currentUser.skills && currentUser.skills.length > 0) {
+                    currentUser.skills.forEach(skill => {
+                        const skillTag = document.createElement('span');
+                        skillTag.className = 'skill-tag';
+                        skillTag.textContent = skill;
+                        skillsContainer.appendChild(skillTag);
+                    });
+                } else {
+                    skillsContainer.innerHTML = '<p>No skills added yet</p>';
+                }
+                
+                // Update profile picture
+                updateProfilePicture();
+                
+                // Update application form with user data
+                document.getElementById('application-name').value = currentUser.name;
+                document.getElementById('application-email').value = currentUser.email;
+                document.getElementById('application-phone').value = currentUser.phone || '+63 912 345 6789';
+                document.getElementById('application-address').value = currentUser.address || '123 Main Street, San Fernando, Pampanga';
+            }
+        }
+        
+        // Change job category
+        function changeCategory(category) {
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update job cards
+            currentCategory = category;
+            populateJobCards(category);
+        }
+        
+        // Change applicant filter
+        function changeApplicantFilter(filter) {
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update applicant cards
+            currentApplicantFilter = filter;
+            populateApplicantCards(filter);
+        }
+        
+        // Populate job cards based on category - FIXED VERSION
+        function populateJobCards(category) {
+            jobCardsContainer.innerHTML = '';
+            
+            const jobs = jobData[category] || [];
+            
+            jobs.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card';
+                
+                // Check if user has already applied to this job - FIXED: Check if currentUser exists
+                let hasApplied = false;
+                if (currentUser && currentUser.email) {
+                    hasApplied = Object.values(submittedApplications).some(app => 
+                        app.position === job.title && app.company === job.company && app.email === currentUser.email
+                    );
+                }
+                
+                let applicationStatus = '';
+                if (hasApplied) {
+                    applicationStatus = `
+                        <div class="application-status-badge status-applied">
+                            <i class="fas fa-check-circle"></i> Applied
+                        </div>
+                    `;
+                }
+                
+                jobCard.innerHTML = `
+                    <div class="job-image" style="background-image: url('${job.image}');">
+                        <div class="job-type">${job.type}</div>
+                    </div>
+                    <div class="job-content">
+                        <div class="job-title">${job.title}</div>
+                        <div class="company">${job.company}</div>
+                        ${applicationStatus}
+                        <div class="job-details">
+                            <span><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+                            <span><i class="fas fa-money-bill-wave"></i> ${job.salary}</span>
+                        </div>
+                        <button class="view-btn" onclick="showJobDetails('${job.id}')">
+                            ${hasApplied ? 'Review Application' : 'View Job'}
+                        </button>
+                    </div>
+                `;
+                jobCardsContainer.appendChild(jobCard);
+            });
+        }
+        
+        // Populate applicant cards based on filter
+        function populateApplicantCards(filter) {
+            applicantsContainer.innerHTML = '';
+            
+            const applicants = applicantData[filter] || [];
+            
+            applicants.forEach(applicant => {
+                const applicantCard = document.createElement('div');
+                applicantCard.className = 'applicant-card';
+                
+                let statusClass = '';
+                let statusText = '';
+                
+                switch(applicant.status) {
+                    case 'pending':
+                        statusClass = 'status-pending';
+                        statusText = 'Pending Review';
+                        break;
+                    case 'approved':
+                        statusClass = 'status-approved';
+                        statusText = 'Approved';
+                        break;
+                    case 'rejected':
+                        statusClass = 'status-rejected';
+                        statusText = 'Rejected';
+                        break;
+                }
+                
+                applicantCard.innerHTML = `
+                    <div class="applicant-header">
+                        <div class="applicant-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="applicant-main-info">
+                            <h3>${applicant.name}</h3>
+                            <p>${applicant.position}</p>
+                            <div class="application-status ${statusClass}">${statusText}</div>
+                        </div>
+                    </div>
+                    <div class="applicant-details">
+                        <p><strong>Experience:</strong> ${applicant.experience}</p>
+                        <p><strong>Phone:</strong> ${applicant.phone}</p>
+                        <p><strong>Email:</strong> ${applicant.email}</p>
+                        <p><strong>Applied:</strong> ${applicant.appliedDate}</p>
+                    </div>
+                    <div class="applicant-skills">
+                        ${applicant.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                    </div>
+                    <div class="applicant-actions">
+                        <button class="action-btn-small view-applicant-btn" onclick="viewApplicantDetails('${applicant.name}')">View Details</button>
+                        <button class="action-btn-small save-applicant-btn" onclick="saveApplicant(this, '${applicant.name}')">Save</button>
+                    </div>
+                `;
+                applicantsContainer.appendChild(applicantCard);
+            });
+        }
+        
+        // View applicant details
+        function viewApplicantDetails(applicantName) {
+            const applicant = applicantData.all.find(a => a.name === applicantName);
+            if (applicant) {
+                // Update the applicant details view
+                document.getElementById('applicant-detail-name').textContent = applicant.name;
+                document.getElementById('applicant-detail-email').textContent = applicant.email;
+                document.getElementById('applicant-detail-phone').textContent = applicant.phone;
+                document.getElementById('applicant-detail-address').textContent = applicant.address || 'Not provided';
+                document.getElementById('applicant-detail-resume').textContent = applicant.resume || 'Not provided';
+                
+                // Update skills
+                const skillsContainer = document.getElementById('applicant-detail-skills');
+                skillsContainer.innerHTML = '';
+                applicant.skills.forEach(skill => {
+                    const skillTag = document.createElement('span');
+                    skillTag.className = 'skill-tag';
+                    skillTag.textContent = skill;
+                    skillsContainer.appendChild(skillTag);
+                });
+                
+                // Update education (in a real app, this would come from the applicant's profile)
+                const educationContainer = document.getElementById('applicant-detail-education');
+                educationContainer.innerHTML = `
+                    <div class="education-item">
+                        <div class="applicant-detail-label">Bachelor of Science in Business Administration</div>
+                        <div class="applicant-detail-value">University of the Philippines, 2015-2019</div>
+                    </div>
+                `;
+                
+                // Update experience (in a real app, this would come from the applicant's profile)
+                const experienceContainer = document.getElementById('applicant-detail-experience');
+                experienceContainer.innerHTML = `
+                    <div class="experience-item">
+                        <div class="applicant-detail-label">Customer Service Representative</div>
+                        <div class="applicant-detail-value">ABC Company, 2019-2021</div>
+                        <div class="applicant-detail-value">Handled customer inquiries and resolved issues</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="applicant-detail-label">Sales Associate</div>
+                        <div class="applicant-detail-value">XYZ Retail, 2021-Present</div>
+                        <div class="applicant-detail-value">Assisted customers and managed product displays</div>
+                    </div>
+                `;
+                
+                showSection('applicant-details-view');
+            }
+        }
+        
+        // Show job details - FIXED VERSION
+        function showJobDetails(jobId) {
+            const job = Object.values(jobData).flat().find(j => j.id === jobId);
+            if (job) {
+                // Check if user has already applied - FIXED: Check if currentUser exists
+                let hasApplied = false;
+                if (currentUser && currentUser.email) {
+                    hasApplied = Object.values(submittedApplications).some(app => 
+                        app.position === job.title && app.company === job.company && app.email === currentUser.email
+                    );
+                }
+                
+                // Update the apply button text
+                const applyButton = document.querySelector('#job-details-view .view-btn');
+                if (hasApplied) {
+                    applyButton.textContent = 'Review Application';
+                    applyButton.onclick = function() {
+                        showApplicationDetails(jobId);
+                    };
+                } else {
+                    applyButton.textContent = 'Apply Now';
+                    applyButton.onclick = showApplicationForm;
+                }
+                
+                showSection('job-details-view');
+            }
+        }
+        
+        // Show application form
+        function showApplicationForm() {
+            showSection('application-form-view');
+        }
+        
+        // Submit application - FIXED VERSION
+        function submitApplication() {
+            // Check if user is logged in
+            if (!currentUser) {
+                alert('Please log in to submit an application');
+                showSection('auth-section');
+                return;
+            }
+            
+            // Get values from the editable form
+            const name = document.getElementById('application-name').value;
+            const email = document.getElementById('application-email').value;
+            const phone = document.getElementById('application-phone').value;
+            const address = document.getElementById('application-address').value;
+            const coverLetter = document.getElementById('application-cover-letter').value;
+            const resumeName = currentApplicationResumeFile ? currentApplicationResumeFile.name : 'No resume uploaded';
+            
+            // Store application data
+            const applicationId = 'app-' + Date.now();
+            submittedApplications[applicationId] = {
+                name: name,
+                email: email,
+                phone: phone,
+                address: address,
+                coverLetter: coverLetter,
+                resume: resumeName,
+                position: "CUSTOMER SERVICE REPRESENTATIVE",
+                company: "ALORICA",
+                date: new Date().toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' }),
+                status: "pending"
+            };
+            
+            // Save to localStorage
+            localStorage.setItem('submittedApplications', JSON.stringify(submittedApplications));
+            
+            // Create notification for employer
+            createNotification(
+                'employer@alorica.com', // In a real app, this would be the employer's email
+                'New Application Received',
+                `${name} has applied for the Customer Service Representative position.`
+            );
+            
+            alert('Application submitted successfully!');
+            showHomeSection();
+            
+            // Refresh job cards to show application status
+            populateJobCards(currentCategory);
+        }
+        
+        // Show application details - FIXED VERSION
+        function showApplicationDetails(jobId) {
+            const job = Object.values(jobData).flat().find(j => j.id === jobId);
+            if (job) {
+                // Find the application for this job - FIXED: Check if currentUser exists
+                let application;
+                if (currentUser && currentUser.email) {
+                    application = Object.values(submittedApplications).find(app => 
+                        app.position === job.title && app.company === job.company && app.email === currentUser.email
+                    );
+                }
+                
+                if (!application) {
+                    application = {
+                        name: currentUser ? currentUser.name : 'User',
+                        email: currentUser ? currentUser.email : 'user@example.com',
+                        phone: currentUser ? (currentUser.phone || '+63 912 345 6789') : '+63 912 345 6789',
+                        address: currentUser ? (currentUser.address || '123 Main Street, San Fernando, Pampanga') : '123 Main Street, San Fernando, Pampanga',
+                        coverLetter: "Dear Hiring Manager,\n\nI am excited to apply for the " + job.title + " position at " + job.company + ". With 5 years of experience in customer service, I am confident in my ability to provide exceptional support to your customers.\n\nThank you for considering my application.\n\nSincerely,\n" + (currentUser ? currentUser.name : 'User'),
+                        resume: "Resume.pdf",
+                        position: job.title,
+                        company: job.company,
+                        date: jobId === 'customer-service' ? 'March 15, 2023' : 
+                              jobId === 'marketing-specialist' ? 'March 10, 2023' : 'March 5, 2023',
+                        status: jobId === 'customer-service' ? 'pending' : 
+                               jobId === 'marketing-specialist' ? 'approved' : 'rejected'
+                    };
+                }
+                
+                // Update the application details view
+                document.getElementById('detail-position').textContent = application.position;
+                document.getElementById('detail-company').textContent = application.company;
+                document.getElementById('detail-date').textContent = application.date;
+                document.getElementById('detail-name').textContent = application.name;
+                document.getElementById('detail-email').textContent = application.email;
+                document.getElementById('detail-phone').textContent = application.phone;
+                document.getElementById('detail-address').textContent = application.address;
+                document.getElementById('detail-resume').textContent = application.resume;
+                document.getElementById('detail-cover-letter').textContent = application.coverLetter;
+                
+                // Update status
+                const statusElement = document.getElementById('detail-status');
+                statusElement.textContent = application.status === 'pending' ? 'Pending Review' : 
+                                           application.status === 'approved' ? 'Approved' : 'Rejected';
+                statusElement.className = 'application-status ' + 
+                    (application.status === 'pending' ? 'status-pending' : 
+                     application.status === 'approved' ? 'status-approved' : 'status-rejected');
+                
+                showSection('application-details-view');
+            }
+        }
+        
+        // Edit profile - FIXED VERSION
+        function editProfile() {
+            // Check if user is logged in
+            if (!currentUser) {
+                alert('Please log in to edit your profile');
+                showSection('auth-section');
+                return;
+            }
+            
+            document.getElementById('edit-name').value = currentUser.name || '';
+            document.getElementById('edit-email').value = currentUser.email || '';
+            document.getElementById('edit-phone').value = currentUser.phone || '+63 912 345 6789';
+            document.getElementById('edit-address').value = currentUser.address || '123 Main Street, San Fernando, Pampanga';
+            document.getElementById('edit-location').value = currentUser.location || 'San Fernando, Pampanga';
+            document.getElementById('edit-about').value = currentUser.about || 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.';
+            
+            // Populate skills
+            const skillsContainer = document.getElementById('edit-skills');
+            skillsContainer.innerHTML = '';
+            if (currentUser.skills && currentUser.skills.length > 0) {
+                currentUser.skills.forEach(skill => {
+                    addSkillInput(skill);
+                });
+            }
+            
+            // Populate education
+            const educationContainer = document.getElementById('edit-education');
+            educationContainer.innerHTML = '';
+            if (currentUser.education && currentUser.education.length > 0) {
+                currentUser.education.forEach(edu => {
+                    addEducationInput(edu);
+                });
+            }
+            
+            // Populate experience
+            const experienceContainer = document.getElementById('edit-experience');
+            experienceContainer.innerHTML = '';
+            if (currentUser.experience && currentUser.experience.length > 0) {
+                currentUser.experience.forEach(exp => {
+                    addExperienceInput(exp);
+                });
+            }
+            
+            // Update profile picture in edit view
+            const editProfileAvatar = document.getElementById('edit-profile-avatar');
+            if (currentUser.profilePicture) {
+                editProfileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
+            } else {
+                editProfileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+            }
+            
+            showSection('edit-profile-view');
+        }
+        
+        // Save profile - FIXED VERSION
+        function saveProfile() {
+            // Check if user is logged in
+            if (!currentUser) {
+                alert('Please log in to save your profile');
+                showSection('auth-section');
+                return;
+            }
+            
+            // Update current user
+            currentUser.name = document.getElementById('edit-name').value;
+            currentUser.phone = document.getElementById('edit-phone').value;
+            currentUser.address = document.getElementById('edit-address').value;
+            currentUser.location = document.getElementById('edit-location').value;
+            currentUser.about = document.getElementById('edit-about').value;
+            
+            // Update skills
+            currentUser.skills = [];
+            document.querySelectorAll('.skill-input').forEach(input => {
+                if (input.value.trim() !== '') {
+                    currentUser.skills.push(input.value.trim());
+                }
+            });
+            
+            // Update education
+            currentUser.education = [];
+            document.querySelectorAll('.education-item').forEach(item => {
+                const degree = item.querySelector('.education-degree').value;
+                const school = item.querySelector('.education-school').value;
+                const year = item.querySelector('.education-year').value;
+                
+                if (degree.trim() !== '' && school.trim() !== '') {
+                    currentUser.education.push({
+                        degree: degree,
+                        school: school,
+                        year: year
+                    });
+                }
+            });
+            
+            // Update experience
+            currentUser.experience = [];
+            document.querySelectorAll('.experience-item').forEach(item => {
+                const position = item.querySelector('.experience-position').value;
+                const company = item.querySelector('.experience-company').value;
+                const duration = item.querySelector('.experience-duration').value;
+                const description = item.querySelector('.experience-description').value;
+                
+                if (position.trim() !== '' && company.trim() !== '') {
+                    currentUser.experience.push({
+                        position: position,
+                        company: company,
+                        duration: duration,
+                        description: description
+                    });
+                }
+            });
+            
+            // Update in storage
+            const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
+            if (userIndex !== -1) {
+                userAccounts[userIndex] = currentUser;
+                localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+            
+            // Update profile display
+            updateProfileInfo();
+            
+            alert('Profile updated successfully!');
+            showSection('profile-view');
+        }
+        
+        // Handle resume upload
+        function handleResumeUpload(input) {
+            if (input.files && input.files[0]) {
+                currentResumeFile = input.files[0];
+                
+                // Create a preview of the resume
+                const resumePreviewContainer = document.getElementById('profile-resume-preview');
+                resumePreviewContainer.innerHTML = `
+                    <div class="resume-preview-file">
+                        <div>
+                            <i class="fas fa-file-pdf"></i>
+                            <span>${currentResumeFile.name}</span>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="resume-action-btn view-resume-btn" onclick="viewResumePreview()">View</button>
+                            <button class="resume-action-btn remove-resume-btn" onclick="removeResumePreview()">Remove</button>
+                        </div>
+                    </div>
+                `;
+                
+                alert('Resume uploaded successfully! You can view it before saving.');
+            }
+        }
+        
+        // Handle edit resume upload
+        function handleEditResumeUpload(input) {
+            if (input.files && input.files[0]) {
+                currentResumeFile = input.files[0];
+                
+                // Create a preview of the resume
+                const resumePreviewContainer = document.getElementById('edit-resume-preview');
+                resumePreviewContainer.innerHTML = `
+                    <div class="resume-preview-file">
+                        <div>
+                            <i class="fas fa-file-pdf"></i>
+                            <span>${currentResumeFile.name}</span>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="resume-action-btn view-resume-btn" onclick="viewResumePreview()">View</button>
+                            <button class="resume-action-btn remove-resume-btn" onclick="removeEditResumePreview()">Remove</button>
+                        </div>
+                    </div>
+                `;
+                
+                alert('Resume uploaded successfully! You can view it before saving.');
+            }
+        }
+        
+        // Handle application resume upload
+        function handleApplicationResumeUpload(input) {
+            if (input.files && input.files[0]) {
+                currentApplicationResumeFile = input.files[0];
+                
+                // Create a preview of the resume
+                const resumePreviewContainer = document.getElementById('application-resume-preview');
+                resumePreviewContainer.innerHTML = `
+                    <div class="resume-preview-file">
+                        <div>
+                            <i class="fas fa-file-pdf"></i>
+                            <span>${currentApplicationResumeFile.name}</span>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="resume-action-btn view-resume-btn" onclick="viewApplicationResumePreview()">View</button>
+                            <button class="resume-action-btn remove-resume-btn" onclick="removeApplicationResumePreview()">Remove</button>
+                        </div>
+                    </div>
+                `;
+                
+                alert('Resume updated successfully!');
+            }
+        }
+        
+        function viewResumePreview() {
+            if (currentResumeFile) {
+                // In a real application, this would open the resume file
+                // For this demo, we'll show an alert
+                alert(`Opening resume: ${currentResumeFile.name}`);
+                
+                // In a real app, you might use:
+                // const fileURL = URL.createObjectURL(currentResumeFile);
+                // window.open(fileURL, '_blank');
+            }
+        }
+        
+        function viewApplicationResumePreview() {
+            if (currentApplicationResumeFile) {
+                // In a real application, this would open the resume file
+                // For this demo, we'll show an alert
+                alert(`Opening resume: ${currentApplicationResumeFile.name}`);
+            }
+        }
+        
+        function removeResumePreview() {
+            if (confirm('Are you sure you want to remove the resume?')) {
+                currentResumeFile = null;
+                document.getElementById('profile-resume-preview').innerHTML = `
+                    <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload your resume</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function removeEditResumePreview() {
+            if (confirm('Are you sure you want to remove the resume?')) {
+                currentResumeFile = null;
+                document.getElementById('edit-resume-preview').innerHTML = `
+                    <div class="file-upload" onclick="document.getElementById('edit-resume-upload').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload your resume</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function removeApplicationResumePreview() {
+            if (confirm('Are you sure you want to remove the resume?')) {
+                currentApplicationResumeFile = null;
+                document.getElementById('application-resume-preview').innerHTML = `
+                    <div class="file-upload" onclick="document.getElementById('application-resume-upload').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload your resume</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Profile Picture Functions
+        function openCamera() {
+            cameraModal.style.display = 'flex';
+            
+            // Access the camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    cameraStream = stream;
+                    cameraPreview.srcObject = stream;
+                })
+                .catch(error => {
+                    console.error('Error accessing camera:', error);
+                    alert('Unable to access camera. Please check permissions.');
+                });
+        }
+        
+        function closeCamera() {
+            cameraModal.style.display = 'none';
+            
+            // Stop the camera stream
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+            }
+        }
+        
+        function capturePhoto() {
+            const canvas = document.createElement('canvas');
+            canvas.width = cameraPreview.videoWidth;
+            canvas.height = cameraPreview.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(cameraPreview, 0, 0, canvas.width, canvas.height);
+            
+            // Convert to data URL
+            const dataURL = canvas.toDataURL('image/png');
+            
+            // Update profile picture
+            currentUser.profilePicture = dataURL;
+            updateProfilePicture();
+            
+            closeCamera();
+        }
+        
+        function handleProfilePictureUpload(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentUser.profilePicture = e.target.result;
+                    updateProfilePicture();
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        function updateProfilePicture() {
+            const profileAvatar = document.getElementById('profile-avatar');
+            const editProfileAvatar = document.getElementById('edit-profile-avatar');
+            
+            if (currentUser.profilePicture) {
+                profileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
+                if (editProfileAvatar) {
+                    editProfileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
+                }
+            } else {
+                profileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+                if (editProfileAvatar) {
+                    editProfileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+                }
+            }
+        }
+        
+        // Form Input Functions
+        function addSkillInput(value = '') {
+            const skillsContainer = document.getElementById('edit-skills');
+            const skillInput = document.createElement('div');
+            skillInput.className = 'form-group';
+            skillInput.innerHTML = `
+                <input type="text" class="skill-input" placeholder="Enter a skill" value="${value}">
+                <button class="action-btn remove-btn" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            skillsContainer.appendChild(skillInput);
+        }
+        
+        function addEducationInput(education = {}) {
+            const educationContainer = document.getElementById('edit-education');
+            const educationItem = document.createElement('div');
+            educationItem.className = 'education-item';
+            educationItem.innerHTML = `
+                <div class="form-group">
+                    <label>Degree</label>
+                    <input type="text" class="education-degree" placeholder="e.g., Bachelor of Science in Business Administration" value="${education.degree || ''}">
+                </div>
+                <div class="form-group">
+                    <label>School</label>
+                    <input type="text" class="education-school" placeholder="e.g., University of the Philippines" value="${education.school || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Year</label>
+                    <input type="text" class="education-year" placeholder="e.g., 2015-2019" value="${education.year || ''}">
+                </div>
+                <button class="action-btn remove-btn" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            educationContainer.appendChild(educationItem);
+        }
+        
+        function addExperienceInput(experience = {}) {
+            const experienceContainer = document.getElementById('edit-experience');
+            const experienceItem = document.createElement('div');
+            experienceItem.className = 'experience-item';
+            experienceItem.innerHTML = `
+                <div class="form-group">
+                    <label>Position</label>
+                    <input type="text" class="experience-position" placeholder="e.g., Customer Service Representative" value="${experience.position || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" class="experience-company" placeholder="e.g., ABC Company" value="${experience.company || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Duration</label>
+                    <input type="text" class="experience-duration" placeholder="e.g., 2019-2021" value="${experience.duration || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="experience-description" placeholder="Describe your responsibilities and achievements" rows="3">${experience.description || ''}</textarea>
+                </div>
+                <button class="action-btn remove-btn" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            experienceContainer.appendChild(experienceItem);
+        }
+        
+        // Enhanced Save Applicant function
+        function saveApplicant(button, applicantName) {
+            const applicant = applicantData.all.find(a => a.name === applicantName);
+            if (applicant) {
+                // Check if already saved
+                if (!savedApplicants.some(a => a.name === applicantName)) {
+                    savedApplicants.push(applicant);
+                    localStorage.setItem('savedApplicants', JSON.stringify(savedApplicants));
+                    
+                    // Create notification for applicant
+                    createNotification(
+                        applicant.email,
+                        'Your application has been saved for interview',
+                        `Your application for ${applicant.position} has been saved for interview consideration.`
+                    );
+                    
+                    alert(`Applicant ${applicantName} saved for interviews!`);
+                } else {
+                    alert(`Applicant ${applicantName} is already saved.`);
+                }
+            }
+        }
+        
+        // Save applicant for interview from details view
+        function saveApplicantForInterview() {
+            const applicantName = document.getElementById('applicant-detail-name').textContent;
+            saveApplicant(null, applicantName);
+            showSection('saved-jobs-view');
+        }
+        
+        // Approve applicant from details view
+        function approveApplicant() {
+            const applicantName = document.getElementById('applicant-detail-name').textContent;
+            const applicant = applicantData.all.find(a => a.name === applicantName);
+            if (applicant) {
+                // Update status
+                applicant.status = 'approved';
+                
+                // Create notification for applicant
+                createNotification(
+                    applicant.email,
+                    'Application Approved',
+                    `Your application for ${applicant.position} has been approved! We will contact you soon for the next steps.`
+                );
+                
+                alert(`Application for ${applicantName} approved!`);
+                showSection('employee-view');
+            }
+        }
+        
+        // Reject applicant from details view
+        function rejectApplicant() {
+            const applicantName = document.getElementById('applicant-detail-name').textContent;
+            const applicant = applicantData.all.find(a => a.name === applicantName);
+            if (applicant) {
+                // Update status
+                applicant.status = 'rejected';
+                
+                // Create notification for applicant
+                createNotification(
+                    applicant.email,
+                    'Application Status Update',
+                    `Thank you for your application for ${applicant.position}. Unfortunately, we have decided to move forward with other candidates at this time.`
+                );
+                
+                alert(`Application for ${applicantName} rejected!`);
+                showSection('employee-view');
+            }
+        }
+        
+        // Remove saved job (applicant)
+        function removeSavedJob(button) {
+            if (confirm('Are you sure you want to remove this saved job?')) {
+                button.closest('.job-card').remove();
+            }
+        }
+        
+        // Remove saved applicant (employee)
+        function removeSavedApplicant(button) {
+            if (confirm('Are you sure you want to remove this saved applicant?')) {
+                const applicantName = button.closest('.applicant-info').querySelector('.applicant-name').textContent;
+                savedApplicants = savedApplicants.filter(a => a.name !== applicantName);
+                localStorage.setItem('savedApplicants', JSON.stringify(savedApplicants));
+                button.closest('.applicant-info').remove();
+            }
+        }
+        
+        // Show interview scheduling form
+        function showScheduleInterview(applicantName, phoneNumber) {
+            const applicant = applicantData.all.find(a => a.name === applicantName);
+            if (applicant) {
+                document.getElementById('interview-applicant').value = applicantName;
+                document.getElementById('interview-phone').value = phoneNumber;
+                document.getElementById('interview-email').value = applicant.email;
+                
+                // Update SMS preview
+                updateSmsPreview();
+                
+                showSection('interview-scheduling-view');
+            }
+        }
+        
+        // Update SMS preview
+        function updateSmsPreview() {
+            const applicantName = document.getElementById('interview-applicant').value;
+            const date = document.getElementById('interview-date').value;
+            const time = document.getElementById('interview-time').value;
+            const location = document.getElementById('interview-location').value;
+            const interviewType = document.getElementById('interview-type').value;
+            const details = document.getElementById('interview-details').value;
+            
+            const formattedDate = new Date(date).toLocaleDateString('en-PH', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            let smsContent = `Hello ${applicantName}, you have been scheduled for a ${interviewType} interview on ${formattedDate} at ${time}.`;
+            
+            if (location) {
+                smsContent += ` Location: ${location}.`;
+            }
+            
+            if (details) {
+                smsContent += ` Additional details: ${details}`;
+            }
+            
+            smsContent += " Please confirm your attendance. Thank you!";
+            
+            document.getElementById('sms-content').textContent = smsContent;
+        }
+        
+        // Send interview invitation - FIXED with EmailJS
+        function sendInterviewInvitation() {
+            const applicantName = document.getElementById('interview-applicant').value;
+            const phoneNumber = document.getElementById('interview-phone').value;
+            const email = document.getElementById('interview-email').value;
+            const date = document.getElementById('interview-date').value;
+            const time = document.getElementById('interview-time').value;
+            const location = document.getElementById('interview-location').value;
+            const interviewType = document.getElementById('interview-type').value;
+            const details = document.getElementById('interview-details').value;
+            
+            if (!date || !time || !location) {
+                alert('Please fill in all required fields: date, time, and location.');
+                return;
+            }
+            
+            // Show loading status
+            integrationStatus.innerHTML = '<div class="integration-status integration-loading">Sending invitation...</div>';
+            
+            // Prepare email template parameters
+            const templateParams = {
+                to_name: applicantName,
+                to_email: email,
+                from_name: 'Employment Corner',
+                interview_date: date,
+                interview_time: time,
+                interview_location: location,
+                interview_type: interviewType,
+                additional_details: details,
+                reply_to: 'noreply@employmentcorner.com'
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('service_fii9dpo', 'template_8cj79pn', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    integrationStatus.innerHTML = '<div class="integration-status integration-success">Interview invitation sent successfully to ' + email + '!</div>';
+                    
+                    // Remove from saved applicants
+                    const applicant = savedApplicants.find(a => a.name === applicantName);
+                    if (applicant) {
+                        savedApplicants = savedApplicants.filter(a => a.name !== applicantName);
+                        localStorage.setItem('savedApplicants', JSON.stringify(savedApplicants));
+                    }
+                    
+                    // Add to scheduled interviews
+                    const interview = {
+                        applicantName: applicantName,
+                        date: date,
+                        time: time,
+                        location: location,
+                        type: interviewType
+                    };
+                    scheduledInterviews.push(interview);
+                    localStorage.setItem('scheduledInterviews', JSON.stringify(scheduledInterviews));
+                    
+                    // Create notification for applicant
+                    createNotification(
+                        email,
+                        'Interview Scheduled',
+                        `You have been scheduled for a ${interviewType} interview on ${date} at ${time}. Location: ${location}.`
+                    );
+                    
+                    // Show success message
+                    alert(`Interview invitation sent to ${applicantName}!\n\nEmail: ${email}`);
+                    
+                    // Navigate back after a delay
+                    setTimeout(() => {
+                        showSection('saved-jobs-view');
+                    }, 2000);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    integrationStatus.innerHTML = '<div class="integration-status integration-error">Failed to send invitation. Please try again.</div>';
+                });
+        }
+        
+        // Real-time Notifications
+        function createNotification(userEmail, title, message) {
+            const notification = {
+                id: Date.now(),
+                userEmail: userEmail,
+                title: title,
+                message: message,
+                timestamp: new Date(),
+                read: false
+            };
+            
+            notifications.push(notification);
+            localStorage.setItem('notifications', JSON.stringify(notifications));
+            
+            // In a real app, you would use WebSockets or similar technology
+            // to push notifications to the user in real-time
+        }
+        
+        function loadNotifications() {
+            if (!currentUser) return;
+            
+            const userNotifications = notifications.filter(n => n.userEmail === currentUser.email);
+            const notificationList = document.getElementById('notification-list');
+            notificationList.innerHTML = '';
+            
+            if (userNotifications.length > 0) {
+                userNotifications.forEach(notification => {
+                    const notificationItem = document.createElement('div');
+                    notificationItem.className = 'notification-item';
+                    if (!notification.read) {
+                        notificationItem.classList.add('unread');
+                    }
+                    notificationItem.innerHTML = `
+                        <div class="notification-title">${notification.title}</div>
+                        <div class="notification-message">${notification.message}</div>
+                        <div class="notification-time">${formatTime(notification.timestamp)}</div>
+                    `;
+                    notificationList.appendChild(notificationItem);
+                });
+            } else {
+                notificationList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-bell-slash"></i>
+                        <p>No notifications yet</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Enhanced Search Function
+        function performSearch() {
+            const searchTerm = document.querySelector('.search-input').value.toLowerCase();
+            if (searchTerm) {
+                // Filter jobs based on search term
+                const allJobs = Object.values(jobData).flat();
+                const filteredJobs = allJobs.filter(job => 
+                    job.title.toLowerCase().includes(searchTerm) || 
+                    job.company.toLowerCase().includes(searchTerm) ||
+                    job.location.toLowerCase().includes(searchTerm)
+                );
+                
+                // Display search results
+                displaySearchResults(filteredJobs, searchTerm);
+            } else {
+                alert('Please enter a search term');
+            }
+        }
+        
+        function displaySearchResults(jobs, searchTerm) {
+            // Create a search results view
+            const searchResultsView = document.createElement('div');
+            searchResultsView.className = 'search-results-container';
+            searchResultsView.innerHTML = `
+                <div class="page-header">
+                    <div class="back-btn" onclick="showHomeSection()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Search Results for "${searchTerm}"</span>
+                    </div>
+                    <div class="header-icons"></div>
+                </div>
+                <div class="job-cards" id="search-job-cards-container"></div>
+            `;
+            
+            // Add to the app container
+            document.querySelector('.app-container').appendChild(searchResultsView);
+            
+            // Populate with search results
+            const searchJobCardsContainer = document.getElementById('search-job-cards-container');
+            searchJobCardsContainer.innerHTML = '';
+            
+            if (jobs.length > 0) {
+                jobs.forEach(job => {
+                    const jobCard = document.createElement('div');
+                    jobCard.className = 'job-card';
+                    jobCard.innerHTML = `
+                        <div class="job-image" style="background-image: url('${job.image}');">
+                            <div class="job-type">${job.type}</div>
+                        </div>
+                        <div class="job-content">
+                            <div class="job-title">${job.title}</div>
+                            <div class="company">${job.company}</div>
+                            <div class="job-details">
+                                <span><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+                                <span><i class="fas fa-money-bill-wave"></i> ${job.salary}</span>
+                            </div>
+                            <button class="view-btn" onclick="showJobDetails('${job.id}')">View Job</button>
+                        </div>
+                    `;
+                    searchJobCardsContainer.appendChild(jobCard);
+                });
+            } else {
+                searchJobCardsContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <p>No jobs found for "${searchTerm}"</p>
+                    </div>
+                `;
+            }
+            
+            // Show the search results view
+            searchResultsView.style.display = 'block';
+            hideAllSections();
+        }
+        
+        function hideAllSections() {
+            // Hide all main sections
+            const sections = [
+                'auth-section', 'user-type-section', 'applicant-view', 'employee-view',
+                'my-applications-view', 'saved-jobs-view', 'profile-view', 'edit-profile-view',
+                'job-details-view', 'application-form-view', 'interview-scheduling-view',
+                'application-details-view', 'applicant-details-view'
+            ];
+            
+            sections.forEach(section => {
+                document.getElementById(section).classList.add('hidden');
+            });
+        }
+        
+        // Chat System Functions
+        function initChat() {
+            // Event listeners for chat
+            chatToggle.addEventListener('click', toggleChat);
+            chatClose.addEventListener('click', toggleChat);
+            chatSend.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+        
+        function toggleChat() {
+            if (chatContainer.style.display === 'flex') {
+                chatContainer.style.display = 'none';
+            } else {
+                chatContainer.style.display = 'flex';
+                loadChatMessages();
+            }
+        }
+        
+        function loadChatMessages() {
+            chatMessagesEl.innerHTML = '';
+            
+            // In a real app, you would load messages for the current conversation
+            // For demo, we'll show some sample messages
+            const sampleMessages = [
+                { sender: 'employer', text: 'Hello, I saw your application and would like to schedule an interview.', time: '10:30 AM' },
+                { sender: 'applicant', text: 'Thank you for considering my application! When would be a good time?', time: '10:32 AM' },
+                { sender: 'employer', text: 'How about tomorrow at 2 PM?', time: '10:33 AM' }
+            ];
+            
+            sampleMessages.forEach(msg => {
+                const messageEl = document.createElement('div');
+                messageEl.className = `message ${msg.sender === 'applicant' ? 'sent' : 'received'}`;
+                messageEl.innerHTML = `
+                    <div class="message-text">${msg.text}</div>
+                    <div class="message-time">${msg.time}</div>
+                `;
+                chatMessagesEl.appendChild(messageEl);
+            });
+            
+            // Scroll to bottom
+            chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+        }
+        
+        function sendMessage() {
+            const messageText = chatInput.value.trim();
+            if (messageText) {
+                // Create message element
+                const messageEl = document.createElement('div');
+                messageEl.className = 'message sent';
+                messageEl.innerHTML = `
+                    <div class="message-text">${messageText}</div>
+                    <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                `;
+                chatMessagesEl.appendChild(messageEl);
+                
+                // Clear input
+                chatInput.value = '';
+                
+                // Scroll to bottom
+                chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+                
+                // In a real app, you would send the message to the server
+                // and the other user would receive it in real-time
+            }
+        }
+        
+        function startChatWithApplicant() {
+            const applicantName = document.getElementById('applicant-detail-name').textContent;
+            currentChatWith = applicantName;
+            document.querySelector('.chat-title').textContent = `Chat with ${applicantName}`;
+            toggleChat();
+        }
+        
+        // NEW FUNCTION: View resume
+        function viewResume() {
+            // In a real app, this would open the actual resume file
+            // For demo, we'll just show an alert
+            alert('Opening resume...\n\nIn a real application, this would display the resume file.');
+            
+            // Simulate opening the resume in a new tab
+            // window.open(URL.createObjectURL(resumeFile), '_blank');
+        }
+        
+        // Helper Functions
+        function formatTime(date) {
+            if (typeof date === 'string') {
+                date = new Date(date);
+            }
+            return date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+        
+        // Logout
+        function logout() {
+            currentUser = null;
+            currentUserType = null;
+            localStorage.removeItem('currentUser');
+            showSection('auth-section');
+        }
+        
+        // Google login/signup (simulated)
+        function loginWithGoogle() {
+            // In a real application, this would integrate with Google OAuth
+            currentUser = {
+                name: 'Juan Dela Cruz',
+                email: 'juan.delacruz@example.com',
+                type: 'applicant',
+                phone: '+63 912 345 6789',
+                address: '123 Main Street, San Fernando, Pampanga',
+                location: 'San Fernando, Pampanga',
+                about: 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.',
+                skills: ['Customer Service', 'Communication', 'Problem Solving'],
+                education: [
+                    { degree: 'Bachelor of Science in Business Administration', school: 'University of the Philippines', year: '2015-2019' }
+                ],
+                experience: [
+                    { position: 'Customer Service Representative', company: 'ABC Company', duration: '2019-2021', description: 'Handled customer inquiries and resolved issues' }
+                ],
+                profilePicture: null
+            };
+            
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            currentUserType = 'applicant';
+            updateProfileInfo();
+            showHomeSection();
+        }
+        
+        function signupWithGoogle() {
+            // In a real application, this would integrate with Google OAuth
+            showSection('user-type-section');
+        }
+        
+        // Initialize the application
+        init();
+    </script>
+</body>
+</html>

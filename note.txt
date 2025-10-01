@@ -149,4 +149,3 @@ the infos above are my emailjs
 
 also instead of schedule and sendn SMS, it should be schedule and send email. the email shoukd also be at the fill up where it will be sent
 
-give me now the whole code, dont remove anything just add the fiixed code and new featiures and my emailjs
