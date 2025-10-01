@@ -66,3 +66,12 @@ New problems
 
 additional task
 - make a chatbox, so that the applicant and the employer can have a conversation
+
+problem
+- the chatbox, how can i make where in the employer and the applicant can communicate to each other
+- twilio needed to be paid since the active number was a number from the US, and I needed to buy a number of ph
+- need to alternative to twilio
+
+solution
+- need to fix first the sent to email, and when that is done. we can proceed to the sms , let us fix firstb the email sending.
+
