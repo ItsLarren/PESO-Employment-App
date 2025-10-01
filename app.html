@@ -977,6 +977,385 @@
             color: #856404;
             border: 1px solid #ffeaa7;
         }
+        
+        /* NEW STYLES FOR ENHANCED FEATURES */
+        
+        /* Applicant Details Page */
+        .applicant-details-page {
+            padding: 15px;
+        }
+        
+        .applicant-details-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .applicant-details-section {
+            margin-bottom: 20px;
+        }
+        
+        .applicant-details-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .applicant-details-section h3 {
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .applicant-detail-item {
+            margin-bottom: 10px;
+        }
+        
+        .applicant-detail-label {
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .applicant-detail-value {
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 5px;
+        }
+        
+        /* Profile Picture Styles */
+        .profile-picture-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+        }
+        
+        .profile-picture {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #225dff;
+        }
+        
+        .profile-picture-actions {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            display: flex;
+            gap: 5px;
+        }
+        
+        .picture-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #225dff;
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        /* Resume Preview Styles */
+        .resume-preview-container {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px dashed #ddd;
+        }
+        
+        .resume-preview-file {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        
+        .resume-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .resume-action-btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .view-resume-btn {
+            background: #225dff;
+            color: white;
+        }
+        
+        .remove-resume-btn {
+            background: #ff4d4d;
+            color: white;
+        }
+        
+        /* Interview Scheduled Card */
+        .interview-scheduled-card {
+            background: #e6f7ff;
+            border-left: 4px solid #1890ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .interview-scheduled-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1890ff;
+        }
+        
+        /* Application Status on Job Cards */
+        .application-status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .status-applied {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        /* Search Results Styles */
+        .search-results-container {
+            padding: 15px;
+        }
+        
+        .search-result-item {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Enhanced Profile Form */
+        .profile-form-section {
+            margin-bottom: 20px;
+        }
+        
+        .profile-form-section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .education-item, .experience-item {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .add-item-btn {
+            background: #f5f5f5;
+            color: #333;
+            border: 1px dashed #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        /* Camera Modal */
+        .camera-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            display: none;
+        }
+        
+        .camera-container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .camera-preview {
+            width: 100%;
+            height: 400px;
+            background: #333;
+        }
+        
+        .camera-actions {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .camera-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .camera-capture {
+            background: #225dff;
+            color: white;
+            border: none;
+        }
+        
+        .camera-cancel {
+            background: #f5f5f5;
+            color: #333;
+            border: none;
+        }
+        
+        /* Chat System Styles */
+        .chat-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 350px;
+            height: 450px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .chat-header {
+            background: linear-gradient(to right, #51aee4, #4555e7);
+            color: white;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-title {
+            font-weight: 600;
+        }
+        
+        .chat-close {
+            cursor: pointer;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 8px 12px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .message.sent {
+            align-self: flex-end;
+            background: #225dff;
+            color: white;
+        }
+        
+        .message.received {
+            align-self: flex-start;
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .chat-input-container {
+            padding: 10px 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .chat-send {
+            background: #225dff;
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .chat-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #225dff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 999;
+        }
+        
+        .chat-toggle i {
+            font-size: 24px;
+        }
+        
+        .notification-item.unread {
+            background-color: #f0f8ff;
+            border-left: 3px solid #225dff;
+        }
     </style>
 </head>
 <body>
@@ -994,17 +1373,8 @@
 
         <div class="notification-panel" id="notification-panel">
             <h3>Notifications</h3>
-            <div class="notification-item">
-                <p>Your application for Customer Service Representative has been reviewed.</p>
-                <small>2 hours ago</small>
-            </div>
-            <div class="notification-item">
-                <p>New job posting: Marketing Specialist at FAVERTON GROUP INC.</p>
-                <small>5 hours ago</small>
-            </div>
-            <div class="notification-item">
-                <p>Welcome to Employment Corner! Complete your profile to get better job matches.</p>
-                <small>1 day ago</small>
+            <div id="notification-list">
+                <!-- Notifications will be dynamically populated -->
             </div>
         </div>
 
@@ -1278,7 +1648,7 @@
                                     <span><i class="fas fa-money-bill-wave"></i> ₱18,000 - ₱22,000</span>
                                 </div>
                                 <div class="action-buttons">
-                                    <button class="view-btn" onclick="showJobDetails()">Apply Now</button>
+                                    <button class="view-btn" onclick="showJobDetails('customer-service')">Apply Now</button>
                                     <button class="action-btn remove-btn" onclick="removeSavedJob(this)">Remove</button>
                                 </div>
                             </div>
@@ -1296,7 +1666,7 @@
                                     <span><i class="fas fa-money-bill-wave"></i> ₱20,000 - ₱25,000</span>
                                 </div>
                                 <div class="action-buttons">
-                                    <button class="view-btn" onclick="showJobDetails()">Apply Now</button>
+                                    <button class="view-btn" onclick="showJobDetails('marketing-specialist')">Apply Now</button>
                                     <button class="action-btn remove-btn" onclick="removeSavedJob(this)">Remove</button>
                                 </div>
                             </div>
@@ -1372,7 +1742,7 @@
                 
                 <div class="profile-section">
                     <div class="profile-header">
-                        <div class="profile-avatar">
+                        <div class="profile-avatar" id="profile-avatar">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="profile-info">
@@ -1406,11 +1776,22 @@
                     
                     <div class="profile-info-section">
                         <div class="info-group">
+                            <div class="info-label">Skills</div>
+                            <div class="skills-container" id="profile-skills">
+                                <!-- Skills will be dynamically populated -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-info-section">
+                        <div class="info-group">
                             <div class="info-label">Resume</div>
-                            <div class="resume-preview" id="resume-preview">
-                                <i class="fas fa-file-pdf"></i>
-                                <span id="resume-file-name">Juan_Dela_Cruz_Resume.pdf</span>
-                                <span class="remove-resume" onclick="removeResume()">Remove</span>
+                            <div class="resume-preview-container" id="profile-resume-preview">
+                                <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload your resume</p>
+                                    <input type="file" id="resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleResumeUpload(this)">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1458,6 +1839,21 @@
                 </div>
                 
                 <div class="edit-profile-form">
+                    <div class="profile-picture-container">
+                        <div class="profile-avatar" id="edit-profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-picture-actions">
+                            <button class="picture-btn" onclick="document.getElementById('profile-picture-upload').click()">
+                                <i class="fas fa-upload"></i>
+                            </button>
+                            <button class="picture-btn" onclick="openCamera()">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                            <input type="file" id="profile-picture-upload" accept="image/*" style="display: none;" onchange="handleProfilePictureUpload(this)">
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
                         <label>Full Name</label>
                         <input type="text" id="edit-name" value="Juan Dela Cruz">
@@ -1488,12 +1884,38 @@
                         <textarea id="edit-about" rows="4">Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.</textarea>
                     </div>
                     
+                    <div class="profile-form-section">
+                        <div class="profile-form-section-title">Skills</div>
+                        <div id="edit-skills">
+                            <!-- Skills inputs will be dynamically added -->
+                        </div>
+                        <button class="add-item-btn" onclick="addSkillInput()">Add Skill</button>
+                    </div>
+                    
+                    <div class="profile-form-section">
+                        <div class="profile-form-section-title">Education</div>
+                        <div id="edit-education">
+                            <!-- Education inputs will be dynamically added -->
+                        </div>
+                        <button class="add-item-btn" onclick="addEducationInput()">Add Education</button>
+                    </div>
+                    
+                    <div class="profile-form-section">
+                        <div class="profile-form-section-title">Experience</div>
+                        <div id="edit-experience">
+                            <!-- Experience inputs will be dynamically added -->
+                        </div>
+                        <button class="add-item-btn" onclick="addExperienceInput()">Add Experience</button>
+                    </div>
+                    
                     <div class="form-group">
                         <label>Resume</label>
-                        <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Click to upload your resume</p>
-                            <input type="file" id="resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleResumeUpload(this)">
+                        <div class="resume-preview-container" id="edit-resume-preview">
+                            <div class="file-upload" onclick="document.getElementById('edit-resume-upload').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload your resume</p>
+                                <input type="file" id="edit-resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleEditResumeUpload(this)">
+                            </div>
                         </div>
                     </div>
                     
@@ -1583,11 +2005,12 @@
                     
                     <div class="form-section">
                         <div class="form-section-title">Resume</div>
-                        <div class="resume-preview">
-                            <i class="fas fa-file-pdf"></i>
-                            <span id="application-resume-name">Juan_Dela_Cruz_Resume.pdf</span>
-                            <span class="remove-resume" onclick="changeApplicationResume()">Change</span>
-                            <input type="file" id="application-resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleApplicationResumeUpload(this)">
+                        <div class="resume-preview-container" id="application-resume-preview">
+                            <div class="file-upload" onclick="document.getElementById('application-resume-upload').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload your resume</p>
+                                <input type="file" id="application-resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleApplicationResumeUpload(this)">
+                            </div>
                         </div>
                     </div>
                     
@@ -1679,6 +2102,87 @@ Juan Dela Cruz</textarea>
                     <button class="view-btn" onclick="sendInterviewInvitation()">Send Interview Invitation</button>
                 </div>
             </div>
+            
+            <!-- Applicant Details View -->
+            <div id="applicant-details-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Applicant Details</span>
+                    </div>
+                    <div class="header-icons">
+                        <i class="fas fa-comment" onclick="startChatWithApplicant()"></i>
+                    </div>
+                </div>
+                
+                <div class="applicant-details-page">
+                    <div class="applicant-details-card">
+                        <div class="applicant-details-section">
+                            <h3>Personal Information</h3>
+                            <div class="applicant-detail-item">
+                                <div class="applicant-detail-label">Full Name</div>
+                                <div class="applicant-detail-value" id="applicant-detail-name">Maria Santos</div>
+                            </div>
+                            <div class="applicant-detail-item">
+                                <div class="applicant-detail-label">Email</div>
+                                <div class="applicant-detail-value" id="applicant-detail-email">maria.santos@example.com</div>
+                            </div>
+                            <div class="applicant-detail-item">
+                                <div class="applicant-detail-label">Phone</div>
+                                <div class="applicant-detail-value" id="applicant-detail-phone">+63 912 345 6789</div>
+                            </div>
+                            <div class="applicant-detail-item">
+                                <div class="applicant-detail-label">Address</div>
+                                <div class="applicant-detail-value" id="applicant-detail-address">123 Main Street, San Fernando, Pampanga</div>
+                            </div>
+                        </div>
+                        
+                        <div class="applicant-details-section">
+                            <h3>Skills</h3>
+                            <div class="skills-container" id="applicant-detail-skills">
+                                <!-- Skills will be dynamically added -->
+                            </div>
+                        </div>
+                        
+                        <div class="applicant-details-section">
+                            <h3>Education</h3>
+                            <div id="applicant-detail-education">
+                                <!-- Education will be dynamically added -->
+                            </div>
+                        </div>
+                        
+                        <div class="applicant-details-section">
+                            <h3>Experience</h3>
+                            <div id="applicant-detail-experience">
+                                <!-- Experience will be dynamically added -->
+                            </div>
+                        </div>
+                        
+                        <div class="applicant-details-section">
+                            <h3>Resume</h3>
+                            <div class="resume-preview-container">
+                                <div class="resume-preview-file">
+                                    <div>
+                                        <i class="fas fa-file-pdf"></i>
+                                        <span id="applicant-detail-resume">Maria_Santos_Resume.pdf</span>
+                                    </div>
+                                    <div class="resume-actions">
+                                        <button class="resume-action-btn view-resume-btn" onclick="viewResume()">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="view-btn" onclick="saveApplicantForInterview()">Save for Interview</button>
+                        <button class="action-btn approve-btn" onclick="approveApplicant()">Approve</button>
+                        <button class="action-btn reject-btn" onclick="rejectApplicant()">Reject</button>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="bottom-nav">
@@ -1701,8 +2205,43 @@ Juan Dela Cruz</textarea>
         </div>
     </div>
     
+    <!-- Camera Modal for Profile Picture -->
+    <div class="camera-modal" id="camera-modal">
+        <div class="camera-container">
+            <video class="camera-preview" id="camera-preview" autoplay></video>
+            <div class="camera-actions">
+                <button class="camera-btn camera-cancel" onclick="closeCamera()">Cancel</button>
+                <button class="camera-btn camera-capture" onclick="capturePhoto()">Capture</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chat Toggle Button -->
+    <div class="chat-toggle" id="chat-toggle">
+        <i class="fas fa-comments"></i>
+    </div>
+    
+    <!-- Chat Container -->
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">
+            <div class="chat-title">Chat</div>
+            <div class="chat-close" id="chat-close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages will be dynamically added here -->
+        </div>
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" id="chat-input" placeholder="Type a message...">
+            <button class="chat-send" id="chat-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
     <script>
-        // Application state
+        // Enhanced Application State
         let currentUser = null;
         let currentUserType = null;
         let currentSection = 'auth-section';
@@ -1712,9 +2251,14 @@ Juan Dela Cruz</textarea>
         let userAccounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
         let currentResumeFile = null;
         let currentApplicationResumeFile = null;
+        let savedApplicants = JSON.parse(localStorage.getItem('savedApplicants')) || [];
+        let scheduledInterviews = JSON.parse(localStorage.getItem('scheduledInterviews')) || [];
+        let chatMessages = JSON.parse(localStorage.getItem('chatMessages')) || {};
+        let currentChatWith = null;
         
         // Application data storage
         let submittedApplications = JSON.parse(localStorage.getItem('submittedApplications')) || {};
+        let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
         
         // DOM Elements
         const authSection = document.getElementById('auth-section');
@@ -1729,6 +2273,7 @@ Juan Dela Cruz</textarea>
         const applicationFormView = document.getElementById('application-form-view');
         const interviewSchedulingView = document.getElementById('interview-scheduling-view');
         const applicationDetailsView = document.getElementById('application-details-view');
+        const applicantDetailsView = document.getElementById('applicant-details-view');
         
         const notificationPanel = document.getElementById('notification-panel');
         const searchPanel = document.getElementById('search-panel');
@@ -1736,6 +2281,19 @@ Juan Dela Cruz</textarea>
         const applicantsContainer = document.getElementById('applicants-container');
         const homeNavBtn = document.getElementById('home-nav-btn');
         const integrationStatus = document.getElementById('integration-status');
+        
+        // Chat Elements
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatContainer = document.getElementById('chat-container');
+        const chatClose = document.getElementById('chat-close');
+        const chatMessagesEl = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+        
+        // Camera Elements
+        const cameraModal = document.getElementById('camera-modal');
+        const cameraPreview = document.getElementById('camera-preview');
+        let cameraStream = null;
         
         // Job data by category
         const jobData = {
@@ -1946,6 +2504,12 @@ Juan Dela Cruz</textarea>
             
             // Initialize SMS preview
             updateSmsPreview();
+            
+            // Load notifications
+            loadNotifications();
+            
+            // Initialize chat
+            initChat();
         }
         
         // Show home section based on user type
@@ -1973,6 +2537,7 @@ Juan Dela Cruz</textarea>
             applicationFormView.classList.add('hidden');
             interviewSchedulingView.classList.add('hidden');
             applicationDetailsView.classList.add('hidden');
+            applicantDetailsView.classList.add('hidden');
             
             // Hide panels
             notificationPanel.style.display = 'none';
@@ -2039,6 +2604,9 @@ Juan Dela Cruz</textarea>
                     
                     // Show appropriate view based on user type
                     showHomeSection();
+                    
+                    // Refresh job cards to show application status
+                    populateJobCards(currentCategory);
                 } else {
                     alert('Invalid email or password');
                 }
@@ -2055,6 +2623,12 @@ Juan Dela Cruz</textarea>
             const confirm = document.getElementById('signup-confirm').value;
             
             if (name && email && password && confirm) {
+                // Check email format
+                if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address (e.g., name@gmail.com)');
+                    return;
+                }
+                
                 if (password !== confirm) {
                     alert('Passwords do not match');
                     return;
@@ -2075,7 +2649,11 @@ Juan Dela Cruz</textarea>
                     phone: '',
                     address: '',
                     location: '',
-                    about: ''
+                    about: '',
+                    skills: [],
+                    education: [],
+                    experience: [],
+                    profilePicture: null
                 };
                 
                 userAccounts.push(newUser);
@@ -2091,6 +2669,12 @@ Juan Dela Cruz</textarea>
             } else {
                 alert('Please fill in all fields');
             }
+        }
+        
+        // Email validation function
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
         }
         
         // Select user type (after signup)
@@ -2126,6 +2710,23 @@ Juan Dela Cruz</textarea>
                 document.getElementById('profile-about').textContent = currentUser.about || 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.';
                 document.getElementById('profile-role').textContent = currentUserType === 'applicant' ? 'Applicant' : 'Employee';
                 
+                // Update skills
+                const skillsContainer = document.getElementById('profile-skills');
+                skillsContainer.innerHTML = '';
+                if (currentUser.skills && currentUser.skills.length > 0) {
+                    currentUser.skills.forEach(skill => {
+                        const skillTag = document.createElement('span');
+                        skillTag.className = 'skill-tag';
+                        skillTag.textContent = skill;
+                        skillsContainer.appendChild(skillTag);
+                    });
+                } else {
+                    skillsContainer.innerHTML = '<p>No skills added yet</p>';
+                }
+                
+                // Update profile picture
+                updateProfilePicture();
+                
                 // Update application form with user data
                 document.getElementById('application-name').value = currentUser.name;
                 document.getElementById('application-email').value = currentUser.email;
@@ -2160,7 +2761,7 @@ Juan Dela Cruz</textarea>
             populateApplicantCards(filter);
         }
         
-        // Populate job cards based on category
+        // Populate job cards based on category - FIXED VERSION
         function populateJobCards(category) {
             jobCardsContainer.innerHTML = '';
             
@@ -2169,6 +2770,24 @@ Juan Dela Cruz</textarea>
             jobs.forEach(job => {
                 const jobCard = document.createElement('div');
                 jobCard.className = 'job-card';
+                
+                // Check if user has already applied to this job - FIXED: Check if currentUser exists
+                let hasApplied = false;
+                if (currentUser && currentUser.email) {
+                    hasApplied = Object.values(submittedApplications).some(app => 
+                        app.position === job.title && app.company === job.company && app.email === currentUser.email
+                    );
+                }
+                
+                let applicationStatus = '';
+                if (hasApplied) {
+                    applicationStatus = `
+                        <div class="application-status-badge status-applied">
+                            <i class="fas fa-check-circle"></i> Applied
+                        </div>
+                    `;
+                }
+                
                 jobCard.innerHTML = `
                     <div class="job-image" style="background-image: url('${job.image}');">
                         <div class="job-type">${job.type}</div>
@@ -2176,11 +2795,14 @@ Juan Dela Cruz</textarea>
                     <div class="job-content">
                         <div class="job-title">${job.title}</div>
                         <div class="company">${job.company}</div>
+                        ${applicationStatus}
                         <div class="job-details">
                             <span><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
                             <span><i class="fas fa-money-bill-wave"></i> ${job.salary}</span>
                         </div>
-                        <button class="view-btn" onclick="showJobDetails('${job.id}')">View Job</button>
+                        <button class="view-btn" onclick="showJobDetails('${job.id}')">
+                            ${hasApplied ? 'Review Application' : 'View Job'}
+                        </button>
                     </div>
                 `;
                 jobCardsContainer.appendChild(jobCard);
@@ -2248,15 +2870,75 @@ Juan Dela Cruz</textarea>
         function viewApplicantDetails(applicantName) {
             const applicant = applicantData.all.find(a => a.name === applicantName);
             if (applicant) {
-                alert(`Viewing details for ${applicantName}\n\nPosition: ${applicant.position}\nExperience: ${applicant.experience}\nPhone: ${applicant.phone}\nEmail: ${applicant.email}\nApplied: ${applicant.appliedDate}\nSkills: ${applicant.skills.join(', ')}`);
+                // Update the applicant details view
+                document.getElementById('applicant-detail-name').textContent = applicant.name;
+                document.getElementById('applicant-detail-email').textContent = applicant.email;
+                document.getElementById('applicant-detail-phone').textContent = applicant.phone;
+                document.getElementById('applicant-detail-address').textContent = applicant.address || 'Not provided';
+                document.getElementById('applicant-detail-resume').textContent = applicant.resume || 'Not provided';
+                
+                // Update skills
+                const skillsContainer = document.getElementById('applicant-detail-skills');
+                skillsContainer.innerHTML = '';
+                applicant.skills.forEach(skill => {
+                    const skillTag = document.createElement('span');
+                    skillTag.className = 'skill-tag';
+                    skillTag.textContent = skill;
+                    skillsContainer.appendChild(skillTag);
+                });
+                
+                // Update education (in a real app, this would come from the applicant's profile)
+                const educationContainer = document.getElementById('applicant-detail-education');
+                educationContainer.innerHTML = `
+                    <div class="education-item">
+                        <div class="applicant-detail-label">Bachelor of Science in Business Administration</div>
+                        <div class="applicant-detail-value">University of the Philippines, 2015-2019</div>
+                    </div>
+                `;
+                
+                // Update experience (in a real app, this would come from the applicant's profile)
+                const experienceContainer = document.getElementById('applicant-detail-experience');
+                experienceContainer.innerHTML = `
+                    <div class="experience-item">
+                        <div class="applicant-detail-label">Customer Service Representative</div>
+                        <div class="applicant-detail-value">ABC Company, 2019-2021</div>
+                        <div class="applicant-detail-value">Handled customer inquiries and resolved issues</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="applicant-detail-label">Sales Associate</div>
+                        <div class="applicant-detail-value">XYZ Retail, 2021-Present</div>
+                        <div class="applicant-detail-value">Assisted customers and managed product displays</div>
+                    </div>
+                `;
+                
+                showSection('applicant-details-view');
             }
         }
         
-        // Show job details
+        // Show job details - FIXED VERSION
         function showJobDetails(jobId) {
             const job = Object.values(jobData).flat().find(j => j.id === jobId);
             if (job) {
-                // In a real implementation, you would update the job details view with the job data
+                // Check if user has already applied - FIXED: Check if currentUser exists
+                let hasApplied = false;
+                if (currentUser && currentUser.email) {
+                    hasApplied = Object.values(submittedApplications).some(app => 
+                        app.position === job.title && app.company === job.company && app.email === currentUser.email
+                    );
+                }
+                
+                // Update the apply button text
+                const applyButton = document.querySelector('#job-details-view .view-btn');
+                if (hasApplied) {
+                    applyButton.textContent = 'Review Application';
+                    applyButton.onclick = function() {
+                        showApplicationDetails(jobId);
+                    };
+                } else {
+                    applyButton.textContent = 'Apply Now';
+                    applyButton.onclick = showApplicationForm;
+                }
+                
                 showSection('job-details-view');
             }
         }
@@ -2266,15 +2948,22 @@ Juan Dela Cruz</textarea>
             showSection('application-form-view');
         }
         
-        // Submit application
+        // Submit application - FIXED VERSION
         function submitApplication() {
+            // Check if user is logged in
+            if (!currentUser) {
+                alert('Please log in to submit an application');
+                showSection('auth-section');
+                return;
+            }
+            
             // Get values from the editable form
             const name = document.getElementById('application-name').value;
             const email = document.getElementById('application-email').value;
             const phone = document.getElementById('application-phone').value;
             const address = document.getElementById('application-address').value;
             const coverLetter = document.getElementById('application-cover-letter').value;
-            const resumeName = document.getElementById('application-resume-name').textContent;
+            const resumeName = currentApplicationResumeFile ? currentApplicationResumeFile.name : 'No resume uploaded';
             
             // Store application data
             const applicationId = 'app-' + Date.now();
@@ -2294,31 +2983,48 @@ Juan Dela Cruz</textarea>
             // Save to localStorage
             localStorage.setItem('submittedApplications', JSON.stringify(submittedApplications));
             
+            // Create notification for employer
+            createNotification(
+                'employer@alorica.com', // In a real app, this would be the employer's email
+                'New Application Received',
+                `${name} has applied for the Customer Service Representative position.`
+            );
+            
             alert('Application submitted successfully!');
             showHomeSection();
+            
+            // Refresh job cards to show application status
+            populateJobCards(currentCategory);
         }
         
-        // Show application details
+        // Show application details - FIXED VERSION
         function showApplicationDetails(jobId) {
             const job = Object.values(jobData).flat().find(j => j.id === jobId);
             if (job) {
-                // Find the application for this job
-                const application = Object.values(submittedApplications).find(app => 
-                    app.position === job.title && app.company === job.company
-                ) || {
-                    name: currentUser.name,
-                    email: currentUser.email,
-                    phone: currentUser.phone || '+63 912 345 6789',
-                    address: currentUser.address || '123 Main Street, San Fernando, Pampanga',
-                    coverLetter: "Dear Hiring Manager,\n\nI am excited to apply for the " + job.title + " position at " + job.company + ". With 5 years of experience in customer service, I am confident in my ability to provide exceptional support to your customers.\n\nThank you for considering my application.\n\nSincerely,\n" + currentUser.name,
-                    resume: "Juan_Dela_Cruz_Resume.pdf",
-                    position: job.title,
-                    company: job.company,
-                    date: jobId === 'customer-service' ? 'March 15, 2023' : 
-                          jobId === 'marketing-specialist' ? 'March 10, 2023' : 'March 5, 2023',
-                    status: jobId === 'customer-service' ? 'pending' : 
-                           jobId === 'marketing-specialist' ? 'approved' : 'rejected'
-                };
+                // Find the application for this job - FIXED: Check if currentUser exists
+                let application;
+                if (currentUser && currentUser.email) {
+                    application = Object.values(submittedApplications).find(app => 
+                        app.position === job.title && app.company === job.company && app.email === currentUser.email
+                    );
+                }
+                
+                if (!application) {
+                    application = {
+                        name: currentUser ? currentUser.name : 'User',
+                        email: currentUser ? currentUser.email : 'user@example.com',
+                        phone: currentUser ? (currentUser.phone || '+63 912 345 6789') : '+63 912 345 6789',
+                        address: currentUser ? (currentUser.address || '123 Main Street, San Fernando, Pampanga') : '123 Main Street, San Fernando, Pampanga',
+                        coverLetter: "Dear Hiring Manager,\n\nI am excited to apply for the " + job.title + " position at " + job.company + ". With 5 years of experience in customer service, I am confident in my ability to provide exceptional support to your customers.\n\nThank you for considering my application.\n\nSincerely,\n" + (currentUser ? currentUser.name : 'User'),
+                        resume: "Resume.pdf",
+                        position: job.title,
+                        company: job.company,
+                        date: jobId === 'customer-service' ? 'March 15, 2023' : 
+                              jobId === 'marketing-specialist' ? 'March 10, 2023' : 'March 5, 2023',
+                        status: jobId === 'customer-service' ? 'pending' : 
+                               jobId === 'marketing-specialist' ? 'approved' : 'rejected'
+                    };
+                }
                 
                 // Update the application details view
                 document.getElementById('detail-position').textContent = application.position;
@@ -2343,8 +3049,15 @@ Juan Dela Cruz</textarea>
             }
         }
         
-        // Edit profile
+        // Edit profile - FIXED VERSION
         function editProfile() {
+            // Check if user is logged in
+            if (!currentUser) {
+                alert('Please log in to edit your profile');
+                showSection('auth-section');
+                return;
+            }
+            
             document.getElementById('edit-name').value = currentUser.name || '';
             document.getElementById('edit-email').value = currentUser.email || '';
             document.getElementById('edit-phone').value = currentUser.phone || '+63 912 345 6789';
@@ -2352,17 +3065,101 @@ Juan Dela Cruz</textarea>
             document.getElementById('edit-location').value = currentUser.location || 'San Fernando, Pampanga';
             document.getElementById('edit-about').value = currentUser.about || 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.';
             
+            // Populate skills
+            const skillsContainer = document.getElementById('edit-skills');
+            skillsContainer.innerHTML = '';
+            if (currentUser.skills && currentUser.skills.length > 0) {
+                currentUser.skills.forEach(skill => {
+                    addSkillInput(skill);
+                });
+            }
+            
+            // Populate education
+            const educationContainer = document.getElementById('edit-education');
+            educationContainer.innerHTML = '';
+            if (currentUser.education && currentUser.education.length > 0) {
+                currentUser.education.forEach(edu => {
+                    addEducationInput(edu);
+                });
+            }
+            
+            // Populate experience
+            const experienceContainer = document.getElementById('edit-experience');
+            experienceContainer.innerHTML = '';
+            if (currentUser.experience && currentUser.experience.length > 0) {
+                currentUser.experience.forEach(exp => {
+                    addExperienceInput(exp);
+                });
+            }
+            
+            // Update profile picture in edit view
+            const editProfileAvatar = document.getElementById('edit-profile-avatar');
+            if (currentUser.profilePicture) {
+                editProfileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
+            } else {
+                editProfileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+            }
+            
             showSection('edit-profile-view');
         }
         
-        // Save profile
+        // Save profile - FIXED VERSION
         function saveProfile() {
+            // Check if user is logged in
+            if (!currentUser) {
+                alert('Please log in to save your profile');
+                showSection('auth-section');
+                return;
+            }
+            
             // Update current user
             currentUser.name = document.getElementById('edit-name').value;
             currentUser.phone = document.getElementById('edit-phone').value;
             currentUser.address = document.getElementById('edit-address').value;
             currentUser.location = document.getElementById('edit-location').value;
             currentUser.about = document.getElementById('edit-about').value;
+            
+            // Update skills
+            currentUser.skills = [];
+            document.querySelectorAll('.skill-input').forEach(input => {
+                if (input.value.trim() !== '') {
+                    currentUser.skills.push(input.value.trim());
+                }
+            });
+            
+            // Update education
+            currentUser.education = [];
+            document.querySelectorAll('.education-item').forEach(item => {
+                const degree = item.querySelector('.education-degree').value;
+                const school = item.querySelector('.education-school').value;
+                const year = item.querySelector('.education-year').value;
+                
+                if (degree.trim() !== '' && school.trim() !== '') {
+                    currentUser.education.push({
+                        degree: degree,
+                        school: school,
+                        year: year
+                    });
+                }
+            });
+            
+            // Update experience
+            currentUser.experience = [];
+            document.querySelectorAll('.experience-item').forEach(item => {
+                const position = item.querySelector('.experience-position').value;
+                const company = item.querySelector('.experience-company').value;
+                const duration = item.querySelector('.experience-duration').value;
+                const description = item.querySelector('.experience-description').value;
+                
+                if (position.trim() !== '' && company.trim() !== '') {
+                    currentUser.experience.push({
+                        position: position,
+                        company: company,
+                        duration: duration,
+                        description: description
+                    });
+                }
+            });
             
             // Update in storage
             const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
@@ -2383,8 +3180,47 @@ Juan Dela Cruz</textarea>
         function handleResumeUpload(input) {
             if (input.files && input.files[0]) {
                 currentResumeFile = input.files[0];
-                document.getElementById('resume-file-name').textContent = currentResumeFile.name;
-                alert('Resume uploaded successfully!');
+                
+                // Create a preview of the resume
+                const resumePreviewContainer = document.getElementById('profile-resume-preview');
+                resumePreviewContainer.innerHTML = `
+                    <div class="resume-preview-file">
+                        <div>
+                            <i class="fas fa-file-pdf"></i>
+                            <span>${currentResumeFile.name}</span>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="resume-action-btn view-resume-btn" onclick="viewResumePreview()">View</button>
+                            <button class="resume-action-btn remove-resume-btn" onclick="removeResumePreview()">Remove</button>
+                        </div>
+                    </div>
+                `;
+                
+                alert('Resume uploaded successfully! You can view it before saving.');
+            }
+        }
+        
+        // Handle edit resume upload
+        function handleEditResumeUpload(input) {
+            if (input.files && input.files[0]) {
+                currentResumeFile = input.files[0];
+                
+                // Create a preview of the resume
+                const resumePreviewContainer = document.getElementById('edit-resume-preview');
+                resumePreviewContainer.innerHTML = `
+                    <div class="resume-preview-file">
+                        <div>
+                            <i class="fas fa-file-pdf"></i>
+                            <span>${currentResumeFile.name}</span>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="resume-action-btn view-resume-btn" onclick="viewResumePreview()">View</button>
+                            <button class="resume-action-btn remove-resume-btn" onclick="removeEditResumePreview()">Remove</button>
+                        </div>
+                    </div>
+                `;
+                
+                alert('Resume uploaded successfully! You can view it before saving.');
             }
         }
         
@@ -2392,56 +3228,279 @@ Juan Dela Cruz</textarea>
         function handleApplicationResumeUpload(input) {
             if (input.files && input.files[0]) {
                 currentApplicationResumeFile = input.files[0];
-                document.getElementById('application-resume-name').textContent = currentApplicationResumeFile.name;
+                
+                // Create a preview of the resume
+                const resumePreviewContainer = document.getElementById('application-resume-preview');
+                resumePreviewContainer.innerHTML = `
+                    <div class="resume-preview-file">
+                        <div>
+                            <i class="fas fa-file-pdf"></i>
+                            <span>${currentApplicationResumeFile.name}</span>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="resume-action-btn view-resume-btn" onclick="viewApplicationResumePreview()">View</button>
+                            <button class="resume-action-btn remove-resume-btn" onclick="removeApplicationResumePreview()">Remove</button>
+                        </div>
+                    </div>
+                `;
+                
                 alert('Resume updated successfully!');
             }
         }
         
-        // Change application resume
-        function changeApplicationResume() {
-            document.getElementById('application-resume-upload').click();
-        }
-        
-        // Remove resume
-        function removeResume() {
-            if (confirm('Are you sure you want to remove your resume?')) {
-                currentResumeFile = null;
-                document.getElementById('resume-file-name').textContent = 'No resume uploaded';
-                alert('Resume removed successfully');
+        function viewResumePreview() {
+            if (currentResumeFile) {
+                // In a real application, this would open the resume file
+                // For this demo, we'll show an alert
+                alert(`Opening resume: ${currentResumeFile.name}`);
+                
+                // In a real app, you might use:
+                // const fileURL = URL.createObjectURL(currentResumeFile);
+                // window.open(fileURL, '_blank');
             }
         }
         
-        // Approve application (employee)
-        function approveApplication(button, applicantName, phoneNumber) {
-            const statusElement = button.closest('.applicant-info').querySelector('.application-status');
-            statusElement.textContent = 'Approved';
-            statusElement.className = 'application-status status-approved';
-            
-            // Simulate sending notification to applicant
-            sendNotificationToApplicant(applicantName, phoneNumber, 'approved');
-            alert('Application approved! Notification sent to applicant.');
+        function viewApplicationResumePreview() {
+            if (currentApplicationResumeFile) {
+                // In a real application, this would open the resume file
+                // For this demo, we'll show an alert
+                alert(`Opening resume: ${currentApplicationResumeFile.name}`);
+            }
         }
         
-        // Reject application (employee)
-        function rejectApplication(button, applicantName, phoneNumber) {
-            const statusElement = button.closest('.applicant-info').querySelector('.application-status');
-            statusElement.textContent = 'Rejected';
-            statusElement.className = 'application-status status-rejected';
-            
-            // Simulate sending notification to applicant
-            sendNotificationToApplicant(applicantName, phoneNumber, 'rejected');
-            alert('Application rejected! Notification sent to applicant.');
+        function removeResumePreview() {
+            if (confirm('Are you sure you want to remove the resume?')) {
+                currentResumeFile = null;
+                document.getElementById('profile-resume-preview').innerHTML = `
+                    <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload your resume</p>
+                    </div>
+                `;
+            }
         }
         
-        // Save applicant (employee)
+        function removeEditResumePreview() {
+            if (confirm('Are you sure you want to remove the resume?')) {
+                currentResumeFile = null;
+                document.getElementById('edit-resume-preview').innerHTML = `
+                    <div class="file-upload" onclick="document.getElementById('edit-resume-upload').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload your resume</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function removeApplicationResumePreview() {
+            if (confirm('Are you sure you want to remove the resume?')) {
+                currentApplicationResumeFile = null;
+                document.getElementById('application-resume-preview').innerHTML = `
+                    <div class="file-upload" onclick="document.getElementById('application-resume-upload').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload your resume</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Profile Picture Functions
+        function openCamera() {
+            cameraModal.style.display = 'flex';
+            
+            // Access the camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    cameraStream = stream;
+                    cameraPreview.srcObject = stream;
+                })
+                .catch(error => {
+                    console.error('Error accessing camera:', error);
+                    alert('Unable to access camera. Please check permissions.');
+                });
+        }
+        
+        function closeCamera() {
+            cameraModal.style.display = 'none';
+            
+            // Stop the camera stream
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+            }
+        }
+        
+        function capturePhoto() {
+            const canvas = document.createElement('canvas');
+            canvas.width = cameraPreview.videoWidth;
+            canvas.height = cameraPreview.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(cameraPreview, 0, 0, canvas.width, canvas.height);
+            
+            // Convert to data URL
+            const dataURL = canvas.toDataURL('image/png');
+            
+            // Update profile picture
+            currentUser.profilePicture = dataURL;
+            updateProfilePicture();
+            
+            closeCamera();
+        }
+        
+        function handleProfilePictureUpload(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentUser.profilePicture = e.target.result;
+                    updateProfilePicture();
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        function updateProfilePicture() {
+            const profileAvatar = document.getElementById('profile-avatar');
+            const editProfileAvatar = document.getElementById('edit-profile-avatar');
+            
+            if (currentUser.profilePicture) {
+                profileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
+                if (editProfileAvatar) {
+                    editProfileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
+                }
+            } else {
+                profileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+                if (editProfileAvatar) {
+                    editProfileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+                }
+            }
+        }
+        
+        // Form Input Functions
+        function addSkillInput(value = '') {
+            const skillsContainer = document.getElementById('edit-skills');
+            const skillInput = document.createElement('div');
+            skillInput.className = 'form-group';
+            skillInput.innerHTML = `
+                <input type="text" class="skill-input" placeholder="Enter a skill" value="${value}">
+                <button class="action-btn remove-btn" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            skillsContainer.appendChild(skillInput);
+        }
+        
+        function addEducationInput(education = {}) {
+            const educationContainer = document.getElementById('edit-education');
+            const educationItem = document.createElement('div');
+            educationItem.className = 'education-item';
+            educationItem.innerHTML = `
+                <div class="form-group">
+                    <label>Degree</label>
+                    <input type="text" class="education-degree" placeholder="e.g., Bachelor of Science in Business Administration" value="${education.degree || ''}">
+                </div>
+                <div class="form-group">
+                    <label>School</label>
+                    <input type="text" class="education-school" placeholder="e.g., University of the Philippines" value="${education.school || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Year</label>
+                    <input type="text" class="education-year" placeholder="e.g., 2015-2019" value="${education.year || ''}">
+                </div>
+                <button class="action-btn remove-btn" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            educationContainer.appendChild(educationItem);
+        }
+        
+        function addExperienceInput(experience = {}) {
+            const experienceContainer = document.getElementById('edit-experience');
+            const experienceItem = document.createElement('div');
+            experienceItem.className = 'experience-item';
+            experienceItem.innerHTML = `
+                <div class="form-group">
+                    <label>Position</label>
+                    <input type="text" class="experience-position" placeholder="e.g., Customer Service Representative" value="${experience.position || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" class="experience-company" placeholder="e.g., ABC Company" value="${experience.company || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Duration</label>
+                    <input type="text" class="experience-duration" placeholder="e.g., 2019-2021" value="${experience.duration || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="experience-description" placeholder="Describe your responsibilities and achievements" rows="3">${experience.description || ''}</textarea>
+                </div>
+                <button class="action-btn remove-btn" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            experienceContainer.appendChild(experienceItem);
+        }
+        
+        // Enhanced Save Applicant function
         function saveApplicant(button, applicantName) {
-            alert(`Applicant ${applicantName} saved for interviews!`);
+            const applicant = applicantData.all.find(a => a.name === applicantName);
+            if (applicant) {
+                // Check if already saved
+                if (!savedApplicants.some(a => a.name === applicantName)) {
+                    savedApplicants.push(applicant);
+                    localStorage.setItem('savedApplicants', JSON.stringify(savedApplicants));
+                    
+                    // Create notification for applicant
+                    createNotification(
+                        applicant.email,
+                        'Your application has been saved for interview',
+                        `Your application for ${applicant.position} has been saved for interview consideration.`
+                    );
+                    
+                    alert(`Applicant ${applicantName} saved for interviews!`);
+                } else {
+                    alert(`Applicant ${applicantName} is already saved.`);
+                }
+            }
         }
         
-        // Remove applicant (employee)
-        function removeApplicant(button) {
-            if (confirm('Are you sure you want to remove this applicant?')) {
-                button.closest('.applicant-info').remove();
+        // Save applicant for interview from details view
+        function saveApplicantForInterview() {
+            const applicantName = document.getElementById('applicant-detail-name').textContent;
+            saveApplicant(null, applicantName);
+        }
+        
+        // Approve applicant from details view
+        function approveApplicant() {
+            const applicantName = document.getElementById('applicant-detail-name').textContent;
+            const applicant = applicantData.all.find(a => a.name === applicantName);
+            if (applicant) {
+                // Update status
+                applicant.status = 'approved';
+                
+                // Create notification for applicant
+                createNotification(
+                    applicant.email,
+                    'Application Approved',
+                    `Your application for ${applicant.position} has been approved! We will contact you soon for the next steps.`
+                );
+                
+                alert(`Application for ${applicantName} approved!`);
+                showSection('employee-view');
+            }
+        }
+        
+        // Reject applicant from details view
+        function rejectApplicant() {
+            const applicantName = document.getElementById('applicant-detail-name').textContent;
+            const applicant = applicantData.all.find(a => a.name === applicantName);
+            if (applicant) {
+                // Update status
+                applicant.status = 'rejected';
+                
+                // Create notification for applicant
+                createNotification(
+                    applicant.email,
+                    'Application Status Update',
+                    `Thank you for your application for ${applicant.position}. Unfortunately, we have decided to move forward with other candidates at this time.`
+                );
+                
+                alert(`Application for ${applicantName} rejected!`);
+                showSection('employee-view');
             }
         }
         
@@ -2455,6 +3514,9 @@ Juan Dela Cruz</textarea>
         // Remove saved applicant (employee)
         function removeSavedApplicant(button) {
             if (confirm('Are you sure you want to remove this saved applicant?')) {
+                const applicantName = button.closest('.applicant-info').querySelector('.applicant-name').textContent;
+                savedApplicants = savedApplicants.filter(a => a.name !== applicantName);
+                localStorage.setItem('savedApplicants', JSON.stringify(savedApplicants));
                 button.closest('.applicant-info').remove();
             }
         }
@@ -2548,6 +3610,31 @@ Juan Dela Cruz</textarea>
                 console.log('Email sent to:', email);
                 console.log('Message:', document.getElementById('sms-content').textContent);
                 
+                // Remove from saved applicants
+                const applicant = savedApplicants.find(a => a.name === applicantName);
+                if (applicant) {
+                    savedApplicants = savedApplicants.filter(a => a.name !== applicantName);
+                    localStorage.setItem('savedApplicants', JSON.stringify(savedApplicants));
+                }
+                
+                // Add to scheduled interviews
+                const interview = {
+                    applicantName: applicantName,
+                    date: date,
+                    time: time,
+                    location: location,
+                    type: interviewType
+                };
+                scheduledInterviews.push(interview);
+                localStorage.setItem('scheduledInterviews', JSON.stringify(scheduledInterviews));
+                
+                // Create notification for applicant
+                createNotification(
+                    email,
+                    'Interview Scheduled',
+                    `You have been scheduled for a ${interviewType} interview on ${date} at ${time}. Location: ${location}.`
+                );
+                
                 // Show success message
                 alert(`Interview invitation sent to ${applicantName}!\n\nSMS: ${phoneNumber}\nEmail: ${email}`);
                 
@@ -2558,39 +3645,229 @@ Juan Dela Cruz</textarea>
             }, 1500);
         }
         
-        // Simulate sending notification to applicant
-        function sendNotificationToApplicant(applicantName, phoneNumber, type, details = {}) {
-            let message = '';
+        // Real-time Notifications
+        function createNotification(userEmail, title, message) {
+            const notification = {
+                id: Date.now(),
+                userEmail: userEmail,
+                title: title,
+                message: message,
+                timestamp: new Date(),
+                read: false
+            };
             
-            switch(type) {
-                case 'approved':
-                    message = `Hello ${applicantName}, your application has been approved! We will contact you soon for the next steps.`;
-                    break;
-                case 'rejected':
-                    message = `Hello ${applicantName}, thank you for your application. Unfortunately, we have decided to move forward with other candidates at this time.`;
-                    break;
-                case 'interview':
-                    const formattedDate = new Date(details.date).toLocaleDateString('en-PH', {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
-                    message = `Hello ${applicantName}, you have been scheduled for a ${details.type} interview on ${formattedDate} at ${details.time}. Location: ${details.location}. ${details.details}`;
-                    break;
-            }
+            notifications.push(notification);
+            localStorage.setItem('notifications', JSON.stringify(notifications));
             
-            console.log(`SMS to ${phoneNumber}: ${message}`);
-            // In a real application, this would integrate with an SMS API
+            // In a real app, you would use WebSockets or similar technology
+            // to push notifications to the user in real-time
         }
         
-        // Perform search
-        function performSearch() {
-            const searchTerm = document.querySelector('.search-input').value;
-            if (searchTerm) {
-                alert(`Searching for: ${searchTerm}`);
-                // In a real application, this would filter jobs based on the search term
+        function loadNotifications() {
+            if (!currentUser) return;
+            
+            const userNotifications = notifications.filter(n => n.userEmail === currentUser.email);
+            const notificationList = document.getElementById('notification-list');
+            notificationList.innerHTML = '';
+            
+            if (userNotifications.length > 0) {
+                userNotifications.forEach(notification => {
+                    const notificationItem = document.createElement('div');
+                    notificationItem.className = 'notification-item';
+                    if (!notification.read) {
+                        notificationItem.classList.add('unread');
+                    }
+                    notificationItem.innerHTML = `
+                        <div class="notification-title">${notification.title}</div>
+                        <div class="notification-message">${notification.message}</div>
+                        <div class="notification-time">${formatTime(notification.timestamp)}</div>
+                    `;
+                    notificationList.appendChild(notificationItem);
+                });
+            } else {
+                notificationList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-bell-slash"></i>
+                        <p>No notifications yet</p>
+                    </div>
+                `;
             }
+        }
+        
+        // Enhanced Search Function
+        function performSearch() {
+            const searchTerm = document.querySelector('.search-input').value.toLowerCase();
+            if (searchTerm) {
+                // Filter jobs based on search term
+                const allJobs = Object.values(jobData).flat();
+                const filteredJobs = allJobs.filter(job => 
+                    job.title.toLowerCase().includes(searchTerm) || 
+                    job.company.toLowerCase().includes(searchTerm) ||
+                    job.location.toLowerCase().includes(searchTerm)
+                );
+                
+                // Display search results
+                displaySearchResults(filteredJobs, searchTerm);
+            } else {
+                alert('Please enter a search term');
+            }
+        }
+        
+        function displaySearchResults(jobs, searchTerm) {
+            // Create a search results view
+            const searchResultsView = document.createElement('div');
+            searchResultsView.className = 'search-results-container';
+            searchResultsView.innerHTML = `
+                <div class="page-header">
+                    <div class="back-btn" onclick="showHomeSection()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Search Results for "${searchTerm}"</span>
+                    </div>
+                    <div class="header-icons"></div>
+                </div>
+                <div class="job-cards" id="search-job-cards-container"></div>
+            `;
+            
+            // Add to the app container
+            document.querySelector('.app-container').appendChild(searchResultsView);
+            
+            // Populate with search results
+            const searchJobCardsContainer = document.getElementById('search-job-cards-container');
+            searchJobCardsContainer.innerHTML = '';
+            
+            if (jobs.length > 0) {
+                jobs.forEach(job => {
+                    const jobCard = document.createElement('div');
+                    jobCard.className = 'job-card';
+                    jobCard.innerHTML = `
+                        <div class="job-image" style="background-image: url('${job.image}');">
+                            <div class="job-type">${job.type}</div>
+                        </div>
+                        <div class="job-content">
+                            <div class="job-title">${job.title}</div>
+                            <div class="company">${job.company}</div>
+                            <div class="job-details">
+                                <span><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+                                <span><i class="fas fa-money-bill-wave"></i> ${job.salary}</span>
+                            </div>
+                            <button class="view-btn" onclick="showJobDetails('${job.id}')">View Job</button>
+                        </div>
+                    `;
+                    searchJobCardsContainer.appendChild(jobCard);
+                });
+            } else {
+                searchJobCardsContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <p>No jobs found for "${searchTerm}"</p>
+                    </div>
+                `;
+            }
+            
+            // Show the search results view
+            searchResultsView.style.display = 'block';
+            hideAllSections();
+        }
+        
+        function hideAllSections() {
+            // Hide all main sections
+            const sections = [
+                'auth-section', 'user-type-section', 'applicant-view', 'employee-view',
+                'my-applications-view', 'saved-jobs-view', 'profile-view', 'edit-profile-view',
+                'job-details-view', 'application-form-view', 'interview-scheduling-view',
+                'application-details-view', 'applicant-details-view'
+            ];
+            
+            sections.forEach(section => {
+                document.getElementById(section).classList.add('hidden');
+            });
+        }
+        
+        // Chat System Functions
+        function initChat() {
+            // Event listeners for chat
+            chatToggle.addEventListener('click', toggleChat);
+            chatClose.addEventListener('click', toggleChat);
+            chatSend.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+        
+        function toggleChat() {
+            if (chatContainer.style.display === 'flex') {
+                chatContainer.style.display = 'none';
+            } else {
+                chatContainer.style.display = 'flex';
+                loadChatMessages();
+            }
+        }
+        
+        function loadChatMessages() {
+            chatMessagesEl.innerHTML = '';
+            
+            // In a real app, you would load messages for the current conversation
+            // For demo, we'll show some sample messages
+            const sampleMessages = [
+                { sender: 'employer', text: 'Hello, I saw your application and would like to schedule an interview.', time: '10:30 AM' },
+                { sender: 'applicant', text: 'Thank you for considering my application! When would be a good time?', time: '10:32 AM' },
+                { sender: 'employer', text: 'How about tomorrow at 2 PM?', time: '10:33 AM' }
+            ];
+            
+            sampleMessages.forEach(msg => {
+                const messageEl = document.createElement('div');
+                messageEl.className = `message ${msg.sender === 'applicant' ? 'sent' : 'received'}`;
+                messageEl.innerHTML = `
+                    <div class="message-text">${msg.text}</div>
+                    <div class="message-time">${msg.time}</div>
+                `;
+                chatMessagesEl.appendChild(messageEl);
+            });
+            
+            // Scroll to bottom
+            chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+        }
+        
+        function sendMessage() {
+            const messageText = chatInput.value.trim();
+            if (messageText) {
+                // Create message element
+                const messageEl = document.createElement('div');
+                messageEl.className = 'message sent';
+                messageEl.innerHTML = `
+                    <div class="message-text">${messageText}</div>
+                    <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                `;
+                chatMessagesEl.appendChild(messageEl);
+                
+                // Clear input
+                chatInput.value = '';
+                
+                // Scroll to bottom
+                chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+                
+                // In a real app, you would send the message to the server
+                // and the other user would receive it in real-time
+            }
+        }
+        
+        function startChatWithApplicant() {
+            const applicantName = document.getElementById('applicant-detail-name').textContent;
+            currentChatWith = applicantName;
+            document.querySelector('.chat-title').textContent = `Chat with ${applicantName}`;
+            toggleChat();
+        }
+        
+        // Helper Functions
+        function formatTime(date) {
+            if (typeof date === 'string') {
+                date = new Date(date);
+            }
+            return date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         }
         
         // Logout
@@ -2611,7 +3888,15 @@ Juan Dela Cruz</textarea>
                 phone: '+63 912 345 6789',
                 address: '123 Main Street, San Fernando, Pampanga',
                 location: 'San Fernando, Pampanga',
-                about: 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.'
+                about: 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.',
+                skills: ['Customer Service', 'Communication', 'Problem Solving'],
+                education: [
+                    { degree: 'Bachelor of Science in Business Administration', school: 'University of the Philippines', year: '2015-2019' }
+                ],
+                experience: [
+                    { position: 'Customer Service Representative', company: 'ABC Company', duration: '2019-2021', description: 'Handled customer inquiries and resolved issues' }
+                ],
+                profilePicture: null
             };
             
             localStorage.setItem('currentUser', JSON.stringify(currentUser));

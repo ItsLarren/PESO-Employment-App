@@ -74,3 +74,79 @@ problem
 
 solution
 - need to fix first the sent to email, and when that is done. we can proceed to the sms , let us fix firstb the email sending.
+
+
+app3.html
+Key Fixes and New Features:
+EmailJS Integration:
+
+Added EmailJS SDK for sending interview emails
+
+Updated sendInterviewInvitation() function to use EmailJS
+
+You need to replace YOUR_PUBLIC_KEY, YOUR_SERVICE_ID, and YOUR_TEMPLATE_ID with your actual EmailJS credentials
+
+Fixed Missing Function:
+
+Added the missing viewResume() function that was causing the error
+
+Improved Navigation:
+
+After saving an applicant for interview, redirects to saved applicants page
+
+After approving/rejecting an applicant, redirects to employee main page
+
+Enhanced Chat System:
+
+Messages are now stored per conversation
+
+Added simulated replies for a more realistic chat experience
+
+Messages persist in localStorage
+
+Resume Viewing:
+
+Fixed resume viewing to actually open files using URL.createObjectURL()
+
+Application Tracking:
+
+Fixed application tracking to properly show "Applied" status
+
+Added loadMyApplications() function to display user's applications
+
+Applications now show up in "My Applications" page after submission
+
+Application IDs:
+
+Added unique IDs to applications for better tracking
+
+To Set Up EmailJS:
+Sign up for a free account at EmailJS.com
+
+Create an email service (Gmail, Outlook, etc.)
+
+Create an email template for interview invitations
+
+Replace the placeholder values in the code:
+
+YOUR_PUBLIC_KEY with your EmailJS public key
+
+YOUR_SERVICE_ID with your email service ID
+
+YOUR_TEMPLATE_ID with your template ID
+
+The application should now work properly with all the requested features implemented!
+
+This response is AI-generated, for reference only.
+EmailJS public key: d7Fsk1hnjBTfgBSXw
+
+email service ID:  service_fii9dpo
+
+template ID: template_8cj79pn
+ 
+the infos above are my emailjs 
+
+
+also instead of schedule and sendn SMS, it should be schedule and send email. the email shoukd also be at the fill up where it will be sent
+
+give me now the whole code, dont remove anything just add the fiixed code and new featiures and my emailjs
