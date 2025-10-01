@@ -74,4 +74,3 @@ problem
 
 solution
 - need to fix first the sent to email, and when that is done. we can proceed to the sms , let us fix firstb the email sending.
-
