@@ -63,3 +63,6 @@ New problems
 - at the applicant page, in the your saved jobs page, the apply now button should be clickable same as at the main page. as if it is the same as the main page job cards.
 - the search bar was not working properly
 - at the sign up account page, it should be strict at the format such as the name@gmail.com the correct format, bt when the user type namegmail.com(invalid email) etc.
+
+additional task
+- make a chatbox, so that the applicant and the employer can have a conversation
