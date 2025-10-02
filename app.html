@@ -977,8 +977,8 @@
             color: #856404;
             border: 1px solid #ffeaa7;
         }
-        
-        /* NEW STYLES FOR ENHANCED FEATURES */
+
+          /* NEW STYLES FOR ENHANCED FEATURES */
         
         /* Applicant Details Page */
         .applicant-details-page {
@@ -1375,6 +1375,17 @@
             <h3>Notifications</h3>
             <div id="notification-list">
                 <!-- Notifications will be dynamically populated -->
+            <div class="notification-item">
+                <p>Your application for Customer Service Representative has been reviewed.</p>
+                <small>2 hours ago</small>
+            </div>
+            <div class="notification-item">
+                <p>New job posting: Marketing Specialist at FAVERTON GROUP INC.</p>
+                <small>5 hours ago</small>
+            </div>
+            <div class="notification-item">
+                <p>Welcome to Employment Corner! Complete your profile to get better job matches.</p>
+                <small>1 day ago</small>
             </div>
         </div>
 
@@ -1649,6 +1660,7 @@
                                 </div>
                                 <div class="action-buttons">
                                     <button class="view-btn" onclick="showJobDetails('customer-service')">Apply Now</button>
+                                    <button class="view-btn" onclick="showJobDetails()">Apply Now</button>
                                     <button class="action-btn remove-btn" onclick="removeSavedJob(this)">Remove</button>
                                 </div>
                             </div>
@@ -1667,6 +1679,7 @@
                                 </div>
                                 <div class="action-buttons">
                                     <button class="view-btn" onclick="showJobDetails('marketing-specialist')">Apply Now</button>
+                                    <button class="view-btn" onclick="showJobDetails()">Apply Now</button>
                                     <button class="action-btn remove-btn" onclick="removeSavedJob(this)">Remove</button>
                                 </div>
                             </div>
@@ -1743,6 +1756,7 @@
                 <div class="profile-section">
                     <div class="profile-header">
                         <div class="profile-avatar" id="profile-avatar">
+                        <div class="profile-avatar">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="profile-info">
@@ -1792,6 +1806,10 @@
                                     <p>Click to upload your resume</p>
                                     <input type="file" id="resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleResumeUpload(this)">
                                 </div>
+                            <div class="resume-preview" id="resume-preview">
+                                <i class="fas fa-file-pdf"></i>
+                                <span id="resume-file-name">Juan_Dela_Cruz_Resume.pdf</span>
+                                <span class="remove-resume" onclick="removeResume()">Remove</span>
                             </div>
                         </div>
                     </div>
@@ -1916,6 +1934,10 @@
                                 <p>Click to upload your resume</p>
                                 <input type="file" id="edit-resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleEditResumeUpload(this)">
                             </div>
+                        <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload your resume</p>
+                            <input type="file" id="resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleResumeUpload(this)">
                         </div>
                     </div>
                     
@@ -2011,6 +2033,11 @@
                                 <p>Click to upload your resume</p>
                                 <input type="file" id="application-resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleApplicationResumeUpload(this)">
                             </div>
+                        <div class="resume-preview">
+                            <i class="fas fa-file-pdf"></i>
+                            <span id="application-resume-name">Juan_Dela_Cruz_Resume.pdf</span>
+                            <span class="remove-resume" onclick="changeApplicationResume()">Change</span>
+                            <input type="file" id="application-resume-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="handleApplicationResumeUpload(this)">
                         </div>
                     </div>
                     
@@ -2173,6 +2200,8 @@ Juan Dela Cruz</textarea>
                                     </div>
                                 </div>
                             </div>
+                            <label>Additional Details</label>
+                            <textarea id="interview-details" rows="4" placeholder="Any additional information for the applicant">Please bring a valid ID and your resume. The interview will be conducted by our HR Manager, Ms. Garcia. If you have any questions, feel free to contact us at +63 45 123 4567.</textarea>
                         </div>
                     </div>
                     
@@ -2180,7 +2209,14 @@ Juan Dela Cruz</textarea>
                         <button class="view-btn" onclick="saveApplicantForInterview()">Save for Interview</button>
                         <button class="action-btn approve-btn" onclick="approveApplicant()">Approve</button>
                         <button class="action-btn reject-btn" onclick="rejectApplicant()">Reject</button>
+                    <div class="sms-preview" id="sms-preview">
+                        <h4>SMS Preview:</h4>
+                        <p id="sms-content">Your interview details will appear here</p>
                     </div>
+                    
+                    <div id="integration-status"></div>
+                    
+                    <button class="view-btn" onclick="sendInterviewInvitation()">Send Interview Invitation</button>
                 </div>
             </div>
         </div>
@@ -2242,6 +2278,7 @@ Juan Dela Cruz</textarea>
     
     <script>
         // Enhanced Application State
+        // Application state
         let currentUser = null;
         let currentUserType = null;
         let currentSection = 'auth-section';
@@ -2653,7 +2690,8 @@ Juan Dela Cruz</textarea>
                     skills: [],
                     education: [],
                     experience: [],
-                    profilePicture: null
+                    profilePicture: null,
+                    about: ''
                 };
                 
                 userAccounts.push(newUser);
@@ -2762,6 +2800,7 @@ Juan Dela Cruz</textarea>
         }
         
         // Populate job cards based on category - FIXED VERSION
+        // Populate job cards based on category
         function populateJobCards(category) {
             jobCardsContainer.innerHTML = '';
             
@@ -2803,6 +2842,7 @@ Juan Dela Cruz</textarea>
                         <button class="view-btn" onclick="showJobDetails('${job.id}')">
                             ${hasApplied ? 'Review Application' : 'View Job'}
                         </button>
+                        <button class="view-btn" onclick="showJobDetails('${job.id}')">View Job</button>
                     </div>
                 `;
                 jobCardsContainer.appendChild(jobCard);
@@ -2912,10 +2952,12 @@ Juan Dela Cruz</textarea>
                 `;
                 
                 showSection('applicant-details-view');
+                alert(`Viewing details for ${applicantName}\n\nPosition: ${applicant.position}\nExperience: ${applicant.experience}\nPhone: ${applicant.phone}\nEmail: ${applicant.email}\nApplied: ${applicant.appliedDate}\nSkills: ${applicant.skills.join(', ')}`);
             }
         }
         
         // Show job details - FIXED VERSION
+        // Show job details
         function showJobDetails(jobId) {
             const job = Object.values(jobData).flat().find(j => j.id === jobId);
             if (job) {
@@ -2939,6 +2981,7 @@ Juan Dela Cruz</textarea>
                     applyButton.onclick = showApplicationForm;
                 }
                 
+                // In a real implementation, you would update the job details view with the job data
                 showSection('job-details-view');
             }
         }
@@ -2949,6 +2992,7 @@ Juan Dela Cruz</textarea>
         }
         
         // Submit application - FIXED VERSION
+        // Submit application
         function submitApplication() {
             // Check if user is logged in
             if (!currentUser) {
@@ -2964,6 +3008,7 @@ Juan Dela Cruz</textarea>
             const address = document.getElementById('application-address').value;
             const coverLetter = document.getElementById('application-cover-letter').value;
             const resumeName = currentApplicationResumeFile ? currentApplicationResumeFile.name : 'No resume uploaded';
+            const resumeName = document.getElementById('application-resume-name').textContent;
             
             // Store application data
             const applicationId = 'app-' + Date.now();
@@ -2998,6 +3043,7 @@ Juan Dela Cruz</textarea>
         }
         
         // Show application details - FIXED VERSION
+        // Show application details
         function showApplicationDetails(jobId) {
             const job = Object.values(jobData).flat().find(j => j.id === jobId);
             if (job) {
@@ -3025,6 +3071,23 @@ Juan Dela Cruz</textarea>
                                jobId === 'marketing-specialist' ? 'approved' : 'rejected'
                     };
                 }
+                // Find the application for this job
+                const application = Object.values(submittedApplications).find(app => 
+                    app.position === job.title && app.company === job.company
+                ) || {
+                    name: currentUser.name,
+                    email: currentUser.email,
+                    phone: currentUser.phone || '+63 912 345 6789',
+                    address: currentUser.address || '123 Main Street, San Fernando, Pampanga',
+                    coverLetter: "Dear Hiring Manager,\n\nI am excited to apply for the " + job.title + " position at " + job.company + ". With 5 years of experience in customer service, I am confident in my ability to provide exceptional support to your customers.\n\nThank you for considering my application.\n\nSincerely,\n" + currentUser.name,
+                    resume: "Juan_Dela_Cruz_Resume.pdf",
+                    position: job.title,
+                    company: job.company,
+                    date: jobId === 'customer-service' ? 'March 15, 2023' : 
+                          jobId === 'marketing-specialist' ? 'March 10, 2023' : 'March 5, 2023',
+                    status: jobId === 'customer-service' ? 'pending' : 
+                           jobId === 'marketing-specialist' ? 'approved' : 'rejected'
+                };
                 
                 // Update the application details view
                 document.getElementById('detail-position').textContent = application.position;
@@ -3050,6 +3113,7 @@ Juan Dela Cruz</textarea>
         }
         
         // Edit profile - FIXED VERSION
+        // Edit profile
         function editProfile() {
             // Check if user is logged in
             if (!currentUser) {
@@ -3104,6 +3168,7 @@ Juan Dela Cruz</textarea>
         }
         
         // Save profile - FIXED VERSION
+        // Save profile
         function saveProfile() {
             // Check if user is logged in
             if (!currentUser) {
@@ -3221,6 +3286,8 @@ Juan Dela Cruz</textarea>
                 `;
                 
                 alert('Resume uploaded successfully! You can view it before saving.');
+                document.getElementById('resume-file-name').textContent = currentResumeFile.name;
+                alert('Resume uploaded successfully!');
             }
         }
         
@@ -3244,6 +3311,7 @@ Juan Dela Cruz</textarea>
                     </div>
                 `;
                 
+                document.getElementById('application-resume-name').textContent = currentApplicationResumeFile.name;
                 alert('Resume updated successfully!');
             }
         }
@@ -3278,10 +3346,16 @@ Juan Dela Cruz</textarea>
                     </div>
                 `;
             }
+        // Change application resume
+        function changeApplicationResume() {
+            document.getElementById('application-resume-upload').click();
         }
         
         function removeEditResumePreview() {
             if (confirm('Are you sure you want to remove the resume?')) {
+        // Remove resume
+        function removeResume() {
+            if (confirm('Are you sure you want to remove your resume?')) {
                 currentResumeFile = null;
                 document.getElementById('edit-resume-preview').innerHTML = `
                     <div class="file-upload" onclick="document.getElementById('edit-resume-upload').click()">
@@ -3327,6 +3401,8 @@ Juan Dela Cruz</textarea>
             if (cameraStream) {
                 cameraStream.getTracks().forEach(track => track.stop());
                 cameraStream = null;
+                document.getElementById('resume-file-name').textContent = 'No resume uploaded';
+                alert('Resume removed successfully');
             }
         }
         
@@ -3343,6 +3419,11 @@ Juan Dela Cruz</textarea>
             // Update profile picture
             currentUser.profilePicture = dataURL;
             updateProfilePicture();
+        // Approve application (employee)
+        function approveApplication(button, applicantName, phoneNumber) {
+            const statusElement = button.closest('.applicant-info').querySelector('.application-status');
+            statusElement.textContent = 'Approved';
+            statusElement.className = 'application-status status-approved';
             
             closeCamera();
         }
@@ -3356,11 +3437,19 @@ Juan Dela Cruz</textarea>
                 };
                 reader.readAsDataURL(input.files[0]);
             }
+            // Simulate sending notification to applicant
+            sendNotificationToApplicant(applicantName, phoneNumber, 'approved');
+            alert('Application approved! Notification sent to applicant.');
         }
         
         function updateProfilePicture() {
             const profileAvatar = document.getElementById('profile-avatar');
             const editProfileAvatar = document.getElementById('edit-profile-avatar');
+        // Reject application (employee)
+        function rejectApplication(button, applicantName, phoneNumber) {
+            const statusElement = button.closest('.applicant-info').querySelector('.application-status');
+            statusElement.textContent = 'Rejected';
+            statusElement.className = 'application-status status-rejected';
             
             if (currentUser.profilePicture) {
                 profileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
@@ -3433,9 +3522,13 @@ Juan Dela Cruz</textarea>
                 <button class="action-btn remove-btn" onclick="this.parentElement.remove()">Remove</button>
             `;
             experienceContainer.appendChild(experienceItem);
+            // Simulate sending notification to applicant
+            sendNotificationToApplicant(applicantName, phoneNumber, 'rejected');
+            alert('Application rejected! Notification sent to applicant.');
         }
         
         // Enhanced Save Applicant function
+        // Save applicant (employee)
         function saveApplicant(button, applicantName) {
             const applicant = applicantData.all.find(a => a.name === applicantName);
             if (applicant) {
@@ -3482,6 +3575,7 @@ Juan Dela Cruz</textarea>
                 alert(`Application for ${applicantName} approved!`);
                 showSection('employee-view');
             }
+            alert(`Applicant ${applicantName} saved for interviews!`);
         }
         
         // Reject applicant from details view
@@ -3501,6 +3595,10 @@ Juan Dela Cruz</textarea>
                 
                 alert(`Application for ${applicantName} rejected!`);
                 showSection('employee-view');
+        // Remove applicant (employee)
+        function removeApplicant(button) {
+            if (confirm('Are you sure you want to remove this applicant?')) {
+                button.closest('.applicant-info').remove();
             }
         }
         
@@ -3691,12 +3789,37 @@ Juan Dela Cruz</textarea>
                         <p>No notifications yet</p>
                     </div>
                 `;
+        // Simulate sending notification to applicant
+        function sendNotificationToApplicant(applicantName, phoneNumber, type, details = {}) {
+            let message = '';
+            
+            switch(type) {
+                case 'approved':
+                    message = `Hello ${applicantName}, your application has been approved! We will contact you soon for the next steps.`;
+                    break;
+                case 'rejected':
+                    message = `Hello ${applicantName}, thank you for your application. Unfortunately, we have decided to move forward with other candidates at this time.`;
+                    break;
+                case 'interview':
+                    const formattedDate = new Date(details.date).toLocaleDateString('en-PH', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    message = `Hello ${applicantName}, you have been scheduled for a ${details.type} interview on ${formattedDate} at ${details.time}. Location: ${details.location}. ${details.details}`;
+                    break;
             }
+            
+            console.log(`SMS to ${phoneNumber}: ${message}`);
+            // In a real application, this would integrate with an SMS API
         }
         
         // Enhanced Search Function
+        // Perform search
         function performSearch() {
             const searchTerm = document.querySelector('.search-input').value.toLowerCase();
+            const searchTerm = document.querySelector('.search-input').value;
             if (searchTerm) {
                 // Filter jobs based on search term
                 const allJobs = Object.values(jobData).flat();
@@ -3866,6 +3989,8 @@ Juan Dela Cruz</textarea>
         function formatTime(date) {
             if (typeof date === 'string') {
                 date = new Date(date);
+                alert(`Searching for: ${searchTerm}`);
+                // In a real application, this would filter jobs based on the search term
             }
             return date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         }
@@ -3896,7 +4021,8 @@ Juan Dela Cruz</textarea>
                 experience: [
                     { position: 'Customer Service Representative', company: 'ABC Company', duration: '2019-2021', description: 'Handled customer inquiries and resolved issues' }
                 ],
-                profilePicture: null
+                profilePicture: null,
+                about: 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.'
             };
             
             localStorage.setItem('currentUser', JSON.stringify(currentUser));

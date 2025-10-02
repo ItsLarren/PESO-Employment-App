@@ -1783,6 +1783,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="profile-info-section">
+                        <div class="info-group">
+                            <div class="info-label">Education</div>
+                            <div class="education-container" id="profile-education">
+                                <!-- education will be dynamically populated -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-info-section">
+                        <div class="info-group">
+                            <div class="info-label">Experience</div>
+                            <div class="experience-container" id="profile-experience">
+                                <!-- experience will be dynamically populated -->
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="profile-info-section">
                         <div class="info-group">
@@ -2242,6 +2260,104 @@ Juan Dela Cruz</textarea>
     </div>
     
     <script>
+                // Send interview invitation via EmailJS
+        function sendInterviewInvitation() {
+            // Show loading status
+            integrationStatus.innerHTML = `
+                <div class="integration-status integration-loading">
+                    Sending interview invitation...
+                </div>
+            `;
+            
+            // Get form values
+            const applicantName = document.getElementById('interview-applicant').value;
+            const phone = document.getElementById('interview-phone').value;
+            const email = document.getElementById('interview-email').value;
+            const date = document.getElementById('interview-date').value;
+            const time = document.getElementById('interview-time').value;
+            const location = document.getElementById('interview-location').value;
+            const interviewType = document.getElementById('interview-type').value;
+            const details = document.getElementById('interview-details').value;
+            
+            // Format date for display
+            const formattedDate = new Date(date).toLocaleDateString('en-PH', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Create interview data object
+            const interviewData = {
+                applicant_name: applicantName,
+                phone: phone,
+                email: email,
+                interview_date: formattedDate,
+                interview_time: time,
+                interview_location: location,
+                interview_type: interviewType,
+                additional_details: details,
+                sms_content: document.getElementById('sms-content').textContent,
+                company_name: "EMPLOYMENT CORNER",
+                sender_name: currentUser ? currentUser.name : "Hiring Manager"
+            };
+            
+            // Save to scheduled interviews
+            scheduledInterviews.push({
+                ...interviewData,
+                id: 'int-' + Date.now(),
+                timestamp: new Date()
+            });
+            localStorage.setItem('scheduledInterviews', JSON.stringify(scheduledInterviews));
+            
+            // Send email using EmailJS
+            emailjs.send("service_fii9dpo", "template_8cj79pn", interviewData)
+                .then(function(response) {
+                    console.log('Email sent successfully:', response);
+                    
+                    // Show success message
+                    integrationStatus.innerHTML = `
+                        <div class="integration-status integration-success">
+                            <i class="fas fa-check-circle"></i>
+                            Interview invitation sent successfully!
+                        </div>
+                    `;
+                    
+                    // Create notification for applicant
+                    createNotification(
+                        email,
+                        'Interview Scheduled',
+                        `You have been scheduled for a ${interviewType} interview on ${formattedDate} at ${time}.`
+                    );
+                    
+                    // Show success alert
+                    alert(`Interview invitation sent to ${applicantName}!\n\nAn email has been sent to ${email} and an SMS notification has been prepared.`);
+                    
+                    // Return to employee view after a delay
+                    setTimeout(() => {
+                        showSection('employee-view');
+                    }, 2000);
+                    
+                }, function(error) {
+                    console.error('Email sending failed:', error);
+                    
+                    // Show error message but still save the interview locally
+                    integrationStatus.innerHTML = `
+                        <div class="integration-status integration-error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Email sending failed, but interview has been saved locally. Error: ${error.text || 'Unknown error'}
+                        </div>
+                    `;
+                    
+                    alert(`Interview details saved, but there was an issue sending the email. You may need to contact ${applicantName} directly at ${phone}.`);
+                    
+                    // Still return to employee view
+                    setTimeout(() => {
+                        showSection('employee-view');
+                    }, 3000);
+                });
+        }
+
         // Initialize EmailJS with your public key
         emailjs.init("d7Fsk1hnjBTfgBSXw");
         
@@ -2770,6 +2886,34 @@ Juan Dela Cruz</textarea>
                 } else {
                     skillsContainer.innerHTML = '<p>No skills added yet</p>';
                 }
+
+                // Update education
+                const educationContainer = document.getElementById('profile-education');
+                educationContainer.innerHTML = '';
+                if (currentUser.education && currentUser.education.length > 0) {
+                    currentUser.education.forEach(educations => {
+                        const educationsTag = document.createElement('span');
+                        educationsTag.className = 'educations-tag';
+                        educationsTag.textContent = educations;
+                        educationContainer.appendChild(educationsTag);
+                    });
+                } else {
+                    educationContainer.innerHTML = '<p>No education added yet</p>';
+                }
+
+                // Update experience
+                const experienceContainer = document.getElementById('profile-experience');
+                experienceContainer.innerHTML = '';
+                if (currentUser.experience && currentUser.experience.length > 0) {
+                    currentUser.experience.forEach(experiences => {
+                        const experiencesTag = document.createElement('span');
+                        experiencesTag.className = 'experience-tag';
+                        experiencesTag.textContent = experiences;
+                        experienceContainer.appendChild(experiencesTag);
+                    });
+                } else {
+                    experienceContainer.innerHTML = '<p>No experience added yet</p>';
+                }
                 
                 // Update profile picture
                 updateProfilePicture();
@@ -2933,7 +3077,7 @@ Juan Dela Cruz</textarea>
                     skillTag.textContent = skill;
                     skillsContainer.appendChild(skillTag);
                 });
-                
+
                 // Update education (in a real app, this would come from the applicant's profile)
                 const educationContainer = document.getElementById('applicant-detail-education');
                 educationContainer.innerHTML = `
@@ -2942,6 +3086,13 @@ Juan Dela Cruz</textarea>
                         <div class="applicant-detail-value">University of the Philippines, 2015-2019</div>
                     </div>
                 `;
+                
+                //applicant.education.forEach(educations => {
+                  //  const educationsTag = document.createElement('span');
+                    //educationsTag.className = 'educations-tag';
+                    //educationsTag.textContent = educations;
+                    //educationContainer.appendChild(educationsTag);
+                //});
                 
                 // Update experience (in a real app, this would come from the applicant's profile)
                 const experienceContainer = document.getElementById('applicant-detail-experience');
@@ -2957,6 +3108,12 @@ Juan Dela Cruz</textarea>
                         <div class="applicant-detail-value">Assisted customers and managed product displays</div>
                     </div>
                 `;
+                //applicant.experience.forEach(experiences => {
+                    //const experiencesTag = document.createElement('span');
+                    //experiencesTag.className = 'experiences-tag';
+                    //experiencesTag.textContent = experiences;
+                    //experienceContainer.appendChild(experiencesTag);
+                //});
                 
                 showSection('applicant-details-view');
             }
@@ -3096,7 +3253,7 @@ Juan Dela Cruz</textarea>
             }
         }
         
-        // Edit profile - FIXED VERSION
+                // Edit profile - FIXED VERSION
         function editProfile() {
             // Check if user is logged in
             if (!currentUser) {
@@ -3112,31 +3269,40 @@ Juan Dela Cruz</textarea>
             document.getElementById('edit-location').value = currentUser.location || 'San Fernando, Pampanga';
             document.getElementById('edit-about').value = currentUser.about || 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.';
             
-            // Populate skills
+            // Populate skills - ensure elements are created
             const skillsContainer = document.getElementById('edit-skills');
             skillsContainer.innerHTML = '';
             if (currentUser.skills && currentUser.skills.length > 0) {
                 currentUser.skills.forEach(skill => {
                     addSkillInput(skill);
                 });
+            } else {
+                // Add at least one empty skill input
+                addSkillInput();
             }
             
-            // Populate education
+            // Populate education - ensure elements are created
             const educationContainer = document.getElementById('edit-education');
             educationContainer.innerHTML = '';
             if (currentUser.education && currentUser.education.length > 0) {
                 currentUser.education.forEach(edu => {
                     addEducationInput(edu);
                 });
+            } else {
+                // Add at least one empty education input
+                addEducationInput();
             }
             
-            // Populate experience
+            // Populate experience - ensure elements are created
             const experienceContainer = document.getElementById('edit-experience');
             experienceContainer.innerHTML = '';
             if (currentUser.experience && currentUser.experience.length > 0) {
                 currentUser.experience.forEach(exp => {
                     addExperienceInput(exp);
                 });
+            } else {
+                // Add at least one empty experience input
+                addExperienceInput();
             }
             
             // Update profile picture in edit view
@@ -3422,7 +3588,7 @@ Juan Dela Cruz</textarea>
             }
         }
         
-        // Form Input Functions
+                // Form Input Functions
         function addSkillInput(value = '') {
             const skillsContainer = document.getElementById('edit-skills');
             const skillInput = document.createElement('div');
@@ -3433,7 +3599,7 @@ Juan Dela Cruz</textarea>
             `;
             skillsContainer.appendChild(skillInput);
         }
-        
+
         function addEducationInput(education = {}) {
             const educationContainer = document.getElementById('edit-education');
             const educationItem = document.createElement('div');
@@ -3455,7 +3621,7 @@ Juan Dela Cruz</textarea>
             `;
             educationContainer.appendChild(educationItem);
         }
-        
+
         function addExperienceInput(experience = {}) {
             const experienceContainer = document.getElementById('edit-experience');
             const experienceItem = document.createElement('div');
@@ -3615,80 +3781,86 @@ Juan Dela Cruz</textarea>
             document.getElementById('sms-content').textContent = smsContent;
         }
         
-        // Send interview invitation - FIXED with EmailJS
-        function sendInterviewInvitation() {
-            const applicantName = document.getElementById('interview-applicant').value;
-            const phoneNumber = document.getElementById('interview-phone').value;
-            const email = document.getElementById('interview-email').value;
-            const date = document.getElementById('interview-date').value;
-            const time = document.getElementById('interview-time').value;
-            const location = document.getElementById('interview-location').value;
-            const interviewType = document.getElementById('interview-type').value;
-            const details = document.getElementById('interview-details').value;
-            
-            if (!date || !time || !location) {
-                alert('Please fill in all required fields: date, time, and location.');
+                // Save profile - FIXED VERSION
+        function saveProfile() {
+            // Check if user is logged in
+            if (!currentUser) {
+                alert('Please log in to save your profile');
+                showSection('auth-section');
                 return;
             }
             
-            // Show loading status
-            integrationStatus.innerHTML = '<div class="integration-status integration-loading">Sending invitation...</div>';
+            // Update current user with basic info
+            currentUser.name = document.getElementById('edit-name').value;
+            currentUser.phone = document.getElementById('edit-phone').value;
+            currentUser.address = document.getElementById('edit-address').value;
+            currentUser.location = document.getElementById('edit-location').value;
+            currentUser.about = document.getElementById('edit-about').value;
             
-            // Prepare email template parameters
-            const templateParams = {
-                to_name: applicantName,
-                to_email: email,
-                from_name: 'Employment Corner',
-                interview_date: date,
-                interview_time: time,
-                interview_location: location,
-                interview_type: interviewType,
-                additional_details: details,
-                reply_to: 'noreply@employmentcorner.com'
-            };
-            
-            // Send email using EmailJS
-            emailjs.send('service_fii9dpo', 'template_8cj79pn', templateParams)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    integrationStatus.innerHTML = '<div class="integration-status integration-success">Interview invitation sent successfully to ' + email + '!</div>';
-                    
-                    // Remove from saved applicants
-                    const applicant = savedApplicants.find(a => a.name === applicantName);
-                    if (applicant) {
-                        savedApplicants = savedApplicants.filter(a => a.name !== applicantName);
-                        localStorage.setItem('savedApplicants', JSON.stringify(savedApplicants));
+            // Safely update skills - check if elements exist first
+            currentUser.skills = [];
+            const skillInputs = document.querySelectorAll('.skill-input');
+            if (skillInputs.length > 0) {
+                skillInputs.forEach(input => {
+                    if (input.value.trim() !== '') {
+                        currentUser.skills.push(input.value.trim());
                     }
-                    
-                    // Add to scheduled interviews
-                    const interview = {
-                        applicantName: applicantName,
-                        date: date,
-                        time: time,
-                        location: location,
-                        type: interviewType
-                    };
-                    scheduledInterviews.push(interview);
-                    localStorage.setItem('scheduledInterviews', JSON.stringify(scheduledInterviews));
-                    
-                    // Create notification for applicant
-                    createNotification(
-                        email,
-                        'Interview Scheduled',
-                        `You have been scheduled for a ${interviewType} interview on ${date} at ${time}. Location: ${location}.`
-                    );
-                    
-                    // Show success message
-                    alert(`Interview invitation sent to ${applicantName}!\n\nEmail: ${email}`);
-                    
-                    // Navigate back after a delay
-                    setTimeout(() => {
-                        showSection('saved-jobs-view');
-                    }, 2000);
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    integrationStatus.innerHTML = '<div class="integration-status integration-error">Failed to send invitation. Please try again.</div>';
                 });
+            }
+            
+            // Safely update education - check if elements exist first
+            currentUser.education = [];
+            const educationItems = document.querySelectorAll('.education-item');
+            if (educationItems.length > 0) {
+                educationItems.forEach(item => {
+                    const degree = item.querySelector('.education-degree') ? item.querySelector('.education-degree').value : '';
+                    const school = item.querySelector('.education-school') ? item.querySelector('.education-school').value : '';
+                    const year = item.querySelector('.education-year') ? item.querySelector('.education-year').value : '';
+                    
+                    if (degree.trim() !== '' && school.trim() !== '') {
+                        currentUser.education.push({
+                            degree: degree,
+                            school: school,
+                            year: year
+                        });
+                    }
+                });
+            }
+            
+            // Safely update experience - check if elements exist first
+            currentUser.experience = [];
+            const experienceItems = document.querySelectorAll('.experience-item');
+            if (experienceItems.length > 0) {
+                experienceItems.forEach(item => {
+                    const position = item.querySelector('.experience-position') ? item.querySelector('.experience-position').value : '';
+                    const company = item.querySelector('.experience-company') ? item.querySelector('.experience-company').value : '';
+                    const duration = item.querySelector('.experience-duration') ? item.querySelector('.experience-duration').value : '';
+                    const description = item.querySelector('.experience-description') ? item.querySelector('.experience-description').value : '';
+                    
+                    if (position.trim() !== '' && company.trim() !== '') {
+                        currentUser.experience.push({
+                            position: position,
+                            company: company,
+                            duration: duration,
+                            description: description
+                        });
+                    }
+                });
+            }
+            
+            // Update in storage
+            const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
+            if (userIndex !== -1) {
+                userAccounts[userIndex] = currentUser;
+                localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+            
+            // Update profile display
+            updateProfileInfo();
+            
+            alert('Profile updated successfully!');
+            showSection('profile-view');
         }
         
         // Real-time Notifications
@@ -3971,3 +4143,4 @@ Juan Dela Cruz</textarea>
     </script>
 </body>
 </html>
+

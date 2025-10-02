@@ -79,73 +79,54 @@ solution
 app3.html
 Key Fixes and New Features:
 EmailJS Integration:
-
 Added EmailJS SDK for sending interview emails
-
 Updated sendInterviewInvitation() function to use EmailJS
-
 You need to replace YOUR_PUBLIC_KEY, YOUR_SERVICE_ID, and YOUR_TEMPLATE_ID with your actual EmailJS credentials
-
 Fixed Missing Function:
-
 Added the missing viewResume() function that was causing the error
-
 Improved Navigation:
-
 After saving an applicant for interview, redirects to saved applicants page
-
 After approving/rejecting an applicant, redirects to employee main page
-
 Enhanced Chat System:
-
 Messages are now stored per conversation
-
 Added simulated replies for a more realistic chat experience
-
 Messages persist in localStorage
-
 Resume Viewing:
-
 Fixed resume viewing to actually open files using URL.createObjectURL()
-
 Application Tracking:
-
 Fixed application tracking to properly show "Applied" status
-
 Added loadMyApplications() function to display user's applications
-
 Applications now show up in "My Applications" page after submission
-
 Application IDs:
-
 Added unique IDs to applications for better tracking
-
 To Set Up EmailJS:
 Sign up for a free account at EmailJS.com
-
 Create an email service (Gmail, Outlook, etc.)
-
 Create an email template for interview invitations
-
 Replace the placeholder values in the code:
-
 YOUR_PUBLIC_KEY with your EmailJS public key
-
 YOUR_SERVICE_ID with your email service ID
-
 YOUR_TEMPLATE_ID with your template ID
 
-The application should now work properly with all the requested features implemented!
-
-This response is AI-generated, for reference only.
 EmailJS public key: d7Fsk1hnjBTfgBSXw
-
 email service ID:  service_fii9dpo
-
 template ID: template_8cj79pn
- 
-the infos above are my emailjs 
 
+Error encountered at app4
 
-also instead of schedule and sendn SMS, it should be schedule and send email. the email shoukd also be at the fill up where it will be sent
+Uncaught TypeError TypeError: Cannot read properties of null (reading 'value')
+    at <anonymous> (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\app4.html:3180:71)
+    at saveProfile (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\app4.html:3179:58)
+    at onclick (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\app4.html:1838:73)
+app4.html:3180
+Uncaught TypeError TypeError: Cannot read properties of null (reading 'value')
+    at <anonymous> (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\app4.html:3180:71)
+    at saveProfile (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\app4.html:3179:58)
+    at onclick (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\app4.html:1923:78)
 
+- emailjs: instead of the applicants are receiving the email, my personal account receiving the emails, even though I change the filled up email at the schedule interview forms
+- the view button at the resume's, it is not showing, it is only a warning notif showing. it shoul be popen the file.
+- profile: cant save the fill up skills, education and the experience.
+- fix the chatbox, it shoud be working in realtimne already so that I can stest it na, also when getting a new messages on the chatbox it will also notifies at the notification bell, like there is a red dot on the up of the bell, to identify faster the notifs
+- when running the html file, it is full working when it has an internet.
+- 
