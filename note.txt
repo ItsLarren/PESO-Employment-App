@@ -130,3 +130,6 @@ Uncaught TypeError TypeError: Cannot read properties of null (reading 'value')
 - fix the chatbox, it shoud be working in realtimne already so that I can stest it na, also when getting a new messages on the chatbox it will also notifies at the notification bell, like there is a red dot on the up of the bell, to identify faster the notifs
 - when running the html file, it is full working when it has an internet.
 - 
+
+Resend
+API KEy: re_jhN6M95T_PKFu4zpDh8g3hVftmeSAVJQr
