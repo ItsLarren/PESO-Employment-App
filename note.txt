@@ -133,3 +133,13 @@ Uncaught TypeError TypeError: Cannot read properties of null (reading 'value')
 
 Resend
 API KEy: re_jhN6M95T_PKFu4zpDh8g3hVftmeSAVJQr
+
+
+new task
+- is it possible to have an only admin aacount, where in everyone who applied in the application will be stored there and the admin can download everything in excel file
+- add logo, design, colors etc.
+- be ready to convert the html file into .exe
+FIGHTING!!!!
+
+
+                                     
