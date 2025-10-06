@@ -140,14 +140,11 @@ new task
 - add logo, design, colors etc.
 - be ready to convert the html file into .exe
 FIGHTING!!!!
-<<<<<<< HEAD
-                         
-=======
 
-
-<<<<<<< HEAD
-    stressful                                 
->>>>>>> 3b75e7779685825dccd0b378bd0d8bfe2e86e6d0
-=======
-    stressful                                 
->>>>>>> 3b75e7779685825dccd0b378bd0d8bfe2e86e6d0
+note:
+the admin123 file merge it to the merge.html
+the login in page should only be alog in page there must be no bottom nav t the s=login/signup and admin page
+the admin doesnt need to sign up, since the username and password of the admin was already at the code.
+at the admin page when I logged in, it will already show the dashboard
+the admin page password the developer can change the password
+add an forgot password button at the log in page for the applicant and employee
