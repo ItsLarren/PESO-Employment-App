@@ -1,0 +1,21 @@
+UDYM1UB9MDUGQ5FKJE1T9U9N
+Twillio
+Account SID
+AC7a5a79ebe15f4655b665b566cb674943
+
+Organization SID
+OR8766f6dfb8040234795886b932679796
+
+EmailJS
+Template ID: template_8cj79pn
+Service ID: service_fii9dpo
+
+// In sendRealSMS function:
+const accountSid = 'YOUR_TWILIO_ACCOUNT_SID';
+const authToken = 'YOUR_TWILIO_AUTH_TOKEN';
+const twilioPhoneNumber = 'YOUR_TWILIO_PHONE_NUMBER';
+
+// In sendRealEmail function:
+const serviceID = 'YOUR_EMAILJS_SERVICE_ID';
+const templateID = 'YOUR_EMAILJS_TEMPLATE_ID';
+const userID = 'YOUR_EMAILJS_USER_ID';

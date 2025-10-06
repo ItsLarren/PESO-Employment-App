@@ -140,6 +140,14 @@ new task
 - add logo, design, colors etc.
 - be ready to convert the html file into .exe
 FIGHTING!!!!
+<<<<<<< HEAD
+                         
+=======
 
 
-                                     
+<<<<<<< HEAD
+    stressful                                 
+>>>>>>> 3b75e7779685825dccd0b378bd0d8bfe2e86e6d0
+=======
+    stressful                                 
+>>>>>>> 3b75e7779685825dccd0b378bd0d8bfe2e86e6d0
