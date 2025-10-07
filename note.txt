@@ -169,4 +169,9 @@ upload functions
  - It is at the employer page, where in when the employer needed to upload a new job open
  - the fix search button
  - admin button cursor change and the label when the cursor pointing there
- - 
+ - put logo at the tab 
+ error when I add a skill value and try to save it
+	- Uncaught TypeError TypeError: Cannot read properties of null (reading 'value')
+    at <anonymous> (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\original.html:3851:71)
+    at saveProfile (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\original.html:3850:58)
+    at onclick (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\original.html:2298:78)
