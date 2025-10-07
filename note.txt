@@ -167,3 +167,6 @@ I will send a 4 html file to you named:
 next task
 upload functions
  - It is at the employer page, where in when the employer needed to upload a new job open
+ - the fix search button
+ - admin button cursor change and the label when the cursor pointing there
+ - 
