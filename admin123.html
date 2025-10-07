@@ -886,6 +886,13 @@
             color: #495057;
         }
         
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
         .applicant-actions {
             display: flex;
             gap: 10px;
@@ -982,6 +989,8 @@
         }
         
         /* NEW STYLES FOR ADMIN DASHBOARD */
+
+        /* Admin Page */
         .admin-dashboard {
             padding: 15px;
         }
@@ -1435,6 +1444,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        /* added at the admin123.html*/
+        .action-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #225dff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        .chat-toggle i {
+            font-size: 24px;
+        }
+
+        .notification-item.unread {
+            background-color: #f0f8ff;
+            border-left: 3px solid #225dff;
         }
         
         /* Floating Chat Button */

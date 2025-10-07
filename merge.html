@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMPLOYMENT CORNER - FERNANDINO! Tara Magobra</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-        <style>
-            * {
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -33,7 +32,7 @@
         }
         
         .header {
-            background: linear-gradient(to right, #c91e00, #860101);
+            background: linear-gradient(to right, #51aee4, #4555e7);
             color: white;
             padding: 15px;
             display: flex;
@@ -45,7 +44,7 @@
         }
         
         .logo {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: bold;
             display: flex;
             align-items: center;
@@ -69,7 +68,7 @@
             white-space: nowrap;
             border-bottom: 1px solid #eee;
         }
-
+        
         .nav-item {
             padding: 8px 15px;
             margin-right: 10px;
@@ -80,7 +79,7 @@
         }
         
         .nav-item.active {
-            background: #860101;
+            background: #0603bd;
             color: white;
         }
         
@@ -98,11 +97,11 @@
         }
         
         .view-all {
-            color: #1a4d8f;
+            color: #2256ff;
             font-size: 14px;
             cursor: pointer;
         }
-
+        
         .auth-container {
             padding: 20px;
             background: white;
@@ -125,8 +124,8 @@
         }
         
         .auth-tab.active {
-            border-bottom: 2px solid #0d2d5e;
-            color: #1a4d8f;
+            border-bottom: 2px solid #1629d8e3;
+            color: #164ce2;
             font-weight: 600;
         }
         
@@ -138,11 +137,11 @@
             border-radius: 8px;
             font-size: 16px;
         }
-
+        
         .auth-form button {
             width: 100%;
             padding: 12px;
-            background: #1a4d8f;
+            background: #225dff;
             color: white;
             border: none;
             border-radius: 8px;
@@ -195,7 +194,7 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background: #0d2d5e;
+            background: #0e37a8;
             color: white;
             padding: 4px 8px;
             border-radius: 4px;
@@ -233,7 +232,7 @@
         }
         
         .view-btn {
-            background: #1a4d8f;
+            background: #1744da;
             color: white;
             border: none;
             padding: 8px 15px;
@@ -270,7 +269,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.3s;
-            margin-bottom: 15px;
+            margin-top: 15px;
         }
         
         .user-type-card:hover {
@@ -280,7 +279,7 @@
         .user-type-card i {
             font-size: 40px;
             margin-bottom: 15px;
-            color: #1a4d8f;
+            color: #1a1de7;
         }
         
         .user-type-card h3 {
@@ -308,7 +307,7 @@
         }
         
         .nav-btn.active {
-            color: #1a4d8f;
+            color: #2231ff;
         }
         
         .nav-btn i {
@@ -407,12 +406,12 @@
         
         .file-upload i {
             font-size: 24px;
-            color: #1a4d8f;
+            color: #225dff;
             margin-bottom: 10px;
         }
         
         .hidden {
-            display: none !important;
+            display: none;
         }
         
         .modal {
@@ -425,7 +424,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
+            z-index: 1000;
         }
         
         .modal-content {
@@ -436,7 +435,6 @@
             max-width: 400px;
             max-height: 80vh;
             overflow-y: auto;
-            z-index: 10000;
         }
         
         .modal-title {
@@ -456,7 +454,6 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            border: none;
         }
         
         .modal-btn.cancel {
@@ -465,7 +462,7 @@
         }
         
         .modal-btn.confirm {
-            background: #1a4d8f;
+            background: #225dff;
             color: white;
         }
         
@@ -648,7 +645,7 @@
         }
         
         input:checked + .slider {
-            background-color: #1a4d8f;
+            background-color: #225dff;
         }
         
         input:checked + .slider:before {
@@ -692,7 +689,7 @@
             display: flex;
             align-items: center;
             padding: 15px;
-            background: linear-gradient(to right, #1a4d8f, #0d2d5e);
+            background: linear-gradient(to right, #51aee4, #4555e7);
             color: white;
         }
         
@@ -701,7 +698,7 @@
         }
         
         .save-profile-btn {
-            background: #1a4d8f;
+            background: #225dff;
             color: white;
             border: none;
             padding: 12px;
@@ -722,7 +719,7 @@
         
         .resume-preview i {
             margin-right: 10px;
-            color: #1a4d8f;
+            color: #225dff;
         }
         
         .remove-resume {
@@ -735,7 +732,7 @@
             display: flex;
             align-items: center;
             padding: 15px;
-            background: linear-gradient(to right, #1a4d8f, #0d2d5e);
+            background: linear-gradient(to right, #51aee4, #4555e7);
             color: white;
         }
         
@@ -817,7 +814,7 @@
             color: white;
         }
         
-        /* Interview scheduling */
+        /* New styles for interview scheduling */
         .interview-form {
             padding: 15px;
         }
@@ -834,7 +831,7 @@
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
-            border-left: 4px solid #1a4d8f;
+            border-left: 4px solid #1890ff;
         }
         
         /* Employee main page styles */
@@ -888,6 +885,13 @@
             font-size: 12px;
             color: #495057;
         }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 5px;
+        }
         
         .applicant-actions {
             display: flex;
@@ -904,7 +908,7 @@
         }
         
         .view-applicant-btn {
-            background: #1a4d8f;
+            background: #225dff;
             color: white;
         }
         
@@ -983,19 +987,21 @@
             color: #856404;
             border: 1px solid #ffeaa7;
         }
+        
+        /* NEW STYLES FOR ENHANCED FEATURES */
 
-        /* NEW STYLES FOR ADMIN DASHBOARD */
+        /* Admin Page */
         .admin-dashboard {
             padding: 15px;
         }
-        
+
         .admin-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-bottom: 20px;
         }
-        
+
         .stat-card {
             background: white;
             border-radius: 12px;
@@ -1003,26 +1009,26 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             text-align: center;
         }
-        
+
         .stat-number {
             font-size: 24px;
             font-weight: bold;
             color: #1a4d8f;
             margin-bottom: 5px;
         }
-        
+
         .stat-label {
             color: #666;
             font-size: 14px;
         }
-        
+
         .admin-actions {
             display: flex;
             flex-direction: column;
             gap: 10px;
             margin-bottom: 20px;
         }
-        
+
         .admin-action-btn {
             background: #1a4d8f;
             color: white;
@@ -1036,11 +1042,11 @@
             justify-content: center;
             gap: 10px;
         }
-        
+
         .admin-action-btn i {
             font-size: 18px;
         }
-        
+
         .applications-table {
             background: white;
             border-radius: 12px;
@@ -1048,39 +1054,39 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             margin-bottom: 15px;
         }
-        
+
         .table-header {
             background: #f5f5f5;
             padding: 12px 15px;
             font-weight: 600;
             border-bottom: 1px solid #eee;
         }
-        
+
         .table-row {
             display: flex;
             padding: 12px 15px;
             border-bottom: 1px solid #eee;
             align-items: center;
         }
-        
+
         .table-row:last-child {
             border-bottom: none;
         }
-        
+
         .table-cell {
             flex: 1;
             padding: 0 5px;
         }
-        
+
         .table-cell.name {
             flex: 2;
         }
-        
+
         .table-cell.actions {
             flex: 0.5;
             text-align: center;
         }
-        
+
         .action-icon {
             cursor: pointer;
             color: #1a4d8f;
@@ -1151,7 +1157,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #1a4d8f;
+            border: 3px solid #225dff;
         }
         
         .profile-picture-actions {
@@ -1166,7 +1172,7 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background: #1a4d8f;
+            background: #225dff;
             color: white;
             border: none;
             display: flex;
@@ -1208,7 +1214,7 @@
         }
         
         .view-resume-btn {
-            background: #1a4d8f;
+            background: #225dff;
             color: white;
         }
         
@@ -1220,7 +1226,7 @@
         /* Interview Scheduled Card */
         .interview-scheduled-card {
             background: #e6f7ff;
-            border-left: 4px solid #1a4d8f;
+            border-left: 4px solid #1890ff;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
@@ -1229,7 +1235,7 @@
         .interview-scheduled-title {
             font-weight: 600;
             margin-bottom: 5px;
-            color: #1a4d8f;
+            color: #1890ff;
         }
         
         /* Application Status on Job Cards */
@@ -1336,7 +1342,7 @@
         }
         
         .camera-capture {
-            background: #1a4d8f;
+            background: #225dff;
             color: white;
             border: none;
         }
@@ -1400,38 +1406,38 @@
         
         .message.sent {
             align-self: flex-end;
-            background: #1a4d8f;
+            background: #225dff;
             color: white;
-            border-bottom-right-radius: 4px;
         }
         
         .message.received {
             align-self: flex-start;
-            background: #f1f1f1;
+            background: #f0f0f0;
             color: #333;
-            border-bottom-left-radius: 4px;
         }
         
         .chat-input-container {
-            display: flex;
-            padding: 10px;
+            padding: 10px 15px;
             border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
         }
         
         .chat-input {
             flex: 1;
-            padding: 10px;
+            padding: 8px 12px;
             border: 1px solid #ddd;
             border-radius: 20px;
             outline: none;
+            font-size: 14px;
         }
         
         .chat-send {
-            background: #1a4d8f;
+            background: #225dff;
             color: white;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             margin-left: 10px;
             cursor: pointer;
@@ -1439,7 +1445,8 @@
             align-items: center;
             justify-content: center;
         }
-
+        
+        /* added at the admin123.html*/
         .chat-toggle {
             position: fixed;
             bottom: 80px;
@@ -1467,7 +1474,7 @@
         }
 
         /* Floating Chat Button */
-        .floating-chat-btn {
+        .chat-button {
             position: fixed;
             bottom: 80px;
             right: 20px;
@@ -1484,169 +1491,214 @@
             z-index: 999;
         }
         
-        .floating-chat-btn i {
+        .chat-button i {
             font-size: 24px;
         }
         
-        /* Dark Mode Styles */
-        body.dark-mode {
-            background: #121212;
-            color: #e0e0e0;
+        /* Admin Login Styles */
+        .admin-login-container {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        body.dark-mode .app-container {
-            background: #1e1e1e;
-            color: #e0e0e0;
+        .admin-login-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a4d8f;
+            font-size: 24px;
         }
         
-        body.dark-mode .header {
-            background: linear-gradient(to right, #0d2d5e, #061a38);
+        .admin-login-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
         }
         
-        body.dark-mode .nav-container {
-            background: #2d2d2d;
-            border-bottom: 1px solid #444;
+        .admin-login-form button {
+            width: 100%;
+            padding: 12px;
+            background: #1a4d8f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 10px;
         }
         
-        body.dark-mode .nav-item {
-            background: #3d3d3d;
-            color: #e0e0e0;
+        .admin-login-info {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 15px;
         }
         
-        body.dark-mode .nav-item.active {
-            background: #0d2d5e;
+        /* Admin Dashboard Styles */
+        .admin-dashboard-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(to right, #1a4d8f, #0d2d5e);
+            color: white;
         }
         
-        body.dark-mode .job-card,
-        body.dark-mode .applicant-card,
-        body.dark-mode .application-details-card,
-        body.dark-mode .applicant-details-card,
-        body.dark-mode .stat-card,
-        body.dark-mode .applications-table {
-            background: #2d2d2d;
-            color: #e0e0e0;
+        .admin-dashboard-title {
+            flex: 1;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
         }
         
-        body.dark-mode .auth-container,
-        body.dark-mode .profile-info-section {
-            background: #2d2d2d;
-            color: #e0e0e0;
+        .admin-logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
         }
         
-        body.dark-mode .form-group input,
-        body.dark-mode .form-group select,
-        body.dark-mode .form-group textarea,
-        body.dark-mode .search-input {
-            background: #3d3d3d;
-            border: 1px solid #555;
-            color: #e0e0e0;
+        .admin-dashboard-content {
+            padding: 15px;
         }
         
-        body.dark-mode .bottom-nav {
-            background: #2d2d2d;
-            border-top: 1px solid #444;
+        .admin-section {
+            margin-bottom: 30px;
         }
         
-        body.dark-mode .applicant-info {
-            background: #3d3d3d;
+        .admin-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
         }
         
-        body.dark-mode .modal-content {
-            background: #2d2d2d;
-            color: #e0e0e0;
+        .admin-export-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-bottom: 15px;
         }
         
-        body.dark-mode .modal-btn.cancel {
-            background: #3d3d3d;
-            color: #e0e0e0;
+        .admin-export-btn i {
+            font-size: 18px;
         }
         
-        body.dark-mode .section-divider {
-            background: #3d3d3d;
+        .admin-search-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
         }
         
-        body.dark-mode .toggle-item {
-            border-bottom: 1px solid #444;
+        .admin-filter-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
         }
         
-        body.dark-mode .edit-btn {
-            background: #3d3d3d;
-            color: #e0e0e0;
+        .admin-filter-select {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
         }
         
-        body.dark-mode .file-upload {
-            border: 2px dashed #555;
+        .admin-applications-list {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         }
         
-        body.dark-mode .resume-preview,
-        body.dark-mode .interview-details {
-            background: #3d3d3d;
+        .admin-application-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
         }
         
-        body.dark-mode .skill-tag {
-            background: #3d3d3d;
-            color: #e0e0e0;
+        .admin-application-item:last-child {
+            border-bottom: none;
         }
         
-        body.dark-mode .table-header {
-            background: #3d3d3d;
-            border-bottom: 1px solid #444;
+        .admin-application-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
         }
         
-        body.dark-mode .table-row {
-            border-bottom: 1px solid #444;
+        .admin-application-name {
+            font-weight: 600;
+            font-size: 16px;
         }
         
-        body.dark-mode .education-item,
-        body.dark-mode .experience-item {
-            background: #3d3d3d;
+        .admin-application-date {
+            color: #666;
+            font-size: 14px;
         }
         
-        body.dark-mode .add-item-btn {
-            background: #3d3d3d;
-            color: #e0e0e0;
-            border: 1px dashed #555;
+        .admin-application-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
         }
         
-        body.dark-mode .resume-preview-container {
-            background: #3d3d3d;
-            border: 1px dashed #555;
+        .admin-application-detail {
+            font-size: 14px;
+            color: #666;
         }
         
-        body.dark-mode .resume-preview-file {
-            background: #2d2d2d;
+        .admin-application-actions {
+            display: flex;
+            gap: 10px;
         }
         
-        body.dark-mode .interview-scheduled-card {
-            background: #1a3a5f;
-            border-left: 4px solid #1a4d8f;
+        .admin-action-btn-small {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            border: none;
         }
         
-        body.dark-mode .search-result-item {
-            background: #2d2d2d;
+        .admin-view-btn {
+            background: #1a4d8f;
+            color: white;
         }
         
-        body.dark-mode .chat-container {
-            background: #2d2d2d;
-            color: #e0e0e0;
+        .admin-download-btn {
+            background: #28a745;
+            color: white;
         }
         
-        body.dark-mode .chat-input-container {
-            border-top: 1px solid #444;
+        .admin-delete-btn {
+            background: #dc3545;
+            color: white;
         }
-        
-        body.dark-mode .chat-input {
-            background: #3d3d3d;
-            border: 1px solid #555;
-            color: #e0e0e0;
-        }
-        
-        body.dark-mode .message.received {
-            background: #3d3d3d;
-            color: #e0e0e0;
-        }
-        </style>
-    </head>
+    </style>
+</head>
 <body>
     <div class="app-container">
         <div class="header">
@@ -1667,9 +1719,12 @@
             </div>
         </div>
 
-        <div class="search-panel" id="search-panel">
-            <input type="text" class="search-input" placeholder="Search for jobs, companies, or keywords">
-            <div class="view-btn" onclick="performSearch()">Search</div>
+        <!-- Search Panel -->
+        <div class="search-panel" id="searchPanel">
+            <input type="text" class="search-input" placeholder="Search for jobs, companies...">
+            <div class="search-results-container" id="searchResults">
+                <!-- Search results will be populated here -->
+            </div>
         </div>
         
         <div class="main-content">
@@ -1679,7 +1734,6 @@
                     <div class="auth-tabs">
                         <div class="auth-tab active" id="login-tab">Login</div>
                         <div class="auth-tab" id="signup-tab">Sign Up</div>
-                        <div class="auth-tab" id="admin-tab">Admin</div>
                     </div>
                     
                     <div class="auth-form" id="login-form">
@@ -1704,6 +1758,7 @@
                         </button>
                     </div>
 
+                    <!--Admin log in form-->
                 </div>
             </div>
             
@@ -1725,11 +1780,7 @@
                     </div>
                 </div>
             </div>
-
-
             
-            
-
             <!-- Applicant Main View -->
             <div id="applicant-view" class="hidden">
                 <div class="nav-container">
@@ -3175,13 +3226,6 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                 document.getElementById('login-form').classList.add('hidden');
             });
             
-            document.getElementById('admin-tab').addEventListener('click', function() {
-                document.getElementById('admin-tab').classList.add('active');
-                document.getElementById('login-tab').classList.remove('active');
-                document.getElementById('signup-form').classList.remove('hidden');
-                document.getElementById('login-form').classList.add('hidden');
-            });
-
             document.addEventListener('click', function(event) {
                 if (!event.target.closest('#notification-icon') && !event.target.closest('#notification-panel')) {
                     notificationPanel.style.display = 'none';
@@ -4667,3 +4711,4 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
     </script>
 </body>
 </html>
+
