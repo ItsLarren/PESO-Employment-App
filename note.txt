@@ -148,3 +148,22 @@ the admin doesnt need to sign up, since the username and password of the admin w
 at the admin page when I logged in, it will already show the dashboard
 the admin page password the developer can change the password
 add an forgot password button at the log in page for the applicant and employee
+
+
+I need you to fixed something for me
+I will send a 4 html file to you named:
+1st - app5.html (This is the original file where in it contains 4370 lines of code, in short this is the main file)
+      - what I need you to do on this file was to add the part of the files I need from the other files.
+
+2nd - adminpage.html (I only want the admin page part here where in I need to add at the app5.html file)
+
+3rd - new.html (on this file, I want to put the messagining part of code at the app5.html file and replace it to the messaging code inout at the app5.html file)
+
+4th - merge.html (on this dile you will see the authentication section where in I need only that part t be put at the app5.html file)
+	- so at the authentication section there will be 3 log in authentication the [login] [sign up] and the [admin] at the admin part the authentication should be the same as at the log in cause it doesnt need to sign up for it, the acciount was already created. the admin part instead of it is a display as a text it should be a logo so that it will be like of hidden to the users
+
+
+
+next task
+upload functions
+ - It is at the employer page, where in when the employer needed to upload a new job open
