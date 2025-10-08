@@ -1864,6 +1864,117 @@
         .page-transition {
             animation: fadeIn 0.3s ease-in-out;
         }
+
+        /* Enhanced Upload Section Styles from upload.html */
+        .upload-container {
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .upload-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .upload-btn {
+            background: #b71c1c;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .upload-btn i {
+            font-size: 18px;
+        }
+
+        .upload-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .upload-status {
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .upload-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .upload-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .upload-loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        /* Enhanced drag and drop styles */
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #ff2222;
+            background-color: #f9f9f9;
+        }
+
+        .upload-area.dragover {
+            border-color: #ff2222;
+            background-color: #f0f8ff;
+        }
+
+        .upload-area i {
+            font-size: 48px;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .upload-area p {
+            margin-bottom: 10px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .upload-area span {
+            font-size: 14px;
+            color: #999;
+        }
         
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -2030,6 +2141,96 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Upload Data Section - ENHANCED FROM UPLOAD.HTML -->
+            <div id="upload-data-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Upload Data</span>
+                    </div>
+                </div>
+                
+                <div class="upload-section">
+                    <h3>Upload Job Data</h3>
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & drop your Excel/CSV file here</p>
+                        <span>or click to browse</span>
+                        <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" style="display: none;">
+                    </div>
+                    
+                    <div class="upload-form">
+                        <div class="form-group">
+                            <label for="uploadJobTitle">Job Title</label>
+                            <input type="text" id="uploadJobTitle" placeholder="Enter job title">
+                        </div>
+                        <div class="form-group">
+                            <label for="uploadCompany">Company</label>
+                            <input type="text" id="uploadCompany" placeholder="Enter company name">
+                        </div>
+                        <div class="form-group">
+                            <label for="uploadLocation">Location</label>
+                            <input type="text" id="uploadLocation" placeholder="Enter job location">
+                        </div>
+                        <div class="form-group">
+                            <label for="uploadSalary">Salary Range</label>
+                            <input type="text" id="uploadSalary" placeholder="e.g., ₱18,000 - ₱22,000">
+                        </div>
+                        <div class="form-group">
+                            <label for="uploadType">Job Type</label>
+                            <select id="uploadType">
+                                <option value="">Select Job Type</option>
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
+                                <option value="Contract">Contract</option>
+                                <option value="Internship">Internship</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="uploadCategory">Category</label>
+                            <select id="uploadCategory">
+                                <option value="">Select Category</option>
+                                <option value="tech">Technology</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="sales">Sales</option>
+                                <option value="finance">Finance</option>
+                                <option value="customer-service">Customer Service</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="uploadDescription">Job Description</label>
+                            <textarea id="uploadDescription" placeholder="Enter job description" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="uploadRequirements">Requirements</label>
+                            <textarea id="uploadRequirements" placeholder="Enter job requirements" rows="3"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button class="upload-btn" id="uploadBtn">
+                        <i class="fas fa-upload"></i> Upload Jobs
+                    </button>
+                    
+                    <div class="upload-status" id="uploadStatus"></div>
+                    
+                    <!-- Bulk Upload Section -->
+                    <div class="upload-container" style="margin-top: 20px;">
+                        <h4>Bulk Upload via Excel/CSV</h4>
+                        <div class="upload-area" id="bulkUploadArea" style="margin-top: 10px;">
+                            <i class="fas fa-file-excel"></i>
+                            <p>Drag & drop your Excel/CSV file for bulk upload</p>
+                            <span>Supports .xlsx, .xls, .csv formats</span>
+                            <input type="file" id="bulkFileInput" accept=".xlsx,.xls,.csv" style="display: none;">
+                        </div>
+                        <button class="upload-btn" id="bulkUploadBtn" style="background: #28a745;">
+                            <i class="fas fa-database"></i> Bulk Upload
+                        </button>
+                    </div>
+                </div>
+            </div>
             
             <!-- Applicant Main View -->
             <div id="applicant-view" class="hidden">
@@ -2053,7 +2254,7 @@
                 </div>
             </div>
             
-                <!-- Employee Main View - UPDATED WITH UPLOAD JOB BUTTON -->
+                            <!-- Update the Employee Main View navigation -->
             <div id="employee-view" class="hidden">
                 <div class="nav-container">
                     <div class="nav-item active" onclick="changeApplicantFilter('all')">All Applicants</div>
@@ -2061,6 +2262,7 @@
                     <div class="nav-item" onclick="changeApplicantFilter('approved')">Approved</div>
                     <div class="nav-item" onclick="changeApplicantFilter('rejected')">Rejected</div>
                     <div class="nav-item" onclick="showUploadJobForm()">Upload Job</div>
+                    <div class="nav-item" onclick="showUploadDataView()">Upload Data</div>
                 </div>
                 
                 <div class="content">
@@ -3080,6 +3282,301 @@ Juan Dela Cruz</textarea>
         const cameraModal = document.getElementById('camera-modal');
         const cameraPreview = document.getElementById('camera-preview');
         let cameraStream = null;
+
+        // Enhanced Upload Functions from upload.html
+        function showUploadDataView() {
+            showSection('upload-data-view');
+        }
+
+        function initUploadFunctionality() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const uploadStatus = document.getElementById('uploadStatus');
+            
+            const bulkUploadArea = document.getElementById('bulkUploadArea');
+            const bulkFileInput = document.getElementById('bulkFileInput');
+            const bulkUploadBtn = document.getElementById('bulkUploadBtn');
+            
+            // Single file upload
+            uploadArea.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#ff2222';
+                uploadArea.style.backgroundColor = '#f9f9f9';
+            });
+            
+            uploadArea.addEventListener('dragleave', function() {
+                uploadArea.style.borderColor = '#ddd';
+                uploadArea.style.backgroundColor = 'transparent';
+            });
+            
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#ddd';
+                uploadArea.style.backgroundColor = 'transparent';
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    handleFileSelection(files[0]);
+                }
+            });
+            
+            fileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    handleFileSelection(this.files[0]);
+                }
+            });
+            
+            uploadBtn.addEventListener('click', handleSingleUpload);
+            
+            // Bulk upload
+            bulkUploadArea.addEventListener('click', function() {
+                bulkFileInput.click();
+            });
+            
+            bulkUploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                bulkUploadArea.style.borderColor = '#28a745';
+                bulkUploadArea.style.backgroundColor = '#f9f9f9';
+            });
+            
+            bulkUploadArea.addEventListener('dragleave', function() {
+                bulkUploadArea.style.borderColor = '#ddd';
+                bulkUploadArea.style.backgroundColor = 'transparent';
+            });
+            
+            bulkUploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                bulkUploadArea.style.borderColor = '#ddd';
+                bulkUploadArea.style.backgroundColor = 'transparent';
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    bulkFileInput.files = files;
+                    handleBulkFileSelection(files[0]);
+                }
+            });
+            
+            bulkFileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    handleBulkFileSelection(this.files[0]);
+                }
+            });
+            
+            bulkUploadBtn.addEventListener('click', handleBulkUpload);
+        }
+
+        function handleFileSelection(file) {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileName = file.name;
+            uploadArea.querySelector('p').textContent = `Selected: ${fileName}`;
+            uploadArea.querySelector('span').textContent = `Size: ${(file.size / 1024).toFixed(2)} KB`;
+        }
+
+        function handleBulkFileSelection(file) {
+            const bulkUploadArea = document.getElementById('bulkUploadArea');
+            const fileName = file.name;
+            bulkUploadArea.querySelector('p').textContent = `Selected: ${fileName}`;
+            bulkUploadArea.querySelector('span').textContent = `Size: ${(file.size / 1024).toFixed(2)} KB`;
+        }
+
+        function handleSingleUpload() {
+            const file = document.getElementById('fileInput').files[0];
+            const jobTitle = document.getElementById('uploadJobTitle').value;
+            const company = document.getElementById('uploadCompany').value;
+            const location = document.getElementById('uploadLocation').value;
+            const salary = document.getElementById('uploadSalary').value;
+            const jobType = document.getElementById('uploadType').value;
+            const category = document.getElementById('uploadCategory').value;
+            const description = document.getElementById('uploadDescription').value;
+            const requirements = document.getElementById('uploadRequirements').value;
+            
+            const uploadStatus = document.getElementById('uploadStatus');
+            
+            // Validate form
+            if (!jobTitle || !company || !location || !jobType || !category) {
+                uploadStatus.textContent = 'Please fill in all required fields';
+                uploadStatus.className = 'upload-status upload-error';
+                uploadStatus.style.display = 'block';
+                return;
+            }
+            
+            // Show loading status
+            uploadStatus.textContent = 'Uploading job...';
+            uploadStatus.className = 'upload-status upload-loading';
+            uploadStatus.style.display = 'block';
+            
+            // Simulate upload process
+            setTimeout(() => {
+                // Create job object
+                const jobId = 'uploaded-' + Date.now();
+                const newJob = {
+                    id: jobId,
+                    title: jobTitle.toUpperCase(),
+                    company: company.toUpperCase(),
+                    location: location,
+                    salary: salary,
+                    type: jobType,
+                    category: category,
+                    description: description,
+                    requirements: requirements,
+                    image: `https://placehold.co/600x400/3b82f6/white?text=${encodeURIComponent(company.substring(0, 10))}`,
+                    datePosted: new Date().toISOString(),
+                    uploaded: true
+                };
+                
+                // Add to uploaded jobs
+                uploadedJobs.push(newJob);
+                localStorage.setItem('uploadedJobs', JSON.stringify(uploadedJobs));
+                
+                // Add to job data for display
+                if (!jobData[category]) {
+                    jobData[category] = [];
+                }
+                jobData[category].push(newJob);
+                jobData.all.push(newJob);
+                
+                uploadStatus.textContent = 'Job uploaded successfully!';
+                uploadStatus.className = 'upload-status upload-success';
+                
+                // Reset form
+                resetUploadForm();
+                
+                // Refresh job cards if applicant is viewing
+                if (currentUserType === 'applicant') {
+                    populateJobCards(currentCategory);
+                }
+                
+                // Show success notification
+                createNotification(
+                    currentUser.email,
+                    'Job Uploaded Successfully',
+                    `Your job "${jobTitle}" has been uploaded and is now visible to applicants.`
+                );
+                
+            }, 1500); // In the init() function, add this after the existing upload job form setup:
+                initUploadFunctionality();
+        }
+
+        function handleBulkUpload() {
+            const file = document.getElementById('bulkFileInput').files[0];
+            const uploadStatus = document.getElementById('uploadStatus');
+            
+            if (!file) {
+                uploadStatus.textContent = 'Please select a file first';
+                uploadStatus.className = 'upload-status upload-error';
+                uploadStatus.style.display = 'block';
+                return;
+            }
+            
+            // Check file type
+            const validTypes = ['.xlsx', '.xls', '.csv'];
+            const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+            
+            if (!validTypes.includes(fileExtension)) {
+                uploadStatus.textContent = 'Please select an Excel or CSV file';
+                uploadStatus.className = 'upload-status upload-error';
+                uploadStatus.style.display = 'block';
+                return;
+            }
+            
+            // Show loading status
+            uploadStatus.textContent = 'Processing bulk upload...';
+            uploadStatus.className = 'upload-status upload-loading';
+            uploadStatus.style.display = 'block';
+            
+            // Simulate upload process
+            setTimeout(() => {
+                // In a real app, you would process the Excel/CSV file here
+                // For demo, we'll add some sample jobs
+                const sampleBulkJobs = [
+                    {
+                        id: 'bulk-' + Date.now() + '-1',
+                        title: "SENIOR DEVELOPER",
+                        company: "TECH CORP",
+                        location: "Manila",
+                        salary: "₱40,000 - ₱60,000",
+                        type: "Full Time",
+                        category: "tech",
+                        description: "Senior developer position with leadership responsibilities.",
+                        requirements: "5+ years experience, team leadership",
+                        image: "https://placehold.co/600x400/3b82f6/white?text=TECH+CORP",
+                        datePosted: new Date().toISOString(),
+                        uploaded: true
+                    },
+                    {
+                        id: 'bulk-' + Date.now() + '-2',
+                        title: "DIGITAL MARKETER",
+                        company: "MARKETING PROS",
+                        location: "Cebu",
+                        salary: "₱25,000 - ₱35,000",
+                        type: "Full Time",
+                        category: "marketing",
+                        description: "Digital marketing specialist for online campaigns.",
+                        requirements: "SEO, SEM, Social Media experience",
+                        image: "https://placehold.co/600x400/10b981/white?text=MARKETING",
+                        datePosted: new Date().toISOString(),
+                        uploaded: true
+                    }
+                ];
+                
+                // Add bulk jobs to storage
+                sampleBulkJobs.forEach(job => {
+                    uploadedJobs.push(job);
+                    
+                    // Add to job data for display
+                    if (!jobData[job.category]) {
+                        jobData[job.category] = [];
+                    }
+                    jobData[job.category].push(job);
+                    jobData.all.push(job);
+                });
+                
+                localStorage.setItem('uploadedJobs', JSON.stringify(uploadedJobs));
+                
+                uploadStatus.textContent = `Bulk upload successful! ${sampleBulkJobs.length} jobs added.`;
+                uploadStatus.className = 'upload-status upload-success';
+                
+                // Reset file input
+                document.getElementById('bulkFileInput').value = '';
+                document.getElementById('bulkUploadArea').querySelector('p').textContent = 'Drag & drop your Excel/CSV file for bulk upload';
+                document.getElementById('bulkUploadArea').querySelector('span').textContent = 'Supports .xlsx, .xls, .csv formats';
+                
+                // Refresh job cards if applicant is viewing
+                if (currentUserType === 'applicant') {
+                    populateJobCards(currentCategory);
+                }
+                
+                // Show success notification
+                createNotification(
+                    currentUser.email,
+                    'Bulk Upload Completed',
+                    `Successfully uploaded ${sampleBulkJobs.length} jobs from your file.`
+                );
+                
+            }, 2000);
+        }
+
+        function resetUploadForm() {
+            document.getElementById('uploadJobTitle').value = '';
+            document.getElementById('uploadCompany').value = '';
+            document.getElementById('uploadLocation').value = '';
+            document.getElementById('uploadSalary').value = '';
+            document.getElementById('uploadType').value = '';
+            document.getElementById('uploadCategory').value = '';
+            document.getElementById('uploadDescription').value = '';
+            document.getElementById('uploadRequirements').value = '';
+            document.getElementById('fileInput').value = '';
+            
+            const uploadArea = document.getElementById('uploadArea');
+            uploadArea.querySelector('p').textContent = 'Drag & drop your Excel/CSV file here';
+            uploadArea.querySelector('span').textContent = 'or click to browse';
+        }
         
         // Job data by category
         const jobData = {
