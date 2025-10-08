@@ -165,9 +165,9 @@ I will send a 4 html file to you named:
 
 
 next task
-upload functions
+upload job functions
  - It is at the employer page, where in when the employer needed to upload a new job open
- - the fix search button
+ - the fix search button and function, when I search the results will show at the bottom and wont be remove
  - admin button cursor change and the label when the cursor pointing there
  - put logo at the tab 
  error when I add a skill value and try to save it
@@ -175,3 +175,13 @@ upload functions
     at <anonymous> (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\original.html:3851:71)
     at saveProfile (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\original.html:3850:58)
     at onclick (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\original.html:2298:78)
+ - remove all the samples and do the upload function (note: the upload job function should only be available at the employer page dont add upload jobs aty the applicant page, because the applicant page only receive ehat the employe uploaded for open jobs)
+
+
+
+ can you fix my code and provide me all the codes in it, rewrite everything plus the fixed and upadted code.
+
+problem was:
+- the upload button was missing
+- the search was not working properly
+- and when it is at the auithentication page, the nav buttons and the search icon and the notif icon should not be visible yet, it should be hgidden at the authnetiocation page, what is happening when that is not hidden was I am still not log in but I can see the previoous log in by clicking the nav bottons.

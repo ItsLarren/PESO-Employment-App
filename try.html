@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMPLOYMENT CORNER - FERNANDINO! Tara Magobra</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -32,7 +35,7 @@
         }
         
         .header {
-            background: linear-gradient(to right, #51aee4, #4555e7);
+            background: linear-gradient(to right, #e94d4d, #a51f41);
             color: white;
             padding: 15px;
             display: flex;
@@ -79,7 +82,7 @@
         }
         
         .nav-item.active {
-            background: #0603bd;
+            background: #970303; /* #0603bd*/
             color: white;
         }
         
@@ -97,7 +100,7 @@
         }
         
         .view-all {
-            color: #2256ff;
+            color: #ff2222; /* #2256ff*/
             font-size: 14px;
             cursor: pointer;
         }
@@ -113,6 +116,7 @@
         .auth-tabs {
             display: flex;
             margin-bottom: 20px;
+            position: relative;
         }
         
         .auth-tab {
@@ -124,9 +128,30 @@
         }
         
         .auth-tab.active {
-            border-bottom: 2px solid #1629d8e3;
-            color: #164ce2;
+            border-bottom: 2px solid #ff0909e3; /* #1629d8e3*/
+            color: #f16c4b; /* #1629d8e3*/
             font-weight: 600;
+        }
+        
+        .admin-login-btn {
+            position: absolute;
+            right: 0;
+            top: -40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .admin-login-btn img {
+            width: 30px;
+            height: 30px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .admin-login-btn:hover img {
+            opacity: 1;
         }
         
         .auth-form input {
@@ -141,7 +166,7 @@
         .auth-form button {
             width: 100%;
             padding: 12px;
-            background: #225dff;
+            background: #b61717; /* #225dff*/
             color: white;
             border: none;
             border-radius: 8px;
@@ -194,7 +219,7 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background: #0e37a8;
+            background: #ca3030;
             color: white;
             padding: 4px 8px;
             border-radius: 4px;
@@ -232,7 +257,7 @@
         }
         
         .view-btn {
-            background: #1744da;
+            background: #aa0f0f;
             color: white;
             border: none;
             padding: 8px 15px;
@@ -258,7 +283,6 @@
         .user-type-cards {
             display: flex;
             justify-content: space-around;
-            flex-wrap: wrap;
         }
         
         .user-type-card {
@@ -269,7 +293,6 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.3s;
-            margin-top: 15px;
         }
         
         .user-type-card:hover {
@@ -279,7 +302,7 @@
         .user-type-card i {
             font-size: 40px;
             margin-bottom: 15px;
-            color: #1a1de7;
+            color: #d81818;
         }
         
         .user-type-card h3 {
@@ -307,7 +330,7 @@
         }
         
         .nav-btn.active {
-            color: #2231ff;
+            color: #c90a0a;
         }
         
         .nav-btn i {
@@ -406,7 +429,7 @@
         
         .file-upload i {
             font-size: 24px;
-            color: #225dff;
+            color: #960f0f;
             margin-bottom: 10px;
         }
         
@@ -462,7 +485,7 @@
         }
         
         .modal-btn.confirm {
-            background: #225dff;
+            background: #b92222;
             color: white;
         }
         
@@ -645,7 +668,7 @@
         }
         
         input:checked + .slider {
-            background-color: #225dff;
+            background-color: #e95151;
         }
         
         input:checked + .slider:before {
@@ -689,7 +712,7 @@
             display: flex;
             align-items: center;
             padding: 15px;
-            background: linear-gradient(to right, #51aee4, #4555e7);
+            background: linear-gradient(to right, #d43d3d, #b61111);
             color: white;
         }
         
@@ -698,7 +721,7 @@
         }
         
         .save-profile-btn {
-            background: #225dff;
+            background: #db1616;
             color: white;
             border: none;
             padding: 12px;
@@ -719,7 +742,7 @@
         
         .resume-preview i {
             margin-right: 10px;
-            color: #225dff;
+            color: #ff2222;
         }
         
         .remove-resume {
@@ -732,7 +755,7 @@
             display: flex;
             align-items: center;
             padding: 15px;
-            background: linear-gradient(to right, #51aee4, #4555e7);
+            background: linear-gradient(to right, #e45151, #a01717);
             color: white;
         }
         
@@ -805,7 +828,7 @@
         }
         
         .save-btn {
-            background: #17a2b8;
+            background: #a80909;
             color: white;
         }
         
@@ -831,7 +854,7 @@
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
-            border-left: 4px solid #1890ff;
+            border-left: 4px solid #ee1111;
         }
         
         /* Employee main page styles */
@@ -885,13 +908,6 @@
             font-size: 12px;
             color: #495057;
         }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 5px;
-        }
         
         .applicant-actions {
             display: flex;
@@ -908,12 +924,12 @@
         }
         
         .view-applicant-btn {
-            background: #225dff;
+            background: #cc1919;
             color: white;
         }
         
         .save-applicant-btn {
-            background: #17a2b8;
+            background: #b80909;
             color: white;
         }
         
@@ -989,110 +1005,7 @@
         }
         
         /* NEW STYLES FOR ENHANCED FEATURES */
-
-        /* Admin Page */
-        .admin-dashboard {
-            padding: 15px;
-        }
-
-        .admin-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #1a4d8f;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .admin-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .admin-action-btn {
-            background: #1a4d8f;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .admin-action-btn i {
-            font-size: 18px;
-        }
-
-        .applications-table {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            margin-bottom: 15px;
-        }
-
-        .table-header {
-            background: #f5f5f5;
-            padding: 12px 15px;
-            font-weight: 600;
-            border-bottom: 1px solid #eee;
-        }
-
-        .table-row {
-            display: flex;
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-            align-items: center;
-        }
-
-        .table-row:last-child {
-            border-bottom: none;
-        }
-
-        .table-cell {
-            flex: 1;
-            padding: 0 5px;
-        }
-
-        .table-cell.name {
-            flex: 2;
-        }
-
-        .table-cell.actions {
-            flex: 0.5;
-            text-align: center;
-        }
-
-        .action-icon {
-            cursor: pointer;
-            color: #1a4d8f;
-            font-size: 16px;
-        }
-
+        
         /* Applicant Details Page */
         .applicant-details-page {
             padding: 15px;
@@ -1157,7 +1070,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #225dff;
+            border: 3px solid #f5251e;
         }
         
         .profile-picture-actions {
@@ -1172,7 +1085,7 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background: #225dff;
+            background: #ff1919;
             color: white;
             border: none;
             display: flex;
@@ -1214,7 +1127,7 @@
         }
         
         .view-resume-btn {
-            background: #225dff;
+            background: #ce1c1c;
             color: white;
         }
         
@@ -1226,7 +1139,7 @@
         /* Interview Scheduled Card */
         .interview-scheduled-card {
             background: #e6f7ff;
-            border-left: 4px solid #1890ff;
+            border-left: 4px solid #ff1818;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
@@ -1235,7 +1148,7 @@
         .interview-scheduled-title {
             font-weight: 600;
             margin-bottom: 5px;
-            color: #1890ff;
+            color: #aa0909;
         }
         
         /* Application Status on Job Cards */
@@ -1342,7 +1255,7 @@
         }
         
         .camera-capture {
-            background: #225dff;
+            background: #bd1414;
             color: white;
             border: none;
         }
@@ -1353,7 +1266,28 @@
             border: none;
         }
         
-        /* Chat System Styles */
+        /* Chat System Styles - UPDATED FROM NEW.HTML */
+        .floating-chat-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #db2828;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 999;
+        }
+        
+        .floating-chat-btn i {
+            font-size: 24px;
+        }
+        
         .chat-container {
             position: fixed;
             bottom: 80px;
@@ -1371,7 +1305,7 @@
         }
         
         .chat-header {
-            background: linear-gradient(to right, #1a4d8f, #0d2d5e);
+            background: linear-gradient(to right, #f03d3d, #9b0404);
             color: white;
             padding: 12px 15px;
             display: flex;
@@ -1406,38 +1340,38 @@
         
         .message.sent {
             align-self: flex-end;
-            background: #225dff;
+            background: #ff2626;
             color: white;
+            border-bottom-right-radius: 4px;
         }
         
         .message.received {
             align-self: flex-start;
-            background: #f0f0f0;
+            background: #f1f1f1;
             color: #333;
+            border-bottom-left-radius: 4px;
         }
         
         .chat-input-container {
-            padding: 10px 15px;
-            border-top: 1px solid #eee;
             display: flex;
-            gap: 10px;
+            padding: 10px;
+            border-top: 1px solid #eee;
         }
         
         .chat-input {
             flex: 1;
-            padding: 8px 12px;
+            padding: 10px;
             border: 1px solid #ddd;
             border-radius: 20px;
             outline: none;
-            font-size: 14px;
         }
         
         .chat-send {
-            background: #225dff;
+            background: #b80707;
             color: white;
             border: none;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             margin-left: 10px;
             cursor: pointer;
@@ -1446,140 +1380,66 @@
             justify-content: center;
         }
         
-        /* added at the admin123.html*/
-        .chat-toggle {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #225dff;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            z-index: 999;
-        }
-        
-        .chat-toggle i {
-            font-size: 24px;
-        }
-        
         .notification-item.unread {
             background-color: #f0f8ff;
-            border-left: 3px solid #225dff;
-        }
-
-        /* Floating Chat Button */
-        .chat-button {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #1a4d8f;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            z-index: 999;
-        }
-        
-        .chat-button i {
-            font-size: 24px;
-        }
-        
-        /* Admin Login Styles */
-        .admin-login-container {
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            margin: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .admin-login-title {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #1a4d8f;
-            font-size: 24px;
-        }
-        
-        .admin-login-form input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-        
-        .admin-login-form button {
-            width: 100%;
-            padding: 12px;
-            background: #1a4d8f;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-        
-        .admin-login-info {
-            text-align: center;
-            color: #666;
-            font-size: 14px;
-            margin-top: 15px;
+            border-left: 3px solid #a01414;
         }
         
         /* Admin Dashboard Styles */
-        .admin-dashboard-header {
-            display: flex;
-            align-items: center;
+        .admin-dashboard {
             padding: 15px;
-            background: linear-gradient(to right, #1a4d8f, #0d2d5e);
-            color: white;
         }
         
-        .admin-dashboard-title {
-            flex: 1;
+        .admin-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             text-align: center;
-            font-size: 20px;
-            font-weight: 600;
         }
         
-        .admin-logout-btn {
-            background: rgba(255, 255, 255, 0.2);
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #850e0e;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .admin-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .admin-action-btn {
+            background: #bd1414;
             color: white;
             border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        
-        .admin-dashboard-content {
-            padding: 15px;
-        }
-        
-        .admin-section {
-            margin-bottom: 30px;
-        }
-        
-        .admin-section-title {
-            font-size: 18px;
+            padding: 12px;
+            border-radius: 8px;
             font-weight: 600;
-            margin-bottom: 15px;
-            color: #333;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .admin-action-btn i {
+            font-size: 18px;
         }
         
         .admin-export-btn {
@@ -1596,10 +1456,6 @@
             gap: 10px;
             width: 100%;
             margin-bottom: 15px;
-        }
-        
-        .admin-export-btn i {
-            font-size: 18px;
         }
         
         .admin-search-input {
@@ -1684,7 +1540,7 @@
         }
         
         .admin-view-btn {
-            background: #1a4d8f;
+            background: #b11212;
             color: white;
         }
         
@@ -1697,18 +1553,380 @@
             background: #dc3545;
             color: white;
         }
+        
+        .admin-login-container {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-login-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #000000;
+            font-size: 24px;
+        }
+        
+        .admin-login-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .admin-login-form button {
+            width: 100%;
+            padding: 12px;
+            background: #9c0808;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        
+        .admin-login-info {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        
+        .admin-dashboard-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(to right, #e44545, #a70707);
+            color: white;
+        }
+        
+        .admin-dashboard-title {
+            flex: 1;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .admin-logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .admin-dashboard-content {
+            padding: 15px;
+        }
+        
+        .admin-section {
+            margin-bottom: 30px;
+        }
+        
+        .admin-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        /* Upload Section*/
+        .upload-job-container {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .upload-job-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+        
+        .upload-job-form input,
+        .upload-job-form textarea,
+        .upload-job-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .upload-job-form button {
+            width: 100%;
+            padding: 12px;
+            background: #b61717;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        
+        .search-results-container {
+            padding: 15px;
+        }
+        
+        .search-result-item {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Admin login button cursor fix */
+        .admin-login-btn {
+            cursor: pointer;
+        }
+        
+        /* Add hover effect for admin login button */
+        .admin-login-btn:hover {
+            opacity: 0.8;
+        }
+        
+        /* Add tooltip for admin login button */
+        .admin-login-btn::after {
+            content: "Admin Login";
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .admin-login-btn:hover::after {
+            opacity: 1;
+        }
+
+        /* Enhanced Search Panel Styles */
+        .search-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .search-filter {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .search-results-count {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Upload Section Enhancements */
+        .upload-section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: #ff2222;
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+        
+        .upload-area p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .upload-area span {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .upload-btn {
+            background: #ff2222;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .upload-status {
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .upload-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .upload-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .upload-loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        /* Hide elements on auth page */
+        .auth-page .header-icons,
+        .auth-page .nav-container,
+        .auth-page .bottom-nav {
+            display: none !important;
+        }
+        
+        /* Enhanced responsive design */
+        @media (max-width: 480px) {
+            .job-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .user-type-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .user-type-card {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .admin-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .chat-container {
+                width: 90%;
+                right: 5%;
+            }
+            
+            .search-filters {
+                flex-direction: column;
+            }
+        }
+        
+        /* Animation for page transitions */
+        .page-transition {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Utility classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-right {
+            text-align: right;
+        }
+        
+        .mt-10 {
+            margin-top: 10px;
+        }
+        
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+        
+        .p-10 {
+            padding: 10px;
+        }
+        
+        .w-100 {
+            width: 100%;
+        }
+        
+        .d-flex {
+            display: flex;
+        }
+        
+        .justify-between {
+            justify-content: space-between;
+        }
+        
+        .align-center {
+            align-items: center;
+        }
+        
+        .flex-1 {
+            flex: 1;
+        }
+        
+        /* Fix for the error */
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
-    <div class="app-container">
+    <div class="app-container" id="appContainer">
         <div class="header">
             <div class="logo">
                 <i class="fas fa-briefcase"></i>
                 <span>EMPLOYMENT CORNER</span>
             </div>
-            <div class="header-icons">
-                <i class="fas fa-search" id="search-icon"></i>
-                <i class="fas fa-bell" id="notification-icon"></i>
+             <div class="header-icons">
+                <i class="fas fa-search" id="searchIcon"></i>
+                <i class="fas fa-bell" id="notificationIcon"></i>
             </div>
         </div>
 
@@ -1719,21 +1937,40 @@
             </div>
         </div>
 
-        <!-- Search Panel -->
-        <div class="search-panel" id="searchPanel">
-            <input type="text" class="search-input" placeholder="Search for jobs, companies...">
-            <div class="search-results-container" id="searchResults">
-                <!-- Search results will be populated here -->
+        <div class="search-panel" id="search-panel">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search for jobs, companies, or keywords">
+            <div class="search-filters">
+                <select class="search-filter" id="jobTypeFilter">
+                    <option value="">All Job Types</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Internship">Internship</option>
+                </select>
+                <select class="search-filter" id="locationFilter">
+                    <option value="">All Locations</option>
+                    <option value="Manila">Manila</option>
+                    <option value="Cebu">Cebu</option>
+                    <option value="Davao">Davao</option>
+                    <option value="Remote">Remote</option>
+                </select>
+            </div>
+            <div class="search-results-count" id="searchResultsCount"></div>
+            <div id="search-results">
+                <!-- Search results will be dynamically populated -->
             </div>
         </div>
         
         <div class="main-content">
-            <!-- Authentication Section -->
+            <!-- Authentication Section - UPDATED WITH ADMIN OPTION -->
             <div id="auth-section">
                 <div class="auth-container">
                     <div class="auth-tabs">
                         <div class="auth-tab active" id="login-tab">Login</div>
                         <div class="auth-tab" id="signup-tab">Sign Up</div>
+                        <button class="admin-login-btn" id="admin-login-btn" title="Admin Login">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTEyIDE1YTYgNiAwIDAgMS02LTZjMC0xLjY1LjY3LTMuMTQgMS43NS00LjI1TDEyIDRsNC4yNSA0LjI1QzE3LjMzIDkuMzYgMTggMTAuODUgMTggMTJhNiA2IDAgMCAxLTYgNnoiPjwvcGF0aD48cGF0aCBkPSJNMTkgMTJ2N2EyIDIgMCAwIDEtMiAySDdhMiAyIDAgMCAxLTItMnYtNyI+PC9wYXRoPjxwYXRoIGQ9Ik0xMiAxMnY0Ij48L3BhdGg+PC9zdmc+" alt="Admin">
+                        </button>
                     </div>
                     
                     <div class="auth-form" id="login-form">
@@ -1758,7 +1995,20 @@
                         </button>
                     </div>
 
-                    <!--Admin log in form-->
+                    <!-- Admin Login Form -->
+                    <div class="admin-login-container hidden" id="admin-login-container">
+                        <div class="admin-login-title">
+                            <i class="fas fa-user-shield"></i> Admin Login
+                        </div>
+                        <div class="admin-login-form">
+                            <input type="text" id="admin-username" placeholder="Username">
+                            <input type="password" id="admin-password" placeholder="Password">
+                            <button id="admin-login-button">Login</button>
+                        </div>
+                        <div class="admin-login-info">
+                            <p>Contact system administrator for credentials</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -1803,13 +2053,14 @@
                 </div>
             </div>
             
-            <!-- Employee Main View -->
+                <!-- Employee Main View - UPDATED WITH UPLOAD JOB BUTTON -->
             <div id="employee-view" class="hidden">
                 <div class="nav-container">
                     <div class="nav-item active" onclick="changeApplicantFilter('all')">All Applicants</div>
                     <div class="nav-item" onclick="changeApplicantFilter('pending')">Pending Review</div>
                     <div class="nav-item" onclick="changeApplicantFilter('approved')">Approved</div>
                     <div class="nav-item" onclick="changeApplicantFilter('rejected')">Rejected</div>
+                    <div class="nav-item" onclick="showUploadJobForm()">Upload Job</div>
                 </div>
                 
                 <div class="content">
@@ -1820,6 +2071,109 @@
                     
                     <div id="applicants-container">
                         <!-- Applicant cards will be dynamically populated -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Upload Job View - NEW SECTION -->
+            <div id="upload-job-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Upload New Job</span>
+                    </div>
+                </div>
+                
+                <div class="upload-job-container">
+                    <div class="upload-job-title">
+                        <i class="fas fa-plus-circle"></i> Post a New Job
+                    </div>
+                    <div class="upload-job-form">
+                        <input type="text" id="job-title" placeholder="Job Title">
+                        <input type="text" id="job-company" placeholder="Company Name">
+                        <input type="text" id="job-location" placeholder="Location">
+                        <input type="text" id="job-salary" placeholder="Salary Range">
+                        <select id="job-type">
+                            <option value="">Select Job Type</option>
+                            <option value="Full Time">Full Time</option>
+                            <option value="Part Time">Part Time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Internship">Internship</option>
+                        </select>
+                        <select id="job-category">
+                            <option value="">Select Category</option>
+                            <option value="tech">Technology</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="sales">Sales</option>
+                            <option value="finance">Finance</option>
+                            <option value="customer-service">Customer Service</option>
+                        </select>
+                        <textarea id="job-description" placeholder="Job Description" rows="4"></textarea>
+                        <textarea id="job-requirements" placeholder="Requirements" rows="4"></textarea>
+                        <textarea id="job-benefits" placeholder="Benefits" rows="3"></textarea>
+                        <button onclick="uploadJob()">Post Job</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Dashboard View -->
+            <div id="admin-dashboard-view" class="hidden">
+                <div class="admin-dashboard-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="admin-dashboard-title">Admin Dashboard</div>
+                    <button class="admin-logout-btn" id="admin-logout-btn">Logout</button>
+                </div>
+                
+                <div class="admin-dashboard-content">
+                    <div class="admin-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="total-applications">0</div>
+                            <div class="stat-label">Total Applications</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="pending-applications">0</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="approved-applications">0</div>
+                            <div class="stat-label">Approved</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="rejected-applications">0</div>
+                            <div class="stat-label">Rejected</div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-actions">
+                        <button class="admin-export-btn" id="export-excel-btn">
+                            <i class="fas fa-file-excel"></i> Export to Excel
+                        </button>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <div class="admin-section-title">All Applications</div>
+                        
+                        <input type="text" class="admin-search-input" id="admin-search-input" placeholder="Search applications...">
+                        
+                        <div class="admin-filter-container">
+                            <select class="admin-filter-select" id="status-filter">
+                                <option value="all">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                            <select class="admin-filter-select" id="job-filter">
+                                <option value="all">All Jobs</option>
+                            </select>
+                        </div>
+                        
+                        <div class="admin-applications-list" id="admin-applications-list">
+                            <!-- Admin applications will be populated here -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2547,6 +2901,30 @@ Juan Dela Cruz</textarea>
                     </div>
                 </div>
             </div>
+
+            <!-- Upload Data Section -->
+            <div id="upload-data-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Upload Data</span>
+                    </div>
+                </div>
+                
+                <div class="upload-section">
+                    <h3>Upload Job Data</h3>
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & drop your Excel/CSV file here</p>
+                        <span>or click to browse</span>
+                        <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" style="display: none;">
+                    </div>
+                    <button class="upload-btn" id="uploadBtn">Upload File</button>
+                    <div class="upload-status" id="uploadStatus"></div>
+                </div>
+            </div>
         </div>
         
         <div class="bottom-nav">
@@ -2580,12 +2958,12 @@ Juan Dela Cruz</textarea>
         </div>
     </div>
     
-    <!-- Chat Toggle Button -->
-    <div class="chat-toggle" id="chat-toggle">
+    <!-- Chat Toggle Button - UPDATED FROM NEW.HTML -->
+    <div class="floating-chat-btn" id="floating-chat-btn">
         <i class="fas fa-comments"></i>
     </div>
     
-    <!-- Chat Container -->
+    <!-- Chat Container - UPDATED FROM NEW.HTML -->
     <div class="chat-container" id="chat-container">
         <div class="chat-header">
             <div class="chat-title">Chat</div>
@@ -2605,324 +2983,6 @@ Juan Dela Cruz</textarea>
     </div>
     
     <script>
-
-        async function simulateResendAPICall(emailPayload) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // Simulate successful response
-            resolve(mockResponse);
-        }, 1000);
-    });
-}
-        
-
-                // Updated sendResendEmail function
-        async function sendResendEmail(interviewData) {
-            try {
-                const response = await fetch('http://localhost:3001/api/send-interview-invitation', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ interviewData })
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                return await response.json();
-            } catch (error) {
-                console.error('Error sending email:', error);
-                throw error;
-            }
-        }
-
-        // For demo purposes - simulate email sending
-        async function simulateEmailSending(interviewData) {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    console.log('Simulating email to:', interviewData.email);
-                    resolve({
-                        id: 'simulated_email_' + Date.now(),
-                        status: 'sent'
-                    });
-                }, 1500);
-            });
-        }
-
-                // Send interview invitation via Resend
-        async function sendInterviewInvitation() {
-            // Show loading status
-            integrationStatus.innerHTML = `
-                <div class="integration-status integration-loading">
-                    Sending interview invitation...
-                </div>
-            `;
-
-            // Get form values
-            const applicantName = document.getElementById('interview-applicant').value;
-            const phone = document.getElementById('interview-phone').value;
-            const email = document.getElementById('interview-email').value;
-            const date = document.getElementById('interview-date').value;
-            const time = document.getElementById('interview-time').value;
-            const location = document.getElementById('interview-location').value;
-            const interviewType = document.getElementById('interview-type').value;
-            const details = document.getElementById('interview-details').value;
-
-            // Format date for display
-            const formattedDate = new Date(date).toLocaleDateString('en-PH', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-
-            // Create interview data
-            const interviewData = {
-                applicant_name: applicantName,
-                phone: phone,
-                email: email,
-                interview_date: formattedDate,
-                interview_time: time,
-                interview_location: location,
-                interview_type: interviewType,
-                additional_details: details,
-                company_name: "EMPLOYMENT CORNER",
-                sender_name: currentUser ? currentUser.name : "Hiring Manager"
-            };
-
-            try {
-                // Send email via Resend
-                const response = await sendResendEmail(interviewData);
-                
-                // Show success message
-                integrationStatus.innerHTML = `
-                    <div class="integration-status integration-success">
-                        <i class="fas fa-check-circle"></i>
-                        Interview invitation sent successfully!
-                    </div>
-                `;
-
-                // Save to scheduled interviews
-                scheduledInterviews.push({
-                    ...interviewData,
-                    id: 'int-' + Date.now(),
-                    timestamp: new Date(),
-                    email_sent: true
-                });
-                localStorage.setItem('scheduledInterviews', JSON.stringify(scheduledInterviews));
-
-                // Create notification
-                createNotification(
-                    email,
-                    'Interview Scheduled',
-                    `You have been scheduled for a ${interviewType} interview on ${formattedDate} at ${time}.`
-                );
-
-                alert(`Interview invitation sent to ${applicantName}!\n\nAn email has been sent to ${email}.`);
-
-                // Return to employee view
-                setTimeout(() => {
-                    showSection('employee-view');
-                }, 2000);
-
-            } catch (error) {
-                console.error('Error sending email:', error);
-                
-                // Show error but save locally
-                integrationStatus.innerHTML = `
-                    <div class="integration-status integration-error">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Email sending failed, but interview has been saved locally.
-                    </div>
-                `;
-
-                // Still save the interview
-                scheduledInterviews.push({
-                    ...interviewData,
-                    id: 'int-' + Date.now(),
-                    timestamp: new Date(),
-                    email_sent: false
-                });
-                localStorage.setItem('scheduledInterviews', JSON.stringify(scheduledInterviews));
-
-                alert(`Interview details saved, but there was an issue sending the email. You may need to contact ${applicantName} directly at ${phone}.`);
-
-                setTimeout(() => {
-                    showSection('employee-view');
-                }, 3000);
-            }
-        }
-
-        // Resend email function
-        async function sendResendEmail(interviewData) {
-            // In a real application, you would call your backend API
-            // For demo purposes, we'll simulate the API call
-            
-            const emailPayload = {
-                from: 'Employment Corner <notifications@yourapp.com>',
-                to: interviewData.email,
-                subject: `Interview Invitation - ${interviewData.company_name}`,
-                html: generateInterviewEmailHTML(interviewData),
-                text: generateInterviewEmailText(interviewData)
-            };
-
-            // Since we can't make direct API calls from frontend due to CORS and API key security,
-            // we'll simulate the response. In production, you'd call your backend.
-            
-            // Simulate API call (replace this with actual fetch to your backend)
-            return await simulateResendAPICall(emailPayload);
-        }
-
-
-        // Simulate Resend API call (replace with actual backend call)
-        async function simulateResendAPICall(emailPayload) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    // Simulate successful response
-                    const mockResponse = {
-                        id: 'email_' + Date.now(),
-                        from: emailPayload.from,
-                        to: emailPayload.to,
-                        created_at: new Date().toISOString()
-                    };
-                    resolve(mockResponse);
-                    
-                    // Uncomment to simulate error:
-                    // reject(new Error('Simulated API error'));
-                }, 1000);
-            });
-        }
-
-        // Generate HTML email content
-        function generateInterviewEmailHTML(interviewData) {
-            return `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <style>
-                        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-                        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-                        .header { background: linear-gradient(to right, #51aee4, #4555e7); color: white; padding: 20px; text-align: center; }
-                        .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 8px 8px; }
-                        .details { background: white; padding: 15px; margin: 15px 0; border-left: 4px solid #4555e7; }
-                        .footer { text-align: center; padding: 20px; color: #666; font-size: 14px; }
-                    </style>
-                </head>
-                <body>
-                    <div class="container">
-                        <div class="header">
-                            <h1>Interview Invitation</h1>
-                            <p>${interviewData.company_name}</p>
-                        </div>
-                        <div class="content">
-                            <p>Dear <strong>${interviewData.applicant_name}</strong>,</p>
-                            
-                            <p>Thank you for your application! We are pleased to invite you for an interview.</p>
-                            
-                            <div class="details">
-                                <h3>Interview Details:</h3>
-                                <p><strong>Date:</strong> ${interviewData.interview_date}</p>
-                                <p><strong>Time:</strong> ${interviewData.interview_time}</p>
-                                <p><strong>Type:</strong> ${interviewData.interview_type} Interview</p>
-                                <p><strong>Location/Platform:</strong> ${interviewData.interview_location}</p>
-                                ${interviewData.additional_details ? `<p><strong>Additional Details:</strong> ${interviewData.additional_details}</p>` : ''}
-                            </div>
-                            
-                            <p>Please confirm your attendance by replying to this email.</p>
-                            
-                            <p>Best regards,<br>
-                            <strong>${interviewData.sender_name}</strong><br>
-                            ${interviewData.company_name}</p>
-                        </div>
-                        <div class="footer">
-                            <p>This is an automated message. Please do not reply directly to this email.</p>
-                        </div>
-                    </div>
-                </body>
-                </html>
-            `;
-        }
-
-        // Generate plain text email content
-        function generateInterviewEmailText(interviewData) {
-            return `
-        INTERVIEW INVITATION - ${interviewData.company_name}
-
-        Dear ${interviewData.applicant_name},
-
-        Thank you for your application! We are pleased to invite you for an interview.
-
-        INTERVIEW DETAILS:
-        - Date: ${interviewData.interview_date}
-        - Time: ${interviewData.interview_time}
-        - Type: ${interviewData.interview_type} Interview
-        - Location/Platform: ${interviewData.interview_location}
-        ${interviewData.additional_details ? `- Additional Details: ${interviewData.additional_details}` : ''}
-
-        Please confirm your attendance by replying to this email.
-
-        Best regards,
-        ${interviewData.sender_name}
-        ${interviewData.company_name}
-
-        This is an automated message. Please do not reply directly to this email.
-            `;
-        }
-
-        // Send application confirmation email
-async function sendApplicationConfirmation(applicationData) {
-    const emailPayload = {
-        from: 'Employment Corner <notifications@yourapp.com>',
-        to: applicationData.email,
-        subject: `Application Received - ${applicationData.company_name}`,
-        html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                <div style="background: linear-gradient(to right, #51aee4, #4555e7); color: white; padding: 20px; text-align: center;">
-                    <h1>Application Received</h1>
-                </div>
-                <div style="background: #f9f9f9; padding: 20px;">
-                    <p>Dear <strong>${applicationData.name}</strong>,</p>
-                    <p>Thank you for applying to the <strong>${applicationData.position}</strong> position at <strong>${applicationData.company_name}</strong>.</p>
-                    <p>We have received your application and will review it carefully. We will contact you if your qualifications match our requirements.</p>
-                    <p>Best regards,<br>Employment Corner Team</p>
-                </div>
-            </div>
-        `
-    };
-
-    return await simulateResendAPICall(emailPayload);
-}
-
-// Send application status update
-async function sendApplicationStatusUpdate(applicantEmail, applicantName, position, status) {
-    const emailPayload = {
-        from: 'Employment Corner <notifications@yourapp.com>',
-        to: applicantEmail,
-        subject: `Application Update - ${position}`,
-        html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                <div style="background: linear-gradient(to right, #51aee4, #4555e7); color: white; padding: 20px; text-align: center;">
-                    <h1>Application Update</h1>
-                </div>
-                <div style="background: #f9f9f9; padding: 20px;">
-                    <p>Dear <strong>${applicantName}</strong>,</p>
-                    <p>Your application for the <strong>${position}</strong> position has been <strong>${status}</strong>.</p>
-                    ${status === 'approved' ? 
-                        '<p>We will contact you shortly to schedule the next steps in our hiring process.</p>' : 
-                        '<p>We appreciate your interest in our company and wish you success in your job search.</p>'
-                    }
-                    <p>Best regards,<br>Employment Corner Team</p>
-                </div>
-            </div>
-        `
-    };
-
-    return await simulateResendAPICall(emailPayload);
-}
-                
-        
         // Enhanced Application State
         let currentUser = null;
         let currentUserType = null;
@@ -2942,11 +3002,23 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
         let submittedApplications = JSON.parse(localStorage.getItem('submittedApplications')) || {};
         let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
         
+        //Enhanced Application State - ADD UPLOADED JOBS
+        let uploadedJobs = JSON.parse(localStorage.getItem('uploadedJobs')) || [];
+
+        // Admin data
+        const adminCredentials = {
+            username: "admin",
+            password: "admin123"
+        };
+        let isAdminLoggedIn = false;
+        let adminApplications = JSON.parse(localStorage.getItem('adminApplications')) || [];
+        
         // DOM Elements
         const authSection = document.getElementById('auth-section');
         const userTypeSection = document.getElementById('user-type-section');
         const applicantView = document.getElementById('applicant-view');
         const employeeView = document.getElementById('employee-view');
+        const adminDashboardView = document.getElementById('admin-dashboard-view');
         const myApplicationsView = document.getElementById('my-applications-view');
         const savedJobsView = document.getElementById('saved-jobs-view');
         const profileView = document.getElementById('profile-view');
@@ -2956,6 +3028,7 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
         const interviewSchedulingView = document.getElementById('interview-scheduling-view');
         const applicationDetailsView = document.getElementById('application-details-view');
         const applicantDetailsView = document.getElementById('applicant-details-view');
+        const uploadDataView = document.getElementById('upload-data-view');
         
         const notificationPanel = document.getElementById('notification-panel');
         const searchPanel = document.getElementById('search-panel');
@@ -2963,9 +3036,40 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
         const applicantsContainer = document.getElementById('applicants-container');
         const homeNavBtn = document.getElementById('home-nav-btn');
         const integrationStatus = document.getElementById('integration-status');
+
+        // DOM Elements - ADD UPLOAD JOB VIEW
+        const uploadJobView = document.getElementById('upload-job-view');
         
-        // Chat Elements
-        const chatToggle = document.getElementById('chat-toggle');
+        // Search elements
+        const searchInput = document.getElementById('searchInput');
+        const jobTypeFilter = document.getElementById('jobTypeFilter');
+        const locationFilter = document.getElementById('locationFilter');
+        const searchResultsCount = document.getElementById('searchResultsCount');
+        const searchResults = document.getElementById('search-results');
+        
+        // Upload elements
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const uploadStatus = document.getElementById('uploadStatus');
+        
+        // Admin elements
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+        const adminLoginContainer = document.getElementById('admin-login-container');
+        const adminLoginButton = document.getElementById('admin-login-button');
+        const adminLogoutBtn = document.getElementById('admin-logout-btn');
+        const exportExcelBtn = document.getElementById('export-excel-btn');
+        const adminApplicationsList = document.getElementById('admin-applications-list');
+        const adminSearchInput = document.getElementById('admin-search-input');
+        const statusFilter = document.getElementById('status-filter');
+        const jobFilter = document.getElementById('job-filter');
+        const totalApplications = document.getElementById('total-applications');
+        const pendingApplications = document.getElementById('pending-applications');
+        const approvedApplications = document.getElementById('approved-applications');
+        const rejectedApplications = document.getElementById('rejected-applications');
+        
+        // Chat Elements - UPDATED FROM NEW.HTML
+        const floatingChatBtn = document.getElementById('floating-chat-btn');
         const chatContainer = document.getElementById('chat-container');
         const chatClose = document.getElementById('chat-close');
         const chatMessagesEl = document.getElementById('chat-messages');
@@ -2987,7 +3091,9 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                     location: "Clark",
                     salary: "₱18,000 - ₱22,000",
                     type: "Full Time",
-                    image: "https://placehold.co/600x400/3b82f6/white?text=ALORICA"
+                    image: "https://placehold.co/600x400/3b82f6/white?text=ALORICA",
+                    description: "We are looking for a Customer Service Representative to join our team. You will be responsible for handling customer inquiries, providing information about our products and services, and resolving any issues that arise.",
+                    requirements: "High school diploma or equivalent, Excellent communication skills, Ability to work in a fast-paced environment, Customer service experience preferred"
                 },
                 {
                     id: 'marketing-specialist',
@@ -2996,7 +3102,9 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                     location: "San Fernando",
                     salary: "₱20,000 - ₱25,000",
                     type: "Full Time",
-                    image: "https://placehold.co/600x400/10b981/white?text=FAVERTON"
+                    image: "https://placehold.co/600x400/10b981/white?text=FAVERTON",
+                    description: "We need a creative Marketing Specialist to develop and implement marketing strategies. You will be responsible for brand management and market research.",
+                    requirements: "Bachelor's degree in Marketing or related field, 3+ years of marketing experience, excellent communication skills"
                 },
                 {
                     id: 'sales-associate',
@@ -3005,7 +3113,9 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                     location: "Pampanga",
                     salary: "₱12,000 - ₱15,000",
                     type: "Part Time",
-                    image: "https://placehold.co/600x400/f59e0b/white?text=RC+COLA"
+                    image: "https://placehold.co/600x400/f59e0b/white?text=RC+COLA",
+                    description: "Join our sales team as a Sales Associate. You will be responsible for assisting customers, processing sales, and maintaining product displays.",
+                    requirements: "High school diploma, sales experience preferred, strong communication skills"
                 }
             ],
             tech: [
@@ -3016,7 +3126,9 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                     location: "Angeles City",
                     salary: "₱25,000 - ₱40,000",
                     type: "Full Time",
-                    image: "https://placehold.co/600x400/3b82f6/white?text=TECH"
+                    image: "https://placehold.co/600x400/3b82f6/white?text=TECH",
+                    description: "We are looking for a Software Developer to build and maintain software applications. The ideal candidate should have experience with JavaScript, React, and Node.js.",
+                    requirements: "Bachelor's degree in Computer Science or related field, 2+ years of experience in software development, proficiency in JavaScript and React"
                 },
                 {
                     id: 'it-support',
@@ -3025,7 +3137,9 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                     location: "San Fernando",
                     salary: "₱18,000 - ₱25,000",
                     type: "Full Time",
-                    image: "https://placehold.co/600x400/10b981/white?text=IT"
+                    image: "https://placehold.co/600x400/10b981/white?text=IT",
+                    description: "Join our IT team as a Support Specialist. You will be responsible for providing technical assistance to our employees and maintaining our systems.",
+                    requirements: "Associate's degree in IT or related field, 1+ years of IT support experience, knowledge of Windows and macOS"
                 }
             ],
             marketing: [
@@ -3036,7 +3150,9 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                     location: "Mexico",
                     salary: "₱20,000 - ₱30,000",
                     type: "Full Time",
-                    image: "https://placehold.co/600x400/ef4444/white?text=MARKETING"
+                    image: "https://placehold.co/600x400/ef4444/white?text=MARKETING",
+                    description: "We are seeking a Digital Marketing Specialist to develop and implement digital marketing campaigns across various channels.",
+                    requirements: "Bachelor's degree in Marketing or related field, 2+ years of digital marketing experience, knowledge of SEO and social media marketing"
                 },
                 {
                     id: 'social-media',
@@ -3045,7 +3161,9 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                     location: "Angeles City",
                     salary: "₱18,000 - ₱25,000",
                     type: "Full Time",
-                    image: "https://placehold.co/600x400/f59e0b/white?text=SOCIAL+MEDIA"
+                    image: "https://placehold.co/600x400/f59e0b/white?text=SOCIAL+MEDIA",
+                    description: "Join our team as a Social Media Manager. You will be responsible for managing our social media presence and creating engaging content.",
+                    requirements: "Bachelor's degree in Marketing or related field, 2+ years of social media management experience, excellent writing skills"
                 }
             ],
             sales: [
@@ -3056,7 +3174,9 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                     location: "San Fernando",
                     salary: "₱15,000 - ₱25,000 + Commission",
                     type: "Full Time",
-                    image: "https://placehold.co/600x400/3b82f6/white?text=SALES"
+                    image: "https://placehold.co/600x400/3b82f6/white?text=SALES",
+                    description: "We are hiring a Sales Representative to help us expand our clientele. You will be responsible for discovering and pursuing new sales prospects.",
+                    requirements: "Proven sales experience, ability to communicate and negotiate, customer-focused approach"
                 }
             ],
             finance: [
@@ -3067,7 +3187,9 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                     location: "Angeles City",
                     salary: "₱18,000 - ₱22,000",
                     type: "Full Time",
-                    image: "https://placehold.co/600x400/10b981/white?text=FINANCE"
+                    image: "https://placehold.co/600x400/10b981/white?text=FINANCE",
+                    description: "Join our finance team as an Accounting Assistant. You will be responsible for assisting with bookkeeping and financial reporting.",
+                    requirements: "Bachelor's degree in Accounting or related field, 1+ years of accounting experience, knowledge of accounting software"
                 }
             ]
         };
@@ -3170,6 +3292,19 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             populateJobCards('all');
             populateApplicantCards('all');
             
+            // Add uploaded jobs to job data
+            uploadedJobs.forEach(job => {
+                if (!jobData[job.category]) {
+                    jobData[job.category] = [];
+                }
+                jobData[job.category].push(job);
+                
+                // Also add to "all" category
+                if (!jobData.all.some(j => j.id === job.id)) {
+                    jobData.all.push(job);
+                }
+            });
+
             // Check if user is already logged in
             const savedUser = localStorage.getItem('currentUser');
             if (savedUser) {
@@ -3179,10 +3314,18 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                 updateProfileInfo();
             }
             
+            // Check if admin is logged in
+            const savedAdmin = localStorage.getItem('isAdminLoggedIn');
+            if (savedAdmin === 'true') {
+                isAdminLoggedIn = true;
+                showAdminDashboard();
+            }
+            
             // Set default interview date to tomorrow
             const tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
             document.getElementById('interview-date').valueAsDate = tomorrow;
+            
             
             // Initialize SMS preview
             updateSmsPreview();
@@ -3190,7 +3333,7 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             // Load notifications
             loadNotifications();
             
-            // Initialize chat
+            // Initialize chat - UPDATED FROM NEW.HTML
             initChat();
             
             // Set up event listeners for interview form fields
@@ -3202,14 +3345,14 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             document.getElementById('interview-phone').addEventListener('input', updateSmsPreview);
             
             // Set up UI event listeners
-            document.getElementById('notification-icon').addEventListener('click', function() {
-                notificationPanel.style.display = notificationPanel.style.display === 'block' ? 'none' : 'block';
-                searchPanel.style.display = 'none';
-            });
-            
-            document.getElementById('search-icon').addEventListener('click', function() {
+            document.getElementById('searchIcon').addEventListener('click', function() {
                 searchPanel.style.display = searchPanel.style.display === 'block' ? 'none' : 'block';
                 notificationPanel.style.display = 'none';
+            });
+            
+            document.getElementById('notificationIcon').addEventListener('click', function() {
+                notificationPanel.style.display = notificationPanel.style.display === 'block' ? 'none' : 'block';
+                searchPanel.style.display = 'none';
             });
             
             document.getElementById('login-tab').addEventListener('click', function() {
@@ -3217,6 +3360,7 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                 document.getElementById('signup-tab').classList.remove('active');
                 document.getElementById('login-form').classList.remove('hidden');
                 document.getElementById('signup-form').classList.add('hidden');
+                adminLoginContainer.classList.add('hidden');
             });
             
             document.getElementById('signup-tab').addEventListener('click', function() {
@@ -3224,14 +3368,263 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                 document.getElementById('login-tab').classList.remove('active');
                 document.getElementById('signup-form').classList.remove('hidden');
                 document.getElementById('login-form').classList.add('hidden');
+                adminLoginContainer.classList.add('hidden');
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', performSearch);
+            jobTypeFilter.addEventListener('change', performSearch);
+            locationFilter.addEventListener('change', performSearch);
+            
+            // Upload functionality
+            uploadArea.addEventListener('click', function() {
+                fileInput.click();
             });
             
+            fileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    const fileName = this.files[0].name;
+                    uploadArea.querySelector('p').textContent = `Selected: ${fileName}`;
+                }
+            });
+            
+            uploadBtn.addEventListener('click', handleFileUpload);
+            
+            // Show upload job form
+            function showUploadJobForm() {
+                // Reset form
+                document.getElementById('job-title').value = '';
+                document.getElementById('job-company').value = '';
+                document.getElementById('job-location').value = '';
+                document.getElementById('job-salary').value = '';
+                document.getElementById('job-type').value = '';
+                document.getElementById('job-category').value = '';
+                document.getElementById('job-description').value = '';
+                document.getElementById('job-requirements').value = '';
+                document.getElementById('job-benefits').value = '';
+                
+                showSection('upload-job-view');
+            }
+            
+            // Upload job function
+            function uploadJob() {
+                const title = document.getElementById('job-title').value;
+                const company = document.getElementById('job-company').value;
+                const location = document.getElementById('job-location').value;
+                const salary = document.getElementById('job-salary').value;
+                const type = document.getElementById('job-type').value;
+                const category = document.getElementById('job-category').value;
+                const description = document.getElementById('job-description').value;
+                const requirements = document.getElementById('job-requirements').value;
+                const benefits = document.getElementById('job-benefits').value;
+                
+                if (!title || !company || !location || !salary || !type || !category || !description) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                // Create job object
+                const jobId = 'job-' + Date.now();
+                const newJob = {
+                    id: jobId,
+                    title: title.toUpperCase(),
+                    company: company.toUpperCase(),
+                    location: location,
+                    salary: salary,
+                    type: type,
+                    category: category,
+                    description: description,
+                    requirements: requirements,
+                    benefits: benefits,
+                    image: `https://placehold.co/600x400/3b82f6/white?text=${encodeURIComponent(company.substring(0, 10))}`,
+                    datePosted: new Date().toISOString()
+                };
+                
+                // Add to uploaded jobs
+                uploadedJobs.push(newJob);
+                localStorage.setItem('uploadedJobs', JSON.stringify(uploadedJobs));
+                
+                // Add to job data for display
+                if (!jobData[category]) {
+                    jobData[category] = [];
+                }
+                jobData[category].push(newJob);
+                jobData.all.push(newJob);
+                
+                alert('Job posted successfully!');
+                showSection('employee-view');
+                
+                // Refresh job cards if applicant is viewing
+                if (currentUserType === 'applicant') {
+                    populateJobCards(currentCategory);
+                }
+            }
+            
+            // Handle file upload
+            function handleFileUpload() {
+                const file = fileInput.files[0];
+                if (!file) {
+                    alert('Please select a file first');
+                    return;
+                }
+                
+                // Check file type
+                const validTypes = ['.xlsx', '.xls', '.csv'];
+                const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+                
+                if (!validTypes.includes(fileExtension)) {
+                    alert('Please select an Excel or CSV file');
+                    return;
+                }
+                
+                // Show loading status
+                uploadStatus.textContent = 'Uploading...';
+                uploadStatus.className = 'upload-status upload-loading';
+                uploadStatus.style.display = 'block';
+                
+                // Simulate upload process
+                setTimeout(() => {
+                    // In a real app, you would process the file here
+                    // For demo, we'll just show a success message
+                    uploadStatus.textContent = 'File uploaded successfully!';
+                    uploadStatus.className = 'upload-status upload-success';
+                    
+                    // Reset file input
+                    fileInput.value = '';
+                    uploadArea.querySelector('p').textContent = 'Drag & drop your Excel/CSV file here';
+                }, 2000);
+            }
+            
+            // Perform search
+            function performSearch() {
+                const query = searchInput.value.toLowerCase();
+                const jobType = jobTypeFilter.value;
+                const location = locationFilter.value;
+                
+                if (!query && !jobType && !location) {
+                    searchResults.innerHTML = '';
+                    searchResultsCount.textContent = '';
+                    return;
+                }
+                
+                const allJobs = Object.values(jobData).flat();
+                const filteredJobs = allJobs.filter(job => {
+                    const matchesQuery = !query || 
+                        job.title.toLowerCase().includes(query) ||
+                        job.company.toLowerCase().includes(query) ||
+                        job.description.toLowerCase().includes(query) ||
+                        job.requirements.toLowerCase().includes(query);
+                    
+                    const matchesJobType = !jobType || job.type === jobType;
+                    const matchesLocation = !location || job.location === location;
+                    
+                    return matchesQuery && matchesJobType && matchesLocation;
+                });
+                
+                displaySearchResults(filteredJobs);
+            }
+            
+            // Display search results
+            function displaySearchResults(jobs) {
+                searchResults.innerHTML = '';
+                searchResultsCount.textContent = `${jobs.length} jobs found`;
+                
+                if (jobs.length === 0) {
+                    searchResults.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <p>No jobs found matching your criteria</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                jobs.forEach(job => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    
+                    // Check if user has already applied to this job
+                    let hasApplied = false;
+                    if (currentUser && currentUser.email) {
+                        hasApplied = Object.values(submittedApplications).some(app => 
+                            app.position === job.title && app.company === job.company && app.email === currentUser.email
+                        );
+                    }
+                    
+                    let applicationStatus = '';
+                    if (hasApplied) {
+                        applicationStatus = `
+                            <div class="application-status-badge status-applied">
+                                <i class="fas fa-check-circle"></i> Applied
+                            </div>
+                        `;
+                    }
+                    
+                    resultItem.innerHTML = `
+                        <div class="job-title">${job.title}</div>
+                        <div class="company">${job.company} • ${job.location}</div>
+                        ${applicationStatus}
+                        <div class="job-details">
+                            <span>${job.type} • ${job.salary}</span>
+                        </div>
+                        <button class="view-btn" data-job-id="${job.id}">View Details</button>
+                    `;
+                    
+                    searchResults.appendChild(resultItem);
+                });
+                
+                // Add event listeners to view buttons in search results
+                searchResults.querySelectorAll('.view-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const jobId = this.getAttribute('data-job-id');
+                        showJobDetails(jobId);
+                        searchPanel.style.display = 'none';
+                    });
+                });
+            }
+            
+            // Admin login button
+            adminLoginBtn.addEventListener('click', function() {
+                adminLoginContainer.classList.toggle('hidden');
+                document.getElementById('login-form').classList.add('hidden');
+                document.getElementById('signup-form').classList.add('hidden');
+            });
+            
+            // Admin login form
+            adminLoginButton.addEventListener('click', function() {
+                const username = document.getElementById('admin-username').value;
+                const password = document.getElementById('admin-password').value;
+                
+                if (username === adminCredentials.username && password === adminCredentials.password) {
+                    isAdminLoggedIn = true;
+                    localStorage.setItem('isAdminLoggedIn', 'true');
+                    showAdminDashboard();
+                } else {
+                    alert('Invalid admin credentials!');
+                }
+            });
+            
+            // Admin logout
+            adminLogoutBtn.addEventListener('click', function() {
+                isAdminLoggedIn = false;
+                localStorage.setItem('isAdminLoggedIn', 'false');
+                showSection('auth-section');
+            });
+            
+            // Export to Excel
+            exportExcelBtn.addEventListener('click', exportToExcel);
+            
+            // Admin search and filters
+            adminSearchInput.addEventListener('input', renderAdminApplications);
+            statusFilter.addEventListener('change', renderAdminApplications);
+            jobFilter.addEventListener('change', renderAdminApplications);
+            
             document.addEventListener('click', function(event) {
-                if (!event.target.closest('#notification-icon') && !event.target.closest('#notification-panel')) {
+                if (!event.target.closest('#notificationIcon') && !event.target.closest('#notification-panel')) {
                     notificationPanel.style.display = 'none';
                 }
                 
-                if (!event.target.closest('#search-icon') && !event.target.closest('#search-panel')) {
+                if (!event.target.closest('#searchIcon') && !event.target.closest('#search-panel')) {
                     searchPanel.style.display = 'none';
                 }
             });
@@ -3239,10 +3632,14 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
         
         // Show home section based on user type
         function showHomeSection() {
-            if (currentUserType === 'applicant') {
+            if (isAdminLoggedIn) {
+                showAdminDashboard();
+            } else if (currentUserType === 'applicant') {
                 showSection('applicant-view');
-            } else {
+            } else if (currentUserType === 'employee') {
                 showSection('employee-view');
+            } else {
+                showSection('auth-section');
             }
             homeNavBtn.classList.add('active');
         }
@@ -3254,6 +3651,7 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             userTypeSection.classList.add('hidden');
             applicantView.classList.add('hidden');
             employeeView.classList.add('hidden');
+            adminDashboardView.classList.add('hidden');
             myApplicationsView.classList.add('hidden');
             savedJobsView.classList.add('hidden');
             profileView.classList.add('hidden');
@@ -3263,6 +3661,8 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             interviewSchedulingView.classList.add('hidden');
             applicationDetailsView.classList.add('hidden');
             applicantDetailsView.classList.add('hidden');
+            uploadJobView.classList.add('hidden');
+            uploadDataView.classList.add('hidden');
             
             // Hide panels
             notificationPanel.style.display = 'none';
@@ -3277,7 +3677,7 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             document.getElementById(sectionId).classList.remove('hidden');
             
             // Update navigation button states
-            if (sectionId === 'applicant-view' || sectionId === 'employee-view') {
+            if (sectionId === 'applicant-view' || sectionId === 'employee-view' || sectionId === 'admin-dashboard-view') {
                 homeNavBtn.classList.add('active');
             } else if (sectionId === 'my-applications-view') {
                 document.querySelector('.nav-btn:nth-child(2)').classList.add('active');
@@ -3300,6 +3700,243 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             previousSection = currentSection;
             currentSection = sectionId;
         }
+        
+        // Show admin dashboard
+        function showAdminDashboard() {
+            showSection('admin-dashboard-view');
+            updateAdminStats();
+            renderAdminApplications();
+        }
+        
+        // Update admin statistics
+        function updateAdminStats() {
+            // In a real app, this would fetch data from a server
+            // For demo purposes, we'll use sample data
+            const total = 3;
+            const pending = 1;
+            const approved = 1;
+            const rejected = 1;
+            
+            totalApplications.textContent = total;
+            pendingApplications.textContent = pending;
+            approvedApplications.textContent = approved;
+            rejectedApplications.textContent = rejected;
+        }
+        
+        // Render admin applications
+        function renderAdminApplications() {
+            const searchTerm = adminSearchInput.value.toLowerCase();
+            const statusFilterValue = statusFilter.value;
+            const jobFilterValue = jobFilter.value;
+            
+            // In a real app, this would fetch filtered data from a server
+            // For demo, we'll use sample data
+            const sampleApplications = [
+                {
+                    id: 1,
+                    applicantName: "Juan Dela Cruz",
+                    jobTitle: "Customer Service Representative",
+                    company: "ALORICA",
+                    email: "juan.delacruz@example.com",
+                    phone: "09123456789",
+                    status: "pending",
+                    applicationDate: "2023-05-15"
+                },
+                {
+                    id: 2,
+                    applicantName: "Maria Santos",
+                    jobTitle: "Marketing Specialist",
+                    company: "FAVERTON GROUP INC.",
+                    email: "maria.santos@example.com",
+                    phone: "09198765432",
+                    status: "approved",
+                    applicationDate: "2023-05-10"
+                },
+                {
+                    id: 3,
+                    applicantName: "Pedro Reyes",
+                    jobTitle: "Sales Associate",
+                    company: "RC COLA",
+                    email: "pedro.reyes@example.com",
+                    phone: "09187654321",
+                    status: "rejected",
+                    applicationDate: "2023-05-05"
+                }
+            ];
+            
+            let filteredApplications = sampleApplications.filter(app => {
+                const matchesSearch = 
+                    app.applicantName.toLowerCase().includes(searchTerm) ||
+                    app.jobTitle.toLowerCase().includes(searchTerm) ||
+                    app.email.toLowerCase().includes(searchTerm);
+                
+                const matchesStatus = statusFilterValue === 'all' || app.status === statusFilterValue;
+                
+                return matchesSearch && matchesStatus;
+            });
+            
+            adminApplicationsList.innerHTML = '';
+            
+            if (filteredApplications.length === 0) {
+                adminApplicationsList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-folder-open"></i>
+                        <p>No applications found</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredApplications.forEach(app => {
+                const applicationItem = document.createElement('div');
+                applicationItem.className = 'admin-application-item';
+                
+                applicationItem.innerHTML = `
+                    <div class="admin-application-header">
+                        <div class="admin-application-name">${app.applicantName}</div>
+                        <div class="admin-application-date">${app.applicationDate}</div>
+                    </div>
+                    <div class="admin-application-details">
+                        <div class="admin-application-detail"><strong>Job:</strong> ${app.jobTitle}</div>
+                        <div class="admin-application-detail"><strong>Company:</strong> ${app.company}</div>
+                        <div class="admin-application-detail"><strong>Email:</strong> ${app.email}</div>
+                        <div class="admin-application-detail"><strong>Phone:</strong> ${app.phone}</div>
+                        <div class="admin-application-detail">
+                            <strong>Status:</strong> 
+                            <span class="application-status status-${app.status}">${app.status.charAt(0).toUpperCase() + app.status.slice(1)}</span>
+                        </div>
+                    </div>
+                    <div class="admin-application-actions">
+                        <button class="admin-action-btn-small admin-view-btn" data-app-id="${app.id}">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="admin-action-btn-small admin-download-btn" data-app-id="${app.id}">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="admin-action-btn-small admin-delete-btn" data-app-id="${app.id}">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                `;
+                
+                adminApplicationsList.appendChild(applicationItem);
+            });
+        }
+        
+        // Export to Excel function
+        function exportToExcel() {
+            // Sample data for export
+            const worksheetData = [
+                ['Name', 'Email', 'Phone', 'Job Applied', 'Company', 'Status', 'Application Date']
+            ];
+            
+            // In a real app, this would use actual application data
+            const sampleData = [
+                ['Juan Dela Cruz', 'juan.delacruz@example.com', '09123456789', 'Customer Service Representative', 'ALORICA', 'Pending', '2023-05-15'],
+                ['Maria Santos', 'maria.santos@example.com', '09198765432', 'Marketing Specialist', 'FAVERTON GROUP INC.', 'Approved', '2023-05-10'],
+                ['Pedro Reyes', 'pedro.reyes@example.com', '09187654321', 'Sales Associate', 'RC COLA', 'Rejected', '2023-05-05']
+            ];
+            
+            worksheetData.push(...sampleData);
+            
+            const ws = XLSX.utils.aoa_to_sheet(worksheetData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Applications');
+            
+            XLSX.writeFile(wb, 'employment_corner_applications.xlsx');
+        }
+        
+        // Chat System Functions - UPDATED FROM NEW.HTML
+        function initChat() {
+            // Event listeners for chat
+            floatingChatBtn.addEventListener('click', toggleChat);
+            chatClose.addEventListener('click', toggleChat);
+            chatSend.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+        
+        function toggleChat() {
+            if (chatContainer.style.display === 'flex') {
+                chatContainer.style.display = 'none';
+            } else {
+                chatContainer.style.display = 'flex';
+                loadChatMessages();
+            }
+        }
+        
+        function loadChatMessages() {
+            chatMessagesEl.innerHTML = '';
+            
+            // In a real app, you would load messages for the current conversation
+            // For demo, we'll show some sample messages
+            const sampleMessages = [
+                { sender: 'employer', text: 'Hello, I saw your application and would like to schedule an interview.', time: '10:30 AM' },
+                { sender: 'applicant', text: 'Thank you for considering my application! When would be a good time?', time: '10:32 AM' },
+                { sender: 'employer', text: 'How about tomorrow at 2 PM?', time: '10:33 AM' }
+            ];
+            
+            sampleMessages.forEach(msg => {
+                const messageEl = document.createElement('div');
+                messageEl.className = `message ${msg.sender === 'applicant' ? 'sent' : 'received'}`;
+                messageEl.innerHTML = `
+                    <div class="message-text">${msg.text}</div>
+                    <div class="message-time">${msg.time}</div>
+                `;
+                chatMessagesEl.appendChild(messageEl);
+            });
+            
+            // Scroll to bottom
+            chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+        }
+        
+        function sendMessage() {
+            const messageText = chatInput.value.trim();
+            if (messageText) {
+                // Create message element
+                const messageEl = document.createElement('div');
+                messageEl.className = 'message sent';
+                messageEl.innerHTML = `
+                    <div class="message-text">${messageText}</div>
+                    <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                `;
+                chatMessagesEl.appendChild(messageEl);
+                
+                // Clear input
+                chatInput.value = '';
+                
+                // Scroll to bottom
+                chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+                
+                // In a real app, you would send the message to the server
+                // and the other user would receive it in real-time
+                
+                // Simulate reply after a short delay
+                setTimeout(() => {
+                    const replies = [
+                        "Thanks for your message. How can I assist you further?",
+                        "I understand. Is there anything specific you'd like to know?",
+                        "Our team will get back to you shortly with more information.",
+                        "That's a great question! Let me check with our support team."
+                    ];
+                    
+                    const randomReply = replies[Math.floor(Math.random() * replies.length)];
+                    
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'message received';
+                    botMessage.textContent = randomReply;
+                    chatMessagesEl.appendChild(botMessage);
+                    
+                    // Scroll to bottom
+                    chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+                }, 1000);
+            }
+        }
+        
+        // ... (rest of the existing functions remain the same)
         
         // Go back to previous section
         function goBack() {
@@ -3649,13 +4286,6 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                     </div>
                 `;
                 
-                //applicant.education.forEach(educations => {
-                  //  const educationsTag = document.createElement('span');
-                    //educationsTag.className = 'educations-tag';
-                    //educationsTag.textContent = educations;
-                    //educationContainer.appendChild(educationsTag);
-                //});
-                
                 // Update experience (in a real app, this would come from the applicant's profile)
                 const experienceContainer = document.getElementById('applicant-detail-experience');
                 experienceContainer.innerHTML = `
@@ -3670,12 +4300,6 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
                         <div class="applicant-detail-value">Assisted customers and managed product displays</div>
                     </div>
                 `;
-                //applicant.experience.forEach(experiences => {
-                    //const experiencesTag = document.createElement('span');
-                    //experiencesTag.className = 'experiences-tag';
-                    //experiencesTag.textContent = experiences;
-                    //experienceContainer.appendChild(experiencesTag);
-                //});
                 
                 showSection('applicant-details-view');
             }
@@ -3712,61 +4336,6 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
         // Show application form
         function showApplicationForm() {
             showSection('application-form-view');
-        }
-        
-                // Enhanced submitApplication function with email
-        async function submitApplication() {
-            // ... existing validation code ...
-
-            // Store application data
-            const applicationId = 'app-' + Date.now();
-            submittedApplications[applicationId] = {
-                // ... existing application data ...
-            };
-
-            // Save to localStorage
-            localStorage.setItem('submittedApplications', JSON.stringify(submittedApplications));
-
-            // Send confirmation email
-            try {
-                await sendApplicationConfirmation({
-                    name: name,
-                    email: email,
-                    position: "CUSTOMER SERVICE REPRESENTATIVE",
-                    company_name: "ALORICA"
-                });
-            } catch (error) {
-                console.error('Failed to send confirmation email:', error);
-                // Continue even if email fails
-            }
-
-            // Create notification for employer
-            createNotification(
-                'employer@alorica.com',
-                'New Application Received',
-                `${name} has applied for the Customer Service Representative position.`
-            );
-
-            alert('Application submitted successfully! A confirmation email has been sent.');
-            showHomeSection();
-            populateJobCards(currentCategory);
-        }
-
-                // Updated sendResendEmail function for production
-        async function sendResendEmail(interviewData) {
-            const response = await fetch('http://localhost:3001/api/send-interview-invitation', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ interviewData })
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to send email');
-            }
-
-            return await response.json();
         }
         
         // Show application details - FIXED VERSION
@@ -3821,7 +4390,7 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             }
         }
         
-                // Edit profile - FIXED VERSION
+        // Edit profile - FIXED VERSION
         function editProfile() {
             // Check if user is logged in
             if (!currentUser) {
@@ -3884,7 +4453,7 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             showSection('edit-profile-view');
         }
         
-        // Save profile - FIXED VERSION
+        // FIXED: Save profile function - handle skill inputs correctly
         function saveProfile() {
             // Check if user is logged in
             if (!currentUser) {
@@ -3900,47 +4469,58 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             currentUser.location = document.getElementById('edit-location').value;
             currentUser.about = document.getElementById('edit-about').value;
             
-            // Update skills
+            // FIX: Update skills - check if elements exist before accessing
             currentUser.skills = [];
-            document.querySelectorAll('.skill-input').forEach(input => {
-                if (input.value.trim() !== '') {
-                    currentUser.skills.push(input.value.trim());
-                }
-            });
+            const skillInputs = document.querySelectorAll('.skill-input');
+            if (skillInputs.length > 0) {
+                skillInputs.forEach(input => {
+                    if (input && input.value && input.value.trim() !== '') {
+                        currentUser.skills.push(input.value.trim());
+                    }
+                });
+            }
             
-            // Update education
+            // FIX: Update education - check if elements exist
             currentUser.education = [];
-            document.querySelectorAll('.education-item').forEach(item => {
-                const degree = item.querySelector('.education-degree').value;
-                const school = item.querySelector('.education-school').value;
-                const year = item.querySelector('.education-year').value;
-                
-                if (degree.trim() !== '' && school.trim() !== '') {
-                    currentUser.education.push({
-                        degree: degree,
-                        school: school,
-                        year: year
-                    });
-                }
-            });
+            const educationItems = document.querySelectorAll('.education-item');
+            if (educationItems.length > 0) {
+                educationItems.forEach(item => {
+                    const degreeInput = item.querySelector('.education-degree');
+                    const schoolInput = item.querySelector('.education-school');
+                    const yearInput = item.querySelector('.education-year');
+                    
+                    if (degreeInput && schoolInput && 
+                        degreeInput.value.trim() !== '' && schoolInput.value.trim() !== '') {
+                        currentUser.education.push({
+                            degree: degreeInput.value,
+                            school: schoolInput.value,
+                            year: yearInput ? yearInput.value : ''
+                        });
+                    }
+                });
+            }
             
-            // Update experience
+            // FIX: Update experience - check if elements exist
             currentUser.experience = [];
-            document.querySelectorAll('.experience-item').forEach(item => {
-                const position = item.querySelector('.experience-position').value;
-                const company = item.querySelector('.experience-company').value;
-                const duration = item.querySelector('.experience-duration').value;
-                const description = item.querySelector('.experience-description').value;
-                
-                if (position.trim() !== '' && company.trim() !== '') {
-                    currentUser.experience.push({
-                        position: position,
-                        company: company,
-                        duration: duration,
-                        description: description
-                    });
-                }
-            });
+            const experienceItems = document.querySelectorAll('.experience-item');
+            if (experienceItems.length > 0) {
+                experienceItems.forEach(item => {
+                    const positionInput = item.querySelector('.experience-position');
+                    const companyInput = item.querySelector('.experience-company');
+                    const durationInput = item.querySelector('.experience-duration');
+                    const descriptionInput = item.querySelector('.experience-description');
+                    
+                    if (positionInput && companyInput && 
+                        positionInput.value.trim() !== '' && companyInput.value.trim() !== '') {
+                        currentUser.experience.push({
+                            position: positionInput.value,
+                            company: companyInput.value,
+                            duration: durationInput ? durationInput.value : '',
+                            description: descriptionInput ? descriptionInput.value : ''
+                        });
+                    }
+                });
+            }
             
             // Update in storage
             const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
@@ -3956,6 +4536,97 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             alert('Profile updated successfully!');
             showSection('profile-view');
         }
+        
+        // FIXED: Enhanced Search Function - properly display results
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const jobType = jobTypeFilter.value;
+            const location = locationFilter.value;
+            
+            if (!searchTerm && !jobType && !location) {
+                searchResults.innerHTML = '';
+                searchResultsCount.textContent = '';
+                return;
+            }
+            
+            // Filter jobs based on search term
+            const allJobs = Object.values(jobData).flat();
+            const filteredJobs = allJobs.filter(job => {
+                const matchesQuery = !searchTerm || 
+                    job.title.toLowerCase().includes(searchTerm) || 
+                    job.company.toLowerCase().includes(searchTerm) ||
+                    job.description.toLowerCase().includes(searchTerm) ||
+                    job.requirements.toLowerCase().includes(searchTerm);
+                
+                const matchesJobType = !jobType || job.type === jobType;
+                const matchesLocation = !location || job.location === location;
+                
+                return matchesQuery && matchesJobType && matchesLocation;
+            });
+            
+            // Display search results
+            displaySearchResults(filteredJobs);
+        }
+        
+        // FIXED: Display search results properly
+        function displaySearchResults(jobs) {
+            searchResults.innerHTML = '';
+            searchResultsCount.textContent = `${jobs.length} jobs found`;
+            
+            if (jobs.length === 0) {
+                searchResults.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <p>No jobs found matching your criteria</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            jobs.forEach(job => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+                
+                // Check if user has already applied to this job
+                let hasApplied = false;
+                if (currentUser && currentUser.email) {
+                    hasApplied = Object.values(submittedApplications).some(app => 
+                        app.position === job.title && app.company === job.company && app.email === currentUser.email
+                    );
+                }
+                
+                let applicationStatus = '';
+                if (hasApplied) {
+                    applicationStatus = `
+                        <div class="application-status-badge status-applied">
+                            <i class="fas fa-check-circle"></i> Applied
+                        </div>
+                    `;
+                }
+                
+                resultItem.innerHTML = `
+                    <div class="job-title">${job.title}</div>
+                    <div class="company">${job.company} • ${job.location}</div>
+                    ${applicationStatus}
+                    <div class="job-details">
+                        <span>${job.type} • ${job.salary}</span>
+                    </div>
+                    <button class="view-btn" data-job-id="${job.id}">View Details</button>
+                `;
+                
+                searchResults.appendChild(resultItem);
+            });
+            
+            // Add event listeners to view buttons in search results
+            searchResults.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const jobId = this.getAttribute('data-job-id');
+                    showJobDetails(jobId);
+                    searchPanel.style.display = 'none';
+                });
+            });
+        }
+        
         
         // Handle resume upload
         function handleResumeUpload(input) {
@@ -4156,7 +4827,7 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             }
         }
         
-                // Form Input Functions
+        // Form Input Functions
         function addSkillInput(value = '') {
             const skillsContainer = document.getElementById('edit-skills');
             const skillInput = document.createElement('div');
@@ -4349,88 +5020,6 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             document.getElementById('sms-content').textContent = smsContent;
         }
         
-                // Save profile - FIXED VERSION
-        function saveProfile() {
-            // Check if user is logged in
-            if (!currentUser) {
-                alert('Please log in to save your profile');
-                showSection('auth-section');
-                return;
-            }
-            
-            // Update current user with basic info
-            currentUser.name = document.getElementById('edit-name').value;
-            currentUser.phone = document.getElementById('edit-phone').value;
-            currentUser.address = document.getElementById('edit-address').value;
-            currentUser.location = document.getElementById('edit-location').value;
-            currentUser.about = document.getElementById('edit-about').value;
-            
-            // Safely update skills - check if elements exist first
-            currentUser.skills = [];
-            const skillInputs = document.querySelectorAll('.skill-input');
-            if (skillInputs.length > 0) {
-                skillInputs.forEach(input => {
-                    if (input.value.trim() !== '') {
-                        currentUser.skills.push(input.value.trim());
-                    }
-                });
-            }
-            
-            // Safely update education - check if elements exist first
-            currentUser.education = [];
-            const educationItems = document.querySelectorAll('.education-item');
-            if (educationItems.length > 0) {
-                educationItems.forEach(item => {
-                    const degree = item.querySelector('.education-degree') ? item.querySelector('.education-degree').value : '';
-                    const school = item.querySelector('.education-school') ? item.querySelector('.education-school').value : '';
-                    const year = item.querySelector('.education-year') ? item.querySelector('.education-year').value : '';
-                    
-                    if (degree.trim() !== '' && school.trim() !== '') {
-                        currentUser.education.push({
-                            degree: degree,
-                            school: school,
-                            year: year
-                        });
-                    }
-                });
-            }
-            
-            // Safely update experience - check if elements exist first
-            currentUser.experience = [];
-            const experienceItems = document.querySelectorAll('.experience-item');
-            if (experienceItems.length > 0) {
-                experienceItems.forEach(item => {
-                    const position = item.querySelector('.experience-position') ? item.querySelector('.experience-position').value : '';
-                    const company = item.querySelector('.experience-company') ? item.querySelector('.experience-company').value : '';
-                    const duration = item.querySelector('.experience-duration') ? item.querySelector('.experience-duration').value : '';
-                    const description = item.querySelector('.experience-description') ? item.querySelector('.experience-description').value : '';
-                    
-                    if (position.trim() !== '' && company.trim() !== '') {
-                        currentUser.experience.push({
-                            position: position,
-                            company: company,
-                            duration: duration,
-                            description: description
-                        });
-                    }
-                });
-            }
-            
-            // Update in storage
-            const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
-            if (userIndex !== -1) {
-                userAccounts[userIndex] = currentUser;
-                localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            }
-            
-            // Update profile display
-            updateProfileInfo();
-            
-            alert('Profile updated successfully!');
-            showSection('profile-view');
-        }
-        
         // Real-time Notifications
         function createNotification(userEmail, title, message) {
             const notification = {
@@ -4482,163 +5071,91 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
         
         // Enhanced Search Function
         function performSearch() {
-            const searchTerm = document.querySelector('.search-input').value.toLowerCase();
-            if (searchTerm) {
-                // Filter jobs based on search term
-                const allJobs = Object.values(jobData).flat();
-                const filteredJobs = allJobs.filter(job => 
+            const searchTerm = searchInput.value.toLowerCase();
+            const jobType = jobTypeFilter.value;
+            const location = locationFilter.value;
+            
+            if (!searchTerm && !jobType && !location) {
+                searchResults.innerHTML = '';
+                searchResultsCount.textContent = '';
+                return;
+            }
+            
+            // Filter jobs based on search term
+            const allJobs = Object.values(jobData).flat();
+            const filteredJobs = allJobs.filter(job => {
+                const matchesQuery = !searchTerm || 
                     job.title.toLowerCase().includes(searchTerm) || 
                     job.company.toLowerCase().includes(searchTerm) ||
-                    job.location.toLowerCase().includes(searchTerm)
-                );
+                    job.description.toLowerCase().includes(searchTerm) ||
+                    job.requirements.toLowerCase().includes(searchTerm);
                 
-                // Display search results
-                displaySearchResults(filteredJobs, searchTerm);
-            } else {
-                alert('Please enter a search term');
-            }
+                const matchesJobType = !jobType || job.type === jobType;
+                const matchesLocation = !location || job.location === location;
+                
+                return matchesQuery && matchesJobType && matchesLocation;
+            });
+            
+            // Display search results
+            displaySearchResults(filteredJobs);
         }
         
-        function displaySearchResults(jobs, searchTerm) {
-            // Create a search results view
-            const searchResultsView = document.createElement('div');
-            searchResultsView.className = 'search-results-container';
-            searchResultsView.innerHTML = `
-                <div class="page-header">
-                    <div class="back-btn" onclick="showHomeSection()">
-                        <i class="fas fa-arrow-left"></i>
-                    </div>
-                    <div class="logo">
-                        <span>Search Results for "${searchTerm}"</span>
-                    </div>
-                    <div class="header-icons"></div>
-                </div>
-                <div class="job-cards" id="search-job-cards-container"></div>
-            `;
+        function displaySearchResults(jobs) {
+            searchResults.innerHTML = '';
+            searchResultsCount.textContent = `${jobs.length} jobs found`;
             
-            // Add to the app container
-            document.querySelector('.app-container').appendChild(searchResultsView);
-            
-            // Populate with search results
-            const searchJobCardsContainer = document.getElementById('search-job-cards-container');
-            searchJobCardsContainer.innerHTML = '';
-            
-            if (jobs.length > 0) {
-                jobs.forEach(job => {
-                    const jobCard = document.createElement('div');
-                    jobCard.className = 'job-card';
-                    jobCard.innerHTML = `
-                        <div class="job-image" style="background-image: url('${job.image}');">
-                            <div class="job-type">${job.type}</div>
-                        </div>
-                        <div class="job-content">
-                            <div class="job-title">${job.title}</div>
-                            <div class="company">${job.company}</div>
-                            <div class="job-details">
-                                <span><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
-                                <span><i class="fas fa-money-bill-wave"></i> ${job.salary}</span>
-                            </div>
-                            <button class="view-btn" onclick="showJobDetails('${job.id}')">View Job</button>
-                        </div>
-                    `;
-                    searchJobCardsContainer.appendChild(jobCard);
-                });
-            } else {
-                searchJobCardsContainer.innerHTML = `
+            if (jobs.length === 0) {
+                searchResults.innerHTML = `
                     <div class="empty-state">
                         <i class="fas fa-search"></i>
-                        <p>No jobs found for "${searchTerm}"</p>
+                        <p>No jobs found matching your criteria</p>
                     </div>
                 `;
+                return;
             }
             
-            // Show the search results view
-            searchResultsView.style.display = 'block';
-            hideAllSections();
-        }
-        
-        function hideAllSections() {
-            // Hide all main sections
-            const sections = [
-                'auth-section', 'user-type-section', 'applicant-view', 'employee-view',
-                'my-applications-view', 'saved-jobs-view', 'profile-view', 'edit-profile-view',
-                'job-details-view', 'application-form-view', 'interview-scheduling-view',
-                'application-details-view', 'applicant-details-view'
-            ];
-            
-            sections.forEach(section => {
-                document.getElementById(section).classList.add('hidden');
-            });
-        }
-        
-        // Chat System Functions
-        function initChat() {
-            // Event listeners for chat
-            chatToggle.addEventListener('click', toggleChat);
-            chatClose.addEventListener('click', toggleChat);
-            chatSend.addEventListener('click', sendMessage);
-            chatInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
+            jobs.forEach(job => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+                
+                // Check if user has already applied to this job
+                let hasApplied = false;
+                if (currentUser && currentUser.email) {
+                    hasApplied = Object.values(submittedApplications).some(app => 
+                        app.position === job.title && app.company === job.company && app.email === currentUser.email
+                    );
                 }
-            });
-        }
-        
-        function toggleChat() {
-            if (chatContainer.style.display === 'flex') {
-                chatContainer.style.display = 'none';
-            } else {
-                chatContainer.style.display = 'flex';
-                loadChatMessages();
-            }
-        }
-        
-        function loadChatMessages() {
-            chatMessagesEl.innerHTML = '';
-            
-            // In a real app, you would load messages for the current conversation
-            // For demo, we'll show some sample messages
-            const sampleMessages = [
-                { sender: 'employer', text: 'Hello, I saw your application and would like to schedule an interview.', time: '10:30 AM' },
-                { sender: 'applicant', text: 'Thank you for considering my application! When would be a good time?', time: '10:32 AM' },
-                { sender: 'employer', text: 'How about tomorrow at 2 PM?', time: '10:33 AM' }
-            ];
-            
-            sampleMessages.forEach(msg => {
-                const messageEl = document.createElement('div');
-                messageEl.className = `message ${msg.sender === 'applicant' ? 'sent' : 'received'}`;
-                messageEl.innerHTML = `
-                    <div class="message-text">${msg.text}</div>
-                    <div class="message-time">${msg.time}</div>
+                
+                let applicationStatus = '';
+                if (hasApplied) {
+                    applicationStatus = `
+                        <div class="application-status-badge status-applied">
+                            <i class="fas fa-check-circle"></i> Applied
+                        </div>
+                    `;
+                }
+                
+                resultItem.innerHTML = `
+                    <div class="job-title">${job.title}</div>
+                    <div class="company">${job.company} • ${job.location}</div>
+                    ${applicationStatus}
+                    <div class="job-details">
+                        <span>${job.type} • ${job.salary}</span>
+                    </div>
+                    <button class="view-btn" data-job-id="${job.id}">View Details</button>
                 `;
-                chatMessagesEl.appendChild(messageEl);
+                
+                searchResults.appendChild(resultItem);
             });
             
-            // Scroll to bottom
-            chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
-        }
-        
-        function sendMessage() {
-            const messageText = chatInput.value.trim();
-            if (messageText) {
-                // Create message element
-                const messageEl = document.createElement('div');
-                messageEl.className = 'message sent';
-                messageEl.innerHTML = `
-                    <div class="message-text">${messageText}</div>
-                    <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
-                `;
-                chatMessagesEl.appendChild(messageEl);
-                
-                // Clear input
-                chatInput.value = '';
-                
-                // Scroll to bottom
-                chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
-                
-                // In a real app, you would send the message to the server
-                // and the other user would receive it in real-time
-            }
+            // Add event listeners to view buttons in search results
+            searchResults.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const jobId = this.getAttribute('data-job-id');
+                    showJobDetails(jobId);
+                    searchPanel.style.display = 'none';
+                });
+            });
         }
         
         function startChatWithApplicant() {
@@ -4706,9 +5223,168 @@ async function sendApplicationStatusUpdate(applicantEmail, applicantName, positi
             showSection('user-type-section');
         }
         
+        // Email sending functions (placeholder implementations)
+        async function sendInterviewInvitation() {
+            // Show loading status
+            integrationStatus.innerHTML = `
+                <div class="integration-status integration-loading">
+                    Sending interview invitation...
+                </div>
+            `;
+
+            // Get form values
+            const applicantName = document.getElementById('interview-applicant').value;
+            const phone = document.getElementById('interview-phone').value;
+            const email = document.getElementById('interview-email').value;
+            const date = document.getElementById('interview-date').value;
+            const time = document.getElementById('interview-time').value;
+            const location = document.getElementById('interview-location').value;
+            const interviewType = document.getElementById('interview-type').value;
+            const details = document.getElementById('interview-details').value;
+
+            // Format date for display
+            const formattedDate = new Date(date).toLocaleDateString('en-PH', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Create interview data
+            const interviewData = {
+                applicant_name: applicantName,
+                phone: phone,
+                email: email,
+                interview_date: formattedDate,
+                interview_time: time,
+                interview_location: location,
+                interview_type: interviewType,
+                additional_details: details,
+                company_name: "EMPLOYMENT CORNER",
+                sender_name: currentUser ? currentUser.name : "Hiring Manager"
+            };
+
+            try {
+                // Simulate email sending
+                await simulateEmailSending(interviewData);
+                
+                // Show success message
+                integrationStatus.innerHTML = `
+                    <div class="integration-status integration-success">
+                        <i class="fas fa-check-circle"></i>
+                        Interview invitation sent successfully!
+                    </div>
+                `;
+
+                // Save to scheduled interviews
+                scheduledInterviews.push({
+                    ...interviewData,
+                    id: 'int-' + Date.now(),
+                    timestamp: new Date(),
+                    email_sent: true
+                });
+                localStorage.setItem('scheduledInterviews', JSON.stringify(scheduledInterviews));
+
+                // Create notification
+                createNotification(
+                    email,
+                    'Interview Scheduled',
+                    `You have been scheduled for a ${interviewType} interview on ${formattedDate} at ${time}.`
+                );
+
+                alert(`Interview invitation sent to ${applicantName}!\n\nAn email has been sent to ${email}.`);
+
+                // Return to employee view
+                setTimeout(() => {
+                    showSection('employee-view');
+                }, 2000);
+
+            } catch (error) {
+                console.error('Error sending email:', error);
+                
+                // Show error but save locally
+                integrationStatus.innerHTML = `
+                    <div class="integration-status integration-error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Email sending failed, but interview has been saved locally.
+                    </div>
+                `;
+
+                // Still save the interview
+                scheduledInterviews.push({
+                    ...interviewData,
+                    id: 'int-' + Date.now(),
+                    timestamp: new Date(),
+                    email_sent: false
+                });
+                localStorage.setItem('scheduledInterviews', JSON.stringify(scheduledInterviews));
+
+                alert(`Interview details saved, but there was an issue sending the email. You may need to contact ${applicantName} directly at ${phone}.`);
+
+                setTimeout(() => {
+                    showSection('employee-view');
+                }, 3000);
+            }
+        }
+
+        // For demo purposes - simulate email sending
+        async function simulateEmailSending(interviewData) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log('Simulating email to:', interviewData.email);
+                    resolve({
+                        id: 'simulated_email_' + Date.now(),
+                        status: 'sent'
+                    });
+                }, 1500);
+            });
+        }
+
+        async function submitApplication() {
+            const name = document.getElementById('application-name').value;
+            const email = document.getElementById('application-email').value;
+            const phone = document.getElementById('application-phone').value;
+            const address = document.getElementById('application-address').value;
+            const coverLetter = document.getElementById('application-cover-letter').value;
+
+            if (!name || !email || !phone) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Store application data
+            const applicationId = 'app-' + Date.now();
+            submittedApplications[applicationId] = {
+                id: applicationId,
+                name: name,
+                email: email,
+                phone: phone,
+                address: address,
+                coverLetter: coverLetter,
+                resume: currentApplicationResumeFile ? currentApplicationResumeFile.name : 'No resume uploaded',
+                position: "CUSTOMER SERVICE REPRESENTATIVE",
+                company: "ALORICA",
+                date: new Date().toLocaleDateString(),
+                status: 'pending'
+            };
+
+            // Save to localStorage
+            localStorage.setItem('submittedApplications', JSON.stringify(submittedApplications));
+
+            // Create notification for employer
+            createNotification(
+                'employer@alorica.com',
+                'New Application Received',
+                `${name} has applied for the Customer Service Representative position.`
+            );
+
+            alert('Application submitted successfully!');
+            showHomeSection();
+            populateJobCards(currentCategory);
+        }
+        
         // Initialize the application
         init();
     </script>
 </body>
 </html>
-
