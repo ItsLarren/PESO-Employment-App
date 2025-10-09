@@ -1826,7 +1826,8 @@
         /* Hide elements on auth page */
         .auth-page .header-icons,
         .auth-page .nav-container,
-        .auth-page .bottom-nav {
+        .auth-page .bottom-nav,
+        .auth-page .floating-chat-btn {
             display: none !important;
         }
         
@@ -2261,7 +2262,7 @@
                     <div class="nav-item" onclick="changeApplicantFilter('pending')">Pending Review</div>
                     <div class="nav-item" onclick="changeApplicantFilter('approved')">Approved</div>
                     <div class="nav-item" onclick="changeApplicantFilter('rejected')">Rejected</div>
-                    <div class="nav-item" onclick="showUploadJobForm()">Upload Job</div>
+                    <div class="nav-item" onclick="showUploadJobView()">Upload Job</div>
                     <div class="nav-item" onclick="showUploadDataView()">Upload Data</div>
                 </div>
                 
@@ -3459,8 +3460,7 @@ Juan Dela Cruz</textarea>
                     `Your job "${jobTitle}" has been uploaded and is now visible to applicants.`
                 );
                 
-            }, 1500); // In the init() function, add this after the existing upload job form setup:
-                initUploadFunctionality();
+            }, 1500);
         }
 
         function handleBulkUpload() {
@@ -4125,6 +4125,9 @@ Juan Dela Cruz</textarea>
                     searchPanel.style.display = 'none';
                 }
             });
+
+            // Initialize upload functionality
+            initUploadFunctionality();
         }
         
         // Show home section based on user type
@@ -4196,6 +4199,41 @@ Juan Dela Cruz</textarea>
             // Update previous section
             previousSection = currentSection;
             currentSection = sectionId;
+            
+            // NEW: Toggle visibility of navigation elements based on authentication
+            toggleNavigationElements();
+        }
+        
+        // NEW FUNCTION: Toggle visibility of navigation elements
+        function toggleNavigationElements() {
+            const appContainer = document.getElementById('appContainer');
+            const headerIcons = document.querySelector('.header-icons');
+            const navContainer = document.querySelector('.nav-container');
+            const bottomNav = document.querySelector('.bottom-nav');
+            const floatingChatBtn = document.querySelector('.floating-chat-btn');
+            
+            // Check if we're on authentication pages
+            const isAuthPage = currentSection === 'auth-section' || currentSection === 'user-type-section';
+            
+            if (isAuthPage) {
+                // Hide navigation elements on auth pages
+                appContainer.classList.add('auth-page');
+                if (headerIcons) headerIcons.style.display = 'none';
+                if (navContainer) navContainer.style.display = 'none';
+                if (bottomNav) bottomNav.style.display = 'none';
+                if (floatingChatBtn) floatingChatBtn.style.display = 'none';
+            } else {
+                // Show navigation elements on authenticated pages
+                appContainer.classList.remove('auth-page');
+                if (headerIcons) headerIcons.style.display = 'flex';
+                if (navContainer && (currentSection === 'applicant-view' || currentSection === 'employee-view')) {
+                    navContainer.style.display = 'flex';
+                } else if (navContainer) {
+                    navContainer.style.display = 'none';
+                }
+                if (bottomNav) bottomNav.style.display = 'flex';
+                if (floatingChatBtn) floatingChatBtn.style.display = 'flex';
+            }
         }
         
         // Show admin dashboard

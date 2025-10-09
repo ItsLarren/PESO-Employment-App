@@ -187,3 +187,6 @@ problem was:
 - and when it is at the auithentication page, the nav buttons and the search icon and the notif icon should not be visible yet, it should be hgidden at the authnetiocation page, what is happening when that is not hidden was I am still not log in but I can see the previoous log in by clicking the nav bottons.
 
 
+problems
+- when the user was at the  authentication page the nav bottom button should be not visible, an also remove the message chat at the authentication page, also the earch button/icon and the notif icon/button hsould not be visible at the authentication page. why? beacuse at the authenytication page the objevctive of the user was to only sign up log in as a applicant/employee/admin. 
+- 
