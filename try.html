@@ -139,15 +139,18 @@
             top: -40px;
             background: transparent;
             border: none;
-            cursor: pointer;
+            cursor: default;
             padding: 5px;
+            opacity: 0.1; /* Almost invisible */
+            transition: opacity 0.3s;
         }
         
         .admin-login-btn img {
             width: 30px;
             height: 30px;
-            opacity: 0.7;
-            transition: opacity 0.3s;
+            filter: brightness(0) invert(1);
+            opacity: 0.3;
+            pointer-events: none; 
         }
         
         .admin-login-btn:hover img {
@@ -1555,18 +1558,24 @@
         }
         
         .admin-login-container {
+            margin-top: 20px;
             padding: 20px;
             background: white;
             border-radius: 10px;
-            margin: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e94d4d;
         }
         
         .admin-login-title {
             text-align: center;
             margin-bottom: 20px;
-            color: #000000;
+            color: #e94d4d;
             font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .admin-login-title i {
+            margin-right: 10px;
         }
         
         .admin-login-form input {
@@ -1581,7 +1590,7 @@
         .admin-login-form button {
             width: 100%;
             padding: 12px;
-            background: #9c0808;
+            background: #e94d4d;
             color: white;
             border: none;
             border-radius: 8px;
@@ -1596,6 +1605,19 @@
             color: #666;
             font-size: 14px;
             margin-top: 15px;
+        }
+
+        .admin-login-info button:hover {
+            background: #d43d3d;
+        }
+
+        .admin-login-info {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
         }
         
         .admin-dashboard-header {
@@ -1698,25 +1720,13 @@
         
         /* Add hover effect for admin login button */
         .admin-login-btn:hover {
-            opacity: 0.8;
+            opacity: 0.1;
+            cursor: default;
         }
         
         /* Add tooltip for admin login button */
         .admin-login-btn::after {
-            content: "Admin Login";
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
+            display: none;
         }
         
         .admin-login-btn:hover::after {
@@ -1822,6 +1832,46 @@
             color: #856404;
             border: 1px solid #ffeaa7;
         }
+
+        .auth-page .header {
+            position: relative;
+        }
+
+        .auth-page .admin-login-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(165, 31, 65, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+            transition: all 0.3s;
+            opacity: 0.1;
+        }
+
+        .auth-page .admin-login-btn:hover {
+            background: rgba(165, 31, 65, 0.6);
+            opacity: 0.1;
+            cursor: default;
+        }
+
+        .auth-page .admin-login-btn img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .auth-container .admin-login-btn {
+            display: none
+        }
         
         /* Hide elements on auth page */
         .auth-page .header-icons,
@@ -1830,7 +1880,11 @@
         .auth-page .floating-chat-btn {
             display: none !important;
         }
-        
+
+        .auth-page .admin-login-btn {
+            display: flex !important;
+        }
+            
         /* Enhanced responsive design */
         @media (max-width: 480px) {
             .job-cards {
@@ -2040,6 +2094,9 @@
                 <i class="fas fa-search" id="searchIcon"></i>
                 <i class="fas fa-bell" id="notificationIcon"></i>
             </div>
+            <button class="admin-login-btn" id="admin-login-btn" >
+                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTEyIDE1YTYgNiAwIDAgMS02LTZjMC0xLjY1LjY3LTMuMTQgMS43NS00LjI1TDEyIDRsNC4yNSA0LjI1QzE3LjMzIDkuMzYgMTggMTAuODUgMTggMTJhNiA2IDAgMCAxLTYgNnoiPjwvcGF0aD48cGF0aCBkPSJNMTkgMTJ2N2EyIDIgMCAwIDEtMiAySDdhMiAyIDAgMCAxLTItMnYtNyI+PC9wYXRoPjxwYXRoIGQ9Ik0xMiAxMnY0Ij48L3BhdGg+PC9zdmc+" alt="Admin">
+                        </button>
         </div>
 
         <div class="notification-panel" id="notification-panel">
@@ -2080,9 +2137,6 @@
                     <div class="auth-tabs">
                         <div class="auth-tab active" id="login-tab">Login</div>
                         <div class="auth-tab" id="signup-tab">Sign Up</div>
-                        <button class="admin-login-btn" id="admin-login-btn" title="Admin Login">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTEyIDE1YTYgNiAwIDAgMS02LTZjMC0xLjY1LjY3LTMuMTQgMS43NS00LjI1TDEyIDRsNC4yNSA0LjI1QzE3LjMzIDkuMzYgMTggMTAuODUgMTggMTJhNiA2IDAgMCAxLTYgNnoiPjwvcGF0aD48cGF0aCBkPSJNMTkgMTJ2N2EyIDIgMCAwIDEtMiAySDdhMiAyIDAgMCAxLTItMnYtNyI+PC9wYXRoPjxwYXRoIGQ9Ik0xMiAxMnY0Ij48L3BhdGg+PC9zdmc+" alt="Admin">
-                        </button>
                     </div>
                     
                     <div class="auth-form" id="login-form">
@@ -3902,6 +3956,68 @@ Juan Dela Cruz</textarea>
                 
                 showSection('upload-job-view');
             }
+
+            // FIXED: Admin login button event listener
+            document.getElementById('admin-login-btn').addEventListener('click', function() {
+                const adminContainer = document.getElementById('admin-login-container');
+                const loginForm = document.getElementById('login-form');
+                const signupForm = document.getElementById('signup-form');
+                const authTabs = document.querySelector('.auth-tabs');
+                
+                // Toggle admin login form
+                adminContainer.classList.toggle('hidden');
+                
+                // Hide regular auth forms when showing admin login
+                if (!adminContainer.classList.contains('hidden')) {
+                    loginForm.classList.add('hidden');
+                    signupForm.classList.add('hidden');
+                    authTabs.classList.add('hidden');
+                } else {
+                    // Show regular login form when hiding admin login
+                    loginForm.classList.remove('hidden');
+                    authTabs.classList.remove('hidden');
+                    document.getElementById('login-tab').classList.add('active');
+                    document.getElementById('signup-tab').classList.remove('active');
+                }
+            });
+            
+            // Admin login form submission
+            document.getElementById('admin-login-button').addEventListener('click', function() {
+                const username = document.getElementById('admin-username').value;
+                const password = document.getElementById('admin-password').value;
+                
+                if (username === adminCredentials.username && password === adminCredentials.password) {
+                    isAdminLoggedIn = true;
+                    localStorage.setItem('isAdminLoggedIn', 'true');
+                    showAdminDashboard();
+                    
+                    // Reset admin form
+                    document.getElementById('admin-username').value = '';
+                    document.getElementById('admin-password').value = '';
+                    document.getElementById('admin-login-container').classList.add('hidden');
+                } else {
+                    alert('Invalid admin credentials!');
+                }
+            });
+
+            // Update tab click handlers to reset admin login view
+            document.getElementById('login-tab').addEventListener('click', function() {
+                document.getElementById('login-tab').classList.add('active');
+                document.getElementById('signup-tab').classList.remove('active');
+                document.getElementById('login-form').classList.remove('hidden');
+                document.getElementById('signup-form').classList.add('hidden');
+                document.getElementById('admin-login-container').classList.add('hidden');
+                document.querySelector('.auth-tabs').classList.remove('hidden');
+            });
+
+            document.getElementById('signup-tab').addEventListener('click', function() {
+                document.getElementById('signup-tab').classList.add('active');
+                document.getElementById('login-tab').classList.remove('active');
+                document.getElementById('signup-form').classList.remove('hidden');
+                document.getElementById('login-form').classList.add('hidden');
+                document.getElementById('admin-login-container').classList.add('hidden');
+                document.querySelector('.auth-tabs').classList.remove('hidden');
+            });
             
             // Upload job function
             function uploadJob() {
@@ -4079,27 +4195,6 @@ Juan Dela Cruz</textarea>
                     });
                 });
             }
-            
-            // Admin login button
-            adminLoginBtn.addEventListener('click', function() {
-                adminLoginContainer.classList.toggle('hidden');
-                document.getElementById('login-form').classList.add('hidden');
-                document.getElementById('signup-form').classList.add('hidden');
-            });
-            
-            // Admin login form
-            adminLoginButton.addEventListener('click', function() {
-                const username = document.getElementById('admin-username').value;
-                const password = document.getElementById('admin-password').value;
-                
-                if (username === adminCredentials.username && password === adminCredentials.password) {
-                    isAdminLoggedIn = true;
-                    localStorage.setItem('isAdminLoggedIn', 'true');
-                    showAdminDashboard();
-                } else {
-                    alert('Invalid admin credentials!');
-                }
-            });
             
             // Admin logout
             adminLogoutBtn.addEventListener('click', function() {
