@@ -48,7 +48,8 @@
         const jobTypeFilter = document.getElementById('jobTypeFilter');
         const locationFilter = document.getElementById('locationFilter');
         const searchResultsCount = document.getElementById('searchResultsCount');
-        const searchResults = document.getElementById('search-results');        const uploadArea = document.getElementById('uploadArea');
+        const searchResults = document.getElementById('search-results');        
+        const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('fileInput');
         const uploadBtn = document.getElementById('uploadBtn');
         const uploadStatus = document.getElementById('uploadStatus');
@@ -1587,11 +1588,15 @@
                 const educationContainer = document.getElementById('profile-education');
                 educationContainer.innerHTML = '';
                 if (currentUser.education && currentUser.education.length > 0) {
-                    currentUser.education.forEach(educations => {
-                        const educationsTag = document.createElement('span');
-                        educationsTag.className = 'educations-tag';
-                        educationsTag.textContent = educations;
-                        educationContainer.appendChild(educationsTag);
+                    currentUser.education.forEach(education => {
+                        const educationItem = document.createElement('div');
+                        educationItem.className = 'educations-item';
+                        educationItem.innerHTML = `
+                            <div class="education-degree">${education.degree || ''}</div>
+                            <div class="education-school">${education.school || ''}</div>
+                            <div class="education-year">${education.year || ''}</div>
+                        `;
+                        educationContainer.appendChild(educationItem);
                     });
                 } else {
                     educationContainer.innerHTML = '<p>No education added yet</p>';
@@ -1600,14 +1605,57 @@
                 const experienceContainer = document.getElementById('profile-experience');
                 experienceContainer.innerHTML = '';
                 if (currentUser.experience && currentUser.experience.length > 0) {
-                    currentUser.experience.forEach(experiences => {
-                        const experiencesTag = document.createElement('span');
-                        experiencesTag.className = 'experience-tag';
-                        experiencesTag.textContent = experiences;
-                        experienceContainer.appendChild(experiencesTag);
+                    currentUser.experience.forEach(experience => {
+                        const experienceItem = document.createElement('div');
+                        experienceItem.className = 'experience-item';
+                        experienceItem.innerHTML = `
+                            <div class="experience-position">${experience.position || ''}</div>
+                            <div class="experience-company">${experience.company || ''}</div>
+                            <div class="experience-duration">${experience.duration || ''}</div>
+                            <div class="experience-description">${experience.description || ''}</div>
+                        `;
+                        experienceContainer.appendChild(experienceItem);
                     });
                 } else {
                     experienceContainer.innerHTML = '<p>No experience added yet</p>';
+                }
+
+                const certificationsContainer = document.getElementById('profile-certifications');
+                if (certificationsContainer) {
+                    certificationsContainer.innerHTML = '';
+                    if (currentUser.certifications && currentUser.certifications.length > 0) {
+                        currentUser.certifications.forEach(cert => {
+                            const certItem = document.createElement('div');
+                            certItem.className = 'certification-item';
+                            certItem.innerHTML = `
+                                <div class="certification-name">${cert.name || ''}</div>
+                                <div class="certification-issuer">${cert.issuer || ''}</div>
+                                <div class="certification-date">${cert.date || ''}</div>
+                            `;
+                            certificationsContainer.appendChild(certItem);
+                        });
+                    } else {
+                        certificationsContainer.innerHTML = '<p>No certifications added yet</p>';
+                    }
+                }
+
+                const licensesContainer = document.getElementById('profile-licenses');
+                if (licensesContainer) {
+                    licensesContainer.innerHTML = '';
+                    if (currentUser.licenses && currentUser.licenses.length > 0) {
+                        currentUser.licenses.forEach(license => {
+                            const licenseItem = document.createElement('div');
+                            licenseItem.className = 'license-item';
+                            licenseItem.innerHTML = `
+                                <div class="license-name">${license.name || ''}</div>
+                                <div class="license-number">${license.number || ''}</div>
+                                <div class="license-expiry">${license.expiry || ''}</div>
+                            `;
+                            licensesContainer.appendChild(licenseItem);
+                        });
+                    } else {
+                        licensesContainer.innerHTML = '<p>No licenses added yet</p>';
+                    }
                 }
                 
                 updateProfilePicture();

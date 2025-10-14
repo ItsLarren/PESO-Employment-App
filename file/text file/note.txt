@@ -117,3 +117,15 @@ for real app development
             // In a real application, this would integrate with Google OAuth
             showSection('user-type-section');
         }
+
+
+additionals 
+     at the edit profile page add the certifications and the licences
+     also at the edit profile page when I add education and experioence when I input in those forms it will display as [Object] 
+
+the admin page
+     at the admin page remove the nav buttons at the bottoms just the admin page needed.
+     it will only has the search and the notifs for when a new applicant register to the profile page so that the admin also has an ipdate on what is happening at the registaered applicants and even the employers. and it can also possible the admin can only see on how many onlie at the admin page or how many people are using the admin page at the same time.
+
+at the applicant page
+    add a button where in the applicant can notify the employee that he/she already applied/hired at the other company that is not posted at the application, so that the employee will know that the applicant has already have a job.
