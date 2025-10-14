@@ -1331,16 +1331,13 @@
 
         document.getElementById('export-excel-btn').addEventListener('click', exportToExcel);
 
-        // Add this function to save application data in PESO format
         function saveApplicationInPESOFormat(applicationData) {
             const applications = JSON.parse(localStorage.getItem('adminApplications')) || [];
             
-            // Generate a unique ID if not provided
             if (!applicationData.id) {
                 applicationData.id = applications.length + 1;
             }
             
-            // Add timestamp fields if not present
             const now = new Date().toISOString().split('T')[0];
             if (!applicationData.dateCreated) {
                 applicationData.dateCreated = now;
@@ -1349,7 +1346,6 @@
                 applicationData.dateLastModified = now;
             }
             
-            // Add default values for required fields
             const defaultValues = {
                 peso: 'PESO San Fernando',
                 areaType: 'Urban',
@@ -1361,10 +1357,7 @@
                 actions: 'Active'
             };
             
-            // Merge application data with default values
             const pesoSApplication = { ...defaultValues, ...applicationData };
-            
-            // Check if application already exists
             const existingIndex = applications.findIndex(app => app.id === pesoSApplication.id);
             if (existingIndex !== -1) {
                 applications[existingIndex] = pesoSApplication;
@@ -1372,17 +1365,13 @@
                 applications.push(pesoSApplication);
             }
             
-            // Save to localStorage
             localStorage.setItem('adminApplications', JSON.stringify(applications));
-            
             return pesoSApplication;
         }
 
-        // Update your existing application submission to use the PESO format
         function submitApplicationWithPESOFormat(applicationData) {
             const pesoSApplication = saveApplicationInPESOFormat(applicationData);
             
-            // Show success message
             alert(`Application submitted successfully! Applicant ID: SRS-${pesoSApplication.id}`);
             
             return pesoSApplication;

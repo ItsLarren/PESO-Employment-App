@@ -1,9 +1,119 @@
-link for the reference - https://cityofsanfernando.gov.ph/cpeso/#EmploymentCorner
+needed to add
+employment page - the delete button for the posted open jobs, so that when the posted job open at the application when already fulll or done for hiring the employer can delete the posted open job
 
-Development
-The admin and the peso system excel file should be connected
 
-where in when the admin user download the [download excel file button] the excel file should contain these requirements this is the file that will be uploaded at the add applicannts atble at the PESO system(which was in the other website)
-Requirements at the excel file:
-Photo - PESO - AREA TYPE - AREA CLASS - SRS ID - NAME - BDATE - AGE - SEX - CIVIL STATUS - STREET ADDRESS - BARANGAY - CITY/MUNICIPALITY - PROVINCE - EMAIL - REGION - EMAIL - TELEPHONE - CELLPHONE - EMP. STATUS - EMP. TYPE - EDUC LEVEL - COURSE - 4PS - PWD - DISABILITY - PREFERRED POSITION - SKILLS - WORK EXPERIENCE - OFW - COUNTRY - FORMER OFW - LATEST COUNTRY - REG DATA - REMARKS - CREATED BY - DATE CREATED - LAST MODIFIED - DATE LAST MODIFIED - USERNAME - FIRSTNAME - LASTNAME - EMAIL - COURSE1 - ROLE1 - ACTIONS
+for real app development
+1. // Simulate upload process
+            setTimeout(() => {
+                // In a real app, you would process the Excel/CSV file here
+                // For demo, we'll add some sample jobs
+                const sampleBulkJobs = [
 
+2. // Simulate upload process
+                setTimeout(() => {
+                    // In a real app, you would process the file here
+                    // For demo, we'll just show a success message
+                    uploadStatus.textContent = 'File uploaded successfully!';
+                    uploadStatus.className = 'upload-status upload-success';
+
+3. // Update admin statistics
+        function updateAdminStats() {
+            // In a real app, this would fetch data from a server
+            // For demo purposes, we'll use sample data
+            const total = 3;
+            const pending = 1;
+            const approved = 1;
+            const rejected = 1;
+
+4. // Render admin applications
+        function renderAdminApplications() {
+            const searchTerm = adminSearchInput.value.toLowerCase();
+            const statusFilterValue = statusFilter.value;
+            const jobFilterValue = jobFilter.value;
+            
+            // In a real app, this would fetch filtered data from a server
+            // For demo, we'll use sample data
+            const sampleApplications = [
+
+5. // Export to Excel function
+        function exportToExcel() {
+            // Sample data for export
+            const worksheetData = [
+                ['Name', 'Email', 'Phone', 'Job Applied', 'Company', 'Status', 'Application Date']
+            ];
+            
+            // In a real app, this would use actual application data
+            const sampleData = [
+                ['Juan Dela Cruz', 'juan.delacruz@example.com', '09123456789', 'Customer Service Representative', 'ALORICA', 'Pending', '2023-05-15'],
+                ['Maria Santos', 'maria.santos@example.com', '09198765432', 'Marketing Specialist', 'FAVERTON GROUP INC.', 'Approved', '2023-05-10'],
+                ['Pedro Reyes', 'pedro.reyes@example.com', '09187654321', 'Sales Associate', 'RC COLA', 'Rejected', '2023-05-05']
+            ];
+
+6. function loadChatMessages() {
+            chatMessagesEl.innerHTML = '';
+            
+            // In a real app, you would load messages for the current conversation
+            // For demo, we'll show some sample messages
+            const sampleMessages = [
+                { sender: 'employer', text: 'Hello, I saw your application and would like to schedule an interview.', time: '10:30 AM' },
+                { sender: 'applicant', text: 'Thank you for considering my application! When would be a good time?', time: '10:32 AM' },
+                { sender: 'employer', text: 'How about tomorrow at 2 PM?', time: '10:33 AM' }
+            ];
+
+7. // In a real app, you would send the message to the server
+                // and the other user would receive it in real-time
+
+8. // Update education (in a real app, this would come from the applicant's profile)
+                const educationContainer = document.getElementById('applicant-detail-education');
+                educationContainer.innerHTML = `
+                    <div class="education-item">
+                        <div class="applicant-detail-label">Bachelor of Science in Business Administration</div>
+                        <div class="applicant-detail-value">University of the Philippines, 2015-2019</div>
+                    </div>
+                `;
+
+9. // Update experience (in a real app, this would come from the applicant's profile)
+                const experienceContainer = document.getElementById('applicant-detail-experience');
+                experienceContainer.innerHTML = `
+
+10. function viewResumePreview() {
+            if (currentResumeFile) {
+                // In a real application, this would open the resume file
+                // For this demo, we'll show an alert
+                alert(`Opening resume: ${currentResumeFile.name}`);
+                
+                // In a real app, you might use:
+                // const fileURL = URL.createObjectURL(currentResumeFile);
+                // window.open(fileURL, '_blank');
+            }
+
+11. function viewApplicationResumePreview() {
+            if (currentApplicationResumeFile) {
+                // In a real application, this would open the resume file
+                // For this demo, we'll show an alert
+                alert(`Opening resume: ${currentApplicationResumeFile.name}`);
+            }
+        }
+
+12.             // In a real app, you would use WebSockets or similar technology
+            // to push notifications to the user in real-time
+
+13. // NEW FUNCTION: View resume
+        function viewResume() {
+            // In a real app, this would open the actual resume file
+            // For demo, we'll just show an alert
+            alert('Opening resume...\n\nIn a real application, this would display the resume file.');
+            
+            // Simulate opening the resume in a new tab
+            // window.open(URL.createObjectURL(resumeFile), '_blank');
+        }
+
+14. // Google login/signup (simulated)
+        function loginWithGoogle() {
+            // In a real application, this would integrate with Google OAuth
+            currentUser = {
+
+15.  function signupWithGoogle() {
+            // In a real application, this would integrate with Google OAuth
+            showSection('user-type-section');
+        }
