@@ -1103,22 +1103,289 @@
         
         function exportToExcel() {
             const worksheetData = [
-                ['Name', 'Email', 'Phone', 'Job Applied', 'Company', 'Status', 'Application Date']
+                ['Photo', 'PESO', 'AREA TYPE', 'AREA CLASS', 'SRS ID', 'NAME', 'BDATE',
+                 'AGE', 'SEX', 'CIVIL STATUS', 'STREET ADDRESS', 'BRANGAY', 'CITY/MUNICIPALITY', 
+                 'PROVINCE', 'EMAIL', 'REGION', 'TELEPHONE', 'CELLPHONE', 'EMP. STATUS', 
+                 'EMP. TYPE', 'EDUC LEVEL', 'COURSE', '4PS', 'PWD', 'DISABILITY', 
+                 'PREFFERED POSITION', 'SKILLS', 'WORK EXPERIENCE', 'OFW', 'COUNTRY', 
+                 'FORMER OFW', 'LATEST COUNTRY', 'REG DATA', 'REMARKS', 'CREATED BY', 
+                 'DATE CREATED', 'LAST MODIFIED', 'DATE LAST MDIFIED', 'USERNAME', 
+                 'FIRSTNAME', 'LASTNAME', 'EMAIL', 'COURSE1', 'ROLE1', 'ACTIONS']
             ];
+
+            const applications = JSON.parse(localStorage.getItem('adminApplications')) || [];
+
+            if (applications.length === 0) {
+                applications.push(
+                    {
+                id: 1,
+                applicantName: "Juan Dela Cruz",
+                jobTitle: "Customer Service Representative",
+                company: "ALORICA",
+                email: "juan.delacruz@example.com",
+                phone: "09123456789",
+                status: "pending",
+                applicationDate: "2023-05-15",
+                // Additional fields for PESO system
+                bdate: "1990-05-15",
+                age: "33",
+                sex: "Male",
+                civilStatus: "Single",
+                streetAddress: "123 Main Street",
+                barangay: "San Jose",
+                cityMunicipality: "San Fernando",
+                province: "Pampanga",
+                region: "Region III",
+                telephone: "045-123-4567",
+                cellphone: "09123456789",
+                empStatus: "Unemployed",
+                empType: "Fresh Graduate",
+                educLevel: "College Graduate",
+                course: "Business Administration",
+                fourPs: "No",
+                pwd: "No",
+                disability: "None",
+                preferredPosition: "Customer Service",
+                skills: "Communication, Problem Solving, MS Office",
+                workExperience: "Customer Service Representative - ABC Company (2019-2021)",
+                ofw: "No",
+                country: "Philippines",
+                formerOfw: "No",
+                latestCountry: "Philippines",
+                regData: "2023-05-15",
+                remarks: "Active applicant",
+                createdBy: "Admin",
+                dateCreated: "2023-05-15",
+                lastModified: "Admin",
+                dateLastModified: "2023-05-15",
+                username: "juandelacruz",
+                firstName: "Juan",
+                lastName: "Dela Cruz",
+                course1: "Business Administration",
+                role1: "Applicant",
+                actions: "Active"
+            },
+            {
+                id: 2,
+                applicantName: "Maria Santos",
+                jobTitle: "Marketing Specialist",
+                company: "FAVERTON GROUP INC.",
+                email: "maria.santos@example.com",
+                phone: "09198765432",
+                status: "approved",
+                applicationDate: "2023-05-10",
+                // Additional fields for PESO system
+                bdate: "1992-08-20",
+                age: "31",
+                sex: "Female",
+                civilStatus: "Married",
+                streetAddress: "456 Oak Street",
+                barangay: "San Nicolas",
+                cityMunicipality: "San Fernando",
+                province: "Pampanga",
+                region: "Region III",
+                telephone: "045-987-6543",
+                cellphone: "09198765432",
+                empStatus: "Employed",
+                empType: "Experienced",
+                educLevel: "College Graduate",
+                course: "Marketing",
+                fourPs: "No",
+                pwd: "No",
+                disability: "None",
+                preferredPosition: "Marketing Specialist",
+                skills: "Digital Marketing, Social Media, Content Creation",
+                workExperience: "Marketing Assistant - XYZ Corp (2020-2023)",
+                ofw: "No",
+                country: "Philippines",
+                formerOfw: "No",
+                latestCountry: "Philippines",
+                regData: "2023-05-10",
+                remarks: "Approved for interview",
+                createdBy: "Admin",
+                dateCreated: "2023-05-10",
+                lastModified: "Admin",
+                dateLastModified: "2023-05-10",
+                username: "mariasantos",
+                firstName: "Maria",
+                lastName: "Santos",
+                course1: "Marketing",
+                role1: "Applicant",
+                actions: "Active"
+            },
+            {
+                id: 3,
+                applicantName: "Pedro Reyes",
+                jobTitle: "Sales Associate",
+                company: "RC COLA",
+                email: "pedro.reyes@example.com",
+                phone: "09187654321",
+                status: "rejected",
+                applicationDate: "2023-05-05",
+                // Additional fields for PESO system
+                bdate: "1988-12-10",
+                age: "35",
+                sex: "Male",
+                civilStatus: "Married",
+                streetAddress: "789 Pine Street",
+                barangay: "San Pedro",
+                cityMunicipality: "San Fernando",
+                province: "Pampanga",
+                region: "Region III",
+                telephone: "045-456-7890",
+                cellphone: "09187654321",
+                empStatus: "Unemployed",
+                empType: "Experienced",
+                educLevel: "College Graduate",
+                course: "Business Management",
+                fourPs: "Yes",
+                pwd: "No",
+                disability: "None",
+                preferredPosition: "Sales",
+                skills: "Sales, Negotiation, Customer Relations",
+                workExperience: "Sales Associate - Retail Store (2018-2022)",
+                ofw: "Yes",
+                country: "Saudi Arabia",
+                formerOfw: "Yes",
+                latestCountry: "Saudi Arabia",
+                regData: "2023-05-05",
+                remarks: "Rejected - insufficient experience",
+                createdBy: "Admin",
+                dateCreated: "2023-05-05",
+                lastModified: "Admin",
+                dateLastModified: "2023-05-05",
+                username: "pedroreyes",
+                firstName: "Pedro",
+                lastName: "Reyes",
+                course1: "Business Management",
+                role1: "Applicant",
+                actions: "Inactive"
+            }
+                );
+            }
             
-            const sampleData = [
-                ['Juan Dela Cruz', 'juan.delacruz@example.com', '09123456789', 'Customer Service Representative', 'ALORICA', 'Pending', '2023-05-15'],
-                ['Maria Santos', 'maria.santos@example.com', '09198765432', 'Marketing Specialist', 'FAVERTON GROUP INC.', 'Approved', '2023-05-10'],
-                ['Pedro Reyes', 'pedro.reyes@example.com', '09187654321', 'Sales Associate', 'RC COLA', 'Rejected', '2023-05-05']
-            ];
-            
-            worksheetData.push(...sampleData);
-            
+            applications.forEach(app => {
+                const row = [
+                    '', 
+            'PESO San Fernando', 
+            'Urban', 
+            'Class A', 
+            `SRS-${app.id}`, 
+            app.applicantName, 
+            app.bdate || '', 
+            app.age || '', 
+            app.sex || '', 
+            app.civilStatus || '', 
+            app.streetAddress || '', 
+            app.barangay || '', 
+            app.cityMunicipality || '', 
+            app.province || '', 
+            app.email, 
+            app.region || '', 
+            app.telephone || '', 
+            app.cellphone || '', 
+            app.empStatus || '', 
+            app.empType || '', 
+            app.educLevel || '', 
+            app.course || '', 
+            app.fourPs || '', 
+            app.pwd || '', 
+            app.disability || '', 
+            app.preferredPosition || '', 
+            app.skills || '', 
+            app.workExperience || '', 
+            app.ofw || '', 
+            app.country || '', 
+            app.formerOfw || '', 
+            app.latestCountry || '',
+            app.regData || '', 
+            app.remarks || '', 
+            app.createdBy || '', 
+            app.dateCreated || '', 
+            app.lastModified || '', 
+            app.dateLastModified || '',
+            app.username || '', 
+            app.firstName || '', 
+            app.lastName || '', 
+            app.email, 
+            app.course1 || '', 
+            app.role1 || '', 
+            app.actions || '' 
+                ];
+                worksheetData.push(row);
+            });
+
             const ws = XLSX.utils.aoa_to_sheet(worksheetData);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, 'Applications');
-            
+            XLSX.utils.book_append_sheet(wb, ws, 'PESO Applicants');
             XLSX.writeFile(wb, 'employment_corner_applications.xlsx');
+            alert('Data exported to employment_corner_applications.xlsx');
+
+            const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+            const filename = `peso_applicants_${timestamp}.xlsx`;
+
+            XLSX.writeFile(wb, filename);
+
+            alert(`Excel file "${filename}" has been downloaded successfully with ${applications.length} applicant records.`);
+        }
+
+        document.getElementById('export-excel-btn').addEventListener('click', exportToExcel);
+
+        // Add this function to save application data in PESO format
+        function saveApplicationInPESOFormat(applicationData) {
+            const applications = JSON.parse(localStorage.getItem('adminApplications')) || [];
+            
+            // Generate a unique ID if not provided
+            if (!applicationData.id) {
+                applicationData.id = applications.length + 1;
+            }
+            
+            // Add timestamp fields if not present
+            const now = new Date().toISOString().split('T')[0];
+            if (!applicationData.dateCreated) {
+                applicationData.dateCreated = now;
+            }
+            if (!applicationData.dateLastModified) {
+                applicationData.dateLastModified = now;
+            }
+            
+            // Add default values for required fields
+            const defaultValues = {
+                peso: 'PESO San Fernando',
+                areaType: 'Urban',
+                areaClass: 'Class A',
+                region: 'Region III',
+                createdBy: 'System',
+                lastModified: 'System',
+                role1: 'Applicant',
+                actions: 'Active'
+            };
+            
+            // Merge application data with default values
+            const pesoSApplication = { ...defaultValues, ...applicationData };
+            
+            // Check if application already exists
+            const existingIndex = applications.findIndex(app => app.id === pesoSApplication.id);
+            if (existingIndex !== -1) {
+                applications[existingIndex] = pesoSApplication;
+            } else {
+                applications.push(pesoSApplication);
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('adminApplications', JSON.stringify(applications));
+            
+            return pesoSApplication;
+        }
+
+        // Update your existing application submission to use the PESO format
+        function submitApplicationWithPESOFormat(applicationData) {
+            const pesoSApplication = saveApplicationInPESOFormat(applicationData);
+            
+            // Show success message
+            alert(`Application submitted successfully! Applicant ID: SRS-${pesoSApplication.id}`);
+            
+            return pesoSApplication;
         }
         
         function initChat() {
