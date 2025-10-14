@@ -2040,3 +2040,35 @@
         .hidden {
             display: none !important;
         }
+
+        .certification-item, .license-item, .education-item, .experience-item {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid #b71c1c;
+        }
+
+        .certification-name, .license-name, .education-degree, .experience-position {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .certification-issuer, .license-number, .education-school, .experience-company {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .certification-date, .license-expiry, .education-year, .experience-duration {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .experience-description {
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        #profile-certifications, #profile-licenses {
+            margin-top: 10px;
+        }

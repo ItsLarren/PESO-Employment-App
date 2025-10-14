@@ -21,6 +21,51 @@
         };
         let isAdminLoggedIn = false;
         let adminApplications = JSON.parse(localStorage.getItem('adminApplications')) || [];
+
+        let activeUsers = JSON.parse(localStorage.getItem('activeUsers')) || [];
+
+        function updateAdminStats() {
+            const total = 3;
+            const pending = 1;
+            const approved = 1;
+            const rejected = 1;
+            
+            totalApplications.textContent = total;
+            pendingApplications.textContent = pending;
+            approvedApplications.textContent = approved;
+            rejectedApplications.textContent = rejected;
+            
+            document.getElementById('active-users').textContent = activeUsers.length;
+        }
+
+        function trackActiveUser() {
+            if (currentUser) {
+                const userIndex = activeUsers.findIndex(user => user.email === currentUser.email);
+                const userData = {
+                    email: currentUser.email,
+                    name: currentUser.name,
+                    type: currentUser.type,
+                    lastActive: new Date().toISOString()
+                };
+                
+                if (userIndex !== -1) {
+                    activeUsers[userIndex] = userData;
+                } else {
+                    activeUsers.push(userData);
+                }
+                
+                const thirtyMinutesAgo = new Date(Date.now() - 30 * 60 * 1000);
+                activeUsers = activeUsers.filter(user => new Date(user.lastActive) > thirtyMinutesAgo);
+                
+                localStorage.setItem('activeUsers', JSON.stringify(activeUsers));
+                
+                if (isAdminLoggedIn) {
+                    updateAdminStats();
+                }
+            }
+        }
+
+        setInterval(trackActiveUser, 60000); 
         
         const authSection = document.getElementById('auth-section');
         const userTypeSection = document.getElementById('user-type-section');
@@ -968,8 +1013,9 @@
             const bottomNav = document.querySelector('.bottom-nav');
             const floatingChatBtn = document.querySelector('.floating-chat-btn');
             const isAuthPage = currentSection === 'auth-section' || currentSection === 'user-type-section';
+            const isAdminPage = currentSection === 'admin-dashboard-view';
             
-            if (isAuthPage) {
+            if (isAuthPage || isAdminPage) {
                 appContainer.classList.add('auth-page');
                 if (headerIcons) headerIcons.style.display = 'none';
                 if (navContainer) navContainer.style.display = 'none';
@@ -2810,6 +2856,75 @@
             alert('Application submitted successfully!');
             showHomeSection();
             populateJobCards(currentCategory);
+        }
+
+        function showHiredNotification() {
+            if (!currentUser) {
+                alert('Please log in to use this feature');
+                return;
+            }
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-title">Job Notification</div>
+                    <p>Let employers know you've been hired elsewhere. This will notify all employers you've applied to.</p>
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" id="hired-company" placeholder="Enter company name">
+                    </div>
+                    <div class="form-group">
+                        <label>Position</label>
+                        <input type="text" id="hired-position" placeholder="Enter position">
+                    </div>
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" id="hired-date">
+                    </div>
+                    <div class="modal-buttons">
+                        <button class="modal-btn cancel" onclick="this.closest('.modal').remove()">Cancel</button>
+                        <button class="modal-btn confirm" onclick="submitHiredNotification()">Submit</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            document.getElementById('hired-date').valueAsDate = new Date();
+        }
+
+        function submitHiredNotification() {
+            const company = document.getElementById('hired-company').value;
+            const position = document.getElementById('hired-position').value;
+            const date = document.getElementById('hired-date').value;
+            
+            if (!company || !position) {
+                alert('Please fill in company name and position');
+                return;
+            }
+            
+            const userApplications = Object.values(submittedApplications).filter(app => 
+                app.email === currentUser.email
+            );
+            
+            userApplications.forEach(application => {
+                createNotification(
+                    'employer@' + application.company.toLowerCase().replace(/\s+/g, '') + '.com',
+                    'Applicant Hired Elsewhere',
+                    `${currentUser.name} has been hired as ${position} at ${company} starting ${date}.`
+                );
+            });
+            
+            createNotification(
+                'admin@employmentcorner.com',
+                'Applicant Hired',
+                `${currentUser.name} has been hired as ${position} at ${company}.`
+            );
+            
+            alert('Notification sent to employers!');
+            
+            document.querySelector('.modal').remove();
         }
         
         init();
