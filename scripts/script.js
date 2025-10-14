@@ -48,8 +48,7 @@
         const jobTypeFilter = document.getElementById('jobTypeFilter');
         const locationFilter = document.getElementById('locationFilter');
         const searchResultsCount = document.getElementById('searchResultsCount');
-        const searchResults = document.getElementById('search-results');
-        const uploadArea = document.getElementById('uploadArea');
+        const searchResults = document.getElementById('search-results');        const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('fileInput');
         const uploadBtn = document.getElementById('uploadBtn');
         const uploadStatus = document.getElementById('uploadStatus');
@@ -585,8 +584,11 @@
             tomorrow.setDate(tomorrow.getDate() + 1);
             document.getElementById('interview-date').valueAsDate = tomorrow;
             
+            
             updateSmsPreview();
+            
             loadNotifications();
+            
             initChat();
             
             document.getElementById('interview-date').addEventListener('change', updateSmsPreview);
@@ -595,6 +597,7 @@
             document.getElementById('interview-type').addEventListener('change', updateSmsPreview);
             document.getElementById('interview-details').addEventListener('input', updateSmsPreview);
             document.getElementById('interview-phone').addEventListener('input', updateSmsPreview);
+            
             document.getElementById('searchIcon').addEventListener('click', function() {
                 searchPanel.style.display = searchPanel.style.display === 'block' ? 'none' : 'block';
                 notificationPanel.style.display = 'none';
@@ -1140,7 +1143,7 @@
         
         function loadChatMessages() {
             chatMessagesEl.innerHTML = '';
-
+            
             const sampleMessages = [
                 { sender: 'employer', text: 'Hello, I saw your application and would like to schedule an interview.', time: '10:30 AM' },
                 { sender: 'applicant', text: 'Thank you for considering my application! When would be a good time?', time: '10:32 AM' },
@@ -1175,6 +1178,7 @@
                 
                 chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
                 
+                
                 setTimeout(() => {
                     const replies = [
                         "Thanks for your message. How can I assist you further?",
@@ -1194,8 +1198,7 @@
                 }, 1000);
             }
         }
-        
-
+                
         function goBack() {
             if (previousSection) {
                 showSection(previousSection);
@@ -1217,7 +1220,9 @@
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     
                     updateProfileInfo();
+                    
                     showHomeSection();
+                    
                     populateJobCards(currentCategory);
                 } else {
                     alert('Invalid email or password');
@@ -1891,7 +1896,6 @@
         
         function viewApplicationResumePreview() {
             if (currentApplicationResumeFile) {
-
                 alert(`Opening resume: ${currentApplicationResumeFile.name}`);
             }
         }

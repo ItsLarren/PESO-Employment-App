@@ -6,3 +6,4 @@ The admin and the peso system excel file should be connected
 where in when the admin user download the [download excel file button] the excel file should contain these requirements this is the file that will be uploaded at the add applicannts atble at the PESO system(which was in the other website)
 Requirements at the excel file:
 Photo - PESO - AREA TYPE - AREA CLASS - SRS ID - NAME - BDATE - AGE - SEX - CIVIL STATUS - STREET ADDRESS - BARANGAY - CITY/MUNICIPALITY - PROVINCE - EMAIL - REGION - EMAIL - TELEPHONE - CELLPHONE - EMP. STATUS - EMP. TYPE - EDUC LEVEL - COURSE - 4PS - PWD - DISABILITY - PREFERRED POSITION - SKILLS - WORK EXPERIENCE - OFW - COUNTRY - FORMER OFW - LATEST COUNTRY - REG DATA - REMARKS - CREATED BY - DATE CREATED - LAST MODIFIED - DATE LAST MODIFIED - USERNAME - FIRSTNAME - LASTNAME - EMAIL - COURSE1 - ROLE1 - ACTIONS
+
