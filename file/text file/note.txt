@@ -127,5 +127,16 @@ the admin page
      at the admin page remove the nav buttons at the bottoms just the admin page needed.
      it will only has the search and the notifs for when a new applicant register to the profile page so that the admin also has an ipdate on what is happening at the registaered applicants and even the employers. and it can also possible the admin can only see on how many onlie at the admin page or how many people are using the admin page at the same time.
 
-at the applicant page
+at the applicant page 
     add a button where in the applicant can notify the employee that he/she already applied/hired at the other company that is not posted at the application, so that the employee will know that the applicant has already have a job.
+
+view resume
+    when clicking the view resume, the file wont open it will just alert like this alert(`Opening resume: ${currentResumeFile.name}`);, it should open the resume or the file itself
+
+edit profile page
+    when the user change the picture it will show an error
+    Uncaught Error 
+    at <anonymous> (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\scripts\script.js:2065:45)
+    at saveProfile (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\scripts\script.js:2058:33)
+    at onclick (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\index.html:727:73)
+
