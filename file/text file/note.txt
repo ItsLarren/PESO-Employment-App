@@ -312,7 +312,7 @@ function showHiredNotification() {
     document.getElementById('hired-date').value = today;
 }
 
-These changes will:
+These changes will: 
 
 Fix the profile picture error by adding proper null checks
 Fix the "I Got Hired" button by correcting the function name
@@ -321,3 +321,6 @@ Add visual indicators to show which jobs were uploaded by the current employee
 Fix the modal creation to prevent duplicate modals
 The remove job feature will only show for jobs that the current employee uploaded, and it will completely remove the job from all views so applicants can no longer see or apply to i
 
+
+as of 10/16
+move the I got hired button at edit profile at the applicant page and under the submit resume and instead of I got hired, the button will be named [Report to Peso] button and when the button was click another page will show where in it will show the informof the applicant and there will be a button there [Hired] and when the applicant click that button the form will show where in the applicant will need to fill up the form title Job Notification and we would like to know about ypour status etc. ann a form to be filled up are the Company name on wehre the applicant got hited the position and the start date. and afeter the applicant filled that up the subnit butto will light up means it can be submitted and when submiutted it will now redirect to the edit prifile page again. and it will now notfiy the employers thta the applicant was already hired t the other company. and it will stats to the admin it willcount the hired applicant to the database

@@ -230,7 +230,6 @@
             const category = document.getElementById('uploadCategory').value;
             const description = document.getElementById('uploadDescription').value;
             const requirements = document.getElementById('uploadRequirements').value;
-            
             const uploadStatus = document.getElementById('uploadStatus');
             
             if (!jobTitle || !company || !location || !jobType || !category) {
