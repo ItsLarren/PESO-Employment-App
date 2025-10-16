@@ -2339,13 +2339,17 @@
             const profileAvatar = document.getElementById('profile-avatar');
             const editProfileAvatar = document.getElementById('edit-profile-avatar');
             
-            if (currentUser.profilePicture) {
-                profileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
+            if (currentUser && currentUser.profilePicture) {
+                if (profileAvatar) {
+                    profileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
+                }
                 if (editProfileAvatar) {
                     editProfileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
                 }
             } else {
-                profileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+                if (profileAvatar) {
+                    profileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+                }
                 if (editProfileAvatar) {
                     editProfileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
                 }
@@ -2926,5 +2930,34 @@
             
             document.querySelector('.modal').remove();
         }
+
+        function removeJob(jobId, button) {
+            if (confirm('Are you sure you want to remove this job posting? This action cannot be undone.')) {
+                // Remove from uploadedJobs
+                uploadedJobs = uploadedJobs.filter(job => job.id !== jobId);
+                localStorage.setItem('uploadedJobs', JSON.stringify(uploadedJobs));
+                
+                // Remove from jobData
+                Object.keys(jobData).forEach(category => {
+                    if (jobData[category]) {
+                        jobData[category] = jobData[category].filter(job => job.id !== jobId);
+                    }
+                });
+                
+                // Remove the job card from UI
+                if (button) {
+                    button.closest('.job-card').remove();
+                }
+                
+                alert('Job posting removed successfully!');
+                
+                // Refresh the view
+                if (currentUserType === 'applicant') {
+                    populateJobCards(currentCategory);
+                }
+            }
+        }
         
         init();
+
+

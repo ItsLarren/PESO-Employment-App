@@ -204,7 +204,7 @@ function removeJob(jobId, button) {
 Update the job card generation in populateJobCards() function:
 
 Find this part in populateJobCards():
-jobCard.innerHTML = `
+jobCard.innerHTML = `  
     <div class="job-image" style="background-image: url('${job.image}');">
         <div class="job-type">${job.type}</div>
     </div>
@@ -315,14 +315,9 @@ function showHiredNotification() {
 These changes will:
 
 Fix the profile picture error by adding proper null checks
-
 Fix the "I Got Hired" button by correcting the function name
-
 Add remove job functionality for employees to remove their posted jobs
-
 Add visual indicators to show which jobs were uploaded by the current employee
-
 Fix the modal creation to prevent duplicate modals
-
-The remove job feature will only show for jobs that the current employee uploaded, and it will completely remove the job from all views so applicants can no longer see or apply to it.
+The remove job feature will only show for jobs that the current employee uploaded, and it will completely remove the job from all views so applicants can no longer see or apply to i
 
