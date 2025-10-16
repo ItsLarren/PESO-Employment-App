@@ -140,3 +140,189 @@ edit profile page
     at saveProfile (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\scripts\script.js:2058:33)
     at onclick (c:\Users\CPESO\Documents\GitHub\PESO-Employment-App\index.html:727:73)
 
+1. Fix Profile Picture Error
+The error occurs because updateProfilePicture() is trying to access elements that might not exist. Here's the fix:
+
+Replace the updateProfilePicture() function in script.js:
+function updateProfilePicture() {
+    const profileAvatar = document.getElementById('profile-avatar');
+    const editProfileAvatar = document.getElementById('edit-profile-avatar');
+    
+    if (currentUser && currentUser.profilePicture) {
+        if (profileAvatar) {
+            profileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
+        }
+        if (editProfileAvatar) {
+            editProfileAvatar.innerHTML = `<img src="${currentUser.profilePicture}" class="profile-picture">`;
+        }
+    } else {
+        if (profileAvatar) {
+            profileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+        }
+        if (editProfileAvatar) {
+            editProfileAvatar.innerHTML = `<i class="fas fa-user"></i>`;
+        }
+    }
+}
+
+2. Fix "I Got Hired" Button Error
+Replace the function name in the HTML and JavaScript:
+
+In your HTML file, change:
+<div class="nav-item" onclick="showHireNotification()">I Got hired!</div>
+To:
+<div class="nav-item" onclick="showHiredNotification()">I Got hired!</div>
+
+3. Add Remove Job Functionality
+Add this function to your script.js:
+function removeJob(jobId, button) {
+    if (confirm('Are you sure you want to remove this job posting? This action cannot be undone.')) {
+        // Remove from uploadedJobs
+        uploadedJobs = uploadedJobs.filter(job => job.id !== jobId);
+        localStorage.setItem('uploadedJobs', JSON.stringify(uploadedJobs));
+        
+        // Remove from jobData
+        Object.keys(jobData).forEach(category => {
+            if (jobData[category]) {
+                jobData[category] = jobData[category].filter(job => job.id !== jobId);
+            }
+        });
+        
+        // Remove the job card from UI
+        if (button) {
+            button.closest('.job-card').remove();
+        }
+        
+        alert('Job posting removed successfully!');
+        
+        // Refresh the view
+        if (currentUserType === 'applicant') {
+            populateJobCards(currentCategory);
+        }
+    }
+}
+Update the job card generation in populateJobCards() function:
+
+Find this part in populateJobCards():
+jobCard.innerHTML = `
+    <div class="job-image" style="background-image: url('${job.image}');">
+        <div class="job-type">${job.type}</div>
+    </div>
+    <div class="job-content">
+        <div class="job-title">${job.title}</div>
+        <div class="company">${job.company}</div>
+        ${applicationStatus}
+        <div class="job-details">
+            <span><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+            <span><i class="fas fa-money-bill-wave"></i> ${job.salary}</span>
+        </div>
+        <button class="view-btn" onclick="showJobDetails('${job.id}')">
+            ${hasApplied ? 'Review Application' : 'View Job'}
+        </button>
+    </div>
+`;
+Replace it with:
+// Check if current user is an employee and this is their uploaded job
+const isOwnJob = currentUserType === 'employee' && job.uploaded;
+
+jobCard.innerHTML = `
+    <div class="job-image" style="background-image: url('${job.image}');">
+        <div class="job-type">${job.type}</div>
+        ${isOwnJob ? '<div class="job-uploaded-badge">Your Post</div>' : ''}
+    </div>
+    <div class="job-content">
+        <div class="job-title">${job.title}</div>
+        <div class="company">${job.company}</div>
+        ${applicationStatus}
+        <div class="job-details">
+            <span><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+            <span><i class="fas fa-money-bill-wave"></i> ${job.salary}</span>
+        </div>
+        <div class="action-buttons">
+            <button class="view-btn" onclick="showJobDetails('${job.id}')">
+                ${hasApplied ? 'Review Application' : 'View Job'}
+            </button>
+            ${isOwnJob ? `<button class="action-btn remove-btn" onclick="removeJob('${job.id}', this)">Remove Job</button>` : ''}
+        </div>
+    </div>
+`;
+
+4. Add CSS for the "Your Post" badge
+Add this to your style.css:
+.job-uploaded-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.job-image {
+    position: relative;
+}
+
+5. Fix the "I Got Hired" Modal Issue
+Update the showHiredNotification function in script.js:
+function showHiredNotification() {
+    if (!currentUser) {
+        alert('Please log in to use this feature');
+        showSection('auth-section');
+        return;
+    }
+    
+    // Remove any existing modal first
+    const existingModal = document.querySelector('.modal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-title">Job Notification</div>
+            <p>Let employers know you've been hired elsewhere. This will notify all employers you've applied to.</p>
+            <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" id="hired-company" placeholder="Enter company name">
+            </div>
+            <div class="form-group">
+                <label>Position</label>
+                <input type="text" id="hired-position" placeholder="Enter position">
+            </div>
+            <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" id="hired-date">
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="this.closest('.modal').remove()">Cancel</button>
+                <button class="modal-btn confirm" onclick="submitHiredNotification()">Submit</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Set default date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('hired-date').value = today;
+}
+
+These changes will:
+
+Fix the profile picture error by adding proper null checks
+
+Fix the "I Got Hired" button by correcting the function name
+
+Add remove job functionality for employees to remove their posted jobs
+
+Add visual indicators to show which jobs were uploaded by the current employee
+
+Fix the modal creation to prevent duplicate modals
+
+The remove job feature will only show for jobs that the current employee uploaded, and it will completely remove the job from all views so applicants can no longer see or apply to it.
+
