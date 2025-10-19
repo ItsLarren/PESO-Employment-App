@@ -1,0 +1,74 @@
+<!--Updated HTML for Admin Dashboard-->
+<!--Update the admin dashboard section in your index.html file:-->
+
+
+<div id="admin-dashboard-view" class="hidden">
+    <div class="admin-dashboard-header">
+        <div class="back-btn" onclick="goBack()">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="admin-dashboard-title">Admin Dashboard</div>
+        <button class="admin-logout-btn" id="admin-logout-btn">Logout</button>
+    </div>
+    
+    <div class="admin-dashboard-content">
+        <div class="admin-stats">
+            <div class="stat-card">
+                <div class="stat-number" id="total-applications">0</div>
+                <div class="stat-label">Total Applicants Registered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pending-applications">0</div>
+                <div class="stat-label">Total Employers Registered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="approved-applications">0</div>
+                <div class="stat-label">Total Applicants Hired</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="rejected-applications">0</div>
+                <div class="stat-label">Total Accreditation Pending</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="active-users">0</div>
+                <div class="stat-label">Active Users Now</div>
+            </div>
+        </div>
+        
+        <div class="admin-actions">
+            <button class="admin-export-btn" id="export-excel-btn">
+                <i class="fas fa-file-excel"></i> Export to Excel
+            </button>
+        </div>
+        
+        <div class="admin-section">
+            <div class="admin-section-title">Recent User Registrations</div>
+            
+            <div class="admin-applications-list" id="admin-registrations-list">
+                <!-- Recent registrations will appear here -->
+            </div>
+        </div>
+        
+        <div class="admin-section">
+            <div class="admin-section-title">All Applications</div>
+            
+            <input type="text" class="admin-search-input" id="admin-search-input" placeholder="Search applications...">
+            
+            <div class="admin-filter-container">
+                <select class="admin-filter-select" id="status-filter">
+                    <option value="all">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+                <select class="admin-filter-select" id="job-filter">
+                    <option value="all">All Jobs</option>
+                </select>
+            </div>
+            
+            <div class="admin-applications-list" id="admin-applications-list">
+                <!-- adminApps -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -600,6 +600,33 @@
             showSection('auth-section');
             populateJobCards('all');
             populateApplicantCards('all');
+
+            // Load resume file if exists
+            if (currentUser && currentUser.resumeFile) {
+                // Convert base64 back to file object
+                fetch(currentUser.resumeFile)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        currentResumeFile = new File([blob], currentUser.resumeFileName, { type: blob.type });
+                        
+                        // Update resume preview
+                        const resumePreviewContainer = document.getElementById('profile-resume-preview');
+                        if (resumePreviewContainer) {
+                            resumePreviewContainer.innerHTML = `
+                                <div class="resume-preview-file">
+                                    <div>
+                                        <i class="fas fa-file-pdf"></i>
+                                        <span>${currentUser.resumeFileName}</span>
+                                    </div>
+                                    <div class="resume-actions">
+                                        <button class="resume-action-btn view-resume-btn" onclick="viewResumePreview()">View</button>
+                                        <button class="resume-action-btn remove-resume-btn" onclick="removeResumePreview()">Remove</button>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    });
+            }
             
             uploadedJobs.forEach(job => {
                 if (!jobData[job.category]) {
@@ -2289,6 +2316,32 @@
                         </div>
                     </div>
                 `;
+
+                // Helper function to convert file to base64
+                function convertFileToBase64(file) {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = () => resolve(reader.result);
+                        reader.onerror = error => reject(error);
+                    });
+                }
+                
+                // Store the file in localStorage for persistence (convert to base64)
+                convertFileToBase64(currentResumeFile).then(base64 => {
+                    if (currentUser) {
+                        currentUser.resumeFile = base64;
+                        currentUser.resumeFileName = currentResumeFile.name;
+                        
+                        // Update user accounts
+                        const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
+                        if (userIndex !== -1) {
+                            userAccounts[userIndex] = currentUser;
+                            localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+                            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                        }
+                    }
+                });
                 
                 alert('Resume uploaded successfully! You can view it before saving.');
             }
@@ -2340,20 +2393,63 @@
         
         function viewResumePreview() {
             if (currentResumeFile) {
-                alert(`Opening resume: ${currentResumeFile.name}`);
+                // Create a URL for the file
+                const fileURL = URL.createObjectURL(currentResumeFile);
                 
+                // Create a temporary anchor element to trigger download/view
+                const a = document.createElement('a');
+                a.href = fileURL;
+                a.download = currentResumeFile.name;
+                a.target = '_blank';
+                
+                // Append to body, click, and remove
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                // Clean up the URL object
+                setTimeout(() => URL.revokeObjectURL(fileURL), 100);
             }
         }
         
         function viewApplicationResumePreview() {
             if (currentApplicationResumeFile) {
-                alert(`Opening resume: ${currentApplicationResumeFile.name}`);
+                // Create a URL for the file
+                const fileURL = URL.createObjectURL(currentApplicationResumeFile);
+                
+                // Create a temporary anchor element to trigger download/view
+                const a = document.createElement('a');
+                a.href = fileURL;
+                a.download = currentApplicationResumeFile.name;
+                a.target = '_blank';
+                
+                // Append to body, click, and remove
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                // Clean up the URL object
+                setTimeout(() => URL.revokeObjectURL(fileURL), 100);
             }
         }
         
         function removeResumePreview() {
             if (confirm('Are you sure you want to remove the resume?')) {
                 currentResumeFile = null;
+                
+                // Remove from user data
+                if (currentUser) {
+                    delete currentUser.resumeFile;
+                    delete currentUser.resumeFileName;
+                    
+                    const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
+                    if (userIndex !== -1) {
+                        userAccounts[userIndex] = currentUser;
+                        localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    }
+                }
+                
                 document.getElementById('profile-resume-preview').innerHTML = `
                     <div class="file-upload" onclick="document.getElementById('resume-upload').click()">
                         <i class="fas fa-cloud-upload-alt"></i>
@@ -2772,8 +2868,22 @@
         }
         
         function viewResume() {
-            alert('Opening resume...\n\nIn a real application, this would display the resume file.');
+            // For the applicant details view
+            const resumeName = document.getElementById('applicant-detail-resume').textContent;
             
+            // Check if we have a file object or just a filename
+            if (currentResumeFile) {
+                viewResumePreview();
+            } else if (currentApplicationResumeFile) {
+                viewApplicationResumePreview();
+            } else {
+                // If no file object, try to open based on filename
+                alert(`Opening resume: ${resumeName}\n\nIn a real application, this would display the resume file.`);
+                
+                // For demo purposes, you could create a sample PDF viewer
+                // or redirect to a file if it exists
+                showSampleResumeViewer(resumeName);
+            }
         }
         
         function formatTime(date) {
