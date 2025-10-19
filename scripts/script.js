@@ -3066,5 +3066,206 @@
                 `Thank you for reporting your employment at ${pesoReport.company}. Your status has been updated.`
             );
         }
+
+        // Add this function to handle job deletion
+        function removeJob(jobId, button) {
+            if (confirm('Are you sure you want to remove this job posting? This action cannot be undone.')) {
+                // Remove from uploadedJobs
+                uploadedJobs = uploadedJobs.filter(job => job.id !== jobId);
+                localStorage.setItem('uploadedJobs', JSON.stringify(uploadedJobs));
+                
+                // Remove from jobData
+                Object.keys(jobData).forEach(category => {
+                    if (jobData[category]) {
+                        jobData[category] = jobData[category].filter(job => job.id !== jobId);
+                    }
+                });
+                
+                // Remove the job card from UI
+                if (button) {
+                    button.closest('.job-card').remove();
+                }
+                
+                alert('Job posting removed successfully!');
+                
+                // Refresh the view
+                if (currentUserType === 'applicant') {
+                    populateJobCards(currentCategory);
+                }
+            }
+        }
+
+        // Update the populateJobCards function to include delete button for employee view
+        function populateJobCards(category) {
+            jobCardsContainer.innerHTML = '';
+            
+            const jobs = jobData[category] || [];
+            
+            jobs.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card';
+                
+                let hasApplied = false;
+                if (currentUser && currentUser.email) {
+                    hasApplied = Object.values(submittedApplications).some(app => 
+                        app.position === job.title && app.company === job.company && app.email === currentUser.email
+                    );
+                }
+                
+                let applicationStatus = '';
+                if (hasApplied) {
+                    applicationStatus = `
+                        <div class="application-status-badge status-applied">
+                            <i class="fas fa-check-circle"></i> Applied
+                        </div>
+                    `;
+                }
+                
+                // Add delete button for uploaded jobs in employee view
+                let deleteButton = '';
+                if (currentUserType === 'employee' && job.uploaded) {
+                    deleteButton = `
+                        <button class="action-btn remove-btn" onclick="removeJob('${job.id}', this)" style="margin-top: 10px;">
+                            <i class="fas fa-trash"></i> Delete Job
+                        </button>
+                    `;
+                }
+                
+                jobCard.innerHTML = `
+                    <div class="job-image" style="background-image: url('${job.image}');">
+                        <div class="job-type">${job.type}</div>
+                    </div>
+                    <div class="job-content">
+                        <div class="job-title">${job.title}</div>
+                        <div class="company">${job.company}</div>
+                        ${applicationStatus}
+                        <div class="job-details">
+                            <span><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+                            <span><i class="fas fa-money-bill-wave"></i> ${job.salary}</span>
+                        </div>
+                        <button class="view-btn" onclick="showJobDetails('${job.id}')">
+                            ${hasApplied ? 'Review Application' : 'View Job'}
+                        </button>
+                        ${deleteButton}
+                    </div>
+                `;
+                jobCardsContainer.appendChild(jobCard);
+            });
+        }
+
+        // Update the showUploadJobView function to include delete buttons for existing jobs
+        function showUploadJobView() {
+            showSection('upload-job-view');
+            
+            // Clear form fields
+            document.getElementById('job-title').value = '';
+            document.getElementById('job-company').value = '';
+            document.getElementById('job-location').value = '';
+            document.getElementById('job-salary').value = '';
+            document.getElementById('job-type').value = '';
+            document.getElementById('job-category').value = '';
+            document.getElementById('job-description').value = '';
+            document.getElementById('job-requirements').value = '';
+            document.getElementById('job-benefits').value = '';
+            
+            // Populate existing uploaded jobs with delete buttons
+            const uploadedJobsContainer = document.getElementById('uploaded-jobs-container');
+            if (uploadedJobsContainer) {
+                uploadedJobsContainer.innerHTML = '';
+                
+                const userUploadedJobs = uploadedJobs.filter(job => job.uploaded);
+                
+                if (userUploadedJobs.length > 0) {
+                    userUploadedJobs.forEach(job => {
+                        const jobItem = document.createElement('div');
+                        jobItem.className = 'job-card';
+                        jobItem.innerHTML = `
+                            <div class="job-content">
+                                <div class="job-title">${job.title}</div>
+                                <div class="company">${job.company} • ${job.location}</div>
+                                <div class="job-details">
+                                    <span>${job.type} • ${job.salary}</span>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="view-btn" onclick="showJobDetails('${job.id}')">View</button>
+                                    <button class="action-btn remove-btn" onclick="removeJob('${job.id}', this)">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        uploadedJobsContainer.appendChild(jobItem);
+                    });
+                } else {
+                    uploadedJobsContainer.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-briefcase"></i>
+                            <p>No jobs uploaded yet</p>
+                            <p style="font-size: 14px; color: #666; margin-top: 10px;">Post your first job using the form above</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function uploadJob() {
+            const title = document.getElementById('job-title').value;
+            const company = document.getElementById('job-company').value;
+            const location = document.getElementById('job-location').value;
+            const salary = document.getElementById('job-salary').value;
+            const type = document.getElementById('job-type').value;
+            const category = document.getElementById('job-category').value;
+            const description = document.getElementById('job-description').value;
+            const requirements = document.getElementById('job-requirements').value;
+            const benefits = document.getElementById('job-benefits').value;
+            
+            if (!title || !company || !location || !salary || !type || !category || !description) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            const jobId = 'job-' + Date.now();
+            const newJob = {
+                id: jobId,
+                title: title.toUpperCase(),
+                company: company.toUpperCase(),
+                location: location,
+                salary: salary,
+                type: type,
+                category: category,
+                description: description,
+                requirements: requirements,
+                benefits: benefits,
+                image: `https://placehold.co/600x400/3b82f6/white?text=${encodeURIComponent(company.substring(0, 10))}`,
+                datePosted: new Date().toISOString(),
+                uploaded: true
+            };
+            
+            uploadedJobs.push(newJob);
+            localStorage.setItem('uploadedJobs', JSON.stringify(uploadedJobs));
+            
+            if (!jobData[category]) {
+                jobData[category] = [];
+            }
+            jobData[category].push(newJob);
+            jobData.all.push(newJob);
+            
+            alert('Job posted successfully!');
+            showSection('employee-view');
+            
+            // Refresh the uploaded jobs list
+            showUploadJobView();
+            
+            if (currentUserType === 'applicant') {
+                populateJobCards(currentCategory);
+            }
+            
+            // Create notification
+            createNotification(
+                currentUser.email,
+                'Job Posted Successfully',
+                `Your job "${title}" has been posted and is now visible to applicants.`
+            );
+        }
         
         init();

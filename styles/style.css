@@ -2116,3 +2116,36 @@
         .employee-profile .peso-report-section {
             display: none !important;
         }
+
+        /* Add to your CSS */
+        .action-btn.remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .action-btn.remove-btn:hover {
+            background: #c82333;
+        }
+
+        .uploaded-jobs-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .uploaded-jobs-section h3 {
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
