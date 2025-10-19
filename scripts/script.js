@@ -1619,12 +1619,12 @@
                 document.getElementById('profile-about').textContent = currentUser.about || 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.';
                 document.getElementById('profile-role').textContent = currentUserType === 'applicant' ? 'Applicant' : 'Employee';
 
-                const pesoButton = document.querySelector('.peso-report-btn');
-                if (pesoButton) {
+                const pesoReportSection = document.querySelector('.peso-report-section');
+                if (pesoReportSection) {
                     if (currentUserType === 'applicant') {
-                        pesoButton.style.display = 'block';
+                        pesoReportSection.style.display = 'block';
                     } else {
-                        pesoButton.style.display = 'none';
+                        pesoReportSection.style.display = 'none';
                     }
                 }
                 

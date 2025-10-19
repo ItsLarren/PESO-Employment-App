@@ -2110,3 +2110,9 @@
             color: #666;
             line-height: 1.4;
         }
+
+        /* Hide PESO report section for employees */
+        .employee-view .peso-report-section,
+        .employee-profile .peso-report-section {
+            display: none !important;
+        }
