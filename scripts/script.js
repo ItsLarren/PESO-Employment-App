@@ -2009,6 +2009,32 @@
             } else {
                 addExperienceInput();
             }
+
+            const certificationsContainer = document.getElementById('edit-certifications');
+            if (certificationsContainer) {
+                certificationsContainer.innerHTML = '';
+                if (currentUser.certifications && currentUser.certifications.length > 0) {
+                    currentUser.certifications.forEach(cert => {
+                        addCertificationInput(cert);
+                    });
+                } else {
+                    addCertificationInput();
+                }
+            }
+            
+            const licensesContainer = document.getElementById('edit-licenses');
+            if (licensesContainer) {
+                licensesContainer.innerHTML = '';
+                if (currentUser.licenses && currentUser.licenses.length > 0) {
+                    currentUser.licenses.forEach(license => {
+                        addLicenseInput(license);
+                    });
+                } else {
+                    addLicenseInput();
+                }
+            }
+            
+            showSection('edit-profile-view');
             
             const editProfileAvatar = document.getElementById('edit-profile-avatar');
             if (currentUser.profilePicture) {
@@ -2027,73 +2053,138 @@
                 return;
             }
             
-            currentUser.name = document.getElementById('edit-name').value;
-            currentUser.phone = document.getElementById('edit-phone').value;
-            currentUser.address = document.getElementById('edit-address').value;
-            currentUser.location = document.getElementById('edit-location').value;
-            currentUser.about = document.getElementById('edit-about').value;
-            
-            currentUser.skills = [];
-            const skillInputs = document.querySelectorAll('.skill-input');
-            if (skillInputs.length > 0) {
-                skillInputs.forEach(input => {
-                    if (input && input.value && input.value.trim() !== '') {
-                        currentUser.skills.push(input.value.trim());
-                    }
-                });
-            }
-            
-            currentUser.education = [];
-            const educationItems = document.querySelectorAll('.education-item');
-            if (educationItems.length > 0) {
-                educationItems.forEach(item => {
-                    const degreeInput = item.querySelector('.education-degree');
-                    const schoolInput = item.querySelector('.education-school');
-                    const yearInput = item.querySelector('.education-year');
-                    
-                    if (degreeInput && schoolInput && 
-                        degreeInput.value.trim() !== '' && schoolInput.value.trim() !== '') {
-                        currentUser.education.push({
-                            degree: degreeInput.value,
-                            school: schoolInput.value,
-                            year: yearInput ? yearInput.value : ''
+            try {
+                // Safely get values with fallbacks
+                const nameInput = document.getElementById('edit-name');
+                const phoneInput = document.getElementById('edit-phone');
+                const addressInput = document.getElementById('edit-address');
+                const locationInput = document.getElementById('edit-location');
+                const aboutInput = document.getElementById('edit-about');
+                
+                if (nameInput) currentUser.name = nameInput.value || currentUser.name || '';
+                if (phoneInput) currentUser.phone = phoneInput.value || currentUser.phone || '';
+                if (addressInput) currentUser.address = addressInput.value || currentUser.address || '';
+                if (locationInput) currentUser.location = locationInput.value || currentUser.location || '';
+                if (aboutInput) currentUser.about = aboutInput.value || currentUser.about || '';
+                
+                // Safely handle skills
+                currentUser.skills = [];
+                const skillInputs = document.querySelectorAll('.skill-input');
+                if (skillInputs.length > 0) {
+                    skillInputs.forEach(input => {
+                        if (input && input.value && input.value.trim() !== '') {
+                            currentUser.skills.push(input.value.trim());
+                        }
+                    });
+                }
+                
+                // Safely handle education
+                currentUser.education = [];
+                const educationItems = document.querySelectorAll('.education-item');
+                if (educationItems.length > 0) {
+                    educationItems.forEach(item => {
+                        const degreeInput = item.querySelector('.education-degree');
+                        const schoolInput = item.querySelector('.education-school');
+                        const yearInput = item.querySelector('.education-year');
+                        
+                        if (degreeInput && schoolInput && 
+                            degreeInput.value && degreeInput.value.trim() !== '' && 
+                            schoolInput.value && schoolInput.value.trim() !== '') {
+                            currentUser.education.push({
+                                degree: degreeInput.value.trim(),
+                                school: schoolInput.value.trim(),
+                                year: yearInput ? yearInput.value.trim() : ''
+                            });
+                        }
+                    });
+                }
+                
+                // Safely handle experience
+                currentUser.experience = [];
+                const experienceItems = document.querySelectorAll('.experience-item');
+                if (experienceItems.length > 0) {
+                    experienceItems.forEach(item => {
+                        const positionInput = item.querySelector('.experience-position');
+                        const companyInput = item.querySelector('.experience-company');
+                        const durationInput = item.querySelector('.experience-duration');
+                        const descriptionInput = item.querySelector('.experience-description');
+                        
+                        if (positionInput && companyInput && 
+                            positionInput.value && positionInput.value.trim() !== '' && 
+                            companyInput.value && companyInput.value.trim() !== '') {
+                            currentUser.experience.push({
+                                position: positionInput.value.trim(),
+                                company: companyInput.value.trim(),
+                                duration: durationInput ? durationInput.value.trim() : '',
+                                description: descriptionInput ? descriptionInput.value.trim() : ''
+                            });
+                        }
+                    });
+                }
+                
+                // Safely handle certifications (if the section exists)
+                const certificationsContainer = document.getElementById('edit-certifications');
+                if (certificationsContainer) {
+                    currentUser.certifications = currentUser.certifications || [];
+                    const certificationItems = document.querySelectorAll('.certification-item');
+                    if (certificationItems.length > 0) {
+                        currentUser.certifications = [];
+                        certificationItems.forEach(item => {
+                            const nameInput = item.querySelector('.certification-name');
+                            const issuerInput = item.querySelector('.certification-issuer');
+                            const dateInput = item.querySelector('.certification-date');
+                            
+                            if (nameInput && nameInput.value && nameInput.value.trim() !== '') {
+                                currentUser.certifications.push({
+                                    name: nameInput.value.trim(),
+                                    issuer: issuerInput ? issuerInput.value.trim() : '',
+                                    date: dateInput ? dateInput.value.trim() : ''
+                                });
+                            }
                         });
                     }
-                });
-            }
-            
-            currentUser.experience = [];
-            const experienceItems = document.querySelectorAll('.experience-item');
-            if (experienceItems.length > 0) {
-                experienceItems.forEach(item => {
-                    const positionInput = item.querySelector('.experience-position');
-                    const companyInput = item.querySelector('.experience-company');
-                    const durationInput = item.querySelector('.experience-duration');
-                    const descriptionInput = item.querySelector('.experience-description');
-                    
-                    if (positionInput && companyInput && 
-                        positionInput.value.trim() !== '' && companyInput.value.trim() !== '') {
-                        currentUser.experience.push({
-                            position: positionInput.value,
-                            company: companyInput.value,
-                            duration: durationInput ? durationInput.value : '',
-                            description: descriptionInput ? descriptionInput.value : ''
+                }
+                
+                // Safely handle licenses (if the section exists)
+                const licensesContainer = document.getElementById('edit-licenses');
+                if (licensesContainer) {
+                    currentUser.licenses = currentUser.licenses || [];
+                    const licenseItems = document.querySelectorAll('.license-item');
+                    if (licenseItems.length > 0) {
+                        currentUser.licenses = [];
+                        licenseItems.forEach(item => {
+                            const nameInput = item.querySelector('.license-name');
+                            const numberInput = item.querySelector('.license-number');
+                            const expiryInput = item.querySelector('.license-expiry');
+                            
+                            if (nameInput && nameInput.value && nameInput.value.trim() !== '') {
+                                currentUser.licenses.push({
+                                    name: nameInput.value.trim(),
+                                    number: numberInput ? numberInput.value.trim() : '',
+                                    expiry: expiryInput ? expiryInput.value.trim() : ''
+                                });
+                            }
                         });
                     }
-                });
+                }
+                
+                // Update user accounts in localStorage
+                const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
+                if (userIndex !== -1) {
+                    userAccounts[userIndex] = currentUser;
+                    localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                }
+                
+                updateProfileInfo();
+                
+                alert('Profile updated successfully!');
+                showSection('profile-view');
+                
+            } catch (error) {
+                console.error('Error saving profile:', error);
+                alert('There was an error saving your profile. Please try again.');
             }
-            
-            const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
-            if (userIndex !== -1) {
-                userAccounts[userIndex] = currentUser;
-                localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            }
-            
-            updateProfileInfo();
-            
-            alert('Profile updated successfully!');
-            showSection('profile-view');
         }
         
         function performSearch() {
@@ -3266,6 +3357,55 @@
                 'Job Posted Successfully',
                 `Your job "${title}" has been posted and is now visible to applicants.`
             );
+        }
+
+        // Add these helper functions if the sections don't exist in your HTML
+        function addCertificationInput(certification = {}) {
+            const certificationsContainer = document.getElementById('edit-certifications');
+            if (!certificationsContainer) return;
+            
+            const certificationItem = document.createElement('div');
+            certificationItem.className = 'certification-item';
+            certificationItem.innerHTML = `
+                <div class="form-group">
+                    <label>Certification Name</label>
+                    <input type="text" class="certification-name" placeholder="e.g., Google Analytics Certified" value="${certification.name || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Issuing Organization</label>
+                    <input type="text" class="certification-issuer" placeholder="e.g., Google" value="${certification.issuer || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Date Received</label>
+                    <input type="text" class="certification-date" placeholder="e.g., June 2023" value="${certification.date || ''}">
+                </div>
+                <button class="action-btn remove-btn" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            certificationsContainer.appendChild(certificationItem);
+        }
+
+        function addLicenseInput(license = {}) {
+            const licensesContainer = document.getElementById('edit-licenses');
+            if (!licensesContainer) return;
+            
+            const licenseItem = document.createElement('div');
+            licenseItem.className = 'license-item';
+            licenseItem.innerHTML = `
+                <div class="form-group">
+                    <label>License Name</label>
+                    <input type="text" class="license-name" placeholder="e.g., Professional Driver's License" value="${license.name || ''}">
+                </div>
+                <div class="form-group">
+                    <label>License Number</label>
+                    <input type="text" class="license-number" placeholder="e.g., PDL-123456" value="${license.number || ''}">
+                </div>
+                <div class="form-group">
+                    <label>Expiry Date</label>
+                    <input type="text" class="license-expiry" placeholder="e.g., December 2025" value="${license.expiry || ''}">
+                </div>
+                <button class="action-btn remove-btn" onclick="this.parentElement.remove()">Remove</button>
+            `;
+            licensesContainer.appendChild(licenseItem);
         }
         
         init();
