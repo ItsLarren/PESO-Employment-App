@@ -217,7 +217,6 @@
                     <div class="nav-item" onclick="changeCategory('marketing')">Marketing</div>
                     <div class="nav-item" onclick="changeCategory('sales')">Sales</div>
                     <div class="nav-item" onclick="changeCategory('finance')">Finance</div>
-                    <div class="nav-item" onclick="showHiredNotification()">I Got hired!</div>
                 </div>
                 
                 <div class="content">
@@ -686,6 +685,21 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- ADD THIS TO PROFILE-VIEW (after resume section) -->
+                    <div class="profile-info-section peso-report-section">
+                        <div class="info-group">
+                            <div class="info-label">Employment Status</div>
+                            <div class="info-value">
+                                <button class="view-btn peso-report-btn" onclick="showPesoReportForm()" style="background: #28a745; margin-top: 10px;">
+                                    <i class="fas fa-flag"></i> Report to PESO
+                                </button>
+                                <p style="font-size: 12px; color: #666; margin-top: 8px;">
+                                    Report when you get hired to notify employers and update your status
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="profile-info-section">
                         <div class="toggle-item">
@@ -714,6 +728,8 @@
                     <button class="logout-btn" onclick="logout()">Logout</button>
                 </div>
             </div>
+
+            
             
             <div id="edit-profile-view" class="hidden">
                 <div class="edit-profile-header">
@@ -807,11 +823,11 @@
                     </div>
 
                     <div class="profile-form-section">
-                        <div class="profile-form-section-title">LIcenses</div>
+                        <div class="profile-form-section-title">Licenses</div>
                         <div id="edit-licenses">
                             <!-- Licenses -->
                         </div>
-                        <button class="add-item-btn" onclick="addLicenseInput()">Add Licenses=</button>
+                        <button class="add-item-btn" onclick="addLicenseInput()">Add Licenses</button>
                     </div>
                     
                     <div class="form-group">
@@ -824,7 +840,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <button class="save-profile-btn" onclick="saveProfile()">Save Changes</button>
                 </div>
             </div>
@@ -923,16 +939,70 @@
                         <div class="form-group">
                             <textarea id="application-cover-letter" placeholder="Write a cover letter (optional)" rows="5">Dear Hiring Manager,
 
-I am excited to apply for the Customer Service Representative position at ALORICA. With 5 years of experience in customer service, I am confident in my ability to provide exceptional support to your customers.
+                        I am excited to apply for the Customer Service Representative position at ALORICA. With 5 years of experience in customer service, I am confident in my ability to provide exceptional support to your customers.
 
-Thank you for considering my application.
+                        Thank you for considering my application.
 
-Sincerely,
-Juan Dela Cruz</textarea>
+                        Sincerely,
+                        Juan Dela Cruz</textarea>
                         </div>
                     </div>
                     
                     <button class="view-btn" onclick="submitApplication()">Submit Application</button>
+                </div>
+            </div>
+
+            <!-- ADD THIS AS A SEPARATE VIEW -->
+            <div id="peso-report-view" class="hidden">
+                <div class="page-header">
+                    <div class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="logo">
+                        <span>Report to PESO</span>
+                    </div>
+                </div>
+                
+                <div class="application-form">
+                    <div class="form-section">
+                        <div class="form-section-title">Job Notification</div>
+                        <p>We would like to know about your employment status. Please fill out the form below.</p>
+                        
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" id="peso-company" placeholder="Enter the company where you got hired">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Position</label>
+                            <input type="text" id="peso-position" placeholder="Enter your position">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="date" id="peso-start-date">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Employment Type</label>
+                            <select id="peso-employment-type">
+                                <option value="">Select employment type</option>
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
+                                <option value="Contract">Contract</option>
+                                <option value="Internship">Internship</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Salary (Optional)</label>
+                            <input type="text" id="peso-salary" placeholder="e.g., ₱20,000 - ₱25,000">
+                        </div>
+                    </div>
+                    
+                    <button class="view-btn" id="peso-submit-btn" onclick="submitPesoReport()" disabled style="background: #ccc;">
+                        Submit Report
+                    </button>
                 </div>
             </div>
             

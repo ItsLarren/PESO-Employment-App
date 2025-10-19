@@ -119,6 +119,7 @@
         const chatSend = document.getElementById('chat-send');
         const cameraModal = document.getElementById('camera-modal');
         const cameraPreview = document.getElementById('camera-preview');
+        const pesoReportView = document.getElementById('peso-report-view');
         let cameraStream = null;
 
         function showUploadDataView() {
@@ -971,6 +972,7 @@
             applicantDetailsView.classList.add('hidden');
             uploadJobView.classList.add('hidden');
             uploadDataView.classList.add('hidden');
+            pesoReportView.classList.add('hidden');
             
             notificationPanel.style.display = 'none';
             searchPanel.style.display = 'none';
@@ -1616,6 +1618,15 @@
                 document.getElementById('profile-location').textContent = currentUser.location || 'San Fernando, Pampanga';
                 document.getElementById('profile-about').textContent = currentUser.about || 'Experienced customer service professional with 5 years in the industry. Looking for new opportunities to grow and develop my skills.';
                 document.getElementById('profile-role').textContent = currentUserType === 'applicant' ? 'Applicant' : 'Employee';
+
+                const pesoButton = document.querySelector('.peso-report-btn');
+                if (pesoButton) {
+                    if (currentUserType === 'applicant') {
+                        pesoButton.style.display = 'block';
+                    } else {
+                        pesoButton.style.display = 'none';
+                    }
+                }
                 
                 const skillsContainer = document.getElementById('profile-skills');
                 skillsContainer.innerHTML = '';
@@ -2861,42 +2872,6 @@
             populateJobCards(currentCategory);
         }
 
-        function showHiredNotification() {
-            if (!currentUser) {
-                alert('Please log in to use this feature');
-                return;
-            }
-            
-            const modal = document.createElement('div');
-            modal.className = 'modal';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-title">Job Notification</div>
-                    <p>Let employers know you've been hired elsewhere. This will notify all employers you've applied to.</p>
-                    <div class="form-group">
-                        <label>Company Name</label>
-                        <input type="text" id="hired-company" placeholder="Enter company name">
-                    </div>
-                    <div class="form-group">
-                        <label>Position</label>
-                        <input type="text" id="hired-position" placeholder="Enter position">
-                    </div>
-                    <div class="form-group">
-                        <label>Start Date</label>
-                        <input type="date" id="hired-date">
-                    </div>
-                    <div class="modal-buttons">
-                        <button class="modal-btn cancel" onclick="this.closest('.modal').remove()">Cancel</button>
-                        <button class="modal-btn confirm" onclick="submitHiredNotification()">Submit</button>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(modal);
-            
-            document.getElementById('hired-date').valueAsDate = new Date();
-        }
-
         function submitHiredNotification() {
             const company = document.getElementById('hired-company').value;
             const position = document.getElementById('hired-position').value;
@@ -2955,6 +2930,141 @@
                     populateJobCards(currentCategory);
                 }
             }
+        }
+
+        // Make sure these functions are properly defined
+        function showPesoReportForm() {
+            if (!currentUser) {
+                alert('Please log in to report your employment status');
+                showSection('auth-section');
+                return;
+            }
+            
+            // Clear previous values
+            document.getElementById('peso-company').value = '';
+            document.getElementById('peso-position').value = '';
+            document.getElementById('peso-start-date').valueAsDate = new Date();
+            document.getElementById('peso-employment-type').value = '';
+            document.getElementById('peso-salary').value = '';
+            
+            // Disable submit button initially
+            document.getElementById('peso-submit-btn').disabled = true;
+            document.getElementById('peso-submit-btn').style.background = '#ccc';
+            
+            // Add validation listeners
+            document.getElementById('peso-company').addEventListener('input', validatePesoForm);
+            document.getElementById('peso-position').addEventListener('input', validatePesoForm);
+            document.getElementById('peso-start-date').addEventListener('change', validatePesoForm);
+            document.getElementById('peso-employment-type').addEventListener('change', validatePesoForm);
+            
+            showSection('peso-report-view');
+        }
+
+        function validatePesoForm() {
+            const company = document.getElementById('peso-company').value;
+            const position = document.getElementById('peso-position').value;
+            const startDate = document.getElementById('peso-start-date').value;
+            const employmentType = document.getElementById('peso-employment-type').value;
+            
+            const isValid = company && position && startDate && employmentType;
+            const submitBtn = document.getElementById('peso-submit-btn');
+            
+            if (isValid) {
+                submitBtn.disabled = false;
+                submitBtn.style.background = '#28a745';
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.style.background = '#ccc';
+            }
+        }
+
+        function submitPesoReport() {
+            const company = document.getElementById('peso-company').value;
+            const position = document.getElementById('peso-position').value;
+            const startDate = document.getElementById('peso-start-date').value;
+            const employmentType = document.getElementById('peso-employment-type').value;
+            const salary = document.getElementById('peso-salary').value;
+            
+            if (!company || !position || !startDate || !employmentType) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Create the PESO report
+            const pesoReport = {
+                id: 'peso-' + Date.now(),
+                userId: currentUser.email,
+                userName: currentUser.name,
+                company: company,
+                position: position,
+                startDate: startDate,
+                employmentType: employmentType,
+                salary: salary,
+                reportDate: new Date().toISOString(),
+                status: 'reported'
+            };
+            
+            // Save to localStorage
+            let pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
+            pesoReports.push(pesoReport);
+            localStorage.setItem('pesoReports', JSON.stringify(pesoReports));
+            
+            // Update admin stats for hired applicants count
+            updateHiredApplicantsCount();
+            
+            // Notify employers
+            notifyEmployers(pesoReport);
+            
+            // Show success message
+            alert('Thank you for reporting your employment status! Employers have been notified.');
+            
+            // Redirect back to edit profile
+            showSection('edit-profile-view');
+        }
+
+        function updateHiredApplicantsCount() {
+            // Update the admin dashboard count
+            let pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
+            const hiredCount = pesoReports.length;
+            
+            // Update the admin dashboard stat
+            const hiredApplicantsElement = document.getElementById('approved-applications');
+            if (hiredApplicantsElement) {
+                hiredApplicantsElement.textContent = hiredCount;
+            }
+            
+            // Also update in localStorage for admin
+            localStorage.setItem('totalHiredApplicants', hiredCount.toString());
+        }
+
+        function notifyEmployers(pesoReport) {
+            // Get all applications by this user
+            const userApplications = Object.values(submittedApplications).filter(app => 
+                app.email === currentUser.email
+            );
+            
+            // Notify each employer where the user applied
+            userApplications.forEach(application => {
+                createNotification(
+                    'employer@' + application.company.toLowerCase().replace(/\s+/g, '') + '.com',
+                    'Applicant Hired Elsewhere',
+                    `${currentUser.name} has been hired as ${pesoReport.position} at ${pesoReport.company} starting ${new Date(pesoReport.startDate).toLocaleDateString()}.`
+                );
+            });
+            
+            // Notify admin
+            createNotification(
+                'admin@employmentcorner.com',
+                'Applicant Hired - PESO Report',
+                `${currentUser.name} has reported being hired as ${pesoReport.position} at ${pesoReport.company}.`
+            );
+            
+            // Add to general notifications
+            createNotification(
+                currentUser.email,
+                'Employment Reported to PESO',
+                `Thank you for reporting your employment at ${pesoReport.company}. Your status has been updated.`
+            );
         }
         
         init();
