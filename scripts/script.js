@@ -966,6 +966,8 @@
                 }
             });
 
+            trackActiveUser();
+
             initUploadFunctionality();
         }
         
@@ -2868,20 +2870,13 @@
         }
         
         function viewResume() {
-            // For the applicant details view
             const resumeName = document.getElementById('applicant-detail-resume').textContent;
-            
-            // Check if we have a file object or just a filename
             if (currentResumeFile) {
                 viewResumePreview();
             } else if (currentApplicationResumeFile) {
                 viewApplicationResumePreview();
             } else {
-                // If no file object, try to open based on filename
                 alert(`Opening resume: ${resumeName}\n\nIn a real application, this would display the resume file.`);
-                
-                // For demo purposes, you could create a sample PDF viewer
-                // or redirect to a file if it exists
                 showSampleResumeViewer(resumeName);
             }
         }
@@ -3108,32 +3103,27 @@
 
         function removeJob(jobId, button) {
             if (confirm('Are you sure you want to remove this job posting? This action cannot be undone.')) {
-                // Remove from uploadedJobs
                 uploadedJobs = uploadedJobs.filter(job => job.id !== jobId);
                 localStorage.setItem('uploadedJobs', JSON.stringify(uploadedJobs));
                 
-                // Remove from jobData
                 Object.keys(jobData).forEach(category => {
                     if (jobData[category]) {
                         jobData[category] = jobData[category].filter(job => job.id !== jobId);
                     }
                 });
                 
-                // Remove the job card from UI
                 if (button) {
                     button.closest('.job-card').remove();
                 }
                 
                 alert('Job posting removed successfully!');
                 
-                // Refresh the view
                 if (currentUserType === 'applicant') {
                     populateJobCards(currentCategory);
                 }
             }
         }
 
-        // Make sure these functions are properly defined
         function showPesoReportForm() {
             if (!currentUser) {
                 alert('Please log in to report your employment status');
@@ -3141,18 +3131,13 @@
                 return;
             }
             
-            // Clear previous values
             document.getElementById('peso-company').value = '';
             document.getElementById('peso-position').value = '';
             document.getElementById('peso-start-date').valueAsDate = new Date();
             document.getElementById('peso-employment-type').value = '';
             document.getElementById('peso-salary').value = '';
-            
-            // Disable submit button initially
             document.getElementById('peso-submit-btn').disabled = true;
             document.getElementById('peso-submit-btn').style.background = '#ccc';
-            
-            // Add validation listeners
             document.getElementById('peso-company').addEventListener('input', validatePesoForm);
             document.getElementById('peso-position').addEventListener('input', validatePesoForm);
             document.getElementById('peso-start-date').addEventListener('change', validatePesoForm);
@@ -3191,7 +3176,6 @@
                 return;
             }
             
-            // Create the PESO report
             const pesoReport = {
                 id: 'peso-' + Date.now(),
                 userId: currentUser.email,
@@ -3205,46 +3189,33 @@
                 status: 'reported'
             };
             
-            // Save to localStorage
             let pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
             pesoReports.push(pesoReport);
             localStorage.setItem('pesoReports', JSON.stringify(pesoReports));
             
-            // Update admin stats for hired applicants count
             updateHiredApplicantsCount();
-            
-            // Notify employers
-            notifyEmployers(pesoReport);
-            
-            // Show success message
+            notifyEmployers(pesoReport);  
             alert('Thank you for reporting your employment status! Employers have been notified.');
-            
-            // Redirect back to edit profile
             showSection('edit-profile-view');
         }
 
         function updateHiredApplicantsCount() {
-            // Update the admin dashboard count
             let pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
             const hiredCount = pesoReports.length;
             
-            // Update the admin dashboard stat
             const hiredApplicantsElement = document.getElementById('approved-applications');
             if (hiredApplicantsElement) {
                 hiredApplicantsElement.textContent = hiredCount;
             }
             
-            // Also update in localStorage for admin
             localStorage.setItem('totalHiredApplicants', hiredCount.toString());
         }
 
         function notifyEmployers(pesoReport) {
-            // Get all applications by this user
             const userApplications = Object.values(submittedApplications).filter(app => 
                 app.email === currentUser.email
             );
             
-            // Notify each employer where the user applied
             userApplications.forEach(application => {
                 createNotification(
                     'employer@' + application.company.toLowerCase().replace(/\s+/g, '') + '.com',
@@ -3253,14 +3224,12 @@
                 );
             });
             
-            // Notify admin
             createNotification(
                 'admin@employmentcorner.com',
                 'Applicant Hired - PESO Report',
                 `${currentUser.name} has reported being hired as ${pesoReport.position} at ${pesoReport.company}.`
             );
             
-            // Add to general notifications
             createNotification(
                 currentUser.email,
                 'Employment Reported to PESO',
@@ -3268,35 +3237,29 @@
             );
         }
 
-        // Add this function to handle job deletion
         function removeJob(jobId, button) {
             if (confirm('Are you sure you want to remove this job posting? This action cannot be undone.')) {
-                // Remove from uploadedJobs
                 uploadedJobs = uploadedJobs.filter(job => job.id !== jobId);
                 localStorage.setItem('uploadedJobs', JSON.stringify(uploadedJobs));
                 
-                // Remove from jobData
                 Object.keys(jobData).forEach(category => {
                     if (jobData[category]) {
                         jobData[category] = jobData[category].filter(job => job.id !== jobId);
                     }
                 });
                 
-                // Remove the job card from UI
                 if (button) {
                     button.closest('.job-card').remove();
                 }
                 
                 alert('Job posting removed successfully!');
                 
-                // Refresh the view
                 if (currentUserType === 'applicant') {
                     populateJobCards(currentCategory);
                 }
             }
         }
 
-        // Update the populateJobCards function to include delete button for employee view
         function populateJobCards(category) {
             jobCardsContainer.innerHTML = '';
             
@@ -3322,7 +3285,6 @@
                     `;
                 }
                 
-                // Add delete button for uploaded jobs in employee view
                 let deleteButton = '';
                 if (currentUserType === 'employee' && job.uploaded) {
                     deleteButton = `
@@ -3354,11 +3316,9 @@
             });
         }
 
-        // Update the showUploadJobView function to include delete buttons for existing jobs
         function showUploadJobView() {
             showSection('upload-job-view');
             
-            // Clear form fields
             document.getElementById('job-title').value = '';
             document.getElementById('job-company').value = '';
             document.getElementById('job-location').value = '';
@@ -3369,7 +3329,6 @@
             document.getElementById('job-requirements').value = '';
             document.getElementById('job-benefits').value = '';
             
-            // Populate existing uploaded jobs with delete buttons
             const uploadedJobsContainer = document.getElementById('uploaded-jobs-container');
             if (uploadedJobsContainer) {
                 uploadedJobsContainer.innerHTML = '';
@@ -3454,14 +3413,12 @@
             alert('Job posted successfully!');
             showSection('employee-view');
             
-            // Refresh the uploaded jobs list
             showUploadJobView();
             
             if (currentUserType === 'applicant') {
                 populateJobCards(currentCategory);
             }
             
-            // Create notification
             createNotification(
                 currentUser.email,
                 'Job Posted Successfully',
@@ -3469,7 +3426,6 @@
             );
         }
 
-        // Add these helper functions if the sections don't exist in your HTML
         function addCertificationInput(certification = {}) {
             const certificationsContainer = document.getElementById('edit-certifications');
             if (!certificationsContainer) return;
@@ -3517,5 +3473,230 @@
             `;
             licensesContainer.appendChild(licenseItem);
         }
+
+        function updateAdminStats() {
+            const applicants = userAccounts.filter(user => user.type === 'applicant').length;
+            const employers = userAccounts.filter(user => user.type === 'employee').length;
+            const pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
+            const hiredApplicants = pesoReports.length;
+            const pendingAccreditations = userAccounts.filter(user =>
+                user.type === 'employee' && !user.accredited
+            ) .length;
+
+            document.getElementById('total-applications').textContent = applicants;
+            document.getElementById('pending-applications').textContent = employers;
+            document.getElementById('approved-applications').textContent = hiredApplicants;
+            document.getElementById('rejected-applications').textContent = pendingAccreditations;
+            document.getElementById('active-users').textContent = activeUsers.length;
+        }
+
+        function trackActiveUser() {
+            if (currentUser) {
+                const userIndex = activeUsers.findIndex(user => user.email === currentUser.email);
+                const userData = {
+                    email: currentUser.email,
+                    name: currentUser.name,
+                    type: currentUser.type,
+                    lastActive: new Date().toISOString()
+                };
+
+                if (userIndex !== -1) {
+                    activeUsers[userIndex] = userData;
+                } else {
+                    activeUsers.push(userData);
+                }
+
+                const thirtyMinutesAgo = new Date(Date.now() - 30 * 60 * 1000);
+                activeUsers = activeUsers.filter(user => new Date(user.lastactive) > thirtyMinutesAgo);
+                localStorage.setItem('activeUsers', JSON.stringify(activeUsers));
+
+                if (adminLoggedIn) {
+                    updateAdminStats();
+                }
+            }
+        }
         
+        setInterval(trackActiveUser, 60000);
+
+        function signup() {
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirm = document.getElementById('signup-confirm').value;
+
+            if (name && email && password && confirm) {
+                if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address (e.g., juandelacruz@gmail.com)');
+                    return;
+                }
+
+                if (password !== confirm) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                if (userAccounts.some(acc => acc.email === email)) {
+                    alert('Email already registered');
+                    return;
+                }
+
+                const newUser = {
+                    name: name,
+                    email: email,
+                    password: password,
+                    type: null,
+                    phone: '',
+                    address: '',
+                    location: '',
+                    about: '',
+                    skills: [],
+                    education: [],
+                    experience: [],
+                    profilePicture: null,
+                    accredited: false,
+                    registrationDate: new Date().toISOString()
+                };
+
+                userAccounts.push(newUser);
+                localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+
+                currentUser = newUser;
+                showSection('user-type-section');
+
+                document.getElementById('login-tab').click();
+                alert('Account created successfully! Please select your role and then login.');
+
+                createNotification(
+                    'admin@employmentcorner.com',
+                    'New User Registration',
+                    `${name} (${email}) has registered on the platform.`
+                );
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function selectUserType(type) {
+            if (currentUser) {
+                currentUser.type = type;
+                currentUserType = type;
+                
+                const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
+                if (userIndex !== -1) {
+                    userAccounts[userIndex].type = type;
+                    localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
+                }
+                
+                updateProfileInfo();
+                
+                showSection('auth-section');
+                document.getElementById('login-tab').click();
+                
+                createNotification(
+                    'admin@employmentcorner.com',
+                    'User Role Selected',
+                    `${currentUser.name} (${currentUser.email}) has selected role: ${type}`
+                );
+            }
+        }
+
+        function submitPesoReport() {
+            const company = document.getElementById('peso-company').value;
+            const position = document.getElementById('peso-position').value;
+            const startDate = document.getElementById('peso-start-date').value;
+            const employmentType = document.getElementById('peso-employment-type').value;
+            const salary = document.getElementById('peso-salary').value;
+
+            if (!company || !position || !startDate || !employmentType) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            const pesoReport = {
+                id: 'peso-' + Date.now(),
+                userId: currentUser.email,
+                userName: currentUser.name,
+                campany: company,
+                position: position,
+                startDate: startDate,
+                employmentType: employmentType,
+                salary: salary,
+                reportDate: new Date().toISOString(),
+                status: 'reported'
+            };
+
+            let pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
+            pesoReports.push(pesoReport);
+            localStorage.setItem('pesoReports', JSON.stringify(pesoReports));
+
+            updateHiredApplicantsCount();
+            notifyEmployers(pesoReport);
+
+            alert('Thank you for reporting your employment status! Employers have been notified.');
+            showSection('edit-profile-view');
+        }
+
+        function updateHiredApplicantsCount() {
+            let pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
+            const hiredCount = pesoReports.length;
+            
+            const hiredApplicantsElement = document.getElementById('approved-applications');
+            if (hiredApplicantsElement) {
+                hiredApplicantsElement.textContent = hiredCount;
+            }
+            
+            localStorage.setItem('totalHiredApplicants', hiredCount.toString());
+            
+            updateAdminStats();
+        }
+
+        function renderRecentRegistrations() {
+            const registrationsList = document.getElementById('admin-registrations-list');
+            registrationsList.innerHTML = '';
+            
+            const recentRegistrations = userAccounts
+                .sort((a, b) => new Date(b.registrationDate || 0) - new Date(a.registrationDate || 0))
+                .slice(0, 10);
+            
+            if (recentRegistrations.length === 0) {
+                registrationsList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-users"></i>
+                        <p>No user registrations yet</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            recentRegistrations.forEach(user => {
+                const registrationItem = document.createElement('div');
+                registrationItem.className = 'admin-registration-item';
+                
+                const registrationDate = user.registrationDate ? 
+                    new Date(user.registrationDate).toLocaleDateString() : 'Unknown date';
+                
+                registrationItem.innerHTML = `
+                    <div class="registration-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="registration-info">
+                        <div class="registration-name">${user.name}</div>
+                        <div class="registration-details">
+                            ${user.email} • ${user.type || 'No role selected'}
+                        </div>
+                        <div class="registration-time">Registered: ${registrationDate}</div>
+                    </div>
+                `;
+                
+                registrationsList.appendChild(registrationItem);
+            });
+        }
+
+        function showAdminDashboard() {
+            showSection('admin-dashboard-view');
+            updateAdminStats();
+            renderAdminApplications();
+            renderRecentRegistrations();
+        }
+
         init();
