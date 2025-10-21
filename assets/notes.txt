@@ -1,3 +1,4 @@
+@ -1,120 +0,0 @@
 for real app development
 1. // Simulate upload process
             setTimeout(() => {
