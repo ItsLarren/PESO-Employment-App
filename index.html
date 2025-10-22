@@ -336,6 +336,21 @@
                             <div class="stat-label">Active Users Now</div>
                         </div>
                     </div>
+
+                    <div class="admin-section">
+                        <div class="admin-section-title">
+                            <div class="dropdown-header" onclick="toggleHiredApplicants()">
+                                <span>Total Applicants Hired: <span id="total-hired-count">0</span></span>
+                                <i class="fas fa-chevron-down" id="hired-applicants-chevron"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="hired-applicants-dropdown" id="hired-applicants-dropdown" style="display: none;">
+                            <div class="hired-applicants-list" id="hired-applicants-list">
+                                <!-- Hired applicants will appear here -->
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="admin-actions">
                         <button class="admin-export-btn" id="export-excel-btn">

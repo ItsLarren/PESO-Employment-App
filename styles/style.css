@@ -2224,4 +2224,95 @@
             font-size: 12px;
         }
 
-        
+        /* Hired Applicants Dropdown Styles */
+        .dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-header:hover {
+            background: #e9ecef;
+        }
+
+        .dropdown-header i {
+            transition: transform 0.3s;
+        }
+
+        .dropdown-header i.rotated {
+            transform: rotate(180deg);
+        }
+
+        .hired-applicants-dropdown {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-top: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .hired-applicant-item {
+            padding: 15px;
+            border-bottom: 1px solid #f1f1f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .hired-applicant-item:last-child {
+            border-bottom: none;
+        }
+
+        .hired-applicant-info {
+            flex: 1;
+        }
+
+        .hired-applicant-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .hired-applicant-details {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .hired-applicant-company {
+            color: #b71c1c;
+            font-weight: 500;
+        }
+
+        .hired-applicant-position {
+            color: #495057;
+        }
+
+        .hired-applicant-contact {
+            color: #6c757d;
+            font-size: 13px;
+        }
+
+        .hired-applicant-date {
+            color: #999;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .no-hired-applicants {
+            padding: 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        .no-hired-applicants i {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #ddd;
+        }

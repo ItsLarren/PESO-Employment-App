@@ -1068,6 +1068,8 @@
             showSection('admin-dashboard-view');
             updateAdminStats();
             renderAdminApplications();
+            renderRecentRegistrations();
+            initAdminDashboard();
         }
         
         function updateAdminStats() {
@@ -3697,6 +3699,107 @@
             updateAdminStats();
             renderAdminApplications();
             renderRecentRegistrations();
+        }
+
+        // Toggle hired applicants dropdown
+        function toggleHiredApplicants() {
+            const dropdown = document.getElementById('hired-applicants-dropdown');
+            const chevron = document.getElementById('hired-applicants-chevron');
+            
+            if (dropdown.style.display === 'none') {
+                dropdown.style.display = 'block';
+                chevron.classList.add('rotated');
+                loadHiredApplicants();
+            } else {
+                dropdown.style.display = 'none';
+                chevron.classList.remove('rotated');
+            }
+        }
+
+        // Load hired applicants data
+        function loadHiredApplicants() {
+            const hiredApplicantsList = document.getElementById('hired-applicants-list');
+            const totalHiredCount = document.getElementById('total-hired-count');
+            
+            // Get PESO reports from localStorage
+            let pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
+            
+            // Update count
+            totalHiredCount.textContent = pesoReports.length;
+            
+            if (pesoReports.length === 0) {
+                hiredApplicantsList.innerHTML = `
+                    <div class="no-hired-applicants">
+                        <i class="fas fa-users"></i>
+                        <p>No applicants hired yet</p>
+                        <p style="font-size: 14px; margin-top: 5px;">Hired applicants will appear here when reported</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            hiredApplicantsList.innerHTML = '';
+            
+            pesoReports.forEach((report, index) => {
+                const applicantItem = document.createElement('div');
+                applicantItem.className = 'hired-applicant-item';
+                
+                applicantItem.innerHTML = `
+                    <div class="hired-applicant-info">
+                        <div class="hired-applicant-name">${report.userName}</div>
+                        <div class="hired-applicant-details">
+                            <span class="hired-applicant-position">${report.position}</span> at 
+                            <span class="hired-applicant-company">${report.company}</span>
+                        </div>
+                        <div class="hired-applicant-contact">
+                            <i class="fas fa-phone"></i> ${report.userId} • 
+                            <i class="fas fa-briefcase"></i> ${report.employmentType}
+                        </div>
+                        <div class="hired-applicant-date">
+                            <i class="fas fa-calendar"></i> Started: ${new Date(report.startDate).toLocaleDateString('en-PH', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            })}
+                        </div>
+                        ${report.salary ? `
+                        <div class="hired-applicant-details">
+                            <i class="fas fa-money-bill-wave"></i> Salary: ${report.salary}
+                        </div>
+                        ` : ''}
+                    </div>
+                `;
+                
+                hiredApplicantsList.appendChild(applicantItem);
+            });
+        }
+
+        // Update hired applicants count in admin stats
+        function updateHiredApplicantsCount() {
+            let pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
+            const hiredCount = pesoReports.length;
+            
+            const hiredApplicantsElement = document.getElementById('approved-applications');
+            if (hiredApplicantsElement) {
+                hiredApplicantsElement.textContent = hiredCount;
+            }
+            
+            const totalHiredCount = document.getElementById('total-hired-count');
+            if (totalHiredCount) {
+                totalHiredCount.textContent = hiredCount;
+            }
+            
+            localStorage.setItem('totalHiredApplicants', hiredCount.toString());
+        }
+
+        // Call this function when the admin dashboard loads
+        function initAdminDashboard() {
+            updateHiredApplicantsCount();
+            // Load hired applicants if dropdown is open
+            const dropdown = document.getElementById('hired-applicants-dropdown');
+            if (dropdown && dropdown.style.display === 'block') {
+                loadHiredApplicants();
+            }
         }
 
         init();
