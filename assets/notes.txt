@@ -115,7 +115,3 @@ for real app development
             showSection('user-type-section');
         }
 
-
-the admin page
-     it will only has the search and the notifs for when a new applicant register to the profile page so that the admin also has an ipdate on what is happening at the registaered applicants and even the employers. and it can also possible the admin can only see on how many onlie at the admin page or how many people are using the admin page at the same time.
-     (almost done)
