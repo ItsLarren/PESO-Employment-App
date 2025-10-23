@@ -601,15 +601,12 @@
             populateJobCards('all');
             populateApplicantCards('all');
 
-            // Load resume file if exists
             if (currentUser && currentUser.resumeFile) {
-                // Convert base64 back to file object
                 fetch(currentUser.resumeFile)
                     .then(res => res.blob())
                     .then(blob => {
                         currentResumeFile = new File([blob], currentUser.resumeFileName, { type: blob.type });
                         
-                        // Update resume preview
                         const resumePreviewContainer = document.getElementById('profile-resume-preview');
                         if (resumePreviewContainer) {
                             resumePreviewContainer.innerHTML = `
@@ -1205,7 +1202,6 @@
                 phone: "09123456789",
                 status: "pending",
                 applicationDate: "2023-05-15",
-                // Additional fields for PESO system
                 bdate: "1990-05-15",
                 age: "33",
                 sex: "Male",
@@ -1253,7 +1249,6 @@
                 phone: "09198765432",
                 status: "approved",
                 applicationDate: "2023-05-10",
-                // Additional fields for PESO system
                 bdate: "1992-08-20",
                 age: "31",
                 sex: "Female",
@@ -1301,7 +1296,6 @@
                 phone: "09187654321",
                 status: "rejected",
                 applicationDate: "2023-05-05",
-                // Additional fields for PESO system
                 bdate: "1988-12-10",
                 age: "35",
                 sex: "Male",
@@ -2085,7 +2079,6 @@
             }
             
             try {
-                // Safely get values with fallbacks
                 const nameInput = document.getElementById('edit-name');
                 const phoneInput = document.getElementById('edit-phone');
                 const addressInput = document.getElementById('edit-address');
@@ -2098,7 +2091,6 @@
                 if (locationInput) currentUser.location = locationInput.value || currentUser.location || '';
                 if (aboutInput) currentUser.about = aboutInput.value || currentUser.about || '';
                 
-                // Safely handle skills
                 currentUser.skills = [];
                 const skillInputs = document.querySelectorAll('.skill-input');
                 if (skillInputs.length > 0) {
@@ -2109,7 +2101,6 @@
                     });
                 }
                 
-                // Safely handle education
                 currentUser.education = [];
                 const educationItems = document.querySelectorAll('.education-item');
                 if (educationItems.length > 0) {
@@ -2130,7 +2121,6 @@
                     });
                 }
                 
-                // Safely handle experience
                 currentUser.experience = [];
                 const experienceItems = document.querySelectorAll('.experience-item');
                 if (experienceItems.length > 0) {
@@ -2153,7 +2143,6 @@
                     });
                 }
                 
-                // Safely handle certifications (if the section exists)
                 const certificationsContainer = document.getElementById('edit-certifications');
                 if (certificationsContainer) {
                     currentUser.certifications = currentUser.certifications || [];
@@ -2176,7 +2165,6 @@
                     }
                 }
                 
-                // Safely handle licenses (if the section exists)
                 const licensesContainer = document.getElementById('edit-licenses');
                 if (licensesContainer) {
                     currentUser.licenses = currentUser.licenses || [];
@@ -2199,7 +2187,6 @@
                     }
                 }
                 
-                // Update user accounts in localStorage
                 const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
                 if (userIndex !== -1) {
                     userAccounts[userIndex] = currentUser;
@@ -2321,7 +2308,6 @@
                     </div>
                 `;
 
-                // Helper function to convert file to base64
                 function convertFileToBase64(file) {
                     return new Promise((resolve, reject) => {
                         const reader = new FileReader();
@@ -2331,13 +2317,11 @@
                     });
                 }
                 
-                // Store the file in localStorage for persistence (convert to base64)
                 convertFileToBase64(currentResumeFile).then(base64 => {
                     if (currentUser) {
                         currentUser.resumeFile = base64;
                         currentUser.resumeFileName = currentResumeFile.name;
                         
-                        // Update user accounts
                         const userIndex = userAccounts.findIndex(acc => acc.email === currentUser.email);
                         if (userIndex !== -1) {
                             userAccounts[userIndex] = currentUser;
@@ -2397,42 +2381,34 @@
         
         function viewResumePreview() {
             if (currentResumeFile) {
-                // Create a URL for the file
                 const fileURL = URL.createObjectURL(currentResumeFile);
                 
-                // Create a temporary anchor element to trigger download/view
                 const a = document.createElement('a');
                 a.href = fileURL;
                 a.download = currentResumeFile.name;
                 a.target = '_blank';
                 
-                // Append to body, click, and remove
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
                 
-                // Clean up the URL object
                 setTimeout(() => URL.revokeObjectURL(fileURL), 100);
             }
         }
         
         function viewApplicationResumePreview() {
             if (currentApplicationResumeFile) {
-                // Create a URL for the file
                 const fileURL = URL.createObjectURL(currentApplicationResumeFile);
                 
-                // Create a temporary anchor element to trigger download/view
                 const a = document.createElement('a');
                 a.href = fileURL;
                 a.download = currentApplicationResumeFile.name;
                 a.target = '_blank';
                 
-                // Append to body, click, and remove
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
                 
-                // Clean up the URL object
                 setTimeout(() => URL.revokeObjectURL(fileURL), 100);
             }
         }
@@ -2441,7 +2417,6 @@
             if (confirm('Are you sure you want to remove the resume?')) {
                 currentResumeFile = null;
                 
-                // Remove from user data
                 if (currentUser) {
                     delete currentUser.resumeFile;
                     delete currentUser.resumeFileName;
@@ -3701,7 +3676,6 @@
             renderRecentRegistrations();
         }
 
-        // Toggle hired applicants dropdown
         function toggleHiredApplicants() {
             const dropdown = document.getElementById('hired-applicants-dropdown');
             const chevron = document.getElementById('hired-applicants-chevron');
@@ -3716,15 +3690,12 @@
             }
         }
 
-        // Load hired applicants data
         function loadHiredApplicants() {
             const hiredApplicantsList = document.getElementById('hired-applicants-list');
             const totalHiredCount = document.getElementById('total-hired-count');
             
-            // Get PESO reports from localStorage
             let pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
             
-            // Update count
             totalHiredCount.textContent = pesoReports.length;
             
             if (pesoReports.length === 0) {
@@ -3774,7 +3745,6 @@
             });
         }
 
-        // Update hired applicants count in admin stats
         function updateHiredApplicantsCount() {
             let pesoReports = JSON.parse(localStorage.getItem('pesoReports')) || [];
             const hiredCount = pesoReports.length;
@@ -3792,10 +3762,8 @@
             localStorage.setItem('totalHiredApplicants', hiredCount.toString());
         }
 
-        // Call this function when the admin dashboard loads
         function initAdminDashboard() {
             updateHiredApplicantsCount();
-            // Load hired applicants if dropdown is open
             const dropdown = document.getElementById('hired-applicants-dropdown');
             if (dropdown && dropdown.style.display === 'block') {
                 loadHiredApplicants();
