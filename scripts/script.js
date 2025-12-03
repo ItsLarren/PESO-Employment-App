@@ -10,7 +10,7 @@
         let savedApplicants = JSON.parse(localStorage.getItem('savedApplicants')) || [];
         let scheduledInterviews = JSON.parse(localStorage.getItem('scheduledInterviews')) || [];
         let chatMessages = JSON.parse(localStorage.getItem('chatMessages')) || {};
-        let currentChatWith = null;
+        let currentChatWith = null; 
         let submittedApplications = JSON.parse(localStorage.getItem('submittedApplications')) || {};
         let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
         let uploadedJobs = JSON.parse(localStorage.getItem('uploadedJobs')) || [];
